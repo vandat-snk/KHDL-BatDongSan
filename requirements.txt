@@ -1,0 +1,10 @@
+# Python 3.11+; versions used for the submitted reproducible run (Python 3.13.7)
+numpy==2.3.3
+pandas==2.3.3
+matplotlib==3.10.6
+# Report generation
+python-docx>=1.1,<2
+# Read-only verification of the Excel deliverable
+openpyxl>=3.1,<4
+# Course extraction and read-only report verification
+pypdf>=6,<7

@@ -1,0 +1,94 @@
+{
+  "id": "5477zhnmn2",
+  "version": 2,
+  "name": "Vietnam Real Estate Data",
+  "description": "This dataset contains 10,000 posts of real estate advertisements in Vietnam.",
+  "doi": "10.17632/5477zhnmn2.2",
+  "publish_date": "2021-01-12T12:36:03.192Z",
+  "last_modification_date": "2021-01-12T09:11:06.474Z",
+  "is_confidential": false,
+  "customer": {
+    "id": "7377952c-6404-4428-bbfc-77242cfc301e",
+    "name": "Mendeley Guests"
+  },
+  "owner": {
+    "id": "902d4b5e-144c-3e7b-90b2-38ddce04e15a",
+    "first_name": "Duc Chung",
+    "last_name": "Tran",
+    "display_name": "Duc Chung Tran",
+    "$ref": "/profiles/902d4b5e-144c-3e7b-90b2-38ddce04e15a"
+  },
+  "categories": [
+    {
+      "id": "data.elsevier.com/vocabulary/OmniScience/Concept-210638713",
+      "label": "Real Estate Economics"
+    },
+    {
+      "id": "data.elsevier.com/vocabulary/OmniScience/Concept-235582715",
+      "label": "Real Estate Market"
+    },
+    {
+      "id": "data.elsevier.com/vocabulary/OmniScience/Concept-249133315",
+      "label": "Real Estate Investing"
+    },
+    {
+      "id": "data.elsevier.com/vocabulary/OmniScience/Concept-249602180",
+      "label": "Big Data"
+    },
+    {
+      "id": "data.elsevier.com/vocabulary/OmniScience/Concept-249677948",
+      "label": "Data Analysis"
+    },
+    {
+      "id": "data.elsevier.com/vocabulary/OmniScience/Concept-253057828",
+      "label": "Real Estate Location Analysis"
+    },
+    {
+      "id": "data.elsevier.com/vocabulary/OmniScience/Concept-253227735",
+      "label": "Vietnamese Language"
+    },
+    {
+      "id": "data.elsevier.com/vocabulary/OmniScience/Concept-257549997",
+      "label": "Real Estate Sector"
+    },
+    {
+      "id": "data.elsevier.com/vocabulary/OmniScience/Concept-484993787",
+      "label": "Data Access"
+    }
+  ],
+  "licence": {
+    "id": "01d9c749-3c4d-4431-9df3-620b2dcfe144",
+    "short_name": "CC BY 4.0",
+    "full_name": "Creative Commons Attribution 4.0 International",
+    "description": "You can share, copy and modify this dataset so long as you give appropriate credit, provide a link to the CC BY license, and indicate if changes were made, but you may not do so in a way that suggests the rights holder has endorsed you or your use of the dataset. Note that further permission may be required for any content within the dataset that is identified as belonging to a third party.",
+    "url": "http://creativecommons.org/licenses/by/4.0",
+    "category": "Creative",
+    "customer_id": null
+  },
+  "institutions": [],
+  "organisational_unit_names": [],
+  "contributors": [
+    {
+      "id": "902d4b5e-144c-3e7b-90b2-38ddce04e15a",
+      "first_name": "Duc Chung",
+      "last_name": "Tran",
+      "$ref": "/profiles/902d4b5e-144c-3e7b-90b2-38ddce04e15a"
+    },
+    {
+      "id": "0062dd00-93c7-3eaa-a6dc-fe4cd7e65a13",
+      "first_name": "Huy Hoang",
+      "last_name": "Nguyen",
+      "$ref": "/profiles/0062dd00-93c7-3eaa-a6dc-fe4cd7e65a13"
+    },
+    {
+      "id": "e744be0e-c456-3c26-aa02-33c39617f4f4",
+      "first_name": "Hong Son",
+      "last_name": "Ha",
+      "$ref": "/profiles/e744be0e-c456-3c26-aa02-33c39617f4f4",
+      "institution": "FPT University"
+    }
+  ],
+  "related_links": [],
+  "custom_metadata": {},
+  "is_metadata_only": false
+}

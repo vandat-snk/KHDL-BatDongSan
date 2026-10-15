@@ -1,0 +1,6 @@
+﻿scenario,n,excluded,median_area_m2,median_price_vnd,median_price_per_m2_vnd,unit_price_median_change_pct
+all_clean_sales,7001,0,70,2200000000,32000000,0
+without_global_iqr_outliers,6761,240,71,2100000000,30175438.6,-5.701754386
+without_group_iqr_outliers,6734,267,70,2100000000,30327231.12,-5.227402746
+without_dot_grouping_uncertainty,6654,347,68,2250000000,35000000,9.375
+explicit_sale_titles_only,3055,3946,68,2200000000,32702237.52,2.194492255

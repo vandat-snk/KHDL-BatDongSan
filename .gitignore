@@ -1,0 +1,9 @@
+.venv/
+node_modules/
+__pycache__/
+*.pyc
+tmp/
+~$*.docx
+~$*.xlsx
+data/raw/chotot_data.json
+references/slides_text/

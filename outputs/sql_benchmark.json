@@ -1,0 +1,57 @@
+{
+  "sqlite_version": "3.50.4",
+  "listing_count": 7001,
+  "province_count": 49,
+  "query": "SELECT row_id, area_m2, sale_price_vnd, price_per_m2_vnd\nFROM listings\nWHERE province_id = ? AND type_id = ?\n  AND price_per_m2_vnd BETWEEN ? AND ?\nORDER BY price_per_m2_vnd, row_id LIMIT 100",
+  "parameters": [
+    39,
+    2,
+    33333333.333333332,
+    77777777.77777778
+  ],
+  "parameter_labels": {
+    "province": "Tp Hồ Chí Minh",
+    "property_type": "house"
+  },
+  "before": {
+    "plan": [
+      [
+        4,
+        0,
+        216,
+        "SCAN listings"
+      ],
+      [
+        29,
+        0,
+        0,
+        "USE TEMP B-TREE FOR ORDER BY"
+      ]
+    ],
+    "result_count": 100,
+    "result_sha256": "78cddfe161a3c35863636efa942b424bc89b48b27b6d1f8c06c19b52dd5c385d",
+    "median_ms": 2.0703,
+    "p10_ms": 1.5666,
+    "p90_ms": 5.7908
+  },
+  "after": {
+    "plan": [
+      [
+        5,
+        0,
+        45,
+        "SEARCH listings USING INDEX idx_listings_search (province_id=? AND type_id=? AND price_per_m2_vnd>? AND price_per_m2_vnd<?)"
+      ]
+    ],
+    "result_count": 100,
+    "result_sha256": "78cddfe161a3c35863636efa942b424bc89b48b27b6d1f8c06c19b52dd5c385d",
+    "median_ms": 0.5667,
+    "p10_ms": 0.5394,
+    "p90_ms": 0.6286
+  },
+  "median_speedup": 3.6532556908417155,
+  "identical_results": true,
+  "integrity_check": "ok",
+  "foreign_key_errors": [],
+  "protocol": "One real source snapshot. Same connection, SQL and parameters; before/after composite index, 10 warmups + 51 timings. Small warm-cache benchmark, not a production speedup claim."
+}

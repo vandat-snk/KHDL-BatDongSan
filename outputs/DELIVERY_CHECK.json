@@ -1,0 +1,20 @@
+{
+  "status": "passed",
+  "raw_count": 9004,
+  "clean_count": 7001,
+  "duplicates": 1884,
+  "rejected": 119,
+  "workbook_rows_matched": 7001,
+  "report_pages": 19,
+  "source_sha256": "ef39f153f48a55af07baa86883cd9036652f6d52232fed0be6e8991c7a5bf811",
+  "database_integrity": "ok",
+  "sql_results_identical": true,
+  "pipeline_unit_tests": 12,
+  "dashboard_filter_cases": 6,
+  "visual_review": "19 Word report pages, 3 workbook sheet previews and 4 standalone dashboard SVG charts inspected",
+  "limitations": [
+    "Full dashboard browser layout was not verified: browser tool unavailable.",
+    "Workbook native UI in Microsoft Excel was not exercised; saved formulas, charts and values were verified.",
+    "Human label and source-entry audit remains assigned to the three students."
+  ]
+}

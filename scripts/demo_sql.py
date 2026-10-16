@@ -7,8 +7,11 @@ import sqlite3
 import sys
 
 ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0,str(ROOT/'src'))
+from artifact_contract import validate_core_outputs
 
 def main():
+    validate_core_outputs(ROOT)
     if hasattr(sys.stdout, 'reconfigure'):
         sys.stdout.reconfigure(encoding='utf-8')
     database = ROOT / 'outputs/real_estate.sqlite'

@@ -1,0 +1,9 @@
+# Provenance records SHA-256 of exact bytes. Do not change line endings on
+# add/checkout for code, data and metadata covered by those records.
+* whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+*.py -text
+*.mjs -text
+*.html -text
+*.json -text
+*.csv -text
+*.sql -text

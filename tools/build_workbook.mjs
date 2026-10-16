@@ -1,9 +1,21 @@
 import fs from 'node:fs/promises';
 import path from 'node:path';
+import { createHash } from 'node:crypto';
 import { Workbook, SpreadsheetFile } from '@oai/artifact-tool';
 
 const ROOT = path.resolve(import.meta.dirname, '..');
 const OUT = path.join(ROOT, 'outputs');
+const sha256 = value => createHash('sha256').update(value).digest('hex');
+// Fail before exporting if a core output or its generating code changed since the pipeline run.
+const manifest = JSON.parse(await fs.readFile(path.join(OUT,'run_manifest.json'),'utf8'));
+if (manifest.schema_version !== '2.0' || !manifest.run_id || manifest.source_sha256 !== 'ef39f153f48a55af07baa86883cd9036652f6d52232fed0be6e8991c7a5bf811' || !Object.keys(manifest.source_files??{}).length || !Object.keys(manifest.artifacts??{}).length) throw new Error('Run src/pipeline.py to create a current manifest');
+for (const [file, expected] of Object.entries({...manifest.source_files,...manifest.artifacts})) {
+  if (sha256(await fs.readFile(path.join(ROOT,file))) !== expected) throw new Error(`Stale core result: ${file}. Run pipeline again.`);
+}
+try {
+  const raw = await fs.readFile(path.join(ROOT,'data/raw/chotot_data.json'));
+  if (sha256(raw)!==manifest.source_sha256) throw new Error('Raw source differs from the core run');
+} catch (error) { if(error.code!=='ENOENT') throw error; }
 const QA = path.join(ROOT, 'tmp', 'qa_workbook');
 const DATA = path.join(ROOT, 'data', 'processed', 'listings_clean.csv');
 await fs.mkdir(OUT, { recursive: true });
@@ -17,6 +29,7 @@ async function readFirst(candidates) {
   return { file: null, value: {} };
 }
 const analysis = await readFirst(['outputs/analysis.json', 'data/processed/analysis.json']);
+if(analysis.value.run_id!==manifest.run_id)throw new Error('analysis.json belongs to another run');
 const audit = { file: analysis.file, value: analysis.value.counts ?? {} };
 const metadata = JSON.parse(await fs.readFile(path.join(ROOT, 'data', 'raw', 'mendeley_metadata.json'), 'utf8'));
 
@@ -55,30 +68,37 @@ const header = (sheet, range) => { sheet.getRange(range).format={fill:C.blue,fon
 const note = (sheet, cell, text) => { sheet.getRange(cell).values=[[text]]; sheet.getRange(cell).format.font={name:'Arial',size:10,italic:true,color:C.gray}; };
 const ref = col => `'Du lieu'!$${col}$${first}:$${col}$${last}`;
 
-base(data, `A1:R${last}`);
-title(data,'Dữ liệu tin rao bất động sản đã xử lý','R');
+base(data, `A1:S${last}`);
+title(data,'Dữ liệu tin rao bất động sản đã xử lý','S');
 data.getRange('A4').values=[['Nguồn: Tran, Nguyen & Ha (2021). Vietnam Real Estate Data, v2. Mendeley Data. CC BY 4.0.']];
 data.getRange('A5').values=[['https://doi.org/10.17632/5477zhnmn2.2']];
 note(data,'A6','Dữ liệu lịch sử được công bố 12/01/2021. Một dòng là một tin rao sau xử lý; không phải giá giao dịch hay thị trường hiện tại.');
 note(data,'A7','Loại hình suy luận từ tiêu đề. Nhãn địa phương trích từ địa chỉ lịch sử. Không có ngày đăng hoặc tọa độ để phân tích thời gian/bản đồ.');
-note(data,'A8','Q và R là công thức đổi đơn vị từ H và I. H/I trống nghĩa là không đủ điều kiện phân tích giá; không coi là giá bằng 0.');
-const headers = ['Dòng nguồn','Mã nội dung','Tỉnh/Thành','Quận/Huyện','Loại suy luận','Trạng thái','Diện tích (m²)','Giá rao (VND)','Giá rao/m² (VND)','Cơ sở giá','Nguồn diện tích','Cờ chất lượng','Ngoại lệ toàn bộ','Ngoại lệ nhóm','Nhóm IQR','Cụm K-means','Giá rao (tỷ VND)','Giá rao/m² (triệu VND)'];
-data.getRange('A9:R9').values=[headers];
+note(data,'A8','I = H/G; Q/R đổi đơn vị; S chỉ giữ diện tích dương. Cờ IQR và cụm là kết quả lần chạy, không tính lại khi sửa Excel.');
+const headers = ['Dòng nguồn','Mã nội dung','Tỉnh/Thành','Quận/Huyện','Loại suy luận','Trạng thái','Diện tích (m²)','Giá rao (VND)','Giá rao/m² (VND)','Cơ sở giá','Nguồn diện tích','Cờ chất lượng','Ngoại lệ toàn bộ','Ngoại lệ nhóm','Nhóm IQR','Cụm K-means','Giá rao (tỷ VND)','Giá rao/m² (triệu VND)','Diện tích hợp lệ (m²)'];
+data.getRange('A9:S9').values=[headers];
 data.getRange(`A${first}:P${last}`).values=rows;
-data.getRange(`Q${first}:R${first}`).formulas=[[`=IF(H${first}="","",H${first}/1000000000)`,`=IF(I${first}="","",I${first}/1000000)`]];
-data.getRange(`Q${first}:R${last}`).fillDown();
-const table=data.tables.add(`A9:R${last}`,true,'ListingsClean');
+data.getRange(`I${first}`).formulas=[[`=IF(AND(ISNUMBER(H${first}),H${first}>0,ISNUMBER(G${first}),G${first}>0),H${first}/G${first},"")`]];
+data.getRange(`I${first}:I${last}`).fillDown();
+data.getRange(`Q${first}:S${first}`).formulas=[[
+  `=IF(AND(ISNUMBER(H${first}),H${first}>0),H${first}/1000000000,"")`,
+  `=IF(ISNUMBER(I${first}),I${first}/1000000,"")`,
+  `=IF(AND(ISNUMBER(G${first}),G${first}>0),G${first},"")`
+]];
+data.getRange(`Q${first}:S${last}`).fillDown();
+const table=data.tables.add(`A9:S${last}`,true,'ListingsClean');
 table.showFilterButton=true;
-header(data,'A9:R9');
+header(data,'A9:S9');
 data.getRange(`A${first}:A${last}`).setNumberFormat('0');
 data.getRange(`G${first}:G${last}`).setNumberFormat('#,##0.0');
 data.getRange(`H${first}:I${last}`).setNumberFormat('#,##0');
 data.getRange(`M${first}:N${last}`).setNumberFormat('0');
 data.getRange(`P${first}:P${last}`).setNumberFormat('0');
 data.getRange(`Q${first}:R${last}`).setNumberFormat('#,##0.00');
-data.getRange(`A9:R${last}`).format.rowHeight=21;
-data.getRange('A9:R9').format.rowHeight=38;
-for (const [col,width] of Object.entries({A:11,B:25,C:19,D:22,E:20,F:19,G:18,H:20,I:22,J:20,K:19,L:48,M:17,N:17,O:32,P:17,Q:21,R:25})) data.getRange(`${col}9:${col}${last}`).format.columnWidth=width;
+data.getRange(`S${first}:S${last}`).setNumberFormat('#,##0.0');
+data.getRange(`A9:S${last}`).format.rowHeight=21;
+data.getRange('A9:S9').format.rowHeight=38;
+for (const [col,width] of Object.entries({A:11,B:25,C:19,D:22,E:20,F:19,G:18,H:20,I:22,J:20,K:19,L:48,M:17,N:17,O:32,P:17,Q:21,R:25,S:25})) data.getRange(`${col}9:${col}${last}`).format.columnWidth=width;
 data.getRange(`M${first}:N${last}`).conditionalFormats.add('cellIs',{operator:'equal',formula:1,format:{fill:'#FFF0DD',font:{color:'#A25718'}}});
 data.freezePanes.freezeRows(9);
 data.freezePanes.freezeColumns(2);
@@ -92,11 +112,11 @@ note(dash,'A4','Mẫu tin rao lịch sử Việt Nam. Các thống kê giá dùn
 dash.getRange('A6:C6').values=[['Chỉ tiêu','Giá trị','Đơn vị']]; header(dash,'A6:C6');
 const metrics=[
  ['Tin sau xử lý',`=COUNTA(${ref('B')})`,'tin'],
- ['Tin đủ giá',`=COUNT(${ref('H')})`,'tin'],
- ['Giá trung vị',`=MEDIAN(${ref('Q')})`,'tỷ VND'],
- ['Giá trung bình',`=AVERAGE(${ref('Q')})`,'tỷ VND'],
- ['Diện tích trung vị',`=MEDIAN(${ref('G')})`,'m²'],
- ['Giá/m² trung vị',`=MEDIAN(${ref('R')})`,'triệu VND/m²'],
+ ['Tin đủ giá',`=COUNT(${ref('Q')})`,'tin'],
+ ['Giá trung vị',`=IF(COUNT(${ref('Q')})=0,"",MEDIAN(${ref('Q')}))`,'tỷ VND'],
+ ['Giá trung bình',`=IF(COUNT(${ref('Q')})=0,"",AVERAGE(${ref('Q')}))`,'tỷ VND'],
+ ['Diện tích trung vị',`=IF(COUNT(${ref('S')})=0,"",MEDIAN(${ref('S')}))`,'m²'],
+ ['Giá/m² trung vị',`=IF(COUNT(${ref('R')})=0,"",MEDIAN(${ref('R')}))`,'triệu VND/m²'],
 ];
 dash.getRange('A7:A12').values=metrics.map(x=>[x[0]]); dash.getRange('B7:B12').formulas=metrics.map(x=>[x[1]]); dash.getRange('C7:C12').values=metrics.map(x=>[x[2]]);
 dash.getRange('A6:A12').format.columnWidth=24; dash.getRange('B7:B8').setNumberFormat('#,##0'); dash.getRange('B9:B12').setNumberFormat('#,##0.00');
@@ -105,7 +125,9 @@ dash.getRange('E6').values=[['Cách đọc kết quả']]; dash.getRange('E6').f
 note(dash,'E8','Trung vị giảm ảnh hưởng của giá rao rất cao. Giá trung bình có thể bị ngoại lệ chi phối.');
 note(dash,'E9','So sánh địa phương kèm số tin. Mẫu phân bố không đều, không đại diện toàn thị trường.');
 note(dash,'E10','Giá/m² = giá rao toàn bộ / diện tích lấy từ trường lõi của tin.');
-note(dash,'E11','Công thức và biểu đồ cập nhật khi sửa dữ liệu trong phạm vi hiện có. Thêm dòng mới: chạy lại quy trình.');
+note(dash,'E11','Giá, diện tích và đơn giá cập nhật khi sửa dữ liệu trong phạm vi hiện có.');
+note(dash,'E12','Cờ IQR, nhãn cụm và thứ tự địa phương giữ theo lần chạy. Thay dữ liệu: chạy lại pipeline.');
+note(dash,'A5',`Phiên bản kết quả: ${manifest.run_id}`);
 
 // Summary tables own business calculations and are independent from the audit tab.
 dash.getRange('A51:D51').values=[['Tỉnh/Thành','Số tin','Số tin đủ giá','Giá TB (tỷ VND)']]; header(dash,'A51:D51');
@@ -113,8 +135,8 @@ const pFirst=52,pLast=pFirst+provinces.length-1;
 dash.getRange(`A${pFirst}:A${pLast}`).values=provinces.map(p=>[p]);
 dash.getRange(`B${pFirst}:D${pLast}`).formulas=provinces.map((p,i)=>{const r=pFirst+i;return [
  `=COUNTIFS(${ref('C')},A${r})`,
- `=COUNTIFS(${ref('C')},A${r},${ref('H')},">0")`,
- `=IF(C${r}=0,"",AVERAGEIFS(${ref('Q')},${ref('C')},A${r},${ref('H')},">0"))`
+ `=COUNTIFS(${ref('C')},A${r},${ref('Q')},">0")`,
+ `=IF(C${r}=0,"",AVERAGEIFS(${ref('Q')},${ref('C')},A${r},${ref('Q')},">0"))`
 ];});
 dash.getRange(`B${pFirst}:C${pLast}`).setNumberFormat('#,##0'); dash.getRange(`D${pFirst}:D${pLast}`).setNumberFormat('0.00');
 note(dash,`A${pLast+2}`,'Bảng theo địa phương được xếp theo số tin của lần chạy này. Cột giá là trung bình, không phải trung vị.');
@@ -123,10 +145,10 @@ const bounds=[0,2,4,6,8,10,12,14,16,18,20];
 for(let i=0;i<bounds.length;i++){
  const r=52+i; const lo=bounds[i], hi=i===bounds.length-1?null:bounds[i+1];
  dash.getRange(`I${r}:K${r}`).values=[[lo,hi,hi===null?'Từ 20 trở lên':`${lo} đến dưới ${hi}`]];
- dash.getRange(`L${r}`).formulas=[[hi===null?`=COUNTIFS(${ref('Q')},">="&I${r},${ref('H')},">0")`:`=COUNTIFS(${ref('Q')},">="&I${r},${ref('Q')},"<"&J${r},${ref('H')},">0")`]];
+ dash.getRange(`L${r}`).formulas=[[hi===null?`=COUNTIFS(${ref('Q')},">="&I${r},${ref('Q')},">0")`:`=COUNTIFS(${ref('Q')},">="&I${r},${ref('Q')},"<"&J${r},${ref('Q')},">0")`]];
 }
 dash.getRange('I52:J62').setNumberFormat('0'); dash.getRange('L52:L62').setNumberFormat('#,##0');
-note(dash,'I64','Mười nhóm đầu rộng 2 tỷ VND. Nhóm cuối gộp toàn bộ giá từ 20 tỷ trở lên.');
+note(dash,'I64','Đếm tin theo nhóm; mười nhóm đầu rộng 2 tỷ, nhóm cuối gộp giá từ 20 tỷ trở lên. Không phải mật độ.');
 
 // Deterministic reservoir sample for legible native scatter; all summary metrics use full data.
 let seed=42; const rand=()=>{seed=(Math.imul(1664525,seed)+1013904223)>>>0;return seed/4294967296;};
@@ -136,16 +158,19 @@ for(let i=cap;i<eligible.length;i++){const j=Math.floor(rand()*(i+1));if(j<cap)s
 const sFirst=Math.max(100,pLast+6),sLast=sFirst+sampled.length-1;
 dash.getRange(`A${sFirst-2}`).values=[[`Mẫu scatter ngẫu nhiên có thể lặp lại: ${cap}/${eligible.length} tin, seed 42. Biến đổi log10 để thấy cả giá trị lớn.`]];
 dash.getRange(`A${sFirst-1}:C${sFirst-1}`).values=[['log10(diện tích m²)','log10(giá tỷ VND)','Dòng dữ liệu']];header(dash,`A${sFirst-1}:C${sFirst-1}`);
-dash.getRange(`A${sFirst}:C${sLast}`).formulas=sampled.map(x=>{const r=first+x.i;return [`=LOG10('Du lieu'!G${r})`,`=LOG10('Du lieu'!Q${r})`,`='Du lieu'!A${r}`];});
+dash.getRange(`A${sFirst}:C${sLast}`).formulas=sampled.map(x=>{const r=first+x.i;const valid=`AND(ISNUMBER('Du lieu'!S${r}),ISNUMBER('Du lieu'!Q${r}))`;return [`=IF(${valid},LOG10('Du lieu'!S${r}),"")`,`=IF(${valid},LOG10('Du lieu'!Q${r}),"")`,`='Du lieu'!A${r}`];});
 dash.getRange(`A${sFirst}:B${sLast}`).setNumberFormat('0.00');
-note(dash,'A49',`Scatter dùng ${cap}/${eligible.length} tin chọn ngẫu nhiên, seed 42. Hai trục log10; mỗi 1 đơn vị tương ứng gấp 10 lần giá trị gốc.`);
+note(dash,'A49',`Mẫu ${cap}/${eligible.length}, seed 42. Trục ngang: log10(diện tích m²); dọc: log10(giá tỷ VND). Một đơn vị là gấp 10 lần giá trị gốc.`);
 
 function styleChart(chart,titleText,start,end,xTitle,yTitle,scatter=false){
  chart.title=titleText;chart.titleTextStyle.typeface='Arial';chart.titleTextStyle.fontSize=14;chart.hasLegend=false;
  chart.setPosition(start,end);
- chart.xAxis={axisType:scatter?'valueAxis':'textAxis',textStyle:{typeface:'Arial',fontSize:11}};
+ chart.xAxis={axisType:scatter?'valueAxis':'textAxis',...(scatter?{numberFormatCode:'0.0',numberFormatSourceLinked:false}:{}),textStyle:{typeface:'Arial',fontSize:11}};
  chart.yAxis={numberFormatCode:scatter?'0.0':'0.0',numberFormatSourceLinked:false,textStyle:{typeface:'Arial',fontSize:11}};
- chart.xAxis.title.text=xTitle;chart.yAxis.title.text=yTitle;
+ // Native scatter axes cross at zero; a horizontal-axis title there covers data.
+ // Its exact definition is printed directly beneath the chart instead.
+ if(!scatter)chart.xAxis.title.text=xTitle;
+ chart.yAxis.title.text=yTitle;
  chart.series.items.forEach(s=>s.fill=C.teal);
 }
 const hist=dash.charts.add('bar',[dash.getRange('K51:K62'),dash.getRange('L51:L62')]);
@@ -165,13 +190,15 @@ note(quality,'A4','Bản ghi kiểm toán từ lần chạy pipeline. Các mục
 quality.getRange('A6:C6').values=[['Đối chiếu từ dữ liệu Excel','Giá trị','Đơn vị']];header(quality,'A6:C6');
 const qRows=[
  ['Số tin sau xử lý',`=COUNTA(${ref('B')})`,'tin'],
- ['Giá rao để trống',`=COUNTBLANK(${ref('H')})`,'tin'],
+ ['Giá thiếu hoặc không hợp lệ',`=COUNTA(${ref('B')})-COUNT(${ref('Q')})`,'tin'],
  ['Cờ ngoại lệ toàn bộ',`=COUNTIFS(${ref('M')},1)`,'tin'],
  ['Cờ ngoại lệ theo nhóm',`=COUNTIFS(${ref('N')},1)`,'tin'],
- ['Tổng bin giá trừ số tin đủ giá',"=SUM('Dashboard'!L52:L62)-'Dashboard'!B8",'tin'],
+ ['Tổng nhóm giá trừ số tin đủ giá',"=SUM('Dashboard'!L52:L62)-'Dashboard'!B8",'tin'],
+ ['Diện tích thiếu hoặc không hợp lệ',`=COUNTA(${ref('B')})-COUNT(${ref('S')})`,'tin'],
+ ['Đơn giá chưa tính được',`=COUNTA(${ref('B')})-COUNT(${ref('I')})`,'tin'],
 ];
-quality.getRange('A7:A11').values=qRows.map(x=>[x[0]]);quality.getRange('B7:B11').formulas=qRows.map(x=>[x[1]]);quality.getRange('C7:C11').values=qRows.map(x=>[x[2]]);
-quality.getRange('A6:A11').format.columnWidth=44;quality.getRange('B7:B11').setNumberFormat('#,##0');
+quality.getRange('A7:A13').values=qRows.map(x=>[x[0]]);quality.getRange('B7:B13').formulas=qRows.map(x=>[x[1]]);quality.getRange('C7:C13').values=qRows.map(x=>[x[2]]);
+quality.getRange('A6:A13').format.columnWidth=44;quality.getRange('B7:B13').setNumberFormat('#,##0');
 quality.getRange('B11').conditionalFormats.add('cellIs',{operator:'notEqual',formula:0,format:{fill:'#FDE8E6',font:{color:'#A72828',bold:true}}});
 quality.getRange('A14').values=[['Kết quả pipeline (snapshot; chạy lại pipeline để làm mới)']];quality.getRange('A14').format.font={name:'Arial',size:12,bold:true,color:C.ink};
 quality.getRange('A16:B16').values=[['Mục kiểm toán','Giá trị ghi nhận']];header(quality,'A16:B16');
@@ -200,18 +227,34 @@ note(quality,'D20','Tin cho thuê/giá mơ hồ không được dùng như giá 
 note(quality,'D22','Không điền giá rao thiếu để làm đẹp phân phối.');
 note(quality,'D24','Các cột chi tiết nghi lan truyền không dùng trong kết luận chính.');
 note(quality,'D26','land = đất; house = nhà; apartment = căn hộ.');
-note(quality,'D28','other_unknown = loại hình chưa xác định; cụm -1 = ngoại lệ theo nhóm.');
+note(quality,'D28','other_unknown = chưa rõ loại; cụm -1 = không tham gia huấn luyện.');
+note(quality,'D30','Cờ IQR, cụm và kiểm toán bên dưới là ảnh chụp của lần chạy pipeline.');
 quality.freezePanes.freezeRows(16);
 
-// Verify live recalculation by perturbing and restoring one eligible source price.
-const probe=eligible[0],probeRow=first+probe.i,original=probe.r[7];
+// Exercise the price/area dependency and invalid-input behavior, then restore every probe.
+const probe=eligible[0],probeRow=first+probe.i,original=probe.r[7],originalArea=probe.r[6];
+const near=(actual,expected,label)=>{if(!Number.isFinite(actual)||Math.abs(actual-expected)>Math.max(1e-7,Math.abs(expected)*1e-10))throw new Error(`${label}: ${actual} vs ${expected}`)};
 const beforeMean=dash.getRange('B10').values[0][0];
 data.getRange(`H${probeRow}`).values=[[original+1000000000]];
 wb.recalculate();
-const changed=dash.getRange('B10').values[0][0];
-const conversionChanged=data.getRange(`Q${probeRow}`).values[0][0];
-if(Math.abs((changed-beforeMean)-1/prices.length)>1e-7||Math.abs(conversionChanged-(original/1e9+1))>1e-7)throw new Error('Formula perturbation failed');
+near(dash.getRange('B10').values[0][0]-beforeMean,1/prices.length,'Mean updates after price edit');
+near(data.getRange(`I${probeRow}`).values[0][0],(original+1000000000)/originalArea,'Unit price follows total price');
+near(data.getRange(`Q${probeRow}`).values[0][0],original/1e9+1,'Price unit conversion');
+near(data.getRange(`R${probeRow}`).values[0][0],(original+1000000000)/originalArea/1e6,'Unit price conversion');
 data.getRange(`H${probeRow}`).values=[[original]];
+data.getRange(`G${probeRow}`).values=[[originalArea*2]];
+wb.recalculate();
+near(data.getRange(`I${probeRow}`).values[0][0],original/originalArea/2,'Unit price follows area');
+near(data.getRange(`S${probeRow}`).values[0][0],originalArea*2,'Valid area updates');
+data.getRange(`G${probeRow}`).values=[[originalArea]];
+for(const [column,invalid] of [['G',null],['G',0],['G',-1],['G','invalid'],['H',null],['H',0],['H',-1],['H','invalid']]){
+  data.getRange(`${column}${probeRow}`).values=[[invalid]];
+  wb.recalculate();
+  for(const key of column==='G'?['I','R','S']:['I','Q','R']) {
+    if(data.getRange(`${key}${probeRow}`).values[0][0]!=='')throw new Error(`Invalid ${column}=${invalid} must make ${key} unavailable`);
+  }
+  data.getRange(`${column}${probeRow}`).values=[[column==='G'?originalArea:original]];
+}
 wb.recalculate();
 const expected=[n,prices.length,median(prices)/1e9,mean(prices)/1e9,median(areas),median(priceAreas)/1e6];
 const actual=dash.getRange('B7:B12').values.map(x=>x[0]);
@@ -227,7 +270,19 @@ for(const [sheet,range,file]of [['Dashboard','A1:O49','dashboard.png'],['Du lieu
  const preview=await wb.render({sheetName:sheet,range,scale:1.5,format:'png'});
  await fs.writeFile(path.join(QA,file),new Uint8Array(await preview.arrayBuffer()));
 }
-const output=await SpreadsheetFile.exportXlsx(wb);await output.save(path.join(OUT,'DO_AN_BAT_DONG_SAN.xlsx'));
-const validation={row_count:n,price_count:prices.length,metrics_expected:expected,metrics_analysis:analysisExpected,metrics_actual:actual,live_perturbation_pass:true,analysis_reconciliation_pass:true,chart_count:dash.charts.items.length,source_doi:metadata.doi,audit_file:audit.file,analysis_file:analysis.file,analysis_top_level_keys:Object.keys(analysis.value),formula_error_scan:formulaErrors.ndjson,source_ranges:{rows:[first,last],scatter:[sFirst,sLast]},built_at:'2026-10-15'};
+const outputPath=path.join(OUT,'DO_AN_BAT_DONG_SAN.xlsx');
+const output=await SpreadsheetFile.exportXlsx(wb);await output.save(outputPath);
+await fs.writeFile(path.join(OUT,'workbook_build.json'),JSON.stringify({
+  core_run_id:manifest.run_id,path:'outputs/DO_AN_BAT_DONG_SAN.xlsx',sha256:sha256(await fs.readFile(outputPath)),
+  source_files:{'tools/build_workbook.mjs':sha256(await fs.readFile(path.join(ROOT,'tools/build_workbook.mjs')))}
+},null,2));
+const validation={row_count:n,price_count:prices.length,metrics_expected:expected,metrics_analysis:analysisExpected,metrics_actual:actual,live_perturbation_pass:true,invalid_input_checks:8,core_run_id:manifest.run_id,analysis_reconciliation_pass:true,chart_count:dash.charts.items.length,source_doi:metadata.doi,audit_file:audit.file,analysis_file:analysis.file,analysis_top_level_keys:Object.keys(analysis.value),formula_error_scan:formulaErrors.ndjson,source_ranges:{rows:[first,last],scatter:[sFirst,sLast]},built_at:new Date().toISOString()};
 await fs.writeFile(path.join(QA,'validation.json'),JSON.stringify(validation,null,2));
+await fs.writeFile(path.join(OUT,'workbook_test_results.json'),JSON.stringify({
+  status:'passed',core_run_id:manifest.run_id,workbook_sha256:sha256(await fs.readFile(outputPath)),
+  builder_sha256:sha256(await fs.readFile(path.join(ROOT,'tools/build_workbook.mjs'))),
+  scope:'Artifact Tool recalculation and rendered previews; native Microsoft Excel interaction not claimed',
+  row_count:n,chart_count:dash.charts.items.length,metrics_actual:actual,
+  live_price_edit:true,live_area_edit:true,invalid_input_checks:8,formula_error_scan:formulaErrors.ndjson
+},null,2));
 console.log(JSON.stringify({output:path.join(OUT,'DO_AN_BAT_DONG_SAN.xlsx'),rows:n,charts:dash.charts.items.length,metrics:actual,audit:audit.file,qa:QA}));

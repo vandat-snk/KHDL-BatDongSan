@@ -1,20 +1,76 @@
 {
   "status": "passed",
+  "scope": "Saved core data, database and selected derivatives; read each test/visual/report status separately.",
+  "core_run_id": "20261016T015620Z-f2e661a6",
   "raw_count": 9004,
-  "clean_count": 7001,
+  "clean_count": 6936,
   "duplicates": 1884,
-  "rejected": 119,
-  "workbook_rows_matched": 7001,
-  "report_pages": 19,
+  "rejected": 184,
   "source_sha256": "ef39f153f48a55af07baa86883cd9036652f6d52232fed0be6e8991c7a5bf811",
+  "core_artifact_hashes_verified": 27,
   "database_integrity": "ok",
   "sql_results_identical": true,
-  "pipeline_unit_tests": 12,
-  "dashboard_filter_cases": 6,
-  "visual_review": "19 Word report pages, 3 workbook sheet previews and 4 standalone dashboard SVG charts inspected",
+  "dashboard": {
+    "status": "saved_data_and_provenance_verified"
+  },
+  "workbook": {
+    "status": "saved_values_and_provenance_verified",
+    "rows": 6936,
+    "recalculation_checks": {
+      "status": "passed",
+      "scope": "Artifact Tool recalculation and rendered previews; native Microsoft Excel interaction not claimed",
+      "live_price_edit": true,
+      "live_area_edit": true,
+      "invalid_input_checks": 8,
+      "chart_count": 4
+    }
+  },
+  "python_tests": {
+    "status": "passed",
+    "tests_run": 29,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "dashboard_tests": {
+    "status": "passed",
+    "scope": "Actual JS in minimal DOM; does not validate browser layout",
+    "findings": [
+      {
+        "label": "baseline",
+        "count": 6936
+      },
+      {
+        "label": "exclude precomputed group IQR",
+        "count": 6676
+      },
+      {
+        "label": "explicit sale titles only",
+        "count": 3030
+      },
+      {
+        "label": "HCMC",
+        "count": 3277
+      },
+      {
+        "label": "HCMC apartments",
+        "count": 239
+      },
+      {
+        "label": "empty selection",
+        "count": 0
+      }
+    ],
+    "exported_search_rows": 1014,
+    "clustered_rows": 6676
+  },
+  "report": {
+    "status": "previous_draft_requires_rewrite_to_teacher_requirements",
+    "generated_this_run": false
+  },
+  "visual_checks": "Not inferred by this command. See dated human/UI evidence separately.",
   "limitations": [
-    "Full dashboard browser layout was not verified: browser tool unavailable.",
-    "Workbook native UI in Microsoft Excel was not exercised; saved formulas, charts and values were verified.",
-    "Human label and source-entry audit remains assigned to the three students."
+    "Heuristic source-content checks cannot verify every source-entry error or transactions.",
+    "Human label validation is still necessary before strong conclusions."
   ]
 }

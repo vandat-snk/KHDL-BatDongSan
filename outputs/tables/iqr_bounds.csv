@@ -1,142 +1,140 @@
 ﻿province,property_type,n_target,n_reference,level,iqr_group,q1,q3,lower,upper
-An Giang,house,5,3699,type_fallback,house,23027777.78,88461538.46,-75122863.25,186612179.5
-An Giang,land,16,1794,type_fallback,land,2873005.319,20481031.95,-23539034.62,46893071.89
-An Giang,other_unknown,2,1131,type_fallback,other_unknown,12261904.76,83333333.33,-94345238.1,189940476.2
-Bà Rịa - Vũng Tàu,apartment,2,377,type_fallback,apartment,18181818.18,37000000,-10045454.55,65227272.73
-Bà Rịa - Vũng Tàu,house,4,3699,type_fallback,house,23027777.78,88461538.46,-75122863.25,186612179.5
-Bà Rịa - Vũng Tàu,land,59,59,province_type,Bà Rịa - Vũng Tàu|land,2200000,5719362.745,-3079044.118,10998406.86
-Bà Rịa - Vũng Tàu,other_unknown,12,1131,type_fallback,other_unknown,12261904.76,83333333.33,-94345238.1,189940476.2
-Bình Dương,apartment,31,31,province_type,Bình Dương|apartment,16470530.84,29320372.22,-2804231.237,48595134.29
-Bình Dương,house,158,158,province_type,Bình Dương|house,13857142.86,34403846.15,-16962912.09,65223901.1
-Bình Dương,land,194,194,province_type,Bình Dương|land,3283333.333,12406250,-10401041.67,26090625
-Bình Dương,other_unknown,87,87,province_type,Bình Dương|other_unknown,4666666.667,23507653.06,-23594812.93,51769132.65
-Bình Phước,house,4,3699,type_fallback,house,23027777.78,88461538.46,-75122863.25,186612179.5
-Bình Phước,land,42,42,province_type,Bình Phước|land,289081.8268,2530000,-3072295.433,5891377.26
-Bình Phước,other_unknown,10,1131,type_fallback,other_unknown,12261904.76,83333333.33,-94345238.1,189940476.2
-Bình Thuận,house,4,3699,type_fallback,house,23027777.78,88461538.46,-75122863.25,186612179.5
-Bình Thuận,land,26,1794,type_fallback,land,2873005.319,20481031.95,-23539034.62,46893071.89
-Bình Thuận,other_unknown,9,1131,type_fallback,other_unknown,12261904.76,83333333.33,-94345238.1,189940476.2
-Bình Định,apartment,2,377,type_fallback,apartment,18181818.18,37000000,-10045454.55,65227272.73
-Bình Định,house,3,3699,type_fallback,house,23027777.78,88461538.46,-75122863.25,186612179.5
-Bình Định,land,1,1794,type_fallback,land,2873005.319,20481031.95,-23539034.62,46893071.89
-Bình Định,other_unknown,2,1131,type_fallback,other_unknown,12261904.76,83333333.33,-94345238.1,189940476.2
-Bạc Liêu,land,2,1794,type_fallback,land,2873005.319,20481031.95,-23539034.62,46893071.89
-Bắc Giang,land,4,1794,type_fallback,land,2873005.319,20481031.95,-23539034.62,46893071.89
-Bắc Ninh,house,1,3699,type_fallback,house,23027777.78,88461538.46,-75122863.25,186612179.5
-Bắc Ninh,land,2,1794,type_fallback,land,2873005.319,20481031.95,-23539034.62,46893071.89
-Bắc Ninh,other_unknown,3,1131,type_fallback,other_unknown,12261904.76,83333333.33,-94345238.1,189940476.2
-Bến Tre,house,10,3699,type_fallback,house,23027777.78,88461538.46,-75122863.25,186612179.5
-Bến Tre,land,31,31,province_type,Bến Tre|land,2425000,9120481.928,-7618222.892,19163704.82
-Bến Tre,other_unknown,2,1131,type_fallback,other_unknown,12261904.76,83333333.33,-94345238.1,189940476.2
-Chưa xác định,apartment,3,377,type_fallback,apartment,18181818.18,37000000,-10045454.55,65227272.73
-Chưa xác định,house,15,3699,type_fallback,house,23027777.78,88461538.46,-75122863.25,186612179.5
-Chưa xác định,land,8,1794,type_fallback,land,2873005.319,20481031.95,-23539034.62,46893071.89
-Chưa xác định,other_unknown,3,1131,type_fallback,other_unknown,12261904.76,83333333.33,-94345238.1,189940476.2
-Cà Mau,house,5,3699,type_fallback,house,23027777.78,88461538.46,-75122863.25,186612179.5
-Cà Mau,land,17,1794,type_fallback,land,2873005.319,20481031.95,-23539034.62,46893071.89
-Cà Mau,other_unknown,1,1131,type_fallback,other_unknown,12261904.76,83333333.33,-94345238.1,189940476.2
-Cần Thơ,apartment,3,377,type_fallback,apartment,18181818.18,37000000,-10045454.55,65227272.73
-Cần Thơ,house,104,104,province_type,Cần Thơ|house,30483870.97,65513888.89,-22061155.91,118058915.8
-Cần Thơ,land,103,103,province_type,Cần Thơ|land,6432692.308,23946775.31,-19838432.2,50217899.82
-Cần Thơ,other_unknown,15,1131,type_fallback,other_unknown,12261904.76,83333333.33,-94345238.1,189940476.2
-Gia Lai,house,2,3699,type_fallback,house,23027777.78,88461538.46,-75122863.25,186612179.5
-Gia Lai,land,5,1794,type_fallback,land,2873005.319,20481031.95,-23539034.62,46893071.89
-Gia Lai,other_unknown,2,1131,type_fallback,other_unknown,12261904.76,83333333.33,-94345238.1,189940476.2
-Hà Nam,other_unknown,1,1131,type_fallback,other_unknown,12261904.76,83333333.33,-94345238.1,189940476.2
-Hà Nội,apartment,65,65,province_type,Hà Nội|apartment,15600000,30000000,-6000000,51600000
-Hà Nội,house,635,635,province_type,Hà Nội|house,66540880.5,107656250,4867826.258,169329304.2
-Hà Nội,land,112,112,province_type,Hà Nội|land,17750000,57527173.91,-41915760.87,117192934.8
-Hà Nội,other_unknown,216,216,province_type,Hà Nội|other_unknown,61798245.61,109623015.9,-9938909.774,181360171.3
-Hòa Bình,land,2,1794,type_fallback,land,2873005.319,20481031.95,-23539034.62,46893071.89
-Hòa Bình,other_unknown,1,1131,type_fallback,other_unknown,12261904.76,83333333.33,-94345238.1,189940476.2
-Hưng Yên,house,1,3699,type_fallback,house,23027777.78,88461538.46,-75122863.25,186612179.5
-Hưng Yên,land,2,1794,type_fallback,land,2873005.319,20481031.95,-23539034.62,46893071.89
-Hưng Yên,other_unknown,2,1131,type_fallback,other_unknown,12261904.76,83333333.33,-94345238.1,189940476.2
-Hải Dương,apartment,1,377,type_fallback,apartment,18181818.18,37000000,-10045454.55,65227272.73
-Hải Dương,house,1,3699,type_fallback,house,23027777.78,88461538.46,-75122863.25,186612179.5
-Hải Dương,land,1,1794,type_fallback,land,2873005.319,20481031.95,-23539034.62,46893071.89
-Hải Phòng,house,18,3699,type_fallback,house,23027777.78,88461538.46,-75122863.25,186612179.5
-Hải Phòng,land,19,1794,type_fallback,land,2873005.319,20481031.95,-23539034.62,46893071.89
-Hải Phòng,other_unknown,7,1131,type_fallback,other_unknown,12261904.76,83333333.33,-94345238.1,189940476.2
-Hậu Giang,house,4,3699,type_fallback,house,23027777.78,88461538.46,-75122863.25,186612179.5
-Hậu Giang,land,23,1794,type_fallback,land,2873005.319,20481031.95,-23539034.62,46893071.89
-Hậu Giang,other_unknown,1,1131,type_fallback,other_unknown,12261904.76,83333333.33,-94345238.1,189940476.2
-Khánh Hòa,apartment,2,377,type_fallback,apartment,18181818.18,37000000,-10045454.55,65227272.73
-Khánh Hòa,house,39,39,province_type,Khánh Hòa|house,11270447.11,60384615.38,-62400805.3,134055867.8
-Khánh Hòa,land,23,1794,type_fallback,land,2873005.319,20481031.95,-23539034.62,46893071.89
-Khánh Hòa,other_unknown,7,1131,type_fallback,other_unknown,12261904.76,83333333.33,-94345238.1,189940476.2
-Kiên Giang,house,5,3699,type_fallback,house,23027777.78,88461538.46,-75122863.25,186612179.5
-Kiên Giang,land,21,1794,type_fallback,land,2873005.319,20481031.95,-23539034.62,46893071.89
-Kiên Giang,other_unknown,3,1131,type_fallback,other_unknown,12261904.76,83333333.33,-94345238.1,189940476.2
-Kon Tum,land,2,1794,type_fallback,land,2873005.319,20481031.95,-23539034.62,46893071.89
-Long An,apartment,1,377,type_fallback,apartment,18181818.18,37000000,-10045454.55,65227272.73
-Long An,house,93,93,province_type,Long An|house,9875000,19444444.44,-4479166.667,33798611.11
-Long An,land,114,114,province_type,Long An|land,3859615.385,9373355.263,-4410994.433,17643965.08
-Long An,other_unknown,34,34,province_type,Long An|other_unknown,4034482.759,11294303.8,-6855248.8,22184035.36
-Lâm Đồng,house,21,3699,type_fallback,house,23027777.78,88461538.46,-75122863.25,186612179.5
-Lâm Đồng,land,77,77,province_type,Lâm Đồng|land,880000,4510451.045,-4565676.568,9956127.613
-Lâm Đồng,other_unknown,11,1131,type_fallback,other_unknown,12261904.76,83333333.33,-94345238.1,189940476.2
-Nam Định,house,5,3699,type_fallback,house,23027777.78,88461538.46,-75122863.25,186612179.5
-Nam Định,land,1,1794,type_fallback,land,2873005.319,20481031.95,-23539034.62,46893071.89
-Nghệ An,house,1,3699,type_fallback,house,23027777.78,88461538.46,-75122863.25,186612179.5
-Nghệ An,land,6,1794,type_fallback,land,2873005.319,20481031.95,-23539034.62,46893071.89
-Nghệ An,other_unknown,4,1131,type_fallback,other_unknown,12261904.76,83333333.33,-94345238.1,189940476.2
-Ninh Thuận,house,1,3699,type_fallback,house,23027777.78,88461538.46,-75122863.25,186612179.5
-Ninh Thuận,land,2,1794,type_fallback,land,2873005.319,20481031.95,-23539034.62,46893071.89
-Ninh Thuận,other_unknown,1,1131,type_fallback,other_unknown,12261904.76,83333333.33,-94345238.1,189940476.2
-Phú Thọ,land,1,1794,type_fallback,land,2873005.319,20481031.95,-23539034.62,46893071.89
-Phú Yên,other_unknown,1,1131,type_fallback,other_unknown,12261904.76,83333333.33,-94345238.1,189940476.2
-Quảng Nam,apartment,1,377,type_fallback,apartment,18181818.18,37000000,-10045454.55,65227272.73
-Quảng Nam,house,5,3699,type_fallback,house,23027777.78,88461538.46,-75122863.25,186612179.5
-Quảng Nam,land,15,1794,type_fallback,land,2873005.319,20481031.95,-23539034.62,46893071.89
-Quảng Nam,other_unknown,9,1131,type_fallback,other_unknown,12261904.76,83333333.33,-94345238.1,189940476.2
-Quảng Ngãi,land,4,1794,type_fallback,land,2873005.319,20481031.95,-23539034.62,46893071.89
-Quảng Ngãi,other_unknown,1,1131,type_fallback,other_unknown,12261904.76,83333333.33,-94345238.1,189940476.2
-Sóc Trăng,house,22,3699,type_fallback,house,23027777.78,88461538.46,-75122863.25,186612179.5
-Sóc Trăng,land,24,1794,type_fallback,land,2873005.319,20481031.95,-23539034.62,46893071.89
-Sóc Trăng,other_unknown,2,1131,type_fallback,other_unknown,12261904.76,83333333.33,-94345238.1,189940476.2
-Thanh Hóa,apartment,1,377,type_fallback,apartment,18181818.18,37000000,-10045454.55,65227272.73
-Thanh Hóa,house,1,3699,type_fallback,house,23027777.78,88461538.46,-75122863.25,186612179.5
-Thanh Hóa,land,5,1794,type_fallback,land,2873005.319,20481031.95,-23539034.62,46893071.89
-Thanh Hóa,other_unknown,1,1131,type_fallback,other_unknown,12261904.76,83333333.33,-94345238.1,189940476.2
-Thái Bình,house,1,3699,type_fallback,house,23027777.78,88461538.46,-75122863.25,186612179.5
-Thái Bình,land,1,1794,type_fallback,land,2873005.319,20481031.95,-23539034.62,46893071.89
-Thái Bình,other_unknown,1,1131,type_fallback,other_unknown,12261904.76,83333333.33,-94345238.1,189940476.2
-Thừa Thiên Huế,house,14,3699,type_fallback,house,23027777.78,88461538.46,-75122863.25,186612179.5
-Thừa Thiên Huế,land,20,1794,type_fallback,land,2873005.319,20481031.95,-23539034.62,46893071.89
-Thừa Thiên Huế,other_unknown,6,1131,type_fallback,other_unknown,12261904.76,83333333.33,-94345238.1,189940476.2
-Tiền Giang,house,14,3699,type_fallback,house,23027777.78,88461538.46,-75122863.25,186612179.5
-Tiền Giang,land,16,1794,type_fallback,land,2873005.319,20481031.95,-23539034.62,46893071.89
-Tiền Giang,other_unknown,3,1131,type_fallback,other_unknown,12261904.76,83333333.33,-94345238.1,189940476.2
-Tp Hồ Chí Minh,apartment,242,242,province_type,Tp Hồ Chí Minh|apartment,23224667.77,39730392.39,-1533919.142,64488979.3
-Tp Hồ Chí Minh,house,2120,2120,province_type,Tp Hồ Chí Minh|house,23321917.81,94000000,-82695205.48,200017123.3
-Tp Hồ Chí Minh,land,417,417,province_type,Tp Hồ Chí Minh|land,8000000,44324324.32,-46486486.49,98810810.81
-Tp Hồ Chí Minh,other_unknown,516,516,province_type,Tp Hồ Chí Minh|other_unknown,27941242.94,96909112.48,-75510561.38,200360916.8
-Trà Vinh,house,4,3699,type_fallback,house,23027777.78,88461538.46,-75122863.25,186612179.5
-Trà Vinh,land,5,1794,type_fallback,land,2873005.319,20481031.95,-23539034.62,46893071.89
-Trà Vinh,other_unknown,1,1131,type_fallback,other_unknown,12261904.76,83333333.33,-94345238.1,189940476.2
-Tây Ninh,house,2,3699,type_fallback,house,23027777.78,88461538.46,-75122863.25,186612179.5
-Tây Ninh,land,22,1794,type_fallback,land,2873005.319,20481031.95,-23539034.62,46893071.89
-Tây Ninh,other_unknown,2,1131,type_fallback,other_unknown,12261904.76,83333333.33,-94345238.1,189940476.2
-Vĩnh Long,house,13,3699,type_fallback,house,23027777.78,88461538.46,-75122863.25,186612179.5
-Vĩnh Long,land,22,1794,type_fallback,land,2873005.319,20481031.95,-23539034.62,46893071.89
-Vĩnh Long,other_unknown,3,1131,type_fallback,other_unknown,12261904.76,83333333.33,-94345238.1,189940476.2
-Vĩnh Phúc,house,1,3699,type_fallback,house,23027777.78,88461538.46,-75122863.25,186612179.5
-Vĩnh Phúc,land,2,1794,type_fallback,land,2873005.319,20481031.95,-23539034.62,46893071.89
-Yên Bái,land,1,1794,type_fallback,land,2873005.319,20481031.95,-23539034.62,46893071.89
-Đà Nẵng,apartment,16,377,type_fallback,apartment,18181818.18,37000000,-10045454.55,65227272.73
-Đà Nẵng,house,241,241,province_type,Đà Nẵng|house,37500000,75000000,-18750000,131250000
-Đà Nẵng,land,115,115,province_type,Đà Nẵng|land,16034427.28,33514705.88,-10185990.61,59735123.78
-Đà Nẵng,other_unknown,87,87,province_type,Đà Nẵng|other_unknown,18923076.92,56173913.04,-36953177.26,112050167.2
-Đắk Lắk,house,62,62,province_type,Đắk Lắk|house,10633179.11,22582589.29,-7290936.143,40506704.54
-Đắk Lắk,land,51,51,province_type,Đắk Lắk|land,943037.9747,9092727.273,-11281495.97,21317261.22
-Đắk Lắk,other_unknown,17,1131,type_fallback,other_unknown,12261904.76,83333333.33,-94345238.1,189940476.2
-Đắk Nông,house,1,3699,type_fallback,house,23027777.78,88461538.46,-75122863.25,186612179.5
-Đắk Nông,land,4,1794,type_fallback,land,2873005.319,20481031.95,-23539034.62,46893071.89
-Đắk Nông,other_unknown,4,1131,type_fallback,other_unknown,12261904.76,83333333.33,-94345238.1,189940476.2
-Đồng Nai,apartment,7,377,type_fallback,apartment,18181818.18,37000000,-10045454.55,65227272.73
-Đồng Nai,house,56,56,province_type,Đồng Nai|house,9837301.587,30679771.91,-21426403.89,61943477.39
-Đồng Nai,land,151,151,province_type,Đồng Nai|land,1727380.952,9087912.088,-9313415.751,20128708.79
-Đồng Nai,other_unknown,41,41,province_type,Đồng Nai|other_unknown,1000000,12017543.86,-15526315.79,28543859.65
-Đồng Tháp,house,3,3699,type_fallback,house,23027777.78,88461538.46,-75122863.25,186612179.5
-Đồng Tháp,land,3,1794,type_fallback,land,2873005.319,20481031.95,-23539034.62,46893071.89
+An Giang,house,3,3590,type_fallback,house,23879491.59,89366883.12,-74351595.7,187597970.4
+An Giang,land,18,1856,type_fallback,land,3073966.535,21428571.43,-24457940.8,48960478.77
+An Giang,other_unknown,2,1120,type_fallback,other_unknown,12964285.71,83333333.33,-92589285.71,188886904.8
+Bà Rịa - Vũng Tàu,apartment,2,370,type_fallback,apartment,18225915.88,36945652.17,-9853688.573,65025256.62
+Bà Rịa - Vũng Tàu,house,2,3590,type_fallback,house,23879491.59,89366883.12,-74351595.7,187597970.4
+Bà Rịa - Vũng Tàu,land,61,61,province_type,Bà Rịa - Vũng Tàu|land,2400000,6000000,-3000000,11400000
+Bà Rịa - Vũng Tàu,other_unknown,12,1120,type_fallback,other_unknown,12964285.71,83333333.33,-92589285.71,188886904.8
+Bình Dương,apartment,30,30,province_type,Bình Dương|apartment,16431986.73,28248587.57,-1292914.533,45973488.83
+Bình Dương,house,148,148,province_type,Bình Dương|house,15740593.53,35200000,-13448516.16,64389109.7
+Bình Dương,land,201,201,province_type,Bình Dương|land,3066666.667,12500000,-11083333.33,26650000
+Bình Dương,other_unknown,86,86,province_type,Bình Dương|other_unknown,4583333.333,23026785.71,-23081845.24,50691964.29
+Bình Phước,house,3,3590,type_fallback,house,23879491.59,89366883.12,-74351595.7,187597970.4
+Bình Phước,land,43,43,province_type,Bình Phước|land,292721.2179,2460000,-2958196.955,5710918.173
+Bình Phước,other_unknown,10,1120,type_fallback,other_unknown,12964285.71,83333333.33,-92589285.71,188886904.8
+Bình Thuận,house,4,3590,type_fallback,house,23879491.59,89366883.12,-74351595.7,187597970.4
+Bình Thuận,land,26,1856,type_fallback,land,3073966.535,21428571.43,-24457940.8,48960478.77
+Bình Thuận,other_unknown,8,1120,type_fallback,other_unknown,12964285.71,83333333.33,-92589285.71,188886904.8
+Bình Định,apartment,2,370,type_fallback,apartment,18225915.88,36945652.17,-9853688.573,65025256.62
+Bình Định,house,2,3590,type_fallback,house,23879491.59,89366883.12,-74351595.7,187597970.4
+Bình Định,land,2,1856,type_fallback,land,3073966.535,21428571.43,-24457940.8,48960478.77
+Bình Định,other_unknown,2,1120,type_fallback,other_unknown,12964285.71,83333333.33,-92589285.71,188886904.8
+Bạc Liêu,land,2,1856,type_fallback,land,3073966.535,21428571.43,-24457940.8,48960478.77
+Bắc Giang,land,4,1856,type_fallback,land,3073966.535,21428571.43,-24457940.8,48960478.77
+Bắc Ninh,house,1,3590,type_fallback,house,23879491.59,89366883.12,-74351595.7,187597970.4
+Bắc Ninh,land,2,1856,type_fallback,land,3073966.535,21428571.43,-24457940.8,48960478.77
+Bắc Ninh,other_unknown,3,1120,type_fallback,other_unknown,12964285.71,83333333.33,-92589285.71,188886904.8
+Bến Tre,house,10,3590,type_fallback,house,23879491.59,89366883.12,-74351595.7,187597970.4
+Bến Tre,land,29,1856,type_fallback,land,3073966.535,21428571.43,-24457940.8,48960478.77
+Bến Tre,other_unknown,2,1120,type_fallback,other_unknown,12964285.71,83333333.33,-92589285.71,188886904.8
+Chưa xác định,apartment,3,370,type_fallback,apartment,18225915.88,36945652.17,-9853688.573,65025256.62
+Chưa xác định,house,14,3590,type_fallback,house,23879491.59,89366883.12,-74351595.7,187597970.4
+Chưa xác định,land,9,1856,type_fallback,land,3073966.535,21428571.43,-24457940.8,48960478.77
+Chưa xác định,other_unknown,3,1120,type_fallback,other_unknown,12964285.71,83333333.33,-92589285.71,188886904.8
+Cà Mau,house,4,3590,type_fallback,house,23879491.59,89366883.12,-74351595.7,187597970.4
+Cà Mau,land,18,1856,type_fallback,land,3073966.535,21428571.43,-24457940.8,48960478.77
+Cà Mau,other_unknown,1,1120,type_fallback,other_unknown,12964285.71,83333333.33,-92589285.71,188886904.8
+Cần Thơ,apartment,3,370,type_fallback,apartment,18225915.88,36945652.17,-9853688.573,65025256.62
+Cần Thơ,house,101,101,province_type,Cần Thơ|house,30921052.63,65555555.56,-21030701.75,117507309.9
+Cần Thơ,land,106,106,province_type,Cần Thơ|land,6341346.154,24026959.08,-20187073.24,50555378.48
+Cần Thơ,other_unknown,15,1120,type_fallback,other_unknown,12964285.71,83333333.33,-92589285.71,188886904.8
+Gia Lai,house,1,3590,type_fallback,house,23879491.59,89366883.12,-74351595.7,187597970.4
+Gia Lai,land,6,1856,type_fallback,land,3073966.535,21428571.43,-24457940.8,48960478.77
+Gia Lai,other_unknown,2,1120,type_fallback,other_unknown,12964285.71,83333333.33,-92589285.71,188886904.8
+Hà Nội,apartment,62,62,province_type,Hà Nội|apartment,15677272.73,29642857.14,-5271103.896,50591233.77
+Hà Nội,house,619,619,province_type,Hà Nội|house,67218750,107938508.1,6139112.903,169018145.2
+Hà Nội,land,119,119,province_type,Hà Nội|land,21421474.36,58216112.53,-33770482.9,113408069.8
+Hà Nội,other_unknown,214,214,province_type,Hà Nội|other_unknown,61842105.26,109217171.7,-9220494.418,180279771.4
+Hòa Bình,land,2,1856,type_fallback,land,3073966.535,21428571.43,-24457940.8,48960478.77
+Hòa Bình,other_unknown,1,1120,type_fallback,other_unknown,12964285.71,83333333.33,-92589285.71,188886904.8
+Hưng Yên,house,1,3590,type_fallback,house,23879491.59,89366883.12,-74351595.7,187597970.4
+Hưng Yên,land,2,1856,type_fallback,land,3073966.535,21428571.43,-24457940.8,48960478.77
+Hưng Yên,other_unknown,2,1120,type_fallback,other_unknown,12964285.71,83333333.33,-92589285.71,188886904.8
+Hải Dương,apartment,1,370,type_fallback,apartment,18225915.88,36945652.17,-9853688.573,65025256.62
+Hải Dương,house,1,3590,type_fallback,house,23879491.59,89366883.12,-74351595.7,187597970.4
+Hải Dương,land,1,1856,type_fallback,land,3073966.535,21428571.43,-24457940.8,48960478.77
+Hải Phòng,house,18,3590,type_fallback,house,23879491.59,89366883.12,-74351595.7,187597970.4
+Hải Phòng,land,18,1856,type_fallback,land,3073966.535,21428571.43,-24457940.8,48960478.77
+Hải Phòng,other_unknown,7,1120,type_fallback,other_unknown,12964285.71,83333333.33,-92589285.71,188886904.8
+Hậu Giang,house,4,3590,type_fallback,house,23879491.59,89366883.12,-74351595.7,187597970.4
+Hậu Giang,land,22,1856,type_fallback,land,3073966.535,21428571.43,-24457940.8,48960478.77
+Hậu Giang,other_unknown,1,1120,type_fallback,other_unknown,12964285.71,83333333.33,-92589285.71,188886904.8
+Khánh Hòa,apartment,2,370,type_fallback,apartment,18225915.88,36945652.17,-9853688.573,65025256.62
+Khánh Hòa,house,28,3590,type_fallback,house,23879491.59,89366883.12,-74351595.7,187597970.4
+Khánh Hòa,land,32,32,province_type,Khánh Hòa|land,5389690.027,11005691.83,-3034312.682,19429694.54
+Khánh Hòa,other_unknown,8,1120,type_fallback,other_unknown,12964285.71,83333333.33,-92589285.71,188886904.8
+Kiên Giang,house,4,3590,type_fallback,house,23879491.59,89366883.12,-74351595.7,187597970.4
+Kiên Giang,land,21,1856,type_fallback,land,3073966.535,21428571.43,-24457940.8,48960478.77
+Kiên Giang,other_unknown,3,1120,type_fallback,other_unknown,12964285.71,83333333.33,-92589285.71,188886904.8
+Kon Tum,land,2,1856,type_fallback,land,3073966.535,21428571.43,-24457940.8,48960478.77
+Long An,apartment,1,370,type_fallback,apartment,18225915.88,36945652.17,-9853688.573,65025256.62
+Long An,house,89,89,province_type,Long An|house,10555555.56,21568627.45,-5964052.288,38088235.29
+Long An,land,115,115,province_type,Long An|land,3873076.923,9424342.105,-4453820.85,17751239.88
+Long An,other_unknown,35,35,province_type,Long An|other_unknown,4000000,11196202.53,-6794303.797,21990506.33
+Lâm Đồng,house,16,3590,type_fallback,house,23879491.59,89366883.12,-74351595.7,187597970.4
+Lâm Đồng,land,81,81,province_type,Lâm Đồng|land,1100000,4510451.045,-4015676.568,9626127.613
+Lâm Đồng,other_unknown,10,1120,type_fallback,other_unknown,12964285.71,83333333.33,-92589285.71,188886904.8
+Nam Định,house,5,3590,type_fallback,house,23879491.59,89366883.12,-74351595.7,187597970.4
+Nam Định,land,1,1856,type_fallback,land,3073966.535,21428571.43,-24457940.8,48960478.77
+Nghệ An,house,1,3590,type_fallback,house,23879491.59,89366883.12,-74351595.7,187597970.4
+Nghệ An,land,5,1856,type_fallback,land,3073966.535,21428571.43,-24457940.8,48960478.77
+Nghệ An,other_unknown,4,1120,type_fallback,other_unknown,12964285.71,83333333.33,-92589285.71,188886904.8
+Ninh Thuận,land,3,1856,type_fallback,land,3073966.535,21428571.43,-24457940.8,48960478.77
+Ninh Thuận,other_unknown,1,1120,type_fallback,other_unknown,12964285.71,83333333.33,-92589285.71,188886904.8
+Phú Thọ,land,1,1856,type_fallback,land,3073966.535,21428571.43,-24457940.8,48960478.77
+Phú Yên,other_unknown,1,1120,type_fallback,other_unknown,12964285.71,83333333.33,-92589285.71,188886904.8
+Quảng Nam,apartment,1,370,type_fallback,apartment,18225915.88,36945652.17,-9853688.573,65025256.62
+Quảng Nam,house,4,3590,type_fallback,house,23879491.59,89366883.12,-74351595.7,187597970.4
+Quảng Nam,land,16,1856,type_fallback,land,3073966.535,21428571.43,-24457940.8,48960478.77
+Quảng Nam,other_unknown,9,1120,type_fallback,other_unknown,12964285.71,83333333.33,-92589285.71,188886904.8
+Quảng Ngãi,land,4,1856,type_fallback,land,3073966.535,21428571.43,-24457940.8,48960478.77
+Quảng Ngãi,other_unknown,1,1120,type_fallback,other_unknown,12964285.71,83333333.33,-92589285.71,188886904.8
+Sóc Trăng,house,22,3590,type_fallback,house,23879491.59,89366883.12,-74351595.7,187597970.4
+Sóc Trăng,land,24,1856,type_fallback,land,3073966.535,21428571.43,-24457940.8,48960478.77
+Sóc Trăng,other_unknown,2,1120,type_fallback,other_unknown,12964285.71,83333333.33,-92589285.71,188886904.8
+Thanh Hóa,apartment,1,370,type_fallback,apartment,18225915.88,36945652.17,-9853688.573,65025256.62
+Thanh Hóa,house,1,3590,type_fallback,house,23879491.59,89366883.12,-74351595.7,187597970.4
+Thanh Hóa,land,5,1856,type_fallback,land,3073966.535,21428571.43,-24457940.8,48960478.77
+Thanh Hóa,other_unknown,1,1120,type_fallback,other_unknown,12964285.71,83333333.33,-92589285.71,188886904.8
+Thái Bình,house,1,3590,type_fallback,house,23879491.59,89366883.12,-74351595.7,187597970.4
+Thái Bình,land,1,1856,type_fallback,land,3073966.535,21428571.43,-24457940.8,48960478.77
+Thái Bình,other_unknown,1,1120,type_fallback,other_unknown,12964285.71,83333333.33,-92589285.71,188886904.8
+Thừa Thiên Huế,house,13,3590,type_fallback,house,23879491.59,89366883.12,-74351595.7,187597970.4
+Thừa Thiên Huế,land,20,1856,type_fallback,land,3073966.535,21428571.43,-24457940.8,48960478.77
+Thừa Thiên Huế,other_unknown,6,1120,type_fallback,other_unknown,12964285.71,83333333.33,-92589285.71,188886904.8
+Tiền Giang,house,13,3590,type_fallback,house,23879491.59,89366883.12,-74351595.7,187597970.4
+Tiền Giang,land,17,1856,type_fallback,land,3073966.535,21428571.43,-24457940.8,48960478.77
+Tiền Giang,other_unknown,3,1120,type_fallback,other_unknown,12964285.71,83333333.33,-92589285.71,188886904.8
+Tp Hồ Chí Minh,apartment,239,239,province_type,Tp Hồ Chí Minh|apartment,23235049.83,39644822.99,-1379609.906,64259482.73
+Tp Hồ Chí Minh,house,2088,2088,province_type,Tp Hồ Chí Minh|house,23611111.11,94182692.31,-82246260.68,200040064.1
+Tp Hồ Chí Minh,land,435,435,province_type,Tp Hồ Chí Minh|land,8339215.686,44058823.53,-45240196.08,97638235.29
+Tp Hồ Chí Minh,other_unknown,515,515,province_type,Tp Hồ Chí Minh|other_unknown,28045550.85,96919000.16,-75264623.12,200229174.1
+Trà Vinh,house,4,3590,type_fallback,house,23879491.59,89366883.12,-74351595.7,187597970.4
+Trà Vinh,land,5,1856,type_fallback,land,3073966.535,21428571.43,-24457940.8,48960478.77
+Trà Vinh,other_unknown,1,1120,type_fallback,other_unknown,12964285.71,83333333.33,-92589285.71,188886904.8
+Tây Ninh,house,2,3590,type_fallback,house,23879491.59,89366883.12,-74351595.7,187597970.4
+Tây Ninh,land,22,1856,type_fallback,land,3073966.535,21428571.43,-24457940.8,48960478.77
+Tây Ninh,other_unknown,2,1120,type_fallback,other_unknown,12964285.71,83333333.33,-92589285.71,188886904.8
+Vĩnh Long,house,12,3590,type_fallback,house,23879491.59,89366883.12,-74351595.7,187597970.4
+Vĩnh Long,land,23,1856,type_fallback,land,3073966.535,21428571.43,-24457940.8,48960478.77
+Vĩnh Long,other_unknown,3,1120,type_fallback,other_unknown,12964285.71,83333333.33,-92589285.71,188886904.8
+Vĩnh Phúc,house,1,3590,type_fallback,house,23879491.59,89366883.12,-74351595.7,187597970.4
+Vĩnh Phúc,land,2,1856,type_fallback,land,3073966.535,21428571.43,-24457940.8,48960478.77
+Yên Bái,land,1,1856,type_fallback,land,3073966.535,21428571.43,-24457940.8,48960478.77
+Đà Nẵng,apartment,16,370,type_fallback,apartment,18225915.88,36945652.17,-9853688.573,65025256.62
+Đà Nẵng,house,233,233,province_type,Đà Nẵng|house,39000000,75490196.08,-15735294.12,130225490.2
+Đà Nẵng,land,122,122,province_type,Đà Nẵng|land,16429901.96,35378959.28,-11993684.01,63802545.25
+Đà Nẵng,other_unknown,84,84,province_type,Đà Nẵng|other_unknown,19185876.35,58467105.26,-39735967.03,117388948.6
+Đắk Lắk,house,61,61,province_type,Đắk Lắk|house,11352941.18,22714285.71,-5689075.63,39756302.52
+Đắk Lắk,land,50,50,province_type,Đắk Lắk|land,1040000,9319090.909,-11378636.36,21737727.27
+Đắk Lắk,other_unknown,15,1120,type_fallback,other_unknown,12964285.71,83333333.33,-92589285.71,188886904.8
+Đắk Nông,house,1,3590,type_fallback,house,23879491.59,89366883.12,-74351595.7,187597970.4
+Đắk Nông,land,3,1856,type_fallback,land,3073966.535,21428571.43,-24457940.8,48960478.77
+Đắk Nông,other_unknown,4,1120,type_fallback,other_unknown,12964285.71,83333333.33,-92589285.71,188886904.8
+Đồng Nai,apartment,7,370,type_fallback,apartment,18225915.88,36945652.17,-9853688.573,65025256.62
+Đồng Nai,house,52,52,province_type,Đồng Nai|house,11916666.67,30920385.4,-16588911.43,59425963.49
+Đồng Nai,land,151,151,province_type,Đồng Nai|land,1820833.333,9087912.088,-9079784.799,19988530.22
+Đồng Nai,other_unknown,40,40,province_type,Đồng Nai|other_unknown,1211538.462,12305840.82,-15429915.08,28947294.36
+Đồng Tháp,house,3,3590,type_fallback,house,23879491.59,89366883.12,-74351595.7,187597970.4
+Đồng Tháp,land,3,1856,type_fallback,land,3073966.535,21428571.43,-24457940.8,48960478.77

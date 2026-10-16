@@ -5,5 +5,7 @@ __pycache__/
 tmp/
 ~$*.docx
 ~$*.xlsx
+~$*
+*.xlsx.inspect.ndjson
 data/raw/chotot_data.json
 references/slides_text/

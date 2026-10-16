@@ -1,0 +1,22 @@
+{
+  "status": "passed",
+  "scope": "Source-only disposable copy using the same installed Python and requirements; no .venv, node_modules, old outputs or temporary PDF copied.",
+  "original_run_id": "20261016T015620Z-f2e661a6",
+  "copied_run_id": "20261016T015944Z-3428baa2",
+  "missing_source_rejected_before_outputs": true,
+  "cleaned_records_identical": 6936,
+  "python_tests": {
+    "status": "passed",
+    "tests_run": 29,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "dashboard_tests": "passed",
+  "not_tested": [
+    "Fresh pip installation",
+    "Download on another network",
+    "Excel authoring outside Codex runtime",
+    "Another operating system"
+  ]
+}

@@ -1,13 +1,13 @@
 {
   "sqlite_version": "3.50.4",
-  "listing_count": 7001,
-  "province_count": 49,
+  "listing_count": 6936,
+  "province_count": 48,
   "query": "SELECT row_id, area_m2, sale_price_vnd, price_per_m2_vnd\nFROM listings\nWHERE province_id = ? AND type_id = ?\n  AND price_per_m2_vnd BETWEEN ? AND ?\nORDER BY price_per_m2_vnd, row_id LIMIT 100",
   "parameters": [
-    39,
+    38,
     2,
-    33333333.333333332,
-    77777777.77777778
+    33911924.93946731,
+    78358108.1081081
   ],
   "parameter_labels": {
     "province": "Tp Hồ Chí Minh",
@@ -18,7 +18,7 @@
       [
         4,
         0,
-        216,
+        143,
         "SCAN listings"
       ],
       [
@@ -29,10 +29,10 @@
       ]
     ],
     "result_count": 100,
-    "result_sha256": "78cddfe161a3c35863636efa942b424bc89b48b27b6d1f8c06c19b52dd5c385d",
-    "median_ms": 2.0703,
-    "p10_ms": 1.5666,
-    "p90_ms": 5.7908
+    "result_sha256": "adee9406ef35f1fbe5221ae1093158eaef954f3b948b39cd5e953245ffff1e1b",
+    "median_ms": 0.6484,
+    "p10_ms": 0.5834,
+    "p90_ms": 1.0437
   },
   "after": {
     "plan": [
@@ -44,14 +44,14 @@
       ]
     ],
     "result_count": 100,
-    "result_sha256": "78cddfe161a3c35863636efa942b424bc89b48b27b6d1f8c06c19b52dd5c385d",
-    "median_ms": 0.5667,
-    "p10_ms": 0.5394,
-    "p90_ms": 0.6286
+    "result_sha256": "adee9406ef35f1fbe5221ae1093158eaef954f3b948b39cd5e953245ffff1e1b",
+    "median_ms": 0.7788,
+    "p10_ms": 0.1976,
+    "p90_ms": 1.3754
   },
-  "median_speedup": 3.6532556908417155,
+  "median_speedup": 0.8325629173086799,
   "identical_results": true,
   "integrity_check": "ok",
   "foreign_key_errors": [],
-  "protocol": "One real source snapshot. Same connection, SQL and parameters; before/after composite index, 10 warmups + 51 timings. Small warm-cache benchmark, not a production speedup claim."
+  "protocol": "One real source snapshot. Same connection, SQL and parameters; ANALYZE before each stage, second stage has composite index and its statistics; 10 warmups + 51 timings per stage. Sequential before/after warm-cache illustration, not randomized or a production speedup claim."
 }

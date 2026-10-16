@@ -1,0 +1,8 @@
+{
+  "core_run_id": "20261016T015620Z-f2e661a6",
+  "path": "outputs/DO_AN_BAT_DONG_SAN.xlsx",
+  "sha256": "4374cbbc5d93eb51414717a5955b7dfe363393c7d0d39cb65d2e38f05fa10119",
+  "source_files": {
+    "tools/build_workbook.mjs": "8d1e8fd8d5697f3483be744b06a6b56b0a025386a72734fbbd2b6ea226f3abfe"
+  }
+}

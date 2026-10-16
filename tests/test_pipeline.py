@@ -118,6 +118,17 @@ class CleaningTests(unittest.TestCase):
         self.assertEqual(p.adjusted_rand_index(np.array([0, 0, 1, 1]), np.array([9, 9, 3, 3])), 1)
         self.assertLess(p.adjusted_rand_index(np.array([0, 0, 1, 1]), np.array([0, 1, 0, 1])), 0)
 
+    def test_clustering_invalid_parameters_and_known_silhouette(self):
+        x=np.array([[0.],[1.],[10.],[11.]])
+        for options in ({'k':0},{'k':2,'n_init':0},{'k':2,'max_iter':0}):
+            with self.assertRaises(ValueError): p.kmeans(x,**options)
+        with self.assertRaises(ValueError): p.kmeans(np.array([[np.nan],[1.]]),2)
+        with self.assertRaises(ValueError): p.sampled_silhouette(x,np.zeros(4))
+        with self.assertRaises(ValueError): p.sampled_silhouette(x,np.arange(4))
+        # Distances: same-cluster mean = 1; other means = 10.5, 9.5, 9.5, 10.5.
+        expected=((1-1/10.5)+(1-1/9.5))/2
+        self.assertAlmostEqual(p.sampled_silhouette(x,np.array([0,0,1,1])),expected)
+
 
 if __name__ == "__main__":
     unittest.main()

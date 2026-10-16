@@ -1,254 +1,178 @@
-# Phân công, kế hoạch cải tiến và nội dung báo cáo đồ án
+# Phân công tiếp quản, kiểm chứng và phát triển đồ án
 
-**Đề tài:** Xây dựng, xử lý và trực quan hóa bộ dữ liệu bất động sản Việt Nam để rút ra các ý nghĩa.
+Cập nhật 16/10/2026. Tài liệu này thay toàn bộ phân công/dàn ý cũ; báo cáo theo sáu chương giảng viên yêu cầu.
 
-**Nhóm:** Võ Văn Đạt — N23DCCN078; Nguyễn Thị Yến Nhi — N23DCCN112; Hứa Như Quỳnh — N23DCCN118.
+Đề tài: **Phân tích giá rao bất động sản Việt Nam**. Mục tiêu duy nhất: xây dựng quy trình có thể chạy lại để khám phá và so sánh giá rao trong mẫu tin lịch sử sau kiểm tra chất lượng. Làm sạch, trực quan, K-means và SQL cùng phục vụ mục tiêu này.
 
-**Phạm vi chính:** đề tài STT 22/47 trong danh sách đăng ký, gắn với Chương 1–3. K-means và SQLite là phần mở rộng có mã chạy và bằng chứng thực nghiệm; không biến đề tài thành bài toán bắt buộc dự đoán giá nhà.
+## 1. Trách nhiệm và cách ghi nhận đóng góp
 
-## 1. Cách dùng bộ bàn giao và trách nhiệm học thuật
+Mã và sản phẩm hiện có do trợ lý chuẩn bị, sửa và kiểm tra. Giao một phần cho thành viên là giao trách nhiệm học, tiếp quản, tự kiểm chứng, bảo trì và cải tiến; không ghi ngược rằng thành viên đã tự hoàn thành phần đó trước khi thực hiện.
 
-Bộ bàn giao cung cấp dữ liệu gốc, nguồn dẫn, mã xử lý, dữ liệu phân tích và kiểm tra chất lượng, biểu đồ, Excel, dashboard ngoại tuyến và bản báo cáo nền. Đây là **bản nền để học, kiểm chứng và phát triển**. Nhóm cần đọc mã, chạy lại, kiểm tra số liệu, thực hiện phần cải tiến được giao và tự bảo vệ lựa chọn phương pháp. Không ghi trong báo cáo rằng nhóm đã tự thu thập hoặc đã thực hiện những thí nghiệm chưa có kết quả.
+Ba trạng thái phải tách rõ: **bản nền đã có → thành viên tự kiểm chứng → cải tiến được nghiệm thu**. Hiện chưa tự xác nhận bước hai/ba cho ai. Không lấy kế hoạch làm thành tích; đóng góp cuối được chứng minh bằng commit, tài liệu, log, đọc chéo và khả năng giải thích, không tự gán 33,33% đã hoàn thành.
 
-Giữ ba trạng thái rõ ràng trong nhật ký công việc:
+| Thành viên | Trách nhiệm chính | Chủ trì viết | Kiểm chéo |
+|---|---|---|---|
+| Võ Văn Đạt — N23DCCN078 | Tích hợp, thuật toán, database/SQL, kiểm thử và phiên bản | Chương 3–4 | Nhi kiểm dữ liệu/DB; Quỳnh kiểm luồng sử dụng |
+| Nguyễn Thị Yến Nhi — N23DCCN112 | Nguồn, từ điển, làm sạch, nhãn, lý thuyết và giới hạn | Chương 1–2 | Đạt kiểm kỹ thuật/công thức; Quỳnh kiểm cách giải thích |
+| Hứa Như Quỳnh — N23DCCN118 | EDA, dashboard, Excel, nghiệm thu, demo và trình bày | Chương 5–6; ghép định dạng | Đạt kiểm số; Nhi kiểm diễn giải và giới hạn |
 
-| Trạng thái | Ý nghĩa | Minh chứng cần có |
+Đạt cung cấp lý thuyết NumPy/SQLite/tích hợp cho Nhi viết Chương 2; Nhi cung cấp từ điển/quy tắc cho Đạt viết Chương 3–4; Quỳnh cung cấp thiết kế giao diện và ví dụ vận hành cho Đạt. Cả ba duyệt kết luận; không viết ba phần độc lập rồi ghép máy móc.
+
+## 2. Phân toàn bộ công việc trợ lý đã làm để tiếp quản
+
+Mốc đối chiếu `20261016T015620Z-f2e661a6`: 9.004 dòng nguồn, 1.884 trùng, 184 cách ly, 6.936 giữ; 29 test Python đạt. Đây là kết quả một phiên bản, không phải hằng số cần ép các lần chạy sau khớp.
+
+| Bản nền đã có | File/sản phẩm để học và tiếp quản | Chính; phối hợp |
 |---|---|---|
-| Có trong bộ bàn giao | File và kết quả nền do trợ lý chuẩn bị | Đường dẫn file; lệnh chạy; phiên bản hoặc checksum |
-| Đã kiểm chứng bởi thành viên | Người phụ trách tự chạy và đối chiếu được kết quả | Ngày kiểm tra; log; bảng đối chiếu; người kiểm tra chéo |
-| Đã cải tiến bởi nhóm | Có thay đổi thực chất so với bản nền | Giả thuyết; thay đổi mã/quy tắc; kết quả trước/sau; quyết định giữ hoặc bỏ |
+| Chọn nguồn công khai; metadata, giấy phép, checksum; đối chiếu slide/đăng ký | `scripts/download_data.py`, metadata/manifest trong `data/raw`, `references/DATA_SOURCE.md`, `DOI_CHIEU_SLIDE.md`, `registration.json` | Nhi; Đạt vận hành tải |
+| Chuẩn hóa Unicode, số/đơn vị giá/diện tích/địa phương; khôi phục diện tích được ghi rõ trong chuỗi giá | `normalize`, `parse_number`, `parse_area`, `parse_price`, `parse_location` trong `src/pipeline.py` | Nhi; Đạt hỗ trợ sửa mã |
+| Suy luận loại hình/giao dịch; phát hiện mâu thuẫn nội dung và chuyển nhượng hoạt động kinh doanh | `classify_title`, `clean_records`, `src/source_checks.py` | Nhi |
+| Gộp trùng năm trường; cách ly có lý do và truy nguyên dòng | `data/processed/listings_clean.*`, `listings_rejected.csv`, `row_lineage.csv`, `tools/audit_source_changes.py` | Nhi; Đạt tích hợp |
+| IQR, độ nhạy, trung vị, Spearman, bootstrap, tổng hợp theo tỉnh/loại/diện tích | `add_outlier_flags`, `summarize_groups`, `sensitivity_table`, `outputs/analysis.json`, `outputs/tables` | Nhi phụ trách chính sách/giả định; Quỳnh đối soát/diễn giải |
+| Code NumPy K-means++/Lloyd; log/Z-score, k=2–5, silhouette và ARI theo seed | `kmeans`, `sampled_silhouette`, `adjusted_rand_index`, `cluster_records`; bảng `cluster_*` | Đạt; Nhi kiểm đầu vào |
+| Database ba bảng, khóa/ràng buộc, SQL, index, benchmark, kiểm toàn vẹn | `build_database`, `sql/01_schema.sql`, `02_queries.sql`, `03_indexes.sql`, `scripts/demo_sql.py`, `outputs/real_estate.sqlite`, `sql_benchmark.json` | Đạt; Nhi kiểm kết quả |
+| Tám hình Matplotlib có dữ liệu/đơn vị | `make_charts`, `outputs/charts/01_*` đến `08_*` | Quỳnh; Nhi kiểm thống kê, Đạt hỗ trợ mã |
+| Dashboard ngoại tuyến: KPI, lọc, rỗng, phân trang/tìm kiếm, CSV, lấy mẫu scatter; mở bằng trình duyệt | `src/dashboard_template.html`, `tools/build_dashboard.py`, `outputs/DASHBOARD_BAT_DONG_SAN.html`, `MO_DASHBOARD.cmd` | Quỳnh |
+| Excel ba trang/bốn biểu đồ; công thức đơn giá/tổng hợp; thử sửa đầu vào, rà lỗi | `tools/build_workbook.mjs`, `outputs/DO_AN_BAT_DONG_SAN.xlsx`, `workbook_build.json`, `workbook_test_results.json` | Quỳnh; Đạt hỗ trợ môi trường dựng |
+| Kiểm đúng nguồn; hash mã/đầu ra; staging, giữ byte khi Git checkout và phát hiện sản phẩm cũ | `src/artifact_contract.py`, `.gitattributes`, `main`/`generate_outputs`, `outputs/run_manifest.json`, các `*_build.json` | Đạt |
+| Lệnh chạy thống nhất, verifier đối soát, bản sao chỉ có nguồn | `scripts/run_project.py`, `tools/verify_delivery.py`, `tools/check_portability.py`, README, `AUDIT_RESULTS.json`, `DELIVERY_CHECK.json`, `portability_check.json` | Đạt |
+| Test parser/làm sạch/toán phân cụm/CSDL/provenance/dashboard | `tests/test_pipeline.py`, `test_source_checks.py`: Nhi/Đạt; `test_artifact_contract.py`: Đạt; `test_dashboard.mjs`: Quỳnh | Đạt điều phối; mỗi người bảo trì test phần mình |
+| Mẫu 60 tin; nhật ký UI; bằng chứng ảnh và giới hạn xác nhận | `tools/create_manual_review.py`, `docs/MAU_KIEM_TRA_DU_LIEU.csv`, `KIEM_THU_THUC_TE.md`, `outputs/visual_review.json` | Nhi điều phối nhãn; Quỳnh điều phối UI; cả ba kiểm tin |
+| Biên bản rà soát, ma trận sáu chương, phân công, bàn giao và kịch bản | `docs/RA_SOAT_KY_THUAT.md`, `DOI_CHIEU_YEU_CAU_BAO_CAO.md`, tài liệu này, `BAN_GIAO_VA_KIEM_TRA.md`, `KICH_BAN_THUYET_TRINH_VA_HOI_DAP.md` | Nhi kiểm nội dung; Đạt kiểm kỹ thuật; Quỳnh ghép/định dạng |
+| Trích xuất slide, dựng/xuất bản thảo cũ và ảnh biểu đồ | `tools/extract_course.py`, `build_report.py`, `render_report_with_word.ps1`, `render_dashboard_charts.mjs`, `docs/BAO_CAO_DO_AN.*` | Đạt tiếp quản công cụ; Quỳnh tiếp quản trình bày. Bản thảo cũ chưa dùng nộp; bộ dựng cũ đã khóa chạy trực tiếp |
 
-Các thí nghiệm trong mục phân công dưới đây là **việc cần làm**, không phải kết quả đã xảy ra. Thí nghiệm cho kết quả không cải thiện vẫn có giá trị nếu nhóm ghi nhận trung thực và giải thích được.
+## 3. Võ Văn Đạt: công việc cụ thể
 
-Tài liệu định hướng phải đọc trước: [đối chiếu slide](../references/DOI_CHIEU_SLIDE.md), [nguồn dữ liệu](../references/DATA_SOURCE.md) và README ở thư mục gốc. Số trang slide trong tài liệu đối chiếu là trang PDF tính từ 1.
+Slide trọng tâm: Z-score Chương 2; K-means Chương 4 phần 2; quan hệ, khóa, SQL/index Chương 5. Trang cụ thể theo `references/DOI_CHIEU_SLIDE.md`.
 
-### Các kết quả nền để tiếp quản
-
-Ở bản nền hiện tại, pipeline đã tạo **7.001 tin được giữ, 1.884 tin trùng theo năm trường lõi chuẩn hóa và 119 tin cách ly**, cân bằng với 9.004 bản ghi gốc. Năm trường dùng cho khóa trùng là `title`, `price`, `area`, `location`, **`description`**; số chẩn đoán trùng theo bốn trường trong tài liệu nguồn không phải số dòng mà pipeline cuối đã gộp. Các nhóm nguyên nhân cách ly có thể chồng nhau.
-
-Tập giữ gồm tin có tiêu đề bán rõ, tin được suy luận là bán từ ngữ cảnh bộ dữ liệu và tin bán có nhắc nguồn thu cho thuê. Vì vậy, “được giữ” không đồng nghĩa được xác minh là một giao dịch bán thực. Ngoại lệ IQR được giữ trong EDA chính; chúng được loại khỏi riêng tập fit K-means. Thống kê đầy đủ và chính sách nằm trong `outputs/analysis.json`.
-
-| Thành phần nền | File để học và kiểm chứng |
-|---|---|
-| Kết quả/cờ từng dòng và truy nguyên | `data/processed/listings_clean.csv`, `listings_rejected.csv`, `row_lineage.csv` |
-| EDA và độ nhạy | `outputs/analysis.json`; `outputs/charts/01_price_distribution.png` đến `08_spearman_correlation.png`; các bảng trong `outputs/tables/` |
-| Sản phẩm tương tác | Excel trong `outputs/`; `outputs/DASHBOARD_BAT_DONG_SAN.html` |
-| K-means | `src/pipeline.py`; bảng thử k và mô tả cụm trong output; đã thử k=2–5 và seed chính/7/42 |
-| SQL | `outputs/real_estate.sqlite`; `sql/01_schema.sql`, `02_queries.sql`, `03_indexes.sql`; `outputs/sql_benchmark.json` |
-
-Sau khi nhóm sửa phương pháp hoặc chạy lại, lấy số mới trực tiếp từ output và cập nhật đồng bộ tài liệu; không giữ số nền nếu kết quả đã thay đổi.
-
-## 2. Phân công cân bằng cho ba thành viên
-
-Tỷ trọng **1/3 mỗi người** là kế hoạch đóng góp nội bộ, không phải thang điểm của thầy. Mỗi người có một phần kỹ thuật, một phần kiểm chứng/cải tiến, một phần báo cáo và một nhiệm vụ kiểm tra chéo.
-
-| Thành viên | Phần nền được bàn giao để tiếp quản | Nội dung báo cáo chính | Người kiểm tra chéo |
+| Mã | Nhiệm vụ | Bàn giao và nghiệm thu | Người kiểm |
 |---|---|---|---|
-| **Võ Văn Đạt — N23DCCN078** | Mã `src/pipeline.py`; luồng chạy từ raw tới output; phần K-means; cơ sở dữ liệu và SQL trong `sql/`; tích hợp và hướng dẫn tái lập | Sơ đồ quy trình, khả năng tái lập; Chương 5 phần mở rộng; phụ lục mã/lệnh chạy; hợp nhất báo cáo | Nhi kiểm tra dòng dữ liệu vào/ra; Quỳnh kiểm tra số liệu hiển thị |
-| **Nguyễn Thị Yến Nhi — N23DCCN112** | `data/raw/`; `references/DATA_SOURCE.md`; quy tắc làm sạch; `data/processed/listings_clean.csv`, `row_lineage.csv` và dữ liệu cách ly/kiểm toán | Chương 2 nguồn và từ điển; Chương 3 làm sạch; phần thiên lệch và chất lượng dữ liệu trong Chương 6 | Quỳnh đọc lại diễn giải; Đạt kiểm tra quy tắc được thực thi |
-| **Hứa Như Quỳnh — N23DCCN118** | `outputs/analysis.json`; bảng/biểu đồ trong `outputs/`; Excel; `outputs/DASHBOARD_BAT_DONG_SAN.html`; `tools/build_dashboard.py` | Chương 1 câu hỏi nghiên cứu; Chương 4 EDA; Chương 6 kết luận; biên tập bố cục và tài liệu trình bày | Đạt đối chiếu dữ liệu dashboard; Nhi đối chiếu mẫu số/đơn vị |
+| D01 | Clone thư mục riêng hoặc dùng máy khác; tạo môi trường Python, tải đúng nguồn và chạy theo README | `docs/NGHIEM_THU_MOI_TRUONG.md`: môi trường thực, lệnh/log, mã thoát, run_id, phần chạy/bỏ qua. Không gọi bản sao cùng Python là đã cài trên máy khác | Nhi thực hiện lại tải/kiểm và một truy vấn |
+| D02 | Đọc luồng điều khiển; vẽ kiến trúc, luồng dữ liệu và ERD ba bảng; mô tả từng mô-đun | `docs/THIET_KE_VA_MODULE.md`: sơ đồ khớp code, ví dụ một dòng đi qua hệ thống, hợp đồng dữ liệu, hash/staging/lỗi; không dựng phân quyền chưa có | Nhi đối chiếu quy tắc; Quỳnh đối chiếu demo |
+| D03 | Tự giải thích K-means và làm một vòng lặp tay trên ví dụ nhỏ ghi rõ chỉ để minh họa | `docs/THUC_NGHIEM_KMEANS.md`: biến/log/Z-score/Euclid/tâm/dừng, k/inertia/silhouette/n, seed/ARI, đặc điểm cụm ở đơn vị gốc; phân biệt thí nghiệm mới với kết quả đã có | Nhi kiểm mẫu/giả định; Quỳnh kiểm hình |
+| D04 | Mở DB, chạy bốn truy vấn, đọc plan và so kết quả trước/sau index | `docs/THUC_NGHIEM_SQL.md`: schema, SQL/tham số, kết quả/hash, plan, thời gian phân tán, môi trường. Giữ cả kết quả không nhanh hơn; dữ liệu thử tải phải ghi riêng | Nhi chạy lại truy vấn và đối chiếu CSV |
+| D05 | Tích hợp thay đổi đã review; dựng đầu ra và kiểm bản cuối | Log/commit, test phù hợp, `AUDIT_RESULTS.json` cùng run_id; Excel dựng/đối soát hoặc ghi rõ chưa cập nhật. Không sửa manifest bằng tay | Nhi kiểm dữ liệu; Quỳnh kiểm UI/Excel |
+| D06 | Viết Chương 3–4; cung cấp phần kỹ thuật cho Nhi viết Chương 2 | Thiết kế khớp mã/DB; mỗi mô-đun có file/hàm, đầu vào, bước xử lý, đầu ra, lỗi, ví dụ; mã đầy đủ ở repo | Nhi và Quỳnh đọc chéo |
 
-Đạt phụ trách ghép bản cuối, nhưng từng người phải tự viết phần được giao. Quỳnh thống nhất văn phong và cách trình bày, nhưng không gánh toàn bộ công việc viết báo cáo. Nhi kiểm tra chất lượng dữ liệu, nhưng cả ba cùng chịu trách nhiệm về kết luận và nguồn dẫn.
+Đạt còn kiểm 20 tin và đọc chéo 20 tin theo Mục 6.
 
-### 2.1. Võ Văn Đạt: thực thi, K-means, SQL và tích hợp
+## 4. Nguyễn Thị Yến Nhi: công việc cụ thể
 
-**Cần hiểu:** luồng dữ liệu từ JSON tới CSV/Excel/dashboard; hàm và biến trong `src/pipeline.py`; điều kiện lọc và mối liên hệ giữa các output; K-means gán cụm/cập nhật tâm/điều kiện dừng; tác dụng của log và co giãn; `CREATE TABLE`, khóa, `SELECT`, `GROUP BY`, index và `EXPLAIN QUERY PLAN`.
+Slide trọng tâm: ý nghĩa/phạm vi KHDL Chương 1; thiếu/nhiễu/không nhất quán/ngoại lệ, biến đổi, lấy mẫu và chọn thuộc tính Chương 2. IQR, bootstrap, silhouette/ARI cần giải thích và tài liệu bổ sung khi sử dụng.
 
-**Slide học trọng tâm:** Chương 1 trang 12; Chương 2 trang 14–17 và 28–29; `Chương 4 - Hoc may - 2.pdf` trang 48–53; Chương 5 phần 1 trang 23–32 và 36–38. Không học thuộc toàn bộ Chương 4 nếu không sử dụng các thuật toán khác.
-
-**Việc thực hiện và sản phẩm nộp nội bộ:**
-
-1. Chạy lại toàn bộ project theo README trên máy nhóm; lập bảng đầu vào/đầu ra, môi trường và lệnh chạy trong `docs/BIEN_BAN_TAI_LAP.md`. Giải thích ít nhất ba hàm quan trọng và kiểm tra một bản ghi từ raw tới cleaned tới biểu đồ.
-2. Kiểm chứng K-means nền đã xét k=2–5, seed chính và seed 7/42. Thực nghiệm cải tiến: thử thêm ít nhất ba seed khác, hoặc đối chiếu Z-score biến gốc với log rồi Z-score trên **cùng tập fit**, giữ các điều kiện khác. Lưu bảng kích thước cụm, inertia, silhouette, độ đồng thuận phân hoạch khi phù hợp và thời gian chạy. Không so trực tiếp inertia giữa hai không gian biến khác nhau như cùng thang đo. Giải thích lựa chọn k dựa trên khả năng diễn giải và độ ổn định; không tự tạo nhãn “đúng” để tính Accuracy. Lưu `outputs/experiments/kim_dinh_kmeans.csv` và `docs/THUC_NGHIEM_KMEANS.md` sau khi chạy thật.
-3. Thực nghiệm SQL: dùng DB thật được tạo từ dữ liệu sạch; đọc SQL đang có; đo cùng truy vấn trước/sau index với cùng tham số và nhiều lượt. Kiểm tra hai kết quả bằng nhau. Lưu truy vấn, kế hoạch thực thi, số dòng và trung vị thời gian vào `docs/THUC_NGHIEM_SQL.md`. Ghi nhận cả trường hợp index không nhanh hơn trên dữ liệu nhỏ.
-4. Cải tiến thực chất ưu tiên: làm rõ lệnh chạy, đường dẫn tương đối theo thư mục gốc, xử lý lỗi đầu vào và quy trình tạo lại output; hoặc bổ sung một kiểm tra đối chiếu tổng số dòng CSV–DB–dashboard. Không thay đổi quy tắc làm sạch mà chưa thống nhất với Nhi.
-5. Viết phần phương pháp tái lập và Chương 5; ghép báo cáo từ ba phần đã được phản biện; kiểm tra không còn biến/tên file/số liệu cũ.
-
-**Nghiệm thu:** thành viên khác chạy lại được bằng hướng dẫn; DB mở được và SQL trả kết quả; các tuyên bố về tốc độ có số đo; seed/biến/k được ghi rõ; biết tự tính một vòng gán cụm/cập nhật tâm trên ví dụ nhỏ; không gọi K-means là mô hình dự đoán giá.
-
-### 2.2. Nguyễn Thị Yến Nhi: nguồn, làm sạch và kiểm chứng
-
-**Cần hiểu:** đơn vị quan sát; giá rao và giá giao dịch; CC BY 4.0; sự khác nhau giữa ô có nội dung và dữ liệu đúng; dấu phân cách số Việt Nam; trùng theo khóa nội dung và cùng bất động sản; thiếu, nhiễu, không nhất quán; outlier và lỗi; đơn vị gốc và co giãn số.
-
-**Slide học trọng tâm:** Chương 2 trang 3, 5–17, 23–24 và 28–29; Chương 1 trang 3–5 và 12. IQR là kỹ thuật bổ sung cho khái niệm outlier của slide, cần giải thích công thức khi sử dụng.
-
-**Việc thực hiện và sản phẩm nộp nội bộ:**
-
-1. Đối chiếu DOI, tác giả, phiên bản, giấy phép và checksum; viết phần nguồn với con số **9.004 bản ghi thực tế**, công khai khác biệt so với mô tả nguồn “10,000 posts”. Không tự điền ngày đăng theo ngày công bố.
-2. Hoàn thiện từ điển dữ liệu theo schema CSV thật: tên cột, kiểu, đơn vị, trường nguồn, công thức, trạng thái thiếu/cách ly, ý nghĩa cờ. Giải thích `area_m2` là diện tích **được nêu ở trường lõi trong tin**, không luôn đồng nhất diện tích đất hay sàn.
-3. Kiểm tra thủ công một mẫu tối thiểu 60 bản ghi gồm nhiều tỉnh và các trường hợp thông thường, dấu chấm/phẩy, giá `đ` đáng nghi, tin trùng, loại hình suy luận, outlier. Chọn mẫu có chủ đích để kiểm tra lỗi, không mô tả là mẫu ngẫu nhiên đại diện thị trường. Ghi `row_id`, chuỗi raw, kết quả parse, nhận xét và quyết định vào `outputs/experiments/kiem_tra_thu_cong.csv`.
-4. Thực nghiệm làm sạch: so sánh khóa trùng toàn đối tượng JSON, bốn trường lõi và **năm trường lõi đang dùng trong mã**; tính số mẫu và trung vị giá ở mỗi phương án. Giữ các quy tắc lọc khác giống nhau khi đối chiếu. Giải thích vì sao thay đổi khóa trùng có thể làm thay đổi trọng số của tin. Không kết luận đã đếm đúng số căn nhà duy nhất.
-5. Thực nghiệm độ nhạy: kiểm chứng bảng độ nhạy tổng thể đã có; mở rộng sang n, trung vị và thứ hạng **từng tỉnh/loại hình đủ mẫu** khi có/không tạm ẩn điểm IQR. Kiểm tra thêm phương án chỉ dùng tiêu đề bán rõ thay vì các tin `sale_assumed`. Không xóa outlier khỏi raw và không loại tự động chỉ để biểu đồ đẹp hơn.
-6. Cải tiến ưu tiên: bổ sung một quy tắc parse có ví dụ đối chứng, hoặc kiểm tra nhất quán diện tích/giá giữa các trường lõi; các trường hợp mơ hồ đưa vào danh sách rà soát. Lưu `docs/NHAT_KY_QUY_TAC_LAM_SACH.md` với lý do, số dòng tác động và quyết định cuối cùng.
-7. Viết Chương 2–3 và phần giới hạn chất lượng; đối chiếu bảng trước/sau với nhật ký từng dòng. Nếu số lỗi chồng nhau, không cộng cơ học thành tổng dòng loại.
-
-**Nghiệm thu:** mọi quy tắc có ví dụ raw và kết quả; truy được một dòng loại về bản gốc; kiểm đếm đầu vào bằng tổng các trạng thái cuối cùng không chồng nhau; không dùng trường chi tiết có dấu hiệu lan truyền để đưa kết luận chắc chắn về số phòng/pháp lý; mọi sửa quy tắc đều chạy lại output.
-
-### 2.3. Hứa Như Quỳnh: EDA, dashboard và diễn giải
-
-**Cần hiểu:** câu hỏi phân tích; biến số và biến phân loại; histogram/bar/scatter; phân phối lệch; trung bình/trung vị/IQR; trục log; mẫu số và bộ lọc; tương quan khác nhân quả; giá trên m² có mẫu số nào; mẫu ít và thiên lệch địa phương.
-
-**Slide học trọng tâm:** Chương 1 trang 3–5 và 12; Chương 3 trang 3–7, 14–18, 22–30; Chương 2 trang 28–29. Không dùng biểu đồ đường làm xu hướng khi không có thời gian quan sát.
-
-**Việc thực hiện và sản phẩm nộp nội bộ:**
-
-1. Đọc `outputs/analysis.json`, đối chiếu ít nhất ba KPI/bảng với CSV/Excel bằng một cách độc lập. Ghi công thức và bộ lọc trong `docs/DOI_CHIEU_SO_LIEU_TRUC_QUAN.md`.
-2. Thực nghiệm biểu đồ: so sánh histogram trục gốc và log; thử ít nhất hai cách chia bin phù hợp; chọn phương án đọc tốt hơn mà không che giấu điểm cực trị. Lưu hình trước/sau và giải thích lựa chọn.
-3. Thực nghiệm diễn giải: so sánh trung vị giá tổng và trung vị giá/m² theo tỉnh trong cùng tập lọc; xem kết luận có đổi không, có bị khác biệt về loại hình/diện tích và số mẫu chi phối không. Chỉ nêu kết quả sau khi đã tính.
-4. Kiểm thử dashboard/Excel bằng các tình huống: tất cả dữ liệu; một tỉnh; một nhóm diện tích; bộ lọc không có kết quả; bật/tắt điểm IQR nếu giao diện hỗ trợ. Đối chiếu n và KPI với CSV đã lọc, kiểm tra cách hiển thị đơn vị, số thập phân và nguồn. Lưu `docs/BIEN_BAN_KIEM_TRA_DASHBOARD.md`.
-5. Cải tiến ưu tiên: thêm chú thích số mẫu/đơn vị/nguồn, làm rõ trạng thái lọc, cải thiện trạng thái rỗng và tiêu đề; hoặc thêm một biểu đồ trả lời câu hỏi còn thiếu. Không thêm bản đồ vị trí chính xác hoặc xu hướng năm khi dữ liệu không có tọa độ/ngày.
-6. Viết Chương 1, 4 và kết luận; mỗi nhận xét đi cùng số liệu, n, đơn vị, hình/bảng và giới hạn. Chuẩn bị bản trình bày theo kịch bản riêng; rà lỗi chính tả và đánh số hình/bảng toàn báo cáo.
-
-**Nghiệm thu:** mỗi hình trả lời một câu hỏi; trục, đơn vị, n, nguồn rõ; bộ lọc dashboard không đổi ý nghĩa KPI; số liệu Excel/dashboard/báo cáo nhất quán; nhận xét không suy rộng thành toàn thị trường hoặc khuyến nghị đầu tư.
-
-## 3. Kiểm tra chéo và tiêu chuẩn hoàn thành
-
-| Người thực hiện | Kiểm tra phần của | Việc phải tự làm | Điều kiện ký xác nhận |
+| Mã | Nhiệm vụ | Bàn giao và nghiệm thu | Người kiểm |
 |---|---|---|---|
-| Đạt | Quỳnh | Lọc CSV theo cùng điều kiện dashboard và đối chiếu n/KPI; mở file HTML ngoại tuyến | Kết quả khớp trong sai số làm tròn đã nêu; không lỗi bộ lọc |
-| Nhi | Đạt | Kiểm tra số dòng DB với CSV; chọn một truy vấn và so sánh kết quả trước/sau index; kiểm tra seed/biến K-means | Không đổi tập dữ liệu giữa hai lượt đo; kết quả truy vấn tương đương |
-| Quỳnh | Nhi | Truy nguyên ít nhất 10 ví dụ làm sạch; đọc phần phương pháp như người chưa biết project | Hiểu vì sao giữ/cách ly/gộp từng dòng; tìm được minh chứng đúng file |
+| N01 | Xác minh DOI/v2/tác giả/giấy phép/metadata; đơn vị quan sát; chênh lệch mô tả 10.000 với 9.004 dòng; lý do bỏ trường chi tiết nghi lan truyền | `docs/NGUON_VA_TU_DIEN_DU_LIEU.md`: từ điển cột, kiểu/đơn vị/nguồn/giới hạn, ví dụ thực và trích dẫn | Đạt kiểm checksum; Quỳnh đọc như người mới |
+| N02 | Lập bảng đầy đủ quy tắc làm sạch và hàm tương ứng | `docs/QUY_TAC_VA_VI_DU_DU_LIEU.md`: trước/sau, lý do, số tin tác động có thể chồng nhau, ví dụ dễ loại nhầm; đối soát nguồn = trùng + cách ly + giữ | Quỳnh truy nguyên 10 ví dụ; Đạt kiểm hàm |
+| N03 | Điều phối nhãn 60 tin; tự kiểm phần mình; tập hợp và giải quyết bất đồng | CSV có hai lượt đọc; `docs/KET_QUA_KIEM_TRA_NHAN.md`: đồng thuận/bất đồng/không đủ bằng chứng theo nhóm; không dùng regex điền nhãn rồi gọi là người kiểm | Cả hai bạn ký phần thực kiểm |
+| N04 | Đọc sensitivity; phân biệt cách ly mâu thuẫn với IQR giữ trong EDA; rà thêm tin 638, 7811, 335, 8262, 300, 588, 8535 | Bảng quyết định và cụm số/chữ minh họa; ghi chưa xác minh khi còn mơ hồ; so n/trung vị khi đổi điều kiện | Đạt tính lại; Quỳnh kiểm diễn giải |
+| N05 | Khi có lỗi thật, mô tả lỗi trước, phối hợp sửa parser/nhận diện và bổ sung hồi quy cả trường hợp không được loại nhầm | Commit/test và bảng chuyển trạng thái có lý do; Đạt dựng lại đầu ra. Không sửa raw hoặc tự đặt lại giá suy đoán | Đạt review mã; Quỳnh đối soát KPI |
+| N06 | Viết Chương 1–2; cung cấp quy tắc/từ điển cho Chương 3–4 | Chương 1 đủ thực tiễn/nghiên cứu/một mục tiêu/phạm vi ứng dụng; Chương 2 có cơ chế kỹ thuật, công thức đọc được, tham số, ví dụ gắn với code | Đạt kiểm kỹ thuật/công thức; Quỳnh kiểm lập luận |
 
-Mỗi người ghi vào biên bản: hạng mục, file/phiên bản, người kiểm tra, kết quả, vấn đề còn lại và cách xử lý. Không ký nghiệm thu dựa trên việc file chỉ mở được. Sau mỗi thay đổi ảnh hưởng số liệu, chạy lại pipeline và cập nhật Excel, dashboard, bảng báo cáo cùng một lượt.
+## 5. Hứa Như Quỳnh: công việc cụ thể
 
-## 4. Lịch tương đối khi đã biết ngày nộp
+Slide trọng tâm: Chương 3 về cột/scatter/histogram/nhãn/chú thích; Chương 2 về tổng hợp/tạo biến; Chương 1 về truyền đạt và tư duy phản biện. Phân biệt histogram với cột đếm khoảng giá không đều.
 
-Ký hiệu **T là ngày nộp thực tế do thầy công bố**. Đây là kế hoạch đề xuất, không phải hạn nộp đã xác nhận; nếu còn ít thời gian, ưu tiên phần cốt lõi và gộp các mốc.
+| Mã | Nhiệm vụ | Bàn giao và nghiệm thu | Người kiểm |
+|---|---|---|---|
+| Q01 | Đọc tám hình/bảng gốc, xác định câu hỏi mỗi hình; tính độc lập n và ít nhất ba trung vị từ CSV | `docs/DOI_CHIEU_SO_LIEU_TRUC_QUAN.md`: bộ lọc, mẫu số, giá trị gốc/hiển thị, sai số; không kết luận diện tích lớn giá cao nếu số không hỗ trợ | Đạt tính lại; Nhi kiểm giới hạn |
+| Q02 | Mở trình duyệt thật, thực hiện NEW01–NEW07 trong nhật ký UI; kiểm lọc/tìm/CSV/phân trang/rỗng khi giao diện cho phép | Cập nhật `docs/KIEM_THU_THUC_TE.md`: người/ngày/run_id, mong đợi/thực tế, ảnh có bộ lọc. Trạng thái không tạo được qua UI chỉ ghi test tự động, không dựng thao tác giả | Đạt đối soát CSV; Nhi kiểm mẫu số |
+| Q03 | Mở Excel thật, kiểm ba trang/bốn biểu đồ/lọc/sắp xếp; trên bản sao tạm thử đổi giá/diện tích và ô trống/0/chữ | `docs/NGHIEM_THU_EXCEL.md`: công thức/số trước-sau, hiểu IQR/cụm snapshot; không lưu đè workbook chuẩn bằng dữ liệu thử | Đạt kiểm công thức; Nhi kiểm ngữ nghĩa |
+| Q04 | Lập demo nguồn → sạch/lineage → biểu đồ → lọc/CSV → cụm → SQL; chụp ảnh sau chốt dữ liệu | `docs/DEMO_VA_DANH_MUC_MINH_CHUNG.md`, ảnh `docs/minh_chung/`: mã hình, nguồn, run_id, n, đơn vị, bộ lọc, bảng số liệu tương ứng | Đạt kiểm phiên bản; Nhi kiểm nguồn |
+| Q05 | Thử màn hình laptop/cửa sổ hẹp; ghi lỗi đọc nhãn, trạng thái lọc, thiếu mẫu; cải thiện có mục đích | Nhật ký trước/sau; cập nhật test dashboard nếu hành vi đổi; không thay nghĩa KPI để làm đẹp | Đạt review tích hợp; Nhi thử sử dụng |
+| Q06 | Viết Chương 5–6, ghép định dạng và cập nhật kịch bản bảo vệ cũ | Demo có dữ liệu; kết luận có bằng chứng/giới hạn; Word căn đều, caption/dẫn chiếu, mục lục/danh mục, Equation bản địa, in đậm chọn lọc | Cả nhóm duyệt số/kết luận |
 
-| Mốc | Đạt | Nhi | Quỳnh | Sản phẩm chung |
+## 6. Chia chính xác 60 tin và kiểm chéo
+
+Mẫu `docs/MAU_KIEM_TRA_DU_LIEU.csv` có sáu nhóm × mười tin, seed 42; các ô người kiểm hiện trống. Phân theo row_id, không theo thứ tự Excel sau sắp xếp.
+
+| Người kiểm chính | 20 row_id được giao | Người đọc lần hai |
+|---|---|---|
+| Đạt | 683, 7164, 709, 6266, 4208, 4167, 6570, 750, 2331, 7826, 7103, 3879, 3589, 5900, 7485, 1802, 4266, 4759, 5093, 8387 | Nhi |
+| Nhi | 6677, 7133, 2980, 4588, 3696, 1915, 6181, 8271, 8773, 634, 8572, 3788, 6510, 3133, 5906, 6469, 3427, 8107, 1071, 8151 | Quỳnh |
+| Quỳnh | 6244, 7533, 2123, 5517, 8096, 8957, 3739, 1437, 4288, 3008, 5755, 3111, 78, 2512, 2604, 1140, 5418, 7452, 8879, 7363 | Đạt |
+
+1. row_id là vị trí trong mảng JSON nguồn tính từ 1, không phải số dòng văn bản/mã giao dịch. Đọc năm trường lõi của đúng tin; không dùng trường chi tiết nghi lan truyền làm đáp án chuẩn.
+2. Người đầu điền `human_property_type`, `human_transaction`, `human_price_area_status`, `reviewer`, `reviewed_on`, `evidence_note`. Loại dùng `land/house/apartment/other_unknown`; giao dịch dùng nhãn định nghĩa trong N02 hoặc `insufficient_evidence`; trạng thái số dùng `consistent/conflict/ambiguous/insufficient_evidence`. `consistent` chỉ nghĩa các trường được đọc không mâu thuẫn rõ, không xác nhận tài sản hay giá giao dịch.
+3. Người thứ hai đọc nguồn độc lập trước khi xem kết luận lượt đầu; ghi nhận xét riêng trong `docs/NHAT_KY_KIEM_TRA_CHEO.md`, điền `second_reviewer`, `agreement` là `agree/disagree/insufficient_evidence`. Không ghi đè kết luận đầu để che bất đồng.
+4. Nhi tập hợp; hai người thảo luận với người thứ ba làm trọng tài khi cần. Giữ kết luận đầu, kết luận sau thảo luận và lý do; không ép tin mơ hồ thành nhãn chắc chắn.
+5. Mỗi người đọc thêm 2–3 ví dụ trọng điểm/cực trị ở N04, ghi riêng không cộng vào mẫu ngẫu nhiên. Mẫu phân tầng đều không tự cho tỷ lệ chính xác toàn bộ 6.936 tin; chỉ báo kết quả theo mẫu/nhóm và phương pháp phù hợp.
+6. Nếu run_id đổi, giữ nhãn cũ để truy nguyên và đối chiếu lại trạng thái; không gọi bộ tạo mẫu để xóa kết quả đã điền.
+
+## 7. Cải tiến phát triển để chuyên nghiệp hơn
+
+Đây là **việc chưa triển khai**, không phải tính năng/kết quả đã có. P0 làm trước; sau đó chọn P1 theo thời gian; P2 chỉ làm khi không ảnh hưởng bản báo cáo cuối.
+
+| Mã/ưu tiên | Chủ trì; phối hợp | Việc phát triển cụ thể | Sản phẩm và tiêu chí đánh giá |
+|---|---|---|---|
+| I01 — P0 | Nhi; cả nhóm | Bộ đối chiếu 60 tin hai người đọc; quy tắc nhãn/bất đồng; thêm mẫu có chủ đích về tiền trả trước, giá đơn vị, chiều ngang dễ nhầm | Bảng lỗi/mơ hồ theo nhóm; sửa quy tắc có test chống loại nhầm, không gọi đây là nhãn chuẩn thị trường |
+| I02 — P0 | Quỳnh; Đạt | Nghiệm thu trình duyệt/Excel thật, demo thống nhất, ảnh có bảng số và run_id | Q02–Q04 có tên/ngày/bằng chứng, số khớp; phân biệt kiểm bằng công cụ với thao tác thật |
+| I03 — P0 | Đạt; Nhi | Nghiệm thu cài mới/môi trường độc lập; hướng dẫn lỗi; khóa phiên bản bàn giao | Log cài/chạy thực, hash/phiên bản. Thiếu runtime Excel phải ghi giới hạn, không tự xác nhận workbook đã tạo lại |
+| I04 — P1 | Đạt; Nhi | CI chạy unit test mỗi PR; tích hợp tải nguồn/kiểm hash/dựng dashboard thành luồng riêng do nhóm kích hoạt | Cấu hình và lần chạy thật; unit test không cần file riêng laptop; phân biệt lỗi mạng/code. Không yêu cầu gói dựng Excel nội bộ trên CI công khai |
+| I05 — P1 | Nhi; Đạt | Phân loại cảnh báo rõ hơn: mâu thuẫn tiền, đơn giá, trả trước, kích thước, nhiều căn trong một tin | Bộ đối chiếu I01, test hồi quy, bảng đổi trạng thái và độ nhạy; không đổi ngưỡng chỉ để n/trung vị đẹp |
+| I06 — P1 | Quỳnh; Đạt | Bộ lọc nhóm diện tích và xuất tóm tắt bộ lọc đang xem | Lọc đồng bộ KPI/biểu đồ/bảng/CSV; xuất kèm run_id/n/đơn vị/điều kiện; test biên khoảng, lọc kết hợp/rỗng. Hiện chưa có bộ lọc này |
+| I07 — P1 | Quỳnh; Nhi | So sánh tỉnh trong cùng loại bất động sản, luôn kèm n/giới hạn | Bảng/biểu đồ trả lời câu hỏi cụ thể; ngưỡng mẫu rõ; đối chiếu CSV; không coi kiểm soát một thuộc tính là loại hết nhiễu |
+| I08 — P1 | Đạt; Quỳnh | SQL nhiều khối đo; cân nhắc index hiện có với covering index và đánh đổi lưu/ghi | Cùng SQL/tham số/kết quả, plan, thời gian phân tán, dung lượng và chi phí ghi nếu đo; giữ cả kết quả không nhanh hơn, chỉ đổi khi có bằng chứng |
+| I09 — P2 | Đạt; Nhi | Độ nhạy K-means với thêm seed, có/không nhóm mơ hồ | ARI/inertia/silhouette/n/scaler, tâm và cỡ cụm; không chọn k vì hình đẹp hoặc gọi ổn định là accuracy |
+| I10 — P2 | Nhi; Quỳnh | Khảo sát nguồn mới có ngày/ID/quyền sử dụng rõ cho nghiên cứu sau | Hồ sơ nguồn và kiểm thử thí điểm; dataset/lần chạy riêng, không trộn thời điểm hay hứa có xu hướng/bản đồ khi chưa có biến |
+
+Ước lượng xếp lịch, không phải hạn cam kết: mỗi P0 khoảng một buổi/người; P1 một đến hai buổi chủ trì kèm review; P2 ước lượng sau chốt phạm vi. Chưa có ngày nộp xác nhận. Ưu tiên ít cải tiến có bằng chứng hơn nhiều tính năng chưa nghiệm thu.
+
+Mỗi thí nghiệm ghi: vấn đề/giả thuyết → phiên bản trước → thay đổi → dữ liệu/cách đo → kết quả cả tốt/xấu → giữ/bỏ và lý do → người kiểm. Tăng số test đơn thuần không chứng minh chất lượng tăng.
+
+## 8. Nội dung sáu chương và trách nhiệm viết
+
+| Chương/chủ trì | Nội dung bắt buộc | Phối hợp và bằng chứng |
+|---|---|---|
+| 1 — Nhi | Tên/vấn đề; ý nghĩa thực tiễn; ý nghĩa cộng đồng nghiên cứu; mục tiêu duy nhất; đối tượng/người dùng; phạm vi ứng dụng/giới hạn lịch sử | Cả nhóm chốt phạm vi; Đạt xác nhận vận hành. Câu hỏi con phục vụ cùng mục tiêu, không tự nhận thuật toán mới/mẫu đại diện |
+| 2 — Nhi | Lý thuyết và kỹ thuật thật sự dùng: parse/Unicode/regex, thiếu/trùng/IQR, thống kê/độ nhạy, Python/pandas/NumPy/Matplotlib, K-means, SQLite/index, HTML/CSS/JS, Excel và provenance/kiểm thử | Đạt cung cấp thuật toán/SQL/tích hợp; Quỳnh DOM/SVG/Excel/trực quan. Mỗi nền tảng có cơ chế, I/O, tham số, lý do, giới hạn, ví dụ số và liên hệ mã; công thức đúng dạng toán |
+| 3 — Đạt | Phân tích yêu cầu; kiến trúc/luồng; dữ liệu ba bảng, khóa/ràng buộc/index; thiết kế giao diện/trạng thái lọc/lỗi | Nhi cung cấp từ điển/quy tắc; Quỳnh thiết kế sử dụng. Sơ đồ kèm ví dụ dữ liệu, ERD khớp SQL; không dựng phân quyền chưa có |
+| 4 — Đạt | Hiện thực tải/kiểm nguồn, làm sạch/lineage, IQR/thống kê, K-means, DB/SQL, hình, dashboard/CSV, Excel, tích hợp/kiểm tra | Nhi soạn dữ liệu/làm sạch, Quỳnh dashboard/Excel. Mỗi mô-đun: file/hàm, đầu vào, thuật toán, đầu ra, lỗi, ví dụ; mã dài để repo/phụ lục |
+| 5 — Quỳnh | Cài/chạy/môi trường, demo nguồn đến sản phẩm, kết quả cuối, thí nghiệm/benchmark, kiểm thử/nghiệm thu, cải tiến nhóm thật sự làm | Đạt cung cấp log/SQL/K-means/tái lập; Nhi kiểm nhãn/độ nhạy. Ảnh có dữ liệu/bộ lọc/n/đơn vị/run_id và bảng tương ứng; ghi phần chưa kiểm |
+| 6 — Quỳnh, cả nhóm duyệt | Trả lời mục tiêu, độ tin cậy có điều kiện, vận hành/tích hợp/ứng dụng đến đâu, giới hạn và hướng phát triển | Nhi chốt giới hạn dữ liệu; Đạt chốt kỹ thuật. Mỗi nhận định dẫn bằng chứng, tách kết quả/kế hoạch; không kết luận chung “chính xác, ứng dụng rộng rãi” |
+
+Nhi thống nhất tham khảo/nguồn dẫn; Đạt kiểm phiên bản/mã/SQL và phụ lục kỹ thuật; Quỳnh ghép bìa, tóm tắt viết sau cùng, mục lục/danh mục, caption, căn đều hai bên và Equation bản địa. Nhóm xác nhận trường/lớp/giảng viên/ngày nộp/STT 22 hay 47, không tự điền.
+
+Caption thống nhất `Hình 1: ...`, `Bảng 1: ...`, hoặc theo chương nếu chọn từ đầu. Mỗi hình có dữ liệu minh họa; hình/bảng đều được dẫn và phân tích trong thân chương. Không viết thành danh sách việc làm, không giới thiệu công nghệ qua loa hai đến ba dòng. Đối chiếu chi tiết tại [yêu cầu báo cáo](DOI_CHIEU_YEU_CAU_BAO_CAO.md).
+
+## 9. Thứ tự làm và quy ước GitHub
+
+| Mốc | Đạt | Nhi | Quỳnh | Điều kiện chuyển mốc |
 |---|---|---|---|---|
-| T−7 | Chạy và vẽ sơ đồ mã | Xác minh nguồn, từ điển, mẫu kiểm tra | Đọc kết quả, khóa câu hỏi | Thống nhất phạm vi và quy tắc; phân công được xác nhận |
-| T−5 | Thực nghiệm k/seed và SQL | Thực nghiệm trùng, parse, IQR | Thực nghiệm biểu đồ và KPI | Mỗi người có kết quả thực nghiệm và quyết định có bằng chứng |
-| T−3 | Ghép báo cáo phương pháp/mở rộng | Hoàn thành Chương 2–3 | Hoàn thành EDA/kết luận | Bản báo cáo hoàn chỉnh lần 1; mọi hình có nguồn và n |
-| T−2 | Đối chiếu CSV–DB–dashboard | Kiểm tra kết quả Đạt | Kiểm tra quy tắc Nhi | Biên bản kiểm tra chéo; sửa lỗi và chạy lại toàn bộ |
-| T−1 | Đóng gói, thử chạy từ đầu | Rà nguồn/từ điển/số dòng | Rà bố cục, tập trình bày | Bản cuối thống nhất; demo ngoại tuyến; mỗi người nói đúng phần mình |
-| T | Phụ trách thao tác demo kỹ thuật | Trả lời về dữ liệu/làm sạch | Điều phối trình bày/EDA | Nộp đúng định dạng và quy định giảng viên |
+| A — Tiếp quản | D01–D02 | N01–N02 | Q01–Q03 | Mỗi người chạy/mở được phần mình, hiểu cùng phạm vi |
+| B — Kiểm chứng | 20 tin + đọc chéo, D03–D04 | 20 tin + đọc chéo, N03–N04 | 20 tin + đọc chéo, Q02–Q04 | Nhãn/UI có bằng chứng, lỗi được ghi thật |
+| C — Cải tiến | I03, chọn I04 hoặc I08 | I01, chọn I05 | I02, chọn I06 hoặc I07 | P0 xong, P1 có review/test/kết quả trước-sau |
+| D — Chốt dữ liệu | D05, dựng/đối soát | Chốt quy tắc/nhãn/số | Chụp ảnh cuối/so Excel | Một bộ kết quả thống nhất, giới hạn rõ |
+| E — Viết/đọc chéo | Chương 3–4, phụ lục | Chương 1–2, nguồn | Chương 5–6, ghép | Cả ba đọc toàn văn, số liệu/hình/demo khớp |
+| F — Nộp/bảo vệ | Demo kỹ thuật/đóng gói | Dữ liệu/lý thuyết | Trực quan/kết luận | Mỗi người giải thích được phần mình và luồng chung |
 
-## 5. Dàn ý báo cáo hoàn chỉnh và bằng chứng cần điền
+Đợt cập nhật của trợ lý push trực tiếp `main` theo yêu cầu người dùng. Với công việc sau này, đề xuất dùng `feat/dat-...`, `feat/nhi-...`, `feat/quynh-...`, commit có mã task (ví dụ `N05: ...`), PR để đọc chéo rồi merge. Quy ước này chưa đồng nghĩa đã cấu hình branch protection/CI hoặc gửi lời mời thành viên.
 
-Đề xuất khoảng 25–35 trang nội dung chính nếu thầy không có giới hạn riêng; chất lượng chứng cứ quan trọng hơn số trang. Bảng dài, mã và log chuyển sang phụ lục. Không có số trang tối thiểu chính thức được xác nhận trong tài liệu đã cung cấp.
+Cập nhật từ main trước khi bắt đầu; không force-push lịch sử chung. Một người tích hợp đầu ra cuối vì các lần chạy khác run_id/timing dễ xung đột. Raw lớn, `.venv`, `node_modules`, `tmp`, file khóa Office không đưa lên Git.
 
-### Phần đầu báo cáo
+## 10. Nhật ký và tiêu chí đóng việc
 
-- Bìa: trường/khoa/môn, tên đề tài, giảng viên nếu được xác nhận, ba tên và mã sinh viên, lớp/học kỳ, ngày nộp thực tế.
-- Trang phân công: vai trò, sản phẩm, tỷ trọng dự kiến và đóng góp thực tế sau khi hoàn thành; không dùng kế hoạch để khẳng định thành tích đã làm.
-- Tóm tắt khoảng 150–250 từ: câu hỏi, dữ liệu 9.004 bản ghi gốc, phương pháp chính, 2–3 kết quả định lượng lấy từ output cuối, giới hạn quan trọng. Viết sau cùng.
-- Mục lục tự động; danh mục hình, bảng và chữ viết tắt/đơn vị. Thống nhất “tỷ VND”, “triệu VND/m²”, “m²”, “tin”.
+Khi thực hiện, ghi vào `docs/NHAT_KY_KIEM_TRA_CHEO.md` theo mẫu sau; hiện chưa tự tạo kết quả/ngày/ký xác nhận cho thành viên.
 
-### Chương 1. Bài toán, mục tiêu và phạm vi
-
-1. Lý do chọn bất động sản: nhiều biến số và dữ liệu quảng cáo không đồng nhất, phù hợp xử lý/trực quan hóa. Không viện dẫn tình hình giá hiện tại nếu không có nguồn riêng.
-2. Xác định đề tài STT 22/47; sản phẩm là bộ dữ liệu có kiểm toán và các nhận xét mô tả.
-3. Câu hỏi nghiên cứu đề xuất: tập tin phân bố địa phương như thế nào? Giá/diện tích có phân phối gì? Giá rao liên hệ thế nào với diện tích? Giá/m² khác ra sao giữa các nhóm đủ số mẫu? Quyết định làm sạch ảnh hưởng kết luận thế nào?
-4. Đối tượng, đơn vị quan sát và phạm vi: tin quảng cáo trong file công bố năm 2021; không biết ngày đăng từng tin; không đại diện thị trường Việt Nam năm 2026.
-5. Đầu ra và tiêu chí tự kiểm tra: truy nguyên, chạy lại, số liệu thống nhất, kết luận có hình/bảng; ma trận ánh xạ Chương 1–3. Phân cụm/SQL được đặt riêng là mở rộng.
-
-### Chương 2. Nguồn dữ liệu và hiểu dữ liệu
-
-1. Tác giả, Mendeley, DOI, phiên bản, giấy phép, ngày tải và checksum; phân biệt mô tả nguồn 10.000 với file thực 9.004.
-2. Cấu trúc JSON và ví dụ đã che thông tin liên hệ nếu đưa nguyên văn mô tả; 29 trường hợp nhất và các trường lõi được dùng.
-3. Từ điển dữ liệu gốc/đã xử lý; đơn vị và công thức `price_per_m2_vnd = sale_price_vnd / area_m2` khi mẫu số dương. Tên kỹ thuật `sale_price_vnd` trong code vẫn được diễn giải trong báo cáo là **giá rao**, không phải bằng chứng giao dịch.
-4. Phân tích độ tin cậy: trường chi tiết nghi ngờ lan truyền, giá đáng nghi, thiếu ngày/tọa độ/ID, thiên lệch địa phương và nguồn quảng cáo.
-5. Quyết định chọn biến: vì sao bỏ số phòng/pháp lý khỏi kết luận chính; nếu suy luận loại hình từ tiêu đề, ghi quy tắc, mức không xác định và hạn chế.
-
-### Chương 3. Quy trình xử lý và kiểm tra chất lượng
-
-1. Sơ đồ raw → kiểm tra → chuẩn hóa → gộp trùng/cách ly → tạo biến → dữ liệu phân tích → biểu đồ/Excel/dashboard; nhánh K-means/SQLite nếu dùng.
-2. Quy tắc Unicode/khoảng trắng, tách giá và đơn vị, dấu phân cách số, diện tích, tách địa phương; mỗi quy tắc có lý do, ví dụ trước/sau và số dòng tác động.
-3. Giá trị thiếu, không hợp lệ và mơ hồ: không điền giá trung bình chỉ để giữ đủ dòng; không tự sửa giá `đ` thành triệu; quyết định cách ly có nhật ký.
-4. Định nghĩa khóa tin trùng năm trường lõi chuẩn hóa; số lượng trùng theo từng cách; giải thích khóa nội dung không xác định chắc chắn bất động sản duy nhất. Trình bày suy luận trạng thái bán và ngưỡng rà soát giá dưới 10 triệu VND như chính sách của nhóm, không phải chuẩn thị trường chính thức.
-5. Ngoại lệ: cách tính IQR, nhóm tính và ngưỡng cụ thể trong mã; giữ/gắn cờ và phân tích độ nhạy. Phân biệt quy tắc IQR bổ sung với khái niệm outlier trong slide.
-6. Tạo biến giá/m², nhóm diện tích, địa phương, cờ chất lượng; giải thích chuẩn hóa đơn vị khác Min–Max/Z-score; trình bày scaler ở phần K-means khi sử dụng.
-7. Bảng chất lượng trước/sau, phương trình cân bằng số dòng theo các trạng thái cuối cùng, kết quả kiểm tra thủ công, ví dụ truy nguyên theo `row_id`/lineage và các lỗi chưa giải quyết.
-
-### Chương 4. Khám phá và trực quan hóa dữ liệu
-
-Mỗi tiểu mục gồm **câu hỏi → tập lọc và n → biểu đồ/bảng → 2–3 số liệu → diễn giải → giới hạn**. Lấy số liệu từ output cuối, không gõ ước lượng theo hình.
-
-1. Phân bố tin theo tỉnh/loại hình suy luận: số mẫu và tỷ lệ, nêu mất cân đối địa phương.
-2. Phân phối giá rao và diện tích: histogram, trung bình/trung vị/IQR, lý do dùng trục log; không bỏ cực trị mà không chú thích.
-3. Diện tích và giá: scatter, số mẫu, loại trục; hệ số tương quan nếu tính được và giải thích hạn chế. Không gọi tương quan là tác động nhân quả.
-4. So sánh giá/m² theo tỉnh/nhóm: trung vị, số mẫu, ngưỡng đủ mẫu, mô tả nhóm gộp; so sánh cùng định nghĩa và bộ lọc.
-5. Độ nhạy của kết luận với trùng/outlier/quy tắc parse: một bảng trước/sau và nhận xét kết luận nào ổn định hoặc thay đổi.
-6. Excel và dashboard: mục tiêu người sử dụng, KPI/bộ lọc, ảnh minh họa, cách tránh hiểu sai, đối chiếu số liệu và kiểm thử ngoại tuyến.
-
-### Chương 5. Phần mở rộng có thực nghiệm — tùy chọn
-
-**5.1 K-means:** mục đích mô tả nhóm tin; biến vào và tập lọc; log/scaler và lý do; thuật toán gán/cập nhật tâm; k, seed, điều kiện dừng; cách lựa chọn k; kích thước/đặc điểm cụm ở đơn vị gốc; minh họa; kết quả thay seed; giới hạn. Nếu dùng silhouette thì dẫn nguồn và giải thích vì đây là chỉ số bổ sung. Không gắn cụm thành “phân khúc thị trường chính thức”.
-
-**5.2 SQLite và SQL:** sơ đồ bảng và khóa; tạo DB, nhập dữ liệu và số dòng; truy vấn tổng hợp; truy vấn đo trước/sau index; `EXPLAIN QUERY PLAN`; kết quả truy vấn bằng nhau; thiết bị/môi trường, số lượt và trung vị thời gian; đánh đổi dung lượng/chi phí ghi; giới hạn vì dữ liệu chỉ vài nghìn dòng. Không gọi minh họa này là giải pháp đã được kiểm chứng ở quy mô dữ liệu lớn.
-
-Nếu không sử dụng phần mở rộng, bỏ các tuyên bố và phụ lục tương ứng; phần chính Chương 1–4 và kết luận vẫn phải hoàn chỉnh. Nếu giữ, phải có mã/DB/kết quả thực thi đúng yêu cầu thầy.
-
-### Chương 6. Kết luận, giới hạn và hướng cải tiến
-
-1. Trả lời từng câu hỏi Chương 1 bằng kết quả có số và dẫn hình/bảng; phân biệt phát hiện dữ liệu với nhận định ngoài dữ liệu.
-2. Đóng góp: dữ liệu có nguồn, quy trình xử lý có thể kiểm toán, sản phẩm trực quan chạy được, các thí nghiệm nhóm thực sự hoàn thành.
-3. Giới hạn: giá rao, thời điểm không rõ, mẫu không đại diện, tin trùng chưa chắc cùng nhà, diện tích không đồng nhất ngữ nghĩa, loại hình suy luận, trường chi tiết đáng nghi, thiếu biến và tương quan không nhân quả.
-4. Hướng cải tiến có thể thực hiện: nguồn cập nhật có quyền sử dụng và ngày/ID rõ; phân biệt giao dịch–rao bán–cho thuê; kiểm tra nhãn thủ công lớn hơn; tách đất/nhà/căn hộ; đánh giá ngoài mẫu nếu sau này làm dự đoán. Không trình bày kế hoạch như kết quả đã có.
-
-### Tài liệu tham khảo và phụ lục
-
-- Tham khảo: các PDF môn học thực sự dùng; DOI dữ liệu; giấy phép; tài liệu chuyên môn cho IQR, silhouette, SQLite nếu dùng. Mỗi nguồn được nhắc trong nội dung và ghi nhất quán.
-- Phụ lục A: từ điển đầy đủ, quy tắc parse và mẫu kiểm tra thủ công.
-- Phụ lục B: schema, SQL và kế hoạch truy vấn, kết quả benchmark thực.
-- Phụ lục C: thông số/seed/log K-means và ví dụ tính tay nhỏ.
-- Phụ lục D: hướng dẫn chạy, môi trường, danh mục đầu ra và checksum nguồn.
-- Phụ lục E: phân công thực tế, nhật ký thay đổi, biên bản kiểm tra chéo và đóng góp AI theo quy định môn/trường nếu có.
-
-## 6. Sơ đồ quy trình nên đưa vào báo cáo
-
-```mermaid
-flowchart LR
-    A[JSON gốc và metadata nguồn] --> B[Kiểm tra schema, đơn vị, chất lượng]
-    B --> C[Chuẩn hóa trường lõi]
-    C --> D[Gộp tin trùng theo khóa nội dung]
-    D --> E[Dữ liệu phân tích và cờ chất lượng]
-    C --> F[Dòng cần cách ly hoặc rà soát]
-    D --> G[Nhật ký lineage từng dòng]
-    E --> H[Bảng, biểu đồ, Excel và dashboard]
-    H --> I[Nhận xét có n, đơn vị và giới hạn]
-    E -. Mở rộng .-> J[K-means có mã và tham số]
-    E -. Mở rộng .-> K[SQLite và SQL thực thi]
+```text
+Mã nhiệm vụ:
+Người làm / người kiểm chéo:
+Ngày, commit, run_id:
+Đầu vào và bước/lệnh:
+Mong đợi / kết quả thực:
+File minh chứng:
+Lỗi hoặc giới hạn:
+Giữ/bỏ thay đổi và lý do:
+Trạng thái: chưa làm / đang làm / chờ kiểm / đạt / cần sửa
 ```
 
-Sơ đồ là bố cục khái niệm; thứ tự gộp trùng/cách ly thực tế phải khớp mã cuối và được mô tả chính xác trong Chương 3.
+- [ ] Mỗi phần bản nền có người tự hiểu/kiểm chứng, không nhận kế hoạch thành kết quả.
+- [ ] 60 tin có hai lượt đọc, giữ bất đồng; tin cực trị ghi riêng.
+- [ ] UI/Excel mới có thao tác thật; không dùng xác nhận 7.001 tin cho bản 6.936 tin.
+- [ ] Cải tiến được chọn có mã, minh chứng, đánh giá trước-sau; chưa có không viết như đã triển khai.
+- [ ] CSV/JSON/DB/dashboard/Excel/bảng/hình/báo cáo dùng bộ kết quả tương ứng, kiểm lại sau sửa code.
+- [ ] Giải thuật có code; SQL có DB/truy vấn thật; không thổi phồng thời gian/độ chính xác.
+- [ ] Sáu chương đủ nội dung, căn đều, công thức đọc được, caption/dẫn chiếu/nguồn đồng bộ.
+- [ ] Mỗi người có log/commit hoặc tài liệu, đọc chéo, phần viết và khả năng bảo vệ thực tế.
 
-## 7. Danh mục hình và bảng đề xuất
-
-| Mã gợi ý | Nội dung | Bằng chứng nguồn |
-|---|---|---|
-| Hình 1 | Quy trình dữ liệu | Mã pipeline và sơ đồ trên |
-| Bảng 1 | Đối chiếu nội dung với Chương 1–3 và phần mở rộng | `references/DOI_CHIEU_SLIDE.md` |
-| Bảng 2 | Nguồn, phiên bản, đơn vị quan sát, checksum | Metadata và `references/DATA_SOURCE.md` |
-| Bảng 3 | Từ điển biến chính | Schema CSV và công thức trong mã |
-| Bảng 4 | Quy tắc làm sạch kèm ví dụ raw → processed | `row_lineage.csv` và nhật ký kiểm tra |
-| Bảng 5 | Chất lượng trước/sau và cân bằng số dòng | Output kiểm toán và CSV |
-| Hình 2 | Phân bố số tin theo tỉnh | Bảng tổng hợp với n |
-| Hình 3–4 | Phân phối giá rao và diện tích | Tập phân tích, bin và đơn vị |
-| Hình 5 | Scatter diện tích–giá | Tập lọc, n và loại trục |
-| Hình 6 | Trung vị giá/m² theo nhóm đủ mẫu | Giá trị trung vị và n từng nhóm |
-| Bảng 6 | Độ nhạy với quyết định làm sạch | Kết quả thí nghiệm nhóm thực chạy |
-| Hình 7 | Excel và dashboard | Ảnh từ sản phẩm thật cùng phiên bản dữ liệu |
-| Bảng/Hình 8 | Đặc điểm cụm và lựa chọn k nếu dùng | Output K-means thực |
-| Bảng 7 | SQL trước/sau index nếu dùng | Truy vấn, execution plan, số lượt, thời gian |
-
-Đây là danh mục để biên soạn; đánh số lại theo thứ tự xuất hiện và chỉ đưa hình/bảng đã có dữ liệu thật. Không cần mỗi ảnh một trang và không thay số liệu bằng ảnh chụp màn hình khó đọc.
-
-## 8. Checklist trước khi hoàn thiện báo cáo
-
-- [ ] Tên đề tài và câu hỏi khớp STT 22/47; phần mở rộng được đánh dấu.
-- [ ] Đúng ba tên/MSSV; không còn chỗ trống giảng viên/lớp/ngày mà nhóm chưa xác nhận.
-- [ ] Nguồn DOI, v2, CC BY 4.0; 9.004 dòng raw và khác biệt với mô tả nguồn được nêu.
-- [ ] Số dòng sạch/cách ly/trùng lấy từ kết quả cuối; mẫu số không chồng nhau; file lineage truy nguyên được.
-- [ ] Giá rao được gọi đúng; đơn vị VND/m² nhất quán; diện tích và loại hình có giới hạn ngữ nghĩa.
-- [ ] Có bảng quy tắc trước/sau; không sửa raw; không tự điền dữ liệu làm kết luận đẹp hơn.
-- [ ] IQR chỉ gắn cờ theo chính sách đã nêu; phân tích độ nhạy có kết quả thật.
-- [ ] Từng nhận xét có n, số liệu, đơn vị, nguồn hình/bảng; không có khẳng định nhân quả hoặc thị trường hiện tại không có bằng chứng.
-- [ ] CSV, Excel, dashboard, DB và báo cáo dùng cùng lần chạy.
-- [ ] Nếu có K-means: có code, biến/scaler/k/seed, kết quả và giải thích; không dùng Accuracy sai mục đích.
-- [ ] Nếu có tối ưu SQL: DB thật, SQL thật, kết quả tương đương, nhiều lượt đo và kế hoạch thực thi.
-- [ ] Mỗi thành viên có thí nghiệm, phần viết, kiểm tra chéo và biết chạy phần mình.
-- [ ] Tóm tắt/kết luận phản ánh đúng kết quả; hình/bảng đánh số và dẫn trong nội dung.
-- [ ] Tài liệu tham khảo đủ nguồn đã dùng; mã/lệnh/môi trường và dữ liệu gốc đi kèm.
-- [ ] Demo thử ngoại tuyến; bản PDF/Word cuối đọc rõ, không cắt hình/bảng; quy định nộp được nhóm tự đối chiếu với thông báo thầy.
+Đọc cùng: [rà soát](RA_SOAT_KY_THUAT.md), [yêu cầu sáu chương](DOI_CHIEU_YEU_CAU_BAO_CAO.md), [nhật ký UI](KIEM_THU_THUC_TE.md), [README](../README.md), [đối chiếu slide](../references/DOI_CHIEU_SLIDE.md).

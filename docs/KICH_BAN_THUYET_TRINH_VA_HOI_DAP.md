@@ -1,5 +1,7 @@
 # Kịch bản trình bày 10 phút và câu hỏi bảo vệ
 
+> Cập nhật ngày 15/10/2026: kịch bản này thuộc bản nền trước đợt rà soát code và yêu cầu báo cáo sáu chương. Chưa dùng nguyên trạng làm kịch bản cuối. Lấy số liệu từ lần chạy đã kiểm chứng sau cùng; sắp xếp phần trình bày theo [yêu cầu báo cáo mới](DOI_CHIEU_YEU_CAU_BAO_CAO.md). Không dùng số cũ hoặc mô tả chức năng chưa được hiện thực.
+
 **Nhóm:** Võ Văn Đạt — N23DCCN078; Nguyễn Thị Yến Nhi — N23DCCN112; Hứa Như Quỳnh — N23DCCN118.
 
 **Thông điệp chính:** từ dữ liệu quảng cáo bất động sản có nhiều vấn đề, nhóm xây dựng một quy trình xử lý có thể kiểm chứng và dùng biểu đồ để trả lời các câu hỏi trong phạm vi mẫu. Phần chính gắn Chương 1–3; K-means và SQL là mở rộng có thực thi.

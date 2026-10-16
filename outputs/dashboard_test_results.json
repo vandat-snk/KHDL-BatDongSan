@@ -1,0 +1,35 @@
+{
+  "status": "passed",
+  "core_run_id": "20261016T015620Z-f2e661a6",
+  "test_file_sha256": "b7be178c0afea4adcd787bd8081a8335756dc289e94fcbbd642a0c8f1c045554",
+  "dashboard_sha256": "1354d6ae44f4268e641f41d5bb67ebdb017c7abae3f851306aac8cadc9d79326",
+  "scope": "Actual JS in minimal DOM; does not validate browser layout",
+  "findings": [
+    {
+      "label": "baseline",
+      "count": 6936
+    },
+    {
+      "label": "exclude precomputed group IQR",
+      "count": 6676
+    },
+    {
+      "label": "explicit sale titles only",
+      "count": 3030
+    },
+    {
+      "label": "HCMC",
+      "count": 3277
+    },
+    {
+      "label": "HCMC apartments",
+      "count": 239
+    },
+    {
+      "label": "empty selection",
+      "count": 0
+    }
+  ],
+  "exported_search_rows": 1014,
+  "clustered_rows": 6676
+}

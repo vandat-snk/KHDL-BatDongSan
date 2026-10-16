@@ -14,8 +14,12 @@ import math
 import re
 import sqlite3
 import statistics
+import sys
+import tempfile
 import time
 import unicodedata
+import uuid
+from datetime import datetime, timezone
 from pathlib import Path
 
 import numpy as np
@@ -25,6 +29,10 @@ matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 
 ROOT = Path(__file__).resolve().parents[1]
+if str(ROOT / 'src') not in sys.path:
+    sys.path.insert(0, str(ROOT / 'src'))
+from artifact_contract import CORE_CODE, file_sha256, read_verified_source
+from source_checks import check_source_consistency
 SEED = 20261015
 CORE_FIELDS = ("title", "price", "area", "location", "description")
 TYPE_LABELS = {"land": "Đất", "house": "Nhà", "apartment": "Căn hộ", "other_unknown": "Khác / chưa rõ"}
@@ -73,9 +81,13 @@ def parse_number(text: str) -> tuple[float, list[str]]:
     flags = []
     if "," in value and "." in value:
         if value.rfind(",") > value.rfind("."):
+            if not re.fullmatch(r"[+-]?\d{1,3}(?:\.\d{3})+,\d+", value):
+                raise ValueError("invalid_mixed_number_grouping")
             value = value.replace(".", "").replace(",", ".")
         else:
             # Accept standard international mixed notation only when grouping is clear.
+            if not re.fullmatch(r"[+-]?\d{1,3}(?:,\d{3})+\.\d+", value):
+                raise ValueError("invalid_mixed_number_grouping")
             value = value.replace(",", "")
             flags.append("international_number_format")
     elif "," in value:
@@ -84,7 +96,7 @@ def parse_number(text: str) -> tuple[float, list[str]]:
         value = value.replace(",", ".")
     elif "." in value:
         parts = value.lstrip("+-").split(".")
-        if len(parts) > 1 and all(len(x) == 3 for x in parts[1:]) and parts[0] != "0":
+        if len(parts) > 1 and len(parts[0]) <= 3 and all(len(x) == 3 for x in parts[1:]) and parts[0] != "0":
             if len(parts) == 2:
                 flags.append("dot_thousands_convention")
             value = value.replace(".", "")
@@ -131,13 +143,19 @@ def parse_price(text: object, area: float | None = None) -> tuple[float | None, 
     residue = re.sub(pattern, "", value).strip()
     if not matches or residue:
         return None, "unknown", ["ambiguous_price_or_unit"]
-    total, flags = 0., []
+    total, flags, previous_unit = 0., [], float("inf")
     for match in matches:
         try:
             number, number_flags = parse_number(match.group(1))
         except ValueError as exc:
             return None, "unknown", [str(exc)]
-        total += number * units[match.group(2)]
+        unit = units[match.group(2)]
+        # Compound prices must be nonnegative descending units (1 tỷ 200 triệu).
+        # A range/negative component or repeated unit is not an additive price.
+        if number < 0 or unit >= previous_unit:
+            return None, "unknown", ["ambiguous_compound_price"]
+        previous_unit = unit
+        total += number * unit
         flags.extend(number_flags)
     if total <= 0:
         return None, "unknown", flags + ["nonpositive_price"]
@@ -151,11 +169,18 @@ def parse_price(text: object, area: float | None = None) -> tuple[float | None, 
 
 def classify_title(title: object) -> tuple[str, str, list[str]]:
     title = normalize(title)
+    # Location/investor phrases do not name the advertised asset.
+    asset_title = re.sub(r"\bnha trang\b|\bnha đam\b|\bnhà bè\b|\bnhà đầu tư\b|\bnhà nước\b|\bnhà máy\b", " ", title)
+    explicit_land = bool(re.search(r"(?:\bbán\s+(?:gấp\s+)?(?:lô\s+)?)?\bđất\b|\bđất nền\b|\bnền\s+(?:biệt thự|thổ cư)\b", asset_title))
+    land_asset_first = bool(re.search(r"^(?:chính chủ\s+|cần\s+|bán\s+|gấp\s+|lô\s+|\d+[\d.,]*m2\s+)*?(?:đất|nền)\b", asset_title))
+    explicit_house_first = bool(re.search(r"^(?:chính chủ\s+|cần\s+|bán\s+|gấp\s+|căn\s+)*?(?:nhà|biệt thự)\b", asset_title))
     if re.search(r"căn hộ|chung cư|apartment|condo|\bcc\b.*\b\d+pn\b", title):
         kind = "apartment"
-    elif re.search(r"\bnhà\b|biệt thự|\bnha\b|\bbiệt\s*thự\b", title):
+    elif land_asset_first and explicit_land and not explicit_house_first:
+        kind = "land"
+    elif re.search(r"\bnhà\b|biệt thự|\bnha\b|\bbiệt\s*thự\b", asset_title):
         kind = "house"
-    elif re.search(r"\bđất\b|\bdat\b|\bnền\b|\bruộng\b|\brẫy\b", title):
+    elif re.search(r"\bđất\b|\bdat\b|\bnền\b|\bruộng\b|\brẫy\b", asset_title):
         kind = "land"
     else:
         kind = "other_unknown"
@@ -215,6 +240,10 @@ def clean_records(records: list[dict]) -> tuple[pd.DataFrame, pd.DataFrame, pd.D
             reasons.append("invalid_or_missing_price")
         kind, transaction, title_flags = classify_title(row.get("title"))
         flags.extend(title_flags)
+        review_reasons, review_flags, review_evidence = check_source_consistency(
+            row, area, price, basis, parse_number, normalize)
+        reasons.extend(review_reasons)
+        flags.extend(review_flags)
         if transaction not in ("sale", "sale_assumed", "sale_with_rental_income"):
             reasons.append("exclude_rental_or_mixed_transaction")
         title = normalize(row.get("title"))
@@ -230,6 +259,7 @@ def clean_records(records: list[dict]) -> tuple[pd.DataFrame, pd.DataFrame, pd.D
                  "area_m2": area, "sale_price_vnd": price,
                  "price_per_m2_vnd": price / area if area and price else None,
                  "price_basis": basis, "area_source": source,
+                 "source_review_evidence": json.dumps(review_evidence, ensure_ascii=False, separators=(",", ":")),
                  "quality_flags": ";".join(sorted(set(flags)))}
         status = "rejected" if reasons else "kept"
         lineage.append({"row_id": row_id, "listing_id": fingerprint[:20], "status": status, "canonical_row_id": row_id, "reasons": ";".join(sorted(set(reasons)))})
@@ -285,6 +315,11 @@ def add_outlier_flags(clean: pd.DataFrame) -> tuple[pd.DataFrame, pd.DataFrame, 
 
 def kmeans(x: np.ndarray, k: int, seed: int = SEED, n_init: int = 10, max_iter: int = 150) -> tuple[np.ndarray, np.ndarray, float]:
     """NumPy implementation, KMeans++ starts; fixed seed and multiple restarts."""
+    x = np.asarray(x, dtype=float)
+    if x.ndim != 2 or not np.isfinite(x).all() or x.shape[1] == 0:
+        raise ValueError("kmeans_requires_finite_matrix")
+    if any(not isinstance(v, (int, np.integer)) or v < 1 for v in (k, n_init, max_iter)):
+        raise ValueError("kmeans_requires_positive_integer_parameters")
     if len(x) < k or len(np.unique(x, axis=0)) < k:
         raise ValueError("k_exceeds_distinct_points")
     rng = np.random.default_rng(seed)
@@ -312,9 +347,16 @@ def kmeans(x: np.ndarray, k: int, seed: int = SEED, n_init: int = 10, max_iter: 
 
 
 def sampled_silhouette(x: np.ndarray, labels: np.ndarray, seed: int = SEED, sample_size: int = 1000) -> float:
+    x, labels = np.asarray(x, dtype=float), np.asarray(labels)
+    if x.ndim != 2 or not np.isfinite(x).all() or labels.ndim != 1 or len(x) != len(labels):
+        raise ValueError("silhouette_requires_aligned_finite_data")
+    if not isinstance(sample_size, (int, np.integer)) or sample_size < 2:
+        raise ValueError("silhouette_sample_too_small")
     rng = np.random.default_rng(seed)
     selected = np.sort(rng.choice(len(x), size=min(sample_size, len(x)), replace=False))
     points, classes = x[selected], labels[selected]
+    if not 2 <= len(np.unique(classes)) < len(points):
+        raise ValueError("silhouette_sample_requires_two_to_n_minus_one_clusters")
     distances = np.sqrt(np.maximum(((points[:, None, :] - points[None, :, :]) ** 2).sum(axis=2), 0))
     scores = np.zeros(len(points))
     for i, label in enumerate(classes):
@@ -554,6 +596,8 @@ def build_database(clean: pd.DataFrame, database: Path, sql_folder: Path) -> dic
              r.transaction_status, float(r.area_m2), float(r.sale_price_vnd), float(r.price_per_m2_vnd), int(r.is_outlier_group), int(r.cluster)) for r in clean.itertuples()]
     conn.executemany("INSERT INTO listings VALUES (?,?,?,?,?,?,?,?,?,?,?)", rows)
     conn.commit()
+    # Both stages have table statistics; the second additionally has index statistics.
+    conn.execute("ANALYZE")
     common = clean.groupby(["province", "property_type"]).size().sort_values(ascending=False).index[0]
     subset = clean[clean.province.eq(common[0]) & clean.property_type.eq(common[1])]
     low, high = subset.price_per_m2_vnd.quantile([.35, .65]).tolist()
@@ -580,10 +624,14 @@ def build_database(clean: pd.DataFrame, database: Path, sql_folder: Path) -> dic
     conn.commit()
     conn.execute("ANALYZE")
     after = measure()
-    assert before["result_sha256"] == after["result_sha256"]
+    if before["result_sha256"] != after["result_sha256"]:
+        conn.close()
+        raise ValueError('SQL index changed query results; refusing to publish this run.')
     integrity = conn.execute("PRAGMA integrity_check").fetchone()[0]
     foreign_key_errors = conn.execute("PRAGMA foreign_key_check").fetchall()
     conn.close()
+    if integrity != 'ok' or foreign_key_errors:
+        raise ValueError('Database integrity or foreign-key verification failed.')
     (sql_folder / "01_schema.sql").write_text(SCHEMA_SQL, encoding="utf8")
     (sql_folder / "02_queries.sql").write_text(QUERIES_SQL, encoding="utf8")
     (sql_folder / "03_indexes.sql").write_text(INDEX_SQL + "\nANALYZE;\n", encoding="utf8")
@@ -591,7 +639,7 @@ def build_database(clean: pd.DataFrame, database: Path, sql_folder: Path) -> dic
             "query": BENCH_QUERY, "parameters": list(params), "parameter_labels": {"province": common[0], "property_type": common[1]},
             "before": before, "after": after, "median_speedup": before["median_ms"] / after["median_ms"],
             "identical_results": True, "integrity_check": integrity, "foreign_key_errors": foreign_key_errors,
-            "protocol": "One real source snapshot. Same connection, SQL and parameters; before/after composite index, 10 warmups + 51 timings. Small warm-cache benchmark, not a production speedup claim."}
+            "protocol": "One real source snapshot. Same connection, SQL and parameters; ANALYZE before each stage, second stage has composite index and its statistics; 10 warmups + 51 timings per stage. Sequential before/after warm-cache illustration, not randomized or a production speedup claim."}
 
 
 def json_default(value):
@@ -608,11 +656,40 @@ def main(argv=None):
     parser.add_argument("--output-root", type=Path, default=ROOT)
     args = parser.parse_args(argv)
     root, raw = args.output_root.resolve(), args.raw.resolve()
+    records, original_hash = read_verified_source(raw)
+    run_id = datetime.now(timezone.utc).strftime('%Y%m%dT%H%M%SZ') + '-' + uuid.uuid4().hex[:8]
+    stage_parent = root / 'tmp'
+    stage_parent.mkdir(parents=True, exist_ok=True)
+    with tempfile.TemporaryDirectory(prefix='pipeline_stage_', dir=stage_parent) as temporary:
+        staging = Path(temporary).resolve()
+        if not staging.is_relative_to(stage_parent.resolve()):
+            raise ValueError('Unexpected staging path outside the project.')
+        analysis = generate_outputs(staging, raw, records, original_hash, run_id)
+        artifacts = {path.relative_to(staging).as_posix(): file_sha256(path)
+                     for path in sorted(staging.rglob('*')) if path.is_file()}
+        manifest = {'schema_version': '2.0', 'run_id': run_id,
+                    'created_at_utc': datetime.now(timezone.utc).isoformat(),
+                    'source_sha256': original_hash,
+                    'source_files': {name: file_sha256(ROOT / name) for name in CORE_CODE},
+                    'artifacts': artifacts}
+        for relative in artifacts:
+            target = root / relative
+            target.parent.mkdir(parents=True, exist_ok=True)
+            (staging / relative).replace(target)
+        manifest_tmp = root / 'outputs/run_manifest.pending.json'
+        manifest_tmp.write_text(json.dumps(manifest, ensure_ascii=False, indent=2), encoding='utf-8')
+        manifest_tmp.replace(root / 'outputs/run_manifest.json')
+    print(json.dumps({'run_id': run_id, 'counts': analysis['counts'], 'overall': analysis['overall'],
+                      'chosen_k': analysis['clustering']['chosen_k'],
+                      'sql_speedup': analysis['sql_benchmark']['median_speedup']},
+                     ensure_ascii=True, default=json_default))
+
+
+def generate_outputs(root, raw, records, original_hash, run_id):
+    """Build in a temporary tree; publish nothing if any generation step fails."""
     processed, outputs, charts, tables, sql = root / "data/processed", root / "outputs", root / "outputs/charts", root / "outputs/tables", root / "sql"
     for folder in (processed, outputs, charts, tables, sql):
         folder.mkdir(parents=True, exist_ok=True)
-    original_hash = hashlib.sha256(raw.read_bytes()).hexdigest()
-    records = json.loads(raw.read_text(encoding="utf8"))
     clean, rejected, lineage, counts = clean_records(records)
     clean, iqr_bounds, global_bounds = add_outlier_flags(clean)
     clean, cluster_trials, clusters, cluster_meta = cluster_records(clean)
@@ -635,7 +712,9 @@ def main(argv=None):
     make_charts(clean, counts, province, sensitivity, cluster_trials, charts)
     correlations = clean[["area_m2", "sale_price_vnd", "price_per_m2_vnd"]].rank().corr().round(6).to_dict()
     quality_flags = pd.Series([flag for item in clean.quality_flags for flag in item.split(";") if flag]).value_counts().to_dict()
-    analysis = {"schema_version": "1.0", "seed": SEED, "source": {"path": str(raw.relative_to(ROOT)) if raw.is_relative_to(ROOT) else str(raw),
+    analysis = {"schema_version": "2.0", "run_id": run_id, "seed": SEED,
+                "environment": {"python": sys.version.split()[0], "numpy": np.__version__, "pandas": pd.__version__, "matplotlib": matplotlib.__version__, "sqlite": sqlite3.sqlite_version},
+                "source": {"path": str(raw.relative_to(ROOT)) if raw.is_relative_to(ROOT) else str(raw),
                 "sha256": original_hash, "dataset_url": "https://data.mendeley.com/datasets/5477zhnmn2/2", "doi": "10.17632/5477zhnmn2.2",
                 "published": "2021-01-12", "license": "CC BY 4.0", "source_claimed_count": 10000, "actual_count": len(records),
                 "time_scope": "Historical snapshot; no per-listing timestamp, not current market data"},
@@ -650,6 +729,8 @@ def main(argv=None):
                 "clustering": {**cluster_meta, "trials": cluster_trials.to_dict(orient="records"), "summary": clusters.to_dict(orient="records")},
                 "sql_benchmark": benchmark,
                 "policies": ["No imputation of price or area; recover explicit area from top-level price only.", "Deduplicate only when all five normalized core fields match; preserve canonical raw row id.",
+                             "Cross-check title/description for explicit unit, currency and gross price/area contradictions; quarantine unresolved cases with numeric evidence, never overwrite source values.",
+                             "Text-review flags are conservative rules, not proof that a source entry is wrong; installment, multi-offer and dimension expressions can be ambiguous.",
                              "Quarantine parsed total price below 10m VND for manual review; do not correct presumed units.", "IQR outliers flagged and retained in main analysis; group fallback requires n>=30.",
                              "Type inferred from title, sale status partly assumed; sensitivity shows explicit sale titles.", "Ignore suspicious detail fields; no bedroom/legal/coordinates/date inference.",
                              "Area dot thousands convention flagged; sensitivity excludes affected rows.",
@@ -658,9 +739,10 @@ def main(argv=None):
                 "limitations": ["Convenience sample, listing duplicates may remain, no representative market inference.", "Historical locality names from original snapshot; no conversion to 2026 administrative boundaries.",
                                 "Asking prices may be erroneous, installments or per-area prices entered as totals; automatic flags cannot resolve all.", "Property type heuristics require human audit; no transaction-level identifiers or dates.",
                                 "Bootstrap intervals assume independent ads conditionally on this sample; repeated agents/dependence can understate uncertainty.", "Correlation is descriptive; derived price-per-area variables cause mathematical coupling.", "KMeans has no external validation and is an optional teaching extension."]}
-    assert hashlib.sha256(raw.read_bytes()).hexdigest() == original_hash, "Raw file unexpectedly changed"
+    if file_sha256(raw) != original_hash:
+        raise ValueError('Raw file changed while processing; no results were published.')
     (outputs / "analysis.json").write_text(json.dumps(analysis, ensure_ascii=False, indent=2, default=json_default), encoding="utf8")
-    print(json.dumps({"counts": counts, "overall": analysis["overall"], "chosen_k": cluster_meta["chosen_k"], "sql_speedup": benchmark["median_speedup"]}, ensure_ascii=False, default=json_default))
+    return analysis
 
 
 if __name__ == "__main__":

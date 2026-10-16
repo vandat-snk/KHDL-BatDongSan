@@ -299,4 +299,8 @@ def main():
     print('Report created with measured counts:', c['clean_count'])
 
 if __name__ == '__main__':
-    main()
+    raise SystemExit(
+        'Report generation paused: this is the previous draft builder and does not implement '
+        'the teacher\'s required six chapters. Read docs/DOI_CHIEU_YEU_CAU_BAO_CAO.md '
+        'and docs/RA_SOAT_KY_THUAT.md. No report was overwritten.'
+    )

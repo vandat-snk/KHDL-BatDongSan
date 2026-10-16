@@ -1,71 +1,135 @@
-# Đồ án phân tích giá rao bất động sản Việt Nam
+# Phân tích giá rao bất động sản Việt Nam
 
-**Đề tài chính:** Xây dựng bộ dữ liệu về bất động sản, xử lý và trực quan hóa dữ liệu và rút ra các ý nghĩa (STT 22 hoặc 47 trong danh sách môn học).
+Đồ án Nhập môn Khoa học dữ liệu về xây dựng, xử lý, trực quan hóa dữ liệu bất động sản và rút ra ý nghĩa; STT đăng ký 22 hoặc 47 cần nhóm xác nhận.
 
-Nhóm gồm Võ Văn Đạt (N23DCCN078), Nguyễn Thị Yến Nhi (N23DCCN112), Hứa Như Quỳnh (N23DCCN118).
+Nhóm: Võ Văn Đạt (N23DCCN078), Nguyễn Thị Yến Nhi (N23DCCN112), Hứa Như Quỳnh (N23DCCN118).
 
-## Mở kết quả ngay
+## Mục tiêu và phạm vi
 
-1. Mở `outputs/DASHBOARD_BAT_DONG_SAN.html` bằng Edge hoặc Chrome, hoặc nhấp đôi `MO_DASHBOARD.cmd`. Không cần mạng hoặc cài Python để xem.
-2. Mở `outputs/DO_AN_BAT_DONG_SAN.xlsx` bằng Excel để xem bảng tính và các biểu đồ có thể chỉnh sửa.
-3. Đọc `docs/BAO_CAO_DO_AN.docx`: bản thảo báo cáo có kết quả thực từ pipeline. Nhóm bổ sung tên trường, lớp, giảng viên, thời hạn và phần cải tiến của mình trước khi nộp.
-4. Đọc `docs/PHAN_CONG_VA_NOI_DUNG_BAO_CAO.md` để nhận nhiệm vụ tìm hiểu, kiểm chứng và cải tiến; `docs/KICH_BAN_THUYET_TRINH_VA_HOI_DAP.md` để luyện bảo vệ.
+Mục tiêu duy nhất là giúp người phân tích khám phá và so sánh đặc điểm giá rao trong một mẫu tin bất động sản lịch sử bằng quy trình có thể chạy lại và kiểm chứng.
 
-## Phạm vi và bằng chứng
+Nguồn là Vietnam Real Estate Data v2 trên Mendeley Data, DOI [10.17632/5477zhnmn2.2](https://doi.org/10.17632/5477zhnmn2.2), CC BY 4.0, công bố 12/01/2021. File thực tế có 9.004 bản ghi. Một dòng là một tin rao; chưa xác nhận là một bất động sản duy nhất hoặc một giao dịch. Không diễn giải kết quả thành thị trường năm 2026. Không có ngày từng tin hoặc tọa độ xác minh để dựng chuỗi thời gian hay vị trí căn nhà.
 
-Phần chính đáp ứng Chương 1–3: xác định câu hỏi, kiểm tra chất lượng, xử lý thiếu và trùng, chuẩn hóa đơn vị, gắn cờ ngoại lệ, phân tích và trực quan hóa. Phần mở rộng có **code K-means chạy ra nhãn cụm** và **database SQLite thực, câu SQL và đo truy vấn trước/sau index**. Hai phần này là bổ sung; không đổi đề tài sang dự đoán giá hoặc tối ưu dữ liệu lớn.
+Phần chính bám Chương 1–3 môn học. K-means và SQLite là công cụ mở rộng phục vụ khám phá cùng tập tin: có code phân cụm, database thực, SQL và benchmark. Không triển khai dự đoán giá hoặc khuyến nghị đầu tư. Xem [nguồn dữ liệu](references/DATA_SOURCE.md) và [đối chiếu slide](references/DOI_CHIEU_SLIDE.md).
 
-Nguồn là Vietnam Real Estate Data v2 trên Mendeley Data, DOI `10.17632/5477zhnmn2.2`, CC BY 4.0, công bố 12/01/2021. File thực tế có **9.004 dòng**, khác mô tả khoảng 10.000 của nguồn. Giá là **giá rao**, không phải giá giao dịch; không diễn giải thành tình hình thị trường năm 2026. Xem `references/DATA_SOURCE.md` để biết tác giả, URL tải, checksum và giới hạn. Không có ngày từng tin hoặc tọa độ đáng tin cậy nên không dựng chuỗi thời gian hay bản đồ căn nhà.
+## Trạng thái báo cáo
 
-## Cấu trúc
+Kết quả và các sửa đổi ngày 16/10/2026: [biên bản rà soát kỹ thuật](docs/RA_SOAT_KY_THUAT.md). Bản sau rà soát có 6.936 tin, khác 7.001 tin của bản nền. Nhóm dùng số liệu cùng mã lần chạy khi demo và viết báo cáo.
 
-| Thư mục | Nội dung |
+`docs/BAO_CAO_DO_AN.docx` và `.md` là bản thảo cũ, trước khi nhận yêu cầu sáu chương của giảng viên. Giữ lại để đối chiếu; chưa đáp ứng cấu trúc/định dạng mới và chưa dùng làm bản nộp. Đợt rà soát này ưu tiên sửa và kiểm chứng code, chưa tạo báo cáo Word mới.
+
+Chuẩn biên soạn tiếp theo nằm trong [đối chiếu yêu cầu báo cáo](docs/DOI_CHIEU_YEU_CAU_BAO_CAO.md): Giới thiệu → Cơ sở lý thuyết → Phân tích và thiết kế → Hiện thực → Demo và vận hành → Kết luận. [Phân công cập nhật](docs/PHAN_CONG_VA_NOI_DUNG_BAO_CAO.md) đã giao từng mô-đun, 60 tin kiểm chéo, sáu chương và các cải tiến theo ưu tiên cho ba thành viên. Ghi tiến độ thực tế vào [nhật ký nhiệm vụ](docs/NHAT_KY_KIEM_TRA_CHEO.md). `tools/build_report.py` của bản thảo cũ đã tạm khóa chạy trực tiếp để tránh ghi đè báo cáo bằng cấu trúc và số liệu cũ.
+
+## Mở sản phẩm đã có
+
+1. Nhấp đôi `MO_DASHBOARD.cmd` để mở dashboard bằng Edge/Chrome, hoặc dùng Ctrl+O trong trình duyệt chọn `outputs/DASHBOARD_BAT_DONG_SAN.html`. Không cần Python hay mạng để xem.
+2. Mở `outputs/DO_AN_BAT_DONG_SAN.xlsx` bằng Excel. Workbook có dữ liệu, công thức và bốn biểu đồ; xem giới hạn tạo lại bên dưới.
+3. Đọc [phân công kỹ thuật](docs/PHAN_CONG_VA_NOI_DUNG_BAO_CAO.md), [kịch bản bảo vệ](docs/KICH_BAN_THUYET_TRINH_VA_HOI_DAP.md) và [nhật ký kiểm thử người dùng](docs/KIEM_THU_THUC_TE.md). Số liệu nền phải đối chiếu lại sau khi sửa quy tắc.
+
+## Cấu trúc dự án
+
+| Vị trí | Nội dung |
 |---|---|
-| `data/raw` | File nguồn nguyên trạng, metadata và manifest để kiểm chứng |
-| `data/processed` | Dữ liệu sạch, dòng loại, ánh xạ từng dòng nguồn sang kết quả |
-| `src` | Pipeline Python và mã dashboard |
-| `scripts/download_data.py` | Tải lại nguồn và kiểm tra SHA-256 |
-| `sql` | DDL, truy vấn minh họa và phần tối ưu index |
-| `outputs` | Dashboard, Excel, kết quả JSON, bảng CSV, biểu đồ và database |
-| `docs` | Báo cáo, phân công, nội dung cần có và kịch bản bảo vệ |
-| `references` | Nguồn dữ liệu và đối chiếu từng trang slide |
-| `tests` | Kiểm thử những quy tắc xử lý quan trọng |
-| `tools` | Tạo dashboard, báo cáo và workbook từ kết quả pipeline |
-| `tmp` | Ảnh và log dùng kiểm tra nội bộ, không cần nộp |
+| `data/raw` | Nguồn nguyên trạng, metadata/manifest; JSON lớn không nằm trên Git |
+| `data/processed` | Dữ liệu sạch, tin cách ly và trạng thái mỗi dòng nguồn |
+| `src` | Pipeline Python và mẫu dashboard HTML/CSS/JavaScript |
+| `scripts` | Tải nguồn, demo SQL và lệnh chạy dự án |
+| `sql` | Schema ba bảng, truy vấn minh họa, chỉ mục |
+| `outputs` | JSON kết quả, bảng CSV, biểu đồ, database, dashboard, Excel và kiểm tra đầu ra |
+| `tools` | Công cụ dựng/kiểm tra sản phẩm |
+| `tests` | Kiểm thử đơn vị và tích hợp |
+| `docs` | Tài liệu kiểm tra, phân công, yêu cầu mới và bản thảo báo cáo cũ |
+| `references` | Nguồn dữ liệu, đăng ký, đối chiếu slide |
+| `tmp` | Kết quả kiểm tra cục bộ; không phải điều kiện để clone và chạy phân tích |
 
-## Chạy lại phân tích trên Windows
+## Cài và chạy từ bản clone trên Windows
 
-Chạy PowerShell trong thư mục đề tài `E:\VanDat_\KHDL\Phân tích giá rao bất động sản Việt Nam`. Python 3.11 trở lên được khuyến nghị.
+Yêu cầu Python 3.11 trở lên. Cài thư viện và tải nguồn lần đầu cần mạng. Mở PowerShell tại thư mục gốc repo; nếu ở máy ban đầu:
 
 ```powershell
-py -m venv .venv
+cd "E:\VanDat_\KHDL\Phân tích giá rao bất động sản Việt Nam"
+python -m venv .venv
 .\.venv\Scripts\python.exe -m pip install -r requirements.txt
-.\.venv\Scripts\python.exe src\pipeline.py
-.\.venv\Scripts\python.exe tools\build_dashboard.py
-.\.venv\Scripts\python.exe tools\build_report.py
-.\.venv\Scripts\python.exe -m unittest discover -s tests -v
-.\.venv\Scripts\python.exe scripts\demo_sql.py
 ```
 
-Nguồn đã có sẵn nên các bước phân tích chạy ngoại tuyến sau khi cài thư viện. Nếu cần tải lại:
+Nếu clone ở máy khác, chuyển vào đường dẫn bản clone của bạn. Mã chính xác định thư mục dự án theo vị trí file.
+
+Chạy quy trình và kiểm chứng bằng một lệnh:
 
 ```powershell
-.\.venv\Scripts\python.exe scripts\download_data.py
+.\.venv\Scripts\python.exe -X utf8 scripts\run_project.py
 ```
 
-Pipeline chỉ tái tạo các kết quả của đồ án; giữ nguyên dữ liệu gốc. Tên cột, quy tắc, seed và các số đo được lưu cùng kết quả. Đọc thông báo lỗi thay vì sử dụng kết quả cũ nếu một bước thất bại.
+Lệnh mặc định kiểm/tải đúng dữ liệu nguồn trước, rồi chạy pipeline, dựng dashboard, kiểm thử và đối soát phần cốt lõi. Nó không tạo lại báo cáo. Nếu một bước thất bại, đọc lỗi và xử lý; không dùng file cũ trong `outputs` để khẳng định lần chạy mới thành công.
 
-Workbook được tạo bằng `@oai/artifact-tool` của runtime Codex. `tools/build_workbook.mjs` lưu toàn bộ cách tạo. Việc tạo lại workbook cần Node và gói này; môi trường Python riêng không cài nó. File Excel bàn giao mở được độc lập, các công thức và biểu đồ gắn với dữ liệu trong workbook. Khi thay nguồn, chạy lại pipeline và tạo lại workbook qua Codex để các bảng chụp kết quả cũng được cập nhật.
+File `data/raw/chotot_data.json` không được đưa lên GitHub. Tải riêng khi cần:
 
-Nếu có Node.js 22 trở lên, chạy `node tests/test_dashboard.mjs` để kiểm tra mã dashboard với DOM mô phỏng. Đây là kiểm thử bộ lọc, KPI, phân trang, CSV và liên kết; không thay thế việc mở dashboard trong trình duyệt để kiểm tra bố cục.
+```powershell
+.\.venv\Scripts\python.exe -X utf8 scripts\download_data.py
+```
 
-## Cách kiểm chứng trước khi nộp
+Khi nguồn đã có đúng checksum và thư viện đã cài, chạy ngoại tuyến:
 
-- Tổng dòng giữ + dòng trùng + dòng loại phải bằng 9.004; mỗi dòng nguồn xuất hiện đúng một lần trong nhật ký.
-- Chọn ít nhất 30 dòng thuộc nhiều cách ghi giá để kiểm tra tay phép đổi đơn vị và đơn giá. Nhóm tự ghi nhận kết quả kiểm tra này; không xem kiểm thử tự động là kiểm tra nhãn thủ công.
-- Đối chiếu cùng số tin và trung vị giữa CSV, Excel, dashboard và báo cáo khi chưa lọc. Không nhầm trung bình với trung vị, hoặc trung bình các tỷ số với tỷ số của tổng.
-- Thử bộ lọc tỉnh, loại, bỏ ngoại lệ và mẫu rỗng; đồ thị, bảng và CSV xuất phải dùng cùng tập tin.
-- Đọc `references/DOI_CHIEU_SLIDE.md` để giải thích mỗi kỹ thuật bằng nội dung môn học. K-means chỉ phân cụm; không phải hệ thống dự đoán giá nhà.
-- Với SQL, so sánh cùng câu truy vấn và tham số, kế hoạch thực thi, kết quả và trung vị thời gian. Dataset nhỏ không đủ để khẳng định hiệu quả trên dữ liệu lớn.
+```powershell
+.\.venv\Scripts\python.exe -X utf8 scripts\run_project.py --skip-download
+```
 
-Các tệp báo cáo là bản thảo có kết quả đã chạy. Đóng góp cải tiến và mức độ hiểu bài của từng thành viên cần được nhóm thực hiện, xác minh và cập nhật trung thực.
+`--skip-download` chỉ bỏ bước truy cập tải nguồn, không phải cách bỏ kiểm chứng checksum của pipeline. `--skip-tests` là lựa chọn chủ động bỏ chạy test; kết quả phải ghi trạng thái bỏ qua, không coi là kiểm thử đạt.
+
+## Chạy từng bước để tìm hiểu code
+
+Chạy tuần tự từ thư mục repo:
+
+```powershell
+.\.venv\Scripts\python.exe -X utf8 scripts\download_data.py
+.\.venv\Scripts\python.exe -X utf8 src\pipeline.py
+.\.venv\Scripts\python.exe -X utf8 tools\build_dashboard.py
+.\.venv\Scripts\python.exe -X utf8 -m unittest discover -s tests -v
+.\.venv\Scripts\python.exe -X utf8 scripts\demo_sql.py
+.\.venv\Scripts\python.exe -X utf8 tools\verify_delivery.py --core-only
+.\MO_DASHBOARD.cmd
+```
+
+Pipeline tái tạo dữ liệu sạch, thống kê, phân cụm, biểu đồ, database và SQL. Dashboard dùng dữ liệu vừa xử lý. Các bước này không tự tạo lại workbook hoặc bản báo cáo cũ.
+
+Nếu có Node.js 22 trở lên:
+
+```powershell
+node tests/test_dashboard.mjs
+```
+
+Test JavaScript dùng DOM mô phỏng để kiểm bộ lọc, KPI, mẫu rỗng, phân trang, CSV và liên kết; không thay thế kiểm tra bố cục trong trình duyệt. Xem phân biệt xác nhận người dùng và kiểm tra tự động tại `docs/KIEM_THU_THUC_TE.md`.
+
+## Excel và phạm vi đối soát
+
+`tools/build_workbook.mjs` dùng Node và `@oai/artifact-tool` của runtime Codex. `pip install -r requirements.txt` không cài gói này. Môi trường Python thông thường có thể tái tạo phần cốt lõi, nhưng chưa đủ để tạo lại chính xác workbook bàn giao. File Excel có sẵn mở độc lập bằng Excel.
+
+Nếu runtime có sẵn phụ thuộc này, chạy toàn bộ và tạo lại workbook:
+
+```powershell
+.\.venv\Scripts\python.exe -X utf8 scripts\run_project.py --workbook
+```
+
+Hoặc chạy riêng `node tools/build_workbook.mjs`, rồi đối soát đầy đủ:
+
+```powershell
+.\.venv\Scripts\python.exe -X utf8 tools\verify_delivery.py --require-workbook
+```
+
+`--core-only` không xác nhận Excel đã cập nhật. Chế độ yêu cầu workbook phải báo lỗi nếu workbook/metadata không khớp lần chạy hiện tại. Không tự cài phụ thuộc nội bộ từ một nguồn không xác định.
+
+Workbook gồm cột snapshot và các công thức gắn với vùng dữ liệu hiện tại. Không giả định sửa một ô giá sẽ tạo lại mọi biến dẫn xuất, nhãn cụm, cờ ngoại lệ và bảng snapshot. Khi thay dữ liệu hoặc quy tắc, chạy lại và dựng lại workbook rồi kiểm chứng; không chỉnh riêng từng sản phẩm để ép số khớp nhau.
+
+## Bằng chứng kiểm tra và cách nghiệm thu
+
+Kết quả kiểm tra mới ở `outputs/AUDIT_RESULTS.json`; trạng thái được gắn với đầu vào/đầu ra và nội dung code của lần kiểm tra. Đọc trạng thái từng phần: kiểm tra cốt lõi thành công không có nghĩa Excel, báo cáo, nhãn dữ liệu hoặc mọi bố cục UI đã được xác nhận. Không lấy `outputs/DELIVERY_CHECK.json` cũ làm bằng chứng cho code đã thay đổi.
+
+`.gitattributes` giữ nguyên byte của mã, dữ liệu và metadata có hash khi Git thêm hoặc checkout file, tránh thay dấu xuống dòng làm sai SHA-256 giữa Windows và máy khác. Nếu sửa nội dung, vẫn phải chạy lại quy trình và dựng sản phẩm liên quan; không sửa hash bằng tay.
+
+- Đối soát số tin giữ + trùng + cách ly bằng số dòng nguồn; mỗi dòng có một trạng thái trong lineage.
+- Kiểm tra tay cách quy đổi giá/diện tích trên mẫu nguồn, cả trường hợp mơ hồ và cách ly. Không tự tạo tỷ lệ chính xác nhãn khi chưa có nhãn do người kiểm tra cung cấp.
+- So sánh số tin, đơn vị và trung vị giữa CSV, database, dashboard, Excel và tài liệu cuối; phân biệt trung bình với trung vị.
+- IQR là cờ ngoại lệ để kiểm độ nhạy; K-means phân nhóm thăm dò. Các cụm không phải nhãn thị trường đã được xác minh.
+- SQL phải dùng cùng truy vấn/tham số và kết quả tương đương trước/sau index. Thời gian tùy máy; không dùng một lần chạy nhỏ để khẳng định hiệu quả mọi truy vấn.
+- Chỉ ghi công việc và cải tiến nhóm thật sự thực hiện. Thí nghiệm trong tài liệu phân công còn là kế hoạch đến khi có kết quả.
+- Bản báo cáo mới cần sáu chương và hình/bảng có dữ liệu minh họa theo [yêu cầu biên soạn](docs/DOI_CHIEU_YEU_CAU_BAO_CAO.md).

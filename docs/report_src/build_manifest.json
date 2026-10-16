@@ -1,0 +1,74 @@
+{
+  "generated_at_utc": "2026-10-16T13:50:00.766479+00:00",
+  "core_run_id": "20261016T015620Z-f2e661a6",
+  "document": "docs\\BAO_CAO_TIEU_LUAN_6_CHUONG.docx",
+  "document_sha256": "d00be8da236d5e95a289b3c7f8c89af85c71e03a4d93ec69a311e316eda839f1",
+  "source_sha256": "e2b5d86c9f7a9733999bd4a8de451a7e915a2d36ea8f6a56f36c907e3a6a74f3",
+  "figures": 9,
+  "tables": 20,
+  "native_equations": 8,
+  "chapter_titles": [
+    "Chương 1 Giới thiệu đề tài",
+    "Chương 2 Cơ sở lý thuyết và nền tảng kỹ thuật",
+    "Chương 3 Phân tích và thiết kế ứng dụng",
+    "Chương 4 Hiện thực hệ thống",
+    "Chương 5 Vận hành và kết quả thực nghiệm",
+    "Chương 6 Kết luận và đánh giá khả năng ứng dụng"
+  ],
+  "caption_index": {
+    "table": {
+      "scope": 1,
+      "trace_design": 2,
+      "dictionary": 3,
+      "db_example": 4,
+      "modules": 5,
+      "operation": 6,
+      "counts": 7,
+      "descriptive": 8,
+      "scatter_examples": 9,
+      "correlations": 10,
+      "province_top": 11,
+      "types": 12,
+      "sensitivity": 13,
+      "cluster_trials": 14,
+      "cluster_summary": 15,
+      "sql_results": 16,
+      "sql_benchmark": 17,
+      "dashboard_states": 18,
+      "verification": 19,
+      "conclusion": 20
+    },
+    "figure": {
+      "architecture": 1,
+      "erd": 2,
+      "01_price_distribution": 3,
+      "02_area_price_scatter": 4,
+      "08_spearman_correlation": 5,
+      "03_province_medians": 6,
+      "06_cleaning_sensitivity": 7,
+      "07_exploratory_clusters": 8,
+      "workbook_kpi": 9
+    },
+    "equation": {
+      "unit_price": 1,
+      "iqr": 2,
+      "spearman": 3,
+      "bootstrap": 4,
+      "zscore": 5,
+      "kmeans": 6,
+      "centroid": 7,
+      "silhouette": 8
+    }
+  },
+  "previous_drafts_untouched": true,
+  "render_status": "rendered_and_visually_reviewed",
+  "analysis_sha256": "df9bf3ccd42c0137a44ee881817b6b559be2e6eb083756a3348219ae508e6961",
+  "figure_assets_sha256": {
+    "docs\\report_assets\\architecture.png": "5f4c693481679cbb7f7275c8b11077576fbb8a8953809d001ed33e59acc9e9ef",
+    "docs\\report_assets\\erd.png": "08ebb7b295290185f8472f2ceb6e9133e99da8f7462e1d564b6e3925725b30bf",
+    "docs\\report_assets\\workbook_kpi.png": "ca3e4c2b90340da7095993aaa335fb43cab6bae445405d63fb27dd5843a34371"
+  },
+  "pre_word_export_document_sha256": "dabb1021af7bb8be2360fa68c9332960acab57b5e86dc6449fa0d2eb365b0ccb",
+  "pdf_sha256": "696fd6e7d0e1d86cf5b987080972bb09b12a2f843a635abe2f084a0462371db9",
+  "pages": 36
+}

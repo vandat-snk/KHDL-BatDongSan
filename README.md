@@ -16,9 +16,13 @@ Phần chính bám Chương 1–3 môn học. K-means và SQLite là công cụ 
 
 Kết quả và các sửa đổi ngày 16/10/2026: [biên bản rà soát kỹ thuật](docs/RA_SOAT_KY_THUAT.md). Bản sau rà soát có 6.936 tin, khác 7.001 tin của bản nền. Nhóm dùng số liệu cùng mã lần chạy khi demo và viết báo cáo.
 
-`docs/BAO_CAO_DO_AN.docx` và `.md` là bản thảo cũ, trước khi nhận yêu cầu sáu chương của giảng viên. Giữ lại để đối chiếu; chưa đáp ứng cấu trúc/định dạng mới và chưa dùng làm bản nộp. Đợt rà soát này ưu tiên sửa và kiểm chứng code, chưa tạo báo cáo Word mới.
+[Tiểu luận sáu chương bản Word](docs/BAO_CAO_TIEU_LUAN_6_CHUONG.docx) và [bản PDF](docs/BAO_CAO_TIEU_LUAN_6_CHUONG.pdf) được biên soạn theo thông tin Học viện Công nghệ Bưu chính Viễn thông, học phần Nhập môn khoa học dữ liệu, giảng viên Nguyễn Ngọc Duy. Bản mới có văn bản căn đều, công thức Equation bản địa, mục lục/danh mục có số trang, hình/bảng kèm dữ liệu và nguồn. Kết quả kiểm riêng của tài liệu nằm trong [QA báo cáo](docs/report_src/QA_REPORT.json).
 
-Chuẩn biên soạn tiếp theo nằm trong [đối chiếu yêu cầu báo cáo](docs/DOI_CHIEU_YEU_CAU_BAO_CAO.md): Giới thiệu → Cơ sở lý thuyết → Phân tích và thiết kế → Hiện thực → Demo và vận hành → Kết luận. [Phân công cập nhật](docs/PHAN_CONG_VA_NOI_DUNG_BAO_CAO.md) đã rút gọn: trợ lý hoàn tất kiểm tra/tài liệu kỹ thuật; nhóm tập trung viết sáu chương, hiểu kết quả và một buổi tổng duyệt/chụp ảnh. Không giao lại 60 tin cho ba thành viên. Ghi việc thực làm vào [nhật ký](docs/NHAT_KY_KIEM_TRA_CHEO.md). `tools/build_report.py` của bản thảo cũ đã tạm khóa chạy trực tiếp để tránh ghi đè báo cáo bằng cấu trúc và số liệu cũ.
+`docs/BAO_CAO_DO_AN.docx` và `.md` là bản thảo cũ được giữ nguyên để đối chiếu; đọc bản `BAO_CAO_TIEU_LUAN_6_CHUONG` cho yêu cầu mới. Các giới hạn nội dung tin, UI chưa xác nhận và SQL chưa tăng tốc được trình bày trong báo cáo, không xóa để làm đẹp kết quả.
+
+Chuẩn nội dung nằm trong [đối chiếu yêu cầu báo cáo](docs/DOI_CHIEU_YEU_CAU_BAO_CAO.md): Giới thiệu → Cơ sở lý thuyết → Phân tích và thiết kế → Hiện thực → Demo và vận hành → Kết luận. Sau yêu cầu tập trung tiểu luận, trợ lý đã biên soạn đầy đủ sáu chương; nhóm duyệt nội dung và thông tin trước khi nộp. [Phân công](docs/PHAN_CONG_VA_NOI_DUNG_BAO_CAO.md) và [nhật ký](docs/NHAT_KY_KIEM_TRA_CHEO.md) là hồ sơ kế hoạch/tiếp quản, không phải xác nhận sinh viên đã tự hoàn thành các công việc trợ lý làm. Không cần học code hoặc luyện bảo vệ nếu học phần không yêu cầu.
+
+`tools/build_final_report.py` dựng bản mới từ văn bản đã biên soạn và số liệu đã kiểm; `tools/render_final_report.ps1` cập nhật trường số trang và xuất PDF bằng Word trên Windows; `tools/render_report_pages.py` tạo ảnh từng trang qua renderer đóng gói và Poppler. `tools/verify_final_report.py` kiểm cấu trúc và ghi kết quả sau khi thực sự xem toàn bộ ảnh trang. Các công cụ báo cáo không thay quy tắc/đầu ra phân tích. `tools/build_report.py` cũ vẫn khóa chạy trực tiếp để tránh ghi đè bản cũ.
 
 Hồ sơ có thể dùng ngay khi viết:
 

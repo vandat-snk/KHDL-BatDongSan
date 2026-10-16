@@ -1,6 +1,6 @@
 # Đối chiếu yêu cầu báo cáo với hệ thống thực tế
 
-Ngày cập nhật: 16/10/2026. Đây là tài liệu chuẩn bị nội dung và tiêu chí nghiệm thu, không phải báo cáo hoàn chỉnh. Xem kết quả sửa code và các giới hạn còn lại trong [biên bản rà soát kỹ thuật](RA_SOAT_KY_THUAT.md).
+Ngày cập nhật: 16/10/2026. Đây là ma trận nội dung và tiêu chí nghiệm thu. Bản tiểu luận mới đã được biên soạn riêng tại [Word sáu chương](BAO_CAO_TIEU_LUAN_6_CHUONG.docx) và [PDF](BAO_CAO_TIEU_LUAN_6_CHUONG.pdf); trạng thái kiểm tài liệu ở `report_src/QA_REPORT.json`. Xem giới hạn kỹ thuật/dữ liệu trong [biên bản rà soát](RA_SOAT_KY_THUAT.md) và trong Chương 5–6 của bản mới.
 
 ## Quyết định phạm vi
 
@@ -16,7 +16,7 @@ Các chức năng làm sạch, thống kê, trực quan, phân cụm thăm dò v
 
 `BAO_CAO_DO_AN.docx` và `BAO_CAO_DO_AN.md` là bản thảo trước khi nhận yêu cầu sáu chương. Giữ lại để đối chiếu số liệu và diễn giải cũ; chưa xem là bản báo cáo đáp ứng yêu cầu mới, chưa dùng để nộp.
 
-Đợt rà soát hiện tại ưu tiên sửa và kiểm chứng code. Chưa viết lại báo cáo Word trong đợt này. Chỉ biên soạn bản hoàn chỉnh khi các sửa đổi kỹ thuật đã chạy qua kiểm tra và có bộ đầu ra nhất quán.
+Sau rà soát code và đối soát đầu ra, bản sáu chương mới sử dụng mốc `20261016T015620Z-f2e661a6`. Học viện Công nghệ Bưu chính Viễn thông, học phần Nhập môn khoa học dữ liệu và giảng viên Nguyễn Ngọc Duy lấy từ thông tin người dùng xác nhận. Không tự điền khoa, lớp, cơ sở hoặc STT khi chưa có thông tin. Các kiểm UI/máy mới chưa xác nhận được ghi đúng giới hạn, không chuyển thành đạt để hoàn thiện hình thức.
 
 ## Cấu trúc sáu chương cần dùng khi viết lại
 

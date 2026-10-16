@@ -7,3 +7,5 @@
 *.json -text
 *.csv -text
 *.sql -text
+# The report manifest hashes the authored Markdown source as exact bytes.
+docs/report_src/noi_dung.md -text

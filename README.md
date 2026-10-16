@@ -18,7 +18,17 @@ Kết quả và các sửa đổi ngày 16/10/2026: [biên bản rà soát kỹ 
 
 `docs/BAO_CAO_DO_AN.docx` và `.md` là bản thảo cũ, trước khi nhận yêu cầu sáu chương của giảng viên. Giữ lại để đối chiếu; chưa đáp ứng cấu trúc/định dạng mới và chưa dùng làm bản nộp. Đợt rà soát này ưu tiên sửa và kiểm chứng code, chưa tạo báo cáo Word mới.
 
-Chuẩn biên soạn tiếp theo nằm trong [đối chiếu yêu cầu báo cáo](docs/DOI_CHIEU_YEU_CAU_BAO_CAO.md): Giới thiệu → Cơ sở lý thuyết → Phân tích và thiết kế → Hiện thực → Demo và vận hành → Kết luận. [Phân công cập nhật](docs/PHAN_CONG_VA_NOI_DUNG_BAO_CAO.md) đã giao từng mô-đun, 60 tin kiểm chéo, sáu chương và các cải tiến theo ưu tiên cho ba thành viên. Ghi tiến độ thực tế vào [nhật ký nhiệm vụ](docs/NHAT_KY_KIEM_TRA_CHEO.md). `tools/build_report.py` của bản thảo cũ đã tạm khóa chạy trực tiếp để tránh ghi đè báo cáo bằng cấu trúc và số liệu cũ.
+Chuẩn biên soạn tiếp theo nằm trong [đối chiếu yêu cầu báo cáo](docs/DOI_CHIEU_YEU_CAU_BAO_CAO.md): Giới thiệu → Cơ sở lý thuyết → Phân tích và thiết kế → Hiện thực → Demo và vận hành → Kết luận. [Phân công cập nhật](docs/PHAN_CONG_VA_NOI_DUNG_BAO_CAO.md) đã rút gọn: trợ lý hoàn tất kiểm tra/tài liệu kỹ thuật; nhóm tập trung viết sáu chương, hiểu kết quả và một buổi tổng duyệt/chụp ảnh. Không giao lại 60 tin cho ba thành viên. Ghi việc thực làm vào [nhật ký](docs/NHAT_KY_KIEM_TRA_CHEO.md). `tools/build_report.py` của bản thảo cũ đã tạm khóa chạy trực tiếp để tránh ghi đè báo cáo bằng cấu trúc và số liệu cũ.
+
+Hồ sơ có thể dùng ngay khi viết:
+
+- [Nguồn, từ điển, quy tắc, thiết kế và mô-đun](docs/NGUON_QUY_TAC_VA_THIET_KE.md).
+- [Bằng chứng K-means và SQL](docs/THUC_NGHIEM_KMEANS_VA_SQL.md).
+- [Đối soát số liệu, dữ liệu kèm tám hình và kịch bản demo](docs/DOI_CHIEU_SO_LIEU_TRUC_QUAN.md).
+- [Rà soát nội dung 60 tin bằng trợ lý](docs/KET_QUA_KIEM_TRA_NHAN.md), [CSV riêng](docs/DOI_CHIEU_60_TIN_TRO_LY.csv). Đây không phải nhãn người thật hoặc đo accuracy; vẫn có tin mơ hồ lọt qua quy tắc.
+- [Phạm vi nghiệm thu Excel](docs/NGHIEM_THU_EXCEL.md) và bằng chứng máy đọc được `outputs/ASSISTANT_CHECKS.json`.
+
+Tái kiểm/chuẩn bị lại hồ sơ của đúng mốc này: `.\.venv\Scripts\python.exe -X utf8 tools\prepare_handover_evidence.py`. Công cụ đối soát đầu ra hiện có và thực thi bốn SQL ở chế độ đọc; không chạy lại pipeline/benchmark hoặc tạo báo cáo Word. Tài liệu đọc tin được viết riêng cho mốc đã ghi; nếu run_id thay đổi, công cụ yêu cầu rà lại thay vì gắn kết quả cũ cho phiên bản mới.
 
 ## Mở sản phẩm đã có
 

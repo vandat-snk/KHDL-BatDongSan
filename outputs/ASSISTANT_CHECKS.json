@@ -1,0 +1,316 @@
+{
+  "checked_at_utc": "2026-10-16T10:37:51.584779+00:00",
+  "core_run_id": "20261016T015620Z-f2e661a6",
+  "scope": "Additional assistant checks and authored handover; not student completion or human label accuracy",
+  "verified_delivery": {
+    "status": "passed",
+    "scope": "Saved core data, database and selected derivatives; read each test/visual/report status separately.",
+    "core_run_id": "20261016T015620Z-f2e661a6",
+    "raw_count": 9004,
+    "clean_count": 6936,
+    "duplicates": 1884,
+    "rejected": 184,
+    "source_sha256": "ef39f153f48a55af07baa86883cd9036652f6d52232fed0be6e8991c7a5bf811",
+    "core_artifact_hashes_verified": 27,
+    "database_integrity": "ok",
+    "sql_results_identical": true,
+    "dashboard": {
+      "status": "saved_data_and_provenance_verified"
+    },
+    "workbook": {
+      "status": "saved_values_and_provenance_verified",
+      "rows": 6936,
+      "recalculation_checks": {
+        "status": "passed",
+        "scope": "Artifact Tool recalculation and rendered previews; native Microsoft Excel interaction not claimed",
+        "live_price_edit": true,
+        "live_area_edit": true,
+        "invalid_input_checks": 8,
+        "chart_count": 4
+      }
+    },
+    "python_tests": {
+      "status": "passed",
+      "tests_run": 29,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "dashboard_tests": {
+      "status": "passed",
+      "scope": "Actual JS in minimal DOM; does not validate browser layout",
+      "findings": [
+        {
+          "label": "baseline",
+          "count": 6936
+        },
+        {
+          "label": "exclude precomputed group IQR",
+          "count": 6676
+        },
+        {
+          "label": "explicit sale titles only",
+          "count": 3030
+        },
+        {
+          "label": "HCMC",
+          "count": 3277
+        },
+        {
+          "label": "HCMC apartments",
+          "count": 239
+        },
+        {
+          "label": "empty selection",
+          "count": 0
+        }
+      ],
+      "exported_search_rows": 1014,
+      "clustered_rows": 6676
+    },
+    "report": {
+      "status": "previous_draft_requires_rewrite_to_teacher_requirements",
+      "generated_this_run": false
+    },
+    "visual_checks": "Not inferred by this command. See dated human/UI evidence separately.",
+    "limitations": [
+      "Heuristic source-content checks cannot verify every source-entry error or transactions.",
+      "Human label validation is still necessary before strong conclusions."
+    ]
+  },
+  "independent_medians": {
+    "area_m2": {
+      "csv_statistics_median": 70.0,
+      "sqlite_ordered_median": 70.0,
+      "analysis_median": 70.0
+    },
+    "sale_price_vnd": {
+      "csv_statistics_median": 2250000000.0,
+      "sqlite_ordered_median": 2250000000.0,
+      "analysis_median": 2250000000.0
+    },
+    "price_per_m2_vnd": {
+      "csv_statistics_median": 32320512.82051282,
+      "sqlite_ordered_median": 32320512.82051282,
+      "analysis_median": 32320512.82051282
+    }
+  },
+  "read_only_sql_queries": [
+    {
+      "query_number": 1,
+      "columns": [
+        "province",
+        "n",
+        "mean_million_vnd_m2"
+      ],
+      "result_count": 20,
+      "result_sha256": "959856118bb73a3fcb418ae5da0d80032bad703c3751950d284c56405e75dbb3",
+      "first_five_rows": [
+        [
+          "Tp Hồ Chí Minh",
+          3277,
+          61.34443205067132
+        ],
+        [
+          "Hà Nội",
+          1014,
+          82.64640878295482
+        ],
+        [
+          "Bình Dương",
+          465,
+          17.194306393854966
+        ],
+        [
+          "Đà Nẵng",
+          455,
+          51.546528203989254
+        ],
+        [
+          "Đồng Nai",
+          250,
+          10.555887628915992
+        ]
+      ]
+    },
+    {
+      "query_number": 2,
+      "columns": [
+        "province",
+        "property_type",
+        "n",
+        "mean_million_vnd_m2"
+      ],
+      "result_count": 4,
+      "result_sha256": "fc020cd6b68b00207198b2bbdd0c185d397e8aa4cb2f3a582b7b23dc7fe11e9b",
+      "first_five_rows": [
+        [
+          "Tp Hồ Chí Minh",
+          "apartment",
+          239,
+          32.843595871075905
+        ],
+        [
+          "Tp Hồ Chí Minh",
+          "house",
+          2088,
+          69.85405079155434
+        ],
+        [
+          "Tp Hồ Chí Minh",
+          "land",
+          435,
+          30.288939612819778
+        ],
+        [
+          "Tp Hồ Chí Minh",
+          "other_unknown",
+          515,
+          66.30123812139945
+        ]
+      ]
+    },
+    {
+      "query_number": 3,
+      "columns": [
+        "row_id",
+        "province",
+        "property_type",
+        "area_m2",
+        "sale_price_vnd",
+        "price_per_m2_vnd"
+      ],
+      "result_count": 20,
+      "result_sha256": "39a911b4bfd128e0f34633095961a5a328e94164021faa778bc21500bea6e9b8",
+      "first_five_rows": [
+        [
+          8535,
+          "Tp Hồ Chí Minh",
+          "house",
+          6.0,
+          5000000000.0,
+          833333333.3333334
+        ],
+        [
+          4061,
+          "Hà Nội",
+          "house",
+          65.0,
+          36000000000.0,
+          553846153.8461539
+        ],
+        [
+          3117,
+          "Tp Hồ Chí Minh",
+          "house",
+          60.0,
+          32000000000.0,
+          533333333.3333333
+        ],
+        [
+          8548,
+          "Hà Nội",
+          "other_unknown",
+          143.0,
+          68000000000.0,
+          475524475.5244755
+        ],
+        [
+          8951,
+          "Tp Hồ Chí Minh",
+          "house",
+          27.0,
+          12700000000.0,
+          470370370.3703704
+        ]
+      ]
+    },
+    {
+      "query_number": 4,
+      "columns": [
+        "row_id",
+        "area_m2",
+        "sale_price_vnd",
+        "price_per_m2_vnd"
+      ],
+      "result_count": 100,
+      "result_sha256": "adee9406ef35f1fbe5221ae1093158eaef954f3b948b39cd5e953245ffff1e1b",
+      "first_five_rows": [
+        [
+          3666,
+          56.0,
+          1900000000.0,
+          33928571.428571425
+        ],
+        [
+          3651,
+          35.0,
+          1190000000.0,
+          34000000.0
+        ],
+        [
+          598,
+          24.0,
+          820000000.0,
+          34166666.666666664
+        ],
+        [
+          3629,
+          52.0,
+          1780000000.0,
+          34230769.23076923
+        ],
+        [
+          7367,
+          49.0,
+          1680000000.0,
+          34285714.28571428
+        ]
+      ]
+    }
+  ],
+  "assistant_review_rows": 60,
+  "assistant_selected_sensitivity": {
+    "scope": "Assistant-selected caution subset; illustrative sensitivity only; main outputs unchanged",
+    "excluded_row_ids": [
+      634,
+      683,
+      1802,
+      2331,
+      2980,
+      3427,
+      4588,
+      5093,
+      6266,
+      6469,
+      6570,
+      7103,
+      7133,
+      8151,
+      8387,
+      8535
+    ],
+    "n": 6920,
+    "median_price_vnd": 2250000000.0,
+    "median_area_m2": 70.0,
+    "median_price_per_m2_vnd": 32360781.327001475
+  },
+  "input_sha256": {
+    "outputs/run_manifest.json": "93f7a11960ae97f879b4452f2a0a64a370a7f109826569b24d4608d8b37c0c9f",
+    "outputs/analysis.json": "df9bf3ccd42c0137a44ee881817b6b559be2e6eb083756a3348219ae508e6961",
+    "outputs/sql_benchmark.json": "3951f0983440f59cd2b6cc2c31772347bba3d1367bf53bb6430075d668e5445a",
+    "outputs/workbook_test_results.json": "1e394e5e46b06602f50c53f3647cbefa6812c44060b9e3b2e3dc0e9931aea366",
+    "docs/MAU_KIEM_TRA_DU_LIEU.csv": "db6dc1544944b1637e3883f1150ebd2317ef167fb6976ca07b53e3ab4c41534d",
+    "data/processed/listings_clean.csv": "bb6ef707dfa95f984abaae327c9322664046c12429a0f1fc58021d27dccf2ad0",
+    "outputs/real_estate.sqlite": "e5b3a1ec722a146cc86bb11f6faf749184a26c110e87a3cdcd238e22dfe2e1ca"
+  },
+  "review_csv_sha256": "b994e5475a63424a4f85f1fffb786671ba6d86d3939f80580bb2b729155294b2",
+  "tool_sha256": "0f68c715fe5a12f3b60501871685d3540a885dc4a889c7d1637ad8ed9de66295",
+  "not_verified": [
+    "Native Excel UI recalculation: UI actions failed to enter file path",
+    "Browser layout of the 6936-row version: file URL blocked by browser policy",
+    "Fresh pip installation on another machine",
+    "Human gold labels",
+    "Final six-chapter Word report"
+  ]
+}

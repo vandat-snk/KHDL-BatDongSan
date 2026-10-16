@@ -44,7 +44,7 @@ Mục tiêu của đề tài tiếp tục là khám phá và so sánh đặc đi
 
 Đối soát: 9.004 = 1.884 + 184 + 6.936. Có thêm 65 tin cách ly. Lý do có thể chồng nhau, không cộng số lượt lý do để suy ra số dòng. “Cách ly” nghĩa là không đủ điều kiện theo chính sách, không có nghĩa đã xác nhận tin giả hoặc biết chắc giá nào đúng.
 
-Ví dụ số có thể dùng để giải thích quy tắc, sau khi nhóm tự đối chiếu nguồn:
+Ví dụ số có thể dùng để giải thích quy tắc; trợ lý đã đọc lại nguồn của bốn dòng dưới trong lượt bổ sung:
 
 | Dòng nguồn | Mâu thuẫn quan sát | Quyết định |
 |---|---|---|
@@ -71,12 +71,20 @@ Ba bảng thực là `provinces`, `property_types`, `listings`, có khóa và r�
 
 Ở lần chạy dữ liệu ghi trên biên bản, trung vị trước là 0,6484 ms, sau là 0,7788 ms; tỷ số trước/sau khoảng 0,833. Kết quả này không chứng minh cải thiện độ trễ. Dữ liệu nhỏ, phép đo tuần tự và trạng thái máy làm thời gian dao động; bản chạy kiểm tái lập có thể cho tốc độ khác. Giữ số đo thật, giải thích kế hoạch truy vấn và giới hạn, không chọn lại chỉ để có tỷ số đẹp. Khi chạy lại, lấy số đo từ `outputs/sql_benchmark.json` của chính lần đó.
 
-## Nhóm cần làm trước bản báo cáo cuối
+## Lượt bổ sung do trợ lý thực hiện để giảm việc nhóm
 
-1. Mở dashboard mới, tải lại trang để tránh xem bản cũ; dùng bảng nghiệm thu mới trong `KIEM_THU_THUC_TE.md`. Những xác nhận của người dùng cho 7.001 tin thuộc bản nền, không tự chuyển thành xác nhận cho 6.936 tin.
-2. Điền `MAU_KIEM_TRA_DU_LIEU.csv`. Mẫu gồm sáu nhóm, mười tin mỗi nhóm, không lặp dòng, seed 42. Các cột người kiểm tra để trống có chủ đích. Tra bản gốc bằng `row_id` (vị trí trong mảng JSON tính từ 1), ghi nhãn/“không đủ bằng chứng”, dẫn cụm chữ và kiểm tra chéo. Không dùng mẫu phân tầng đều này để suy ra tỷ lệ đúng toàn bộ dữ liệu mà thiếu trọng số/phương pháp phù hợp.
-3. Kiểm tay một số tin cực trị ngoài mẫu 60; giữ nhật ký quyết định. Nếu phát hiện quy tắc sai, sửa code, thêm hồi quy rồi chạy lại tất cả đầu ra, thay vì sửa một ô Excel để ép số khớp.
-4. Đạt tiếp quản Chương 3–4; Nhi Chương 1–2; Quỳnh Chương 5–6. Đạt hỗ trợ Nhi phần kỹ thuật NumPy/SQLite; cả ba phản biện kết luận và đọc chéo chương. [Phân công cập nhật](PHAN_CONG_VA_NOI_DUNG_BAO_CAO.md) giao cụ thể phần đã có, task D01–Q06, row_id của 60 tin, cải tiến I01–I10 và tiêu chí nghiệm thu; theo dõi bằng [nhật ký nhiệm vụ](NHAT_KY_KIEM_TRA_CHEO.md). Nội dung từng chương theo `DOI_CHIEU_YEU_CAU_BAO_CAO.md`.
-5. Viết báo cáo mới dựa trên đầu ra cuối: sáu chương, thân bài căn đều, caption hình/bảng đồng bộ, công thức Equation đọc được và hình demo có số liệu/bộ lọc. Bản Word cũ chưa dùng để nộp.
+Ngày 16/10/2026, cùng run_id: đọc 60 tin mẫu và bảy tin trọng điểm; lưu diễn giải riêng, không điền nhãn người thật trong mẫu gốc. Đã tính ba trung vị độc lập bằng CSV thư viện chuẩn và SQLite ORDER BY, chạy bốn truy vấn chỉ đọc, kiểm toàn vẹn/FK và đối soát workbook. Bằng chứng bổ sung: `outputs/ASSISTANT_CHECKS.json`; tái kiểm bằng `tools/prepare_handover_evidence.py`.
 
-Không cần thêm mô hình học máy hoặc chức năng mới trước khi hoàn thành các việc trên. Giá trị cải tiến tiếp theo nằm ở kiểm chứng nhãn, giải thích quyết định dữ liệu và bằng chứng vận hành rõ ràng.
+Rà soát nội dung thấy các tin giữ vẫn có mâu thuẫn/mơ hồ: ví dụ 5093 giá 9,7/9,9 tỷ, 8151 diện tích 18.000/180.000 m², 2331 biến thể bán/cho thuê; một số mô tả rõ loại hình hơn tiêu đề. Đây là giới hạn của các quy tắc bảo thủ, không được kết luận mọi tin giữ đã xác minh. Không tự sửa raw, giá đúng suy đoán hoặc biến nhãn trợ lý thành gold labels.
+
+Thử độ nhạy riêng khi bỏ 16 tin giữ do trợ lý chọn có nghi vấn, còn 6.920; trung vị giá 2,25 tỷ và diện tích 70 m², đơn giá 32,36078133 triệu/m². Đây là tình huống có chủ đích, không phải ước lượng tỷ lệ lỗi/toàn bộ độ lệch hay bộ dữ liệu chính mới. Xem [kết quả đọc tin](KET_QUA_KIEM_TRA_NHAN.md) và [CSV 60 tin](DOI_CHIEU_60_TIN_TRO_LY.csv). Không bắt nhóm kiểm lại 60 tin nếu không công bố độ chính xác nhãn.
+
+Đã chuẩn bị [nguồn/quy tắc/thiết kế/mô-đun](NGUON_QUY_TAC_VA_THIET_KE.md), [K-means/SQL](THUC_NGHIEM_KMEANS_VA_SQL.md), [đối soát số liệu, hình và demo](DOI_CHIEU_SO_LIEU_TRUC_QUAN.md). Kiểm tính lại bằng Artifact Tool có bằng chứng; thử thao tác Excel thật chưa mở được workbook do công cụ nhập không có hiệu lực, xem [phạm vi Excel](NGHIEM_THU_EXCEL.md). Công cụ browser chặn URL file cục bộ, chưa xác nhận bố cục bản mới. Không dùng đường vòng để vượt chặn hoặc ghi các kiểm UI này là đạt.
+
+## Nhóm còn làm trước bản báo cáo cuối
+
+1. Đạt hiểu/viết Chương 3–4; Nhi Chương 1–2 và nguồn/thông tin hành chính; Quỳnh Chương 5–6, định dạng. Dùng hồ sơ có sẵn, không giao lại kiểm SHA, lập từ điển, chạy SQL/thống kê hoặc thí nghiệm đã làm.
+2. Một buổi tổng duyệt dashboard/Excel trên máy demo và chụp ảnh có dữ liệu. Xác nhận 7.001 tin cũ không áp dụng cho bản 6.936; chưa thao tác phần nào thì ghi phần đó chưa xác nhận.
+3. Cả ba đọc chéo, giải thích kết quả và giới hạn; hoàn thiện sáu chương, căn đều, caption/Equation và số liệu đúng phiên bản. Bản Word cũ chưa dùng nộp.
+
+[Phân công rút gọn](PHAN_CONG_VA_NOI_DUNG_BAO_CAO.md) thay các task và cải tiến bắt buộc cũ; theo dõi việc thực làm ở [nhật ký](NHAT_KY_KIEM_TRA_CHEO.md). Tính năng mới là tùy chọn sau khi báo cáo/demo ổn. Nếu cần thay quy tắc/code thì có hồi quy và dựng/đối soát lại đầu ra liên quan trước khi chốt số; không sửa riêng Excel để ép khớp.

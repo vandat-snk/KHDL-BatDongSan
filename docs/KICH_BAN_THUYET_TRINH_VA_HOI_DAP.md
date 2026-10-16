@@ -6,7 +6,7 @@
 
 **Thông điệp chính:** từ dữ liệu quảng cáo bất động sản có nhiều vấn đề, nhóm xây dựng một quy trình xử lý có thể kiểm chứng và dùng biểu đồ để trả lời các câu hỏi trong phạm vi mẫu. Phần chính gắn Chương 1–3; K-means và SQL là mở rộng có thực thi.
 
-Đây là kịch bản để tập, chưa phải bằng chứng nhóm đã tự thực hiện mọi công việc. Trước khi bảo vệ, mỗi người phải chạy lại và xác nhận phần được giao trong [kế hoạch phân công](PHAN_CONG_VA_NOI_DUNG_BAO_CAO.md). Thay các vị trí cần số liệu bằng kết quả thật từ `outputs/analysis.json` và output cuối; không đọc số ước đoán theo hình. Các câu nói dưới đây là gợi ý, có thể diễn đạt tự nhiên theo hiểu biết của người nói.
+Đây là kịch bản để tập, chưa phải bằng chứng nhóm đã tự thực hiện mọi công việc. Theo [phân công rút gọn](PHAN_CONG_VA_NOI_DUNG_BAO_CAO.md), trợ lý đã làm các kiểm tra kỹ thuật có thể thực hiện; mỗi người cần hiểu, viết và giải thích phần mình, không bắt buộc chạy lại toàn bộ. Dùng số thật từ `outputs/analysis.json` và [hồ sơ demo](DOI_CHIEU_SO_LIEU_TRUC_QUAN.md); không đọc số ước đoán theo hình. Các câu nói dưới đây là gợi ý, có thể diễn đạt tự nhiên theo hiểu biết của người nói.
 
 ## 1. Chuẩn bị demo
 
@@ -103,7 +103,7 @@ Mỗi người phải làm được phần của mình mà không đọc lời g
 
 - **Đạt:** giải thích một hàm pipeline; tự tính một vòng K-means với ví dụ nhỏ; mở DB và chạy một truy vấn; giải thích vì sao kết quả trước/sau index phải bằng nhau.
 - **Nhi:** parse ba chuỗi giá/diện tích thật; chỉ một dòng cách ly và lý do; giải thích khóa trùng; viết công thức IQR và phân biệt cờ outlier với lỗi dữ liệu; trích đúng DOI/giấy phép.
-- **Quỳnh:** đọc một histogram và một scatter bằng n/đơn vị; tính một KPI bằng cách độc lập; thay bộ lọc dashboard và giải thích mẫu đang xem; viết một kết luận không chứa khẳng định nhân quả.
+- **Quỳnh:** đọc một histogram và một scatter bằng n/đơn vị; giải thích phép tính KPI từ hồ sơ đối soát đã có; thay bộ lọc dashboard và giải thích mẫu đang xem; viết một kết luận không chứa khẳng định nhân quả.
 - **Cả ba:** nêu được một kết quả chính, một giới hạn, một cải tiến do mình thực sự làm và một việc kiểm tra chéo đã phát hiện hoặc xác nhận.
 
 Tập thử một lượt 10 phút có bấm giờ và một lượt hỏi chéo không nhìn tài liệu. Nếu chưa giải thích được số liệu hoặc phương pháp, giảm phạm vi kết luận và quay lại kiểm chứng, không học thuộc câu trả lời để che khoảng trống.

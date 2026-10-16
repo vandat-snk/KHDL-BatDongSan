@@ -35,3 +35,9 @@ Phiên bản dữ liệu `20261016T015620Z-f2e661a6`. Các kết quả dưới �
 | NEW07 | Đặt lại, tới trang 2 rồi tải CSV | Phân trang đổi dòng hiển thị; CSV chứa toàn bộ bảng đang lọc, không chỉ 20 dòng trang hiện tại | Chờ |
 
 Sau mỗi lần thay quy tắc và chạy pipeline mới, đọc lại `analysis.json` và test dashboard; không dùng cố định bảng này nếu mã lần chạy đã khác. Ảnh báo cáo cần chụp bản cuối và ghi dữ liệu/bộ lọc cùng chú thích.
+
+## Bổ sung lượt kiểm bằng trợ lý 16/10/2026
+
+Logic bộ lọc/KPI/CSV đã được kiểm tự động; ba trung vị đã tính độc lập từ CSV và SQLite, xem `outputs/ASSISTANT_CHECKS.json`. Công cụ trình duyệt chặn truy cập URL file cục bộ; trợ lý không dùng trình duyệt khác/đường vòng để vượt chặn và không tự điền NEW01–NEW07 là đã quan sát trong browser.
+
+Theo phân công rút gọn, Quỳnh gộp việc xem bố cục, thử vài trạng thái và chụp ảnh vào một buổi tổng duyệt. Không cần lặp toàn bộ test tự động. Mỗi trạng thái chưa thao tác thật vẫn để chờ; không lấy một trạng thái đạt để xác nhận mọi trạng thái. Phần Excel xem `NGHIEM_THU_EXCEL.md`.

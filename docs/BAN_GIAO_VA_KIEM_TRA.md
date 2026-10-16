@@ -67,4 +67,4 @@ Cần bổ sung diễn giải kỹ thuật sâu, kiến trúc và thiết kế C
 | Nguyễn Thị Yến Nhi | Kiểm tra tay các chuỗi giá/diện tích, loại hình và giao dịch; đối chiếu tin trùng/cách ly; ghi nhãn và lý do thực tế |
 | Hứa Như Quỳnh | Kiểm thử dashboard/CSV với số liệu cuối; đối chiếu bảng/biểu đồ; chuẩn bị ảnh demo có dữ liệu và quy tắc định dạng báo cáo |
 
-Nhóm cần bổ sung trường, lớp, giảng viên và STT đăng ký. Các thí nghiệm cải tiến trong phân công cũ vẫn là việc cần thực hiện cho đến khi có sản phẩm thật. Sau khi code và đầu ra được kiểm chứng, cập nhật phân công viết báo cáo theo sáu chương mới rồi mới biên soạn bản Word hoàn chỉnh.
+Nhóm cần bổ sung trường, lớp, giảng viên và STT đăng ký. [Phân công mới](PHAN_CONG_VA_NOI_DUNG_BAO_CAO.md) đã thay các task cũ: trợ lý hoàn tất hồ sơ nguồn/quy tắc/thiết kế, rà soát 60 tin, đối soát thống kê và chạy bốn SQL đọc. Kết quả ở `outputs/ASSISTANT_CHECKS.json`; không giao nhóm lặp lại các kiểm tra đó. Nhóm còn viết sáu chương, hiểu nội dung, một buổi tổng duyệt UI/Excel/chụp ảnh và ghép định dạng. Cải tiến mới là tùy chọn, chưa thực hiện thì chỉ ghi hướng phát triển. Chưa viết lại bản Word trong đợt bàn giao này.

@@ -37,6 +37,11 @@ def check_source_consistency(row, area, price, basis, parse_number, normalize):
         if item not in evidence:
             evidence.append(item)
 
+    def flag_review(rule, field, phrase):
+        # Soft review flags retain the record and never overwrite its values.
+        flags.append(rule)
+        evidence.append({"rule": rule, "source_field": field, "numeric_phrase": phrase})
+
     def amount(number, currency):
         n, number_flags = parse_number(number)
         return n * (1e9 if currency in ("tỷ", "tỉ", "ty") else 1e6), number_flags
@@ -66,6 +71,32 @@ def check_source_consistency(row, area, price, basis, parse_number, normalize):
 
     if price is not None and basis == "total":
         for field, text in fields.items():
+            # A quote per 100/1000 m2 is not a total for a different area.
+            block_pattern = rf"(?<![\w.,])({NUMBER})\s*({CURRENCY})\s*/\s*({NUMBER})\s*m(?:2|\^2)\b"
+            for block in re.finditer(block_pattern, text):
+                try:
+                    quoted, _ = amount(block[1], block[2])
+                    denominators = plausible_numbers(block[3])
+                except ValueError:
+                    continue
+                if (math.isclose(price, quoted, rel_tol=.01) and area is not None
+                        and denominators and not any(math.isclose(area, v, rel_tol=.01) for v in denominators)):
+                    add("unresolved_block_unit_price_from_source_text", field, block[0])
+            # Only quarantine when a directly labelled initial payment equals
+            # the core total. Merely offering financing is not this rule.
+            deposit = rf"\b(?:vốn ban đầu|thanh toán(?: trước)?|trả trước)\s*(?:(?:chỉ|từ|khoảng|tầm|là)\s*)*(?:\d+(?:[.,]\d+)?\s*%\s*)?(?:(?:tầm|khoảng|là)\s*)*[(=:]?\s*({NUMBER})\s*({CURRENCY})(?![^\W\d_])"
+            for payment in re.finditer(deposit, text):
+                if re.search(r"không(?: cần)?\s*$", text[max(0,payment.start()-16):payment.start()]):
+                    continue
+                tail = text[payment.end():]
+                if re.match(r"\s*\d", tail):  # unresolved compound, e.g. 1ty5
+                    continue
+                try:
+                    quoted, _ = amount(payment[1], payment[2])
+                except ValueError:
+                    continue
+                if math.isclose(price, quoted, rel_tol=.01):
+                    add("core_price_matches_initial_payment", field, f"{payment[1]} {payment[2]}")
             for match in UNIT_PRICE.finditer(text):
                 try:
                     unit_amount, _ = amount(match[1], match[2])
@@ -116,12 +147,12 @@ def check_source_consistency(row, area, price, basis, parse_number, normalize):
             except ValueError:
                 continue
             # Common informal compound 3ty550 (3 billion 550 million).
-            compound = re.match(r"(\d{2,3})(?!\d)", tail)
+            compound = re.match(r"\s*(\d{3})(?!\d)", tail)
             phrase = f"{match[1]} {match[2]}"
             if compound and match[2] in ("tỷ", "tỉ", "ty"):
                 quoted += int(compound[1]) * 1e6
                 phrase += compound[1]
-            elif re.match(r"\d", tail):
+            elif re.match(r"\s*\d", tail):
                 # 2tr8, 1ty7 and floor-count abbreviations need a richer parser;
                 # a prefix number is not a trustworthy quotation by itself.
                 continue
@@ -144,6 +175,8 @@ def check_source_consistency(row, area, price, basis, parse_number, normalize):
             quoted, phrase, _, ratio = descriptions[0]
             if quoted > 0 and ratio >= 5:
                 add("price_conflict_from_description", "description", phrase)
+            elif quoted > 0 and ratio > 1.01:
+                flag_review("source_price_discrepancy_requires_review", "description", phrase)
 
     if area is not None:
         # Strong unit mismatch: title names N hectares but core says N m².
@@ -183,6 +216,8 @@ def check_source_consistency(row, area, price, basis, parse_number, normalize):
                 ratios = [max(area/v, v/area) for v in declared_values if v > 0]
                 if ratios and min(ratios) >= 5:
                     add("area_conflict_from_source_text", field, f"{number} {unit}")
+                elif ratios and min(ratios) > 1.01:
+                    flag_review("source_area_discrepancy_requires_review", field, f"{number} {unit}")
     if reasons:
         flags.append("source_text_requires_review")
     return reasons, flags, evidence

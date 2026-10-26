@@ -1,0 +1,121 @@
+﻿row_id,assistant_transaction,assistant_property,assistant_price_basis,assistant_usability,assistant_conflict,evidence_note,reviewer,reviewed_on,split
+600,unknown,apartment,unknown,review,uncertain,"450 triệu chưa được mô tả xác nhận là tổng giá; 3 tỷ là bảo hiểm, không phải giá nhà.",Codex AI; not human gold labels,2026-10-26,development
+7254,sale,land,total,review,yes,"171 m² ở trường lõi và dòng 5x35m (171m2), nhưng còn ghi 170m2; 2,5tr/m2 gần mức tổng 430 triệu. Không tự sửa diện tích.",Codex AI; not human gold labels,2026-10-26,development
+8148,sale,house,total,usable,no,"Tiêu đề so chung cư hay nhà; mô tả xác định nhà 2 tầng, sổ đỏ 32m2, sàn 64m2; giá 1,95 tỷ.",Codex AI; not human gold labels,2026-10-26,development
+8764,sale,land,total,usable,no,"Bánđất bị dính chữ; mô tả bán đất 1041m2 giá 22,9 tỷ. Chưa thấy mâu thuẫn giá/diện tích rõ.",Codex AI; not human gold labels,2026-10-26,development
+7782,rental,apartment,rental,exclude,no,"Cho thuê căn hộ, nhiều mức 2tr2–3tr5; ngoài phạm vi giá bán.",Codex AI; not human gold labels,2026-10-26,development
+2657,sale,apartment,total,review,yes,"Cùng tin có 1,55 tỷ và 1,575 tỷ; 62m2 nhất quán. Không chọn một giá làm chuẩn.",Codex AI; not human gold labels,2026-10-26,development
+7867,sale,apartment,total,usable,no,"Mô tả cần bán căn hộ 60m2; giá 2,1 tỷ chỉ có ở trường lõi, chưa có xác nhận độc lập.",Codex AI; not human gold labels,2026-10-26,development
+7409,sale,land,total,usable,no,"11.607m2 ở tiêu đề/lõi, 11,6 sào là mô tả gần đúng; không tự quy đổi sào thành diện tích thay thế.",Codex AI; not human gold labels,2026-10-26,development
+8158,sale,land,total,review,uncertain,Có ba lô 7000/10000/20000m2; giá và diện tích lõi khớp lô 1 nhưng đây là quảng cáo nhiều tài sản.,Codex AI; not human gold labels,2026-10-26,development
+8592,sale,house,total,usable,no,"Bán dãy trọ 12 phòng; 130m2, 1 tỷ 780; thu nhập cho thuê không phải chào thuê thay giao dịch bán.",Codex AI; not human gold labels,2026-10-26,development
+3886,sale,apartment,unknown,review,uncertain,"Giá lõi 1,95 tỷ, mô tả ký HĐ 15%=360 triệu chưa rõ căn nào; không suy ra tổng giá chắc chắn từ ưu đãi.",Codex AI; not human gold labels,2026-10-26,development
+7088,sale,house,total,review,yes,"Bán dãy trọ (viết dạy trọ), tiêu đề/mô tả 72,5m nhưng lõi 72m2; cần làm rõ cơ sở diện tích.",Codex AI; not human gold labels,2026-10-26,development
+7541,sale,apartment,total,usable,no,"Mô tả bán căn hộ 45m2 giá 550 triệu, khớp phần diện tích trong trường giá.",Codex AI; not human gold labels,2026-10-26,development
+2976,sale,land,total,review,yes,"Lõi 67m2, mô tả DT67,5m; giá 1,72 tỷ khớp. Không tự làm tròn diện tích.",Codex AI; not human gold labels,2026-10-26,development
+1061,sale,house,total,review,uncertain,"Mô tả bán nhà kho 210m2 giá 21 tỷ 500, đang cho thuê; tiêu đề chỉ chào thuê35triệu, mô tả thu nhập40triệu. Cần xác nhận giao dịch.",Codex AI; not human gold labels,2026-10-26,development
+5494,sale,house,total,review,yes,"Bán dãy trọ; lõi3,6 tỷ nhưng mô tả Giá4 tỷ; đất76,9m2 khác xây dựng67,7 và sàn88,7, không gộp ba đại lượng.",Codex AI; not human gold labels,2026-10-26,development
+7166,sale,house,total,exclude,yes,"Giá lõi5,1 triệu khác mô tả5,1 tỷ; cần cách ly cho đến khi xác minh, không tự nhân1000.",Codex AI; not human gold labels,2026-10-26,development
+8209,sale,other,unknown,review,uncertain,"Mô tả căn hộ OT (officetel), giá chưa bao gồm5% ra sổ; cần tách phạm vi officetel khỏi căn hộ ở thông thường.",Codex AI; not human gold labels,2026-10-26,development
+4171,sale,unknown,total,review,yes,"Tiêu đề căn hộ dịch vụ/mini nhưng mô tả bán cả nhà tầng2phòng, sổ đỏ; nhãn loại mâu thuẫn.",Codex AI; not human gold labels,2026-10-26,development
+6047,sale,other,total,review,uncertain,"Tiêu đề quán cafe cho thuê9tr; mô tả bán lô góc có gác, công nhận81m2 và kinh doanh cho thu nhập30tr. Loại/giao dịch cần làm rõ.",Codex AI; not human gold labels,2026-10-26,development
+559,sale,land,per_m2,exclude,yes,12tr/m2 ngay tiêu đề nhưng lõi12 triệu được coi tổng giá; không đủ cơ sở giữ giá tổng hiện tại.,Codex AI; not human gold labels,2026-10-26,development
+5409,sale,house,total,usable,no,"Mô tả nhà100m x5tầng giá8,1 tỷ; nhãn từ tiêu đề bỏ sót nhà, không tự coi unknown là lỗi giá.",Codex AI; not human gold labels,2026-10-26,development
+8229,sale,land,total,usable,no,"Mô tả bán đất5x20=100m2; 5.050ty có quy ước dấu chấm mơ hồ, lõi5,05 tỷ. Không tự kết luận chênh1000 lần.",Codex AI; not human gold labels,2026-10-26,development
+8591,sale,land,total,exclude,yes,"Lõi833m2 khác mô tả84m2; giá1,35 tỷ. Cách ly do mâu thuẫn diện tích.",Codex AI; not human gold labels,2026-10-26,development
+527,sale,land,per_m2,review,yes,"Lõi75 triệu cho1871m2, mô tả1 triệu6/m2; giá/đơn vị không khớp, cách viết số cần kiểm tay.",Codex AI; not human gold labels,2026-10-26,development
+154,sale,apartment,total,usable,no,"Mô tả bán căn hộ68m2 giá1,65 tỷ, khớp lõi.",Codex AI; not human gold labels,2026-10-26,development
+7054,sale,land,foreign,exclude,yes,Mô tả giá15.000.000 USD khác trường giá15 triệu VND; không tự đổi tiền.,Codex AI; not human gold labels,2026-10-26,development
+6310,unknown,land,unknown,exclude,uncertain,"Giá lõi1,52 triệu, mô tả không xác nhận giá thay thế; cách ly theo ngưỡng giá, không tự nâng lên tỷ.",Codex AI; not human gold labels,2026-10-26,development
+2409,sale,house,unknown,review,uncertain,"Nhiều nhà, nhiều giá và có cho thuê; chưa nối chắc63m2 và950tr với cùng một tài sản.",Codex AI; not human gold labels,2026-10-26,development
+7094,mixed,apartment,total,exclude,no,"Công khai bán hoặc thuê; giá bán1,580 và thuê5tr/tháng; ngoài chính sách chỉ bán hiện tại dù có thể tách thủ công.",Codex AI; not human gold labels,2026-10-26,development
+2056,transfer,other,transfer,exclude,no,"Sang quán80tr chưa gồm cọc, thuê mặt bằng11tr; không phải bán bất động sản.",Codex AI; not human gold labels,2026-10-26,development
+4344,sale,house,total,review,yes,"Lõi4,6 tỷ, mô tả4,59 tỷ; chênh nhỏ nhưng vẫn ghi nhận, không gọi mọi số đã xác minh.",Codex AI; not human gold labels,2026-10-26,development
+3550,sale,land,total,usable,no,"Mô tả3000m đất,100m thổ cư là phần con; giá bán hết3 tỷ, không lấy100 làm tổng diện tích.",Codex AI; not human gold labels,2026-10-26,development
+4105,sale,land,total,usable,no,"Mô tả1000m2 giá300tr, khớp lõi; không dùng giá thấp để tự khẳng định sai.",Codex AI; not human gold labels,2026-10-26,development
+5793,sale,apartment,unknown,review,uncertain,"Tiêu đề75m2, lõi85m2, mô tả nhiều căn75–107m2 và44tr/m2; chưa nối đúng căn với giá3,8 tỷ.",Codex AI; not human gold labels,2026-10-26,development
+3393,sale,land,total,usable,no,"Lõi/tiêu đề100m2, mô tả197,8ha thuộc khu đô thị đối diện; không được dùng làm diện tích lô.",Codex AI; not human gold labels,2026-10-26,development
+5903,sale,apartment,total,usable,no,"Căn hộ70,56m2,1 tỷ250 khớp lõi1,25 tỷ; phần triệu viết tắt.",Codex AI; not human gold labels,2026-10-26,development
+3161,sale,land,total,usable,no,"Lô đất xây trọ,11x100 khớp1100m2;3 chỉ vàng và5tr là chiết khấu, không phải giá tổng.",Codex AI; not human gold labels,2026-10-26,development
+5268,sale,house,total,review,uncertain,"Nhà gần80m2, giá chào hơn25 tỷ; lõi80m2/25 tỷ là số gần đúng, có thu nhập thuê60tr.",Codex AI; not human gold labels,2026-10-26,development
+3370,sale,house,total,review,yes,"Tiện cho thuê là công năng tiềm năng; mô tả bán rõ. Lõi40m2 khác DT38,8m2 cần rà soát riêng.",Codex AI; not human gold labels,2026-10-26,development
+5058,sale,house,total,usable,no,"Mô tả bán nhà59m2 giá2,15 tỷ khớp lõi; tiêu đề thiếu từ bán.",Codex AI; not human gold labels,2026-10-26,development
+4649,unknown,land,unknown,review,uncertain,"Lõi1300m2 khác kích thước12x101; giá7tyXXX chỉ khoảng, không xác nhận7,5 tỷ chính xác.",Codex AI; not human gold labels,2026-10-26,development
+7028,sale,house,partial_payment,exclude,yes,Lõi820 triệu bằng vốn ban đầu10%(820tr) trong mô tả; không phải tổng giá nhà.,Codex AI; not human gold labels,2026-10-26,development
+2057,transfer,other,transfer,exclude,no,Sang mô hình KTX250triệu gồm vật tư/nội thất và hợp đồng thuê; không phải bán nhà.,Codex AI; not human gold labels,2026-10-26,development
+5498,sale,land,total,exclude,yes,"Lõi1,5 triệu khác mô tả1ty5; cần cách ly, không tự đổi đơn vị.",Codex AI; not human gold labels,2026-10-26,development
+5710,sale,apartment,total,usable,no,"Mô tả xác nhận145tr là giá bán; dù rất thấp vẫn không có căn cứ tự sửa thành1,45 tỷ.",Codex AI; not human gold labels,2026-10-26,development
+2141,sale,house,total,usable,no,"Bán nhà cũ2,5tầng32m2 giá6 tỷ; câu coi như bán đất không xóa hiện trạng nhà.",Codex AI; not human gold labels,2026-10-26,development
+3475,sale,land,unknown,review,uncertain,"Dự án nhiều loại và100–300m2 giá từ1,7tỷ/nền; không chứng minh cặp100m2/1,7tỷ thuộc lô cụ thể.",Codex AI; not human gold labels,2026-10-26,development
+8254,sale,house,total,exclude,yes,"Tiêu đề5,5 tỷ khác lõi5,5 triệu; mô tả căn nhà60m2, cần cách ly giá.",Codex AI; not human gold labels,2026-10-26,development
+8732,sale,land,total,usable,no,"Mô tả bán đất11,5x37, giá5ty750;425m2 là giá trị lõi gần425,5 theo kích thước, không tự sửa đất không đo đạc.",Codex AI; not human gold labels,2026-10-26,development
+2305,sale,house,total,usable,no,"Mô tả nhà5x8, chủ cần bán, có hợp đồng thuê tầng trệt; tiêu đề viết tắt không gọi nhà rõ.",Codex AI; not human gold labels,2026-10-26,development
+482,sale,apartment,unknown,review,uncertain,Có phân biệt tổng1tỷ và trả trước300tr nhưng nhiều căn43–70m2; chính sách từ khóa có thể cách ly quá mức.,Codex AI; not human gold labels,2026-10-26,development
+4722,sale,apartment,unknown,review,uncertain,"CCMN là chung cư mini; nhiều cỡ/giá580–700tr và chiết khấu30tr, chưa xác minh570tr cho35m2.",Codex AI; not human gold labels,2026-10-26,development
+7697,sale,land,total,usable,no,"10x30=300m2 giá380tr; giấy tay/sổ chung là thông tin nguồn, không xác minh pháp lý.",Codex AI; not human gold labels,2026-10-26,development
+1461,sale,land,total,usable,no,"Bán đất tặng nhà; giá2,999999 tỷ khớp mô tả. Loại theo tài sản chính được quảng cáo, ghi có nhà.",Codex AI; not human gold labels,2026-10-26,development
+4085,sale,house,total,usable,no,"Diện tích đất45m2, sử dụng70m2; lõi45m2 khớp đất, không coi hai đại lượng là mâu thuẫn.",Codex AI; not human gold labels,2026-10-26,development
+8929,sale,house,total,review,uncertain,"Lõi360m2, mô tả biệt thự diện tích200m2 và hồ bơi3x6; chưa biết đất hay sử dụng, không chọn số thay thế.",Codex AI; not human gold labels,2026-10-26,development
+3635,sale,house,total,usable,no,"Biệt thự156,7m2 giá4tỷ5 khớp lõi; kích thước7x22,3 gần156,1 không đo đạc chính xác.",Codex AI; not human gold labels,2026-10-26,development
+234,sale,apartment,unknown,review,uncertain,"Giá lõi1,8 tỷ, rumor1,79tỷ/căn và350tr ở tiêu đề; dự án nhiều phương thức, không xác minh căn cụ thể.",Codex AI; not human gold labels,2026-10-26,development
+8459,sale,land,total,usable,no,"Tiêu đề lô đat, mô tả lô đất1900m2 cần bán; giá500tr chỉ có trường lõi.",Codex AI; not human gold labels,2026-10-26,development
+6480,sale,house,total,usable,no,"Giá1.460.000.000, đất45m2, sử dụng90m2; giữ rõ hai loại diện tích.",Codex AI; not human gold labels,2026-10-26,development
+6515,sale,apartment,unknown,review,yes,"Lõi60m2/4,4tỷ, mô tả căn61m2/4,4tỷ và nhiều căn khác; cần rà soát cặp giá–diện tích.",Codex AI; not human gold labels,2026-10-26,development
+3226,sale,house,total,usable,no,Mô tả bán nhà1tỷ390tr khớp lõi;75m2 chỉ trong tiêu đề/trường lõi.,Codex AI; not human gold labels,2026-10-26,development
+3862,sale,apartment,total,usable,no,"Mô tả xác nhận Giá bán2,7tỷ bao VAT và có thể trả trước460tr; tổng/đợt thanh toán được phân biệt rõ.",Codex AI; not human gold labels,2026-10-26,development
+3251,sale,land,total,usable,no,"Mô tả5,5tỷ trọn sổ2005m2,2,74tỷ/1000m2 là giá tham chiếu; không nhầm nó thành tổng giá.",Codex AI; not human gold labels,2026-10-26,development
+653,sale,house,total,usable,no,"Giá nhà660tr khác trả trước330tr/50%; lõi giữ tổng giá đúng theo mô tả, từ khóa trả trước gây cách ly bảo thủ.",Codex AI; not human gold labels,2026-10-26,development
+6909,sale,house,total,usable,no,"Công nhận68m2,4x17,giá8tỷ600triệu nhất quán; không suy ra diện tích sàn từ số tầng.",Codex AI; not human gold labels,2026-10-26,development
+1039,sale,land,per_block,exclude,yes,"Mô tả bán32000m2 với350tr/1000m2; lõi1000m2/350tr là đơn vị chào, không đại diện toàn lô.",Codex AI; not human gold labels,2026-10-26,development
+5006,sale,house,total,review,uncertain,"Mô tả gia đình bán nhà, tiêu đề chỉ10phòng cho thuê30tr; mô tả9phòng/20tr; giao dịch và thu nhập cần xác nhận.",Codex AI; not human gold labels,2026-10-26,development
+392,sale,apartment,unknown,review,uncertain,"Chỉ300tr sở hữu cùng giỏ410căn; không nêu tổng giá hay phần thanh toán, chưa thể xác nhận300tr là giá bán.",Codex AI; not human gold labels,2026-10-26,development
+3136,sale,apartment,total,usable,no,"Bán căn hộ74m2,giá1,850ty khớp1,85tỷ theo dấu phẩy; trong tòa văn phòng nên pháp lý chưa được xác minh.",Codex AI; not human gold labels,2026-10-26,development
+3751,sale,apartment,partial_payment,exclude,yes,"Tiêu đề trả trước1tỷ1, lõi1,1tỷ; không phải giá tổng được chứng minh;88m2 còn ngoài khoảng57–84m2 mô tả.",Codex AI; not human gold labels,2026-10-26,development
+3784,sale,house,total,exclude,yes,"Lõi5,2triệu, mô tả520triệu;4x12 khác50m2; không tự sửa cả giá lẫn diện tích.",Codex AI; not human gold labels,2026-10-26,development
+880,sale,house,total,usable,no,"Mô tả cần bán nhà cấp4, không có mâu thuẫn rõ với lõi100m2/2,05tỷ; chưa xác minh bên ngoài.",Codex AI; not human gold labels,2026-10-26,development
+3934,sale,house,total,review,uncertain,"Bán dãy trọ; lõi117,2m2, kích thước7,2x17=122,4 chưa rõ diện tích công nhận hay đất thực tế.",Codex AI; not human gold labels,2026-10-26,development
+8315,sale,other,total,review,uncertain,"Bán tòa căn hộ5tầng8phòng, không tương đương một căn hộ; cần quy ước loại riêng cho tòa dịch vụ.",Codex AI; not human gold labels,2026-10-26,development
+8615,sale,apartment,total,usable,no,"Mô tả49m2 giá1tỷ bao phí, khớp lõi.",Codex AI; not human gold labels,2026-10-26,development
+8989,sale,apartment,total,usable,no,"Mô tả giá2,350tỷ khớp2,35tỷ; căn1PN,35m2 ở lõi, không có mâu thuẫn rõ.",Codex AI; not human gold labels,2026-10-26,development
+8314,sale,land,total,usable,no,"ĐấtBán viết dính; mô tả đất102m2 giá8tỷ5, thích hợp xây căn hộ là tiềm năng không phải hiện trạng.",Codex AI; not human gold labels,2026-10-26,development
+1780,sale,land,total,usable,no,"Giá hạ từ5,1 xuống4,95tỷ khớp lõi; không coi giá cũ là mâu thuẫn giá hiện hành.",Codex AI; not human gold labels,2026-10-26,development
+7328,sale,land,total,exclude,yes,"Lõi8998m2 khác DT90m2(5x18), giá3,7tỷ; cần cách ly diện tích.",Codex AI; not human gold labels,2026-10-26,development
+3687,sale,apartment,total,usable,no,"Tiêu đề bán chung cư, mô tả65m2 khớp lõi; chưa thấy mâu thuẫn số rõ.",Codex AI; not human gold labels,2026-10-26,development
+8486,sale,house,total,usable,no,"Mô tả nhà, giá11tỷ khớp lõi;50m2 chỉ trường lõi, không xác minh diện tích bên ngoài.",Codex AI; not human gold labels,2026-10-26,development
+2051,sale,house,total,exclude,yes,"Giá lõi4,4triệu khác mô tả4,4tỷ;50tr là hoa hồng, không dùng làm giá tổng.",Codex AI; not human gold labels,2026-10-26,development
+30,unknown,land,total,usable,no,"Đất nghỉ dưỡng5400m2, lõi4,5tỷ; mô tả không nêu bán rõ nhưng chưa thấy mâu thuẫn, giữ giả định có ghi nhận.",Codex AI; not human gold labels,2026-10-26,development
+8842,sale,apartment,total,usable,no,"Mô tả căn hộ99m2 giá4,1tỷ khớp lõi.",Codex AI; not human gold labels,2026-10-26,development
+8487,sale,house,total,review,uncertain,"Tiêu đề/lõi32m2, mô tả4x4 và trệt lầu; có thể lõi là sàn, chưa xác định loại diện tích.",Codex AI; not human gold labels,2026-10-26,development
+4916,mixed,land,total,exclude,no,"Tiêu đề cần bán hoặc cho thuê, mô tả chỉ nói bán; giữ hỗn hợp theo phạm vi bảo thủ.",Codex AI; not human gold labels,2026-10-26,development
+8747,sale,house,total,review,uncertain,"Lõi38m2 nhưng kích thước3,5x12=42; chưa rõ công nhận hay kích thước gần đúng, không tự sửa.",Codex AI; not human gold labels,2026-10-26,development
+4413,sale,land,per_m2,review,uncertain,"Hai nền207m2 giá16,5tr/m2; lõi103m2/1,7tỷ gần một nền nhưng chưa xác định chính xác tài sản.",Codex AI; not human gold labels,2026-10-26,development
+8525,sale,land,total,review,uncertain,"Lõi2,2tỷ, đất110m2 có trả góp25đợt; mô tả không tách khoản trả trước, không tự kết luận giá lõi sai.",Codex AI; not human gold labels,2026-10-26,development
+7641,sale,house,total,exclude,yes,"Tiêu đề6tỷ khác lõi6triệu; diện tích kích thước khác68,2 cần kiểm riêng.",Codex AI; not human gold labels,2026-10-26,development
+7177,sale,apartment,total,usable,no,"127m2 khớp; mô tả2.350tỷ mơ hồ dấu chấm nhưng cách hiểu2,35tỷ khớp lõi, không kết luận sai1000lần.",Codex AI; not human gold labels,2026-10-26,development
+7767,sale,house,total,usable,no,"Công nhận51m2,4x13 kích thước;giá3tỷ950 khớp lõi, ưu tiên phân biệt diện tích công nhận.",Codex AI; not human gold labels,2026-10-26,development
+2325,sale,land,total,exclude,yes,"Lõi1,95triệu khác mô tả1ty950; không tự đổi thành tỷ.",Codex AI; not human gold labels,2026-10-26,development
+6346,sale,land,total,usable,no,"8700m2 được mô tả gần9000m2, giá700tr khớp; từ gần cho biết làm tròn, chưa thấy mâu thuẫn rõ.",Codex AI; not human gold labels,2026-10-26,development
+8454,sale,house,total,usable,no,"63m2=4,5x14, giá10,5tỷ khớp mô tả.",Codex AI; not human gold labels,2026-10-26,development
+7030,sale,apartment,partial_payment,exclude,yes,"650tr là thanh toán trước;2tỷ549 là giá gốc2017, không tự dùng thay tổng giá hiện tại.",Codex AI; not human gold labels,2026-10-26,development
+5676,sale,land,unknown,exclude,uncertain,"Lõi600.000đ, mô tả không có giá xác nhận; không tự sửa thành600triệu.",Codex AI; not human gold labels,2026-10-26,development
+2613,sale,land,total,usable,no,"Mô tả lô đất100m2,giá rẻ tìm người liên hệ; nhãn từ tiêu đề thiếu loại, giá1,3tỷ chỉ lõi.",Codex AI; not human gold labels,2026-10-26,development
+2482,sale,apartment,unknown,review,uncertain,"Lõi500triệu, mô tả vốn khởi điểm460triệu/thanh toán30%; tổng giá không xác định.",Codex AI; not human gold labels,2026-10-26,development
+8508,sale,land,total,usable,no,"Mô tả bán lô4x14=56m2,giá chốt3,55tỷ khớp lõi.",Codex AI; not human gold labels,2026-10-26,development
+8891,sale,land,per_block,exclude,yes,"Tiêu đề723tr/100m2, lõi723triệu/120m2; cơ sở giá theo100m2 khác giá tổng cho120m2.",Codex AI; not human gold labels,2026-10-26,development
+363,sale,house,total,usable,no,"Bán nhà có thu nhập thuê30triệu, không phải tin cho thuê;57m2 gần kích thước4x14,5, không tự thay diện tích.",Codex AI; not human gold labels,2026-10-26,development
+4423,unknown,house,total,usable,no,"Mô tả nhà mặt phố, không có bán rõ hoặc giá khác;110,2m2/28tỷ vẫn là trường lõi chưa xác minh.",Codex AI; not human gold labels,2026-10-26,development
+7016,sale,land,total,usable,no,Mô tả đất200m2=10x20 có kho; chung cư trong tiện ích lân cận không phải loại tài sản.,Codex AI; not human gold labels,2026-10-26,development
+843,sale,apartment,unknown,review,uncertain,"Giỏ nhiều căn50/71/103m2 và thanh toán30%, không xác nhận500triệu là tổng giá căn50m2.",Codex AI; not human gold labels,2026-10-26,development
+6218,sale,house,total,usable,no,Mô tả42m2 giá1ty680 khớp lõi.,Codex AI; not human gold labels,2026-10-26,development
+8721,sale,land,per_block,exclude,yes,"560triệu/công, bán2công có thể bán1; lõi2000m2/560triệu không phải tổng giá2công được xác nhận.",Codex AI; not human gold labels,2026-10-26,development
+7359,unknown,land,total,exclude,yes,"Lõi9090m2 khác DT90m2; giá3,7tỷ khớp, loại đất suy từ ngữ cảnh chứ tiêu đề không rõ.",Codex AI; not human gold labels,2026-10-26,development
+990,transfer,other,transfer,exclude,no,Sang shop gồm hàng và2tháng tiền nhà;40triệu không phải giá bán bất động sản.,Codex AI; not human gold labels,2026-10-26,development
+8870,sale,house,total,usable,no,"Mô tả nhà19m2 giá4ty150 khớp lõi, tiêu đề viết tắt thiếu từ nhà.",Codex AI; not human gold labels,2026-10-26,development
+1153,sale,house,total,review,uncertain,"Lõi60m2 khác kích thước3,6x20=72; giá7,8tỷ khớp, chưa rõ diện tích công nhận.",Codex AI; not human gold labels,2026-10-26,development
+2491,sale,house,total,usable,no,"7x25=175m2,7tỷ1 khớp7,1tỷ; nhà biệt thự.",Codex AI; not human gold labels,2026-10-26,development
+2927,sale,land,total,usable,no,"3688m2 gồm400m2 thổ cư, giá1tỷ250triệu; không lấy diện tích thổ cư làm tổng.",Codex AI; not human gold labels,2026-10-26,development
+3225,sale,apartment,total,exclude,yes,"Lõi22triệu khác Giá bán1,500tỷ;71m tim tường khác65m thông thủy, không chọn đại lượng tùy ý.",Codex AI; not human gold labels,2026-10-26,development
+8110,sale,land,unknown,exclude,uncertain,"Lõi2,6triệu, mô tả chỉ giá thương lượng; không có căn cứ tự nâng thành2,6tỷ.",Codex AI; not human gold labels,2026-10-26,development
+318,mixed,house,unknown,review,uncertain,Tiêu đề cho thuê5tr/tháng nhưng mô tả bán nhà290triệu; chưa chắc là thu nhập đang có hay hai lựa chọn giao dịch.,Codex AI; not human gold labels,2026-10-26,development
+1005,sale,land,total,review,uncertain,"Bán đất tặng nhà; lõi706m2 khác12x64=768, chưa rõ diện tích công nhận; không tự sửa.",Codex AI; not human gold labels,2026-10-26,development
+7121,sale,house,partial_payment,exclude,yes,508triệu bằng thanh toán40% trong mô tả; không phải tổng giá nhà.,Codex AI; not human gold labels,2026-10-26,development

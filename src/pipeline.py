@@ -169,22 +169,38 @@ def parse_price(text: object, area: float | None = None) -> tuple[float | None, 
 
 def classify_title(title: object) -> tuple[str, str, list[str]]:
     title = normalize(title)
+    original_title = title
+    # Narrow, documented spelling repairs; no general fuzzy matching.
+    title = re.sub(r"\bbán(?=đất\b|nhà\b)", "bán ", title)
+    title = re.sub(r"\bđấtbán\b", "đất bán", title)
+    title = re.sub(r"\bđat\b", "đất", title)
+    title = re.sub(r"\bcho thê\b", "cho thuê", title)
+    title = re.sub(r"\bhoạc\b", "hoặc", title)
+    context_flags = ["title_spelling_normalized"] if title != original_title else []
     # Location/investor phrases do not name the advertised asset.
     asset_title = re.sub(r"\bnha trang\b|\bnha đam\b|\bnhà bè\b|\bnhà đầu tư\b|\bnhà nước\b|\bnhà máy\b", " ", title)
+    # Nearby amenities and hypothetical construction do not name this asset.
+    asset_title = re.sub(r"\b(?:gần|cạnh|kề|sát|đối diện|liền kề)\s+(?:khu\s+|tòa\s+)?(?:chung cư|căn hộ|nhà máy|nhà thờ)\b", " ", asset_title)
+    asset_title = re.sub(r"\b(?:xây|xây dựng)\s+(?:tòa\s+)?(?:căn hộ|chung cư|nhà trọ)\b", " ", asset_title)
+    comparative = bool(re.search(r"(?:chung cư|căn hộ).{0,12}\bhay\s+nhà\b|\bnhà.{0,12}\bhay\s+(?:chung cư|căn hộ)", title))
     explicit_land = bool(re.search(r"(?:\bbán\s+(?:gấp\s+)?(?:lô\s+)?)?\bđất\b|\bđất nền\b|\bnền\s+(?:biệt thự|thổ cư)\b", asset_title))
     land_asset_first = bool(re.search(r"^(?:chính chủ\s+|cần\s+|bán\s+|gấp\s+|lô\s+|\d+[\d.,]*m2\s+)*?(?:đất|nền)\b", asset_title))
     explicit_house_first = bool(re.search(r"^(?:chính chủ\s+|cần\s+|bán\s+|gấp\s+|căn\s+)*?(?:nhà|biệt thự)\b", asset_title))
-    if re.search(r"căn hộ|chung cư|apartment|condo|\bcc\b.*\b\d+pn\b", title):
+    if comparative:
+        kind = "other_unknown"
+        context_flags.append("ambiguous_property_comparison_requires_review")
+    elif re.search(r"căn hộ|chung cư|apartment|condo|\bccmn\b|\bcc\b.*\b\d+pn\b", asset_title):
         kind = "apartment"
     elif land_asset_first and explicit_land and not explicit_house_first:
         kind = "land"
-    elif re.search(r"\bnhà\b|biệt thự|\bnha\b|\bbiệt\s*thự\b", asset_title):
+    elif re.search(r"\bnhà\b|biệt thự|\bnha\b|\bbiệt\s*thự\b|\bdãy\s+(?:phòng\s+)?trọ\b|\bdạy trọ\b", asset_title):
         kind = "house"
     elif re.search(r"\bđất\b|\bdat\b|\bnền\b|\bruộng\b|\brẫy\b", asset_title):
         kind = "land"
     else:
         kind = "other_unknown"
-    rent = bool(re.search(r"cho thuê|cần thuê|thuê căn|thuê nhà", title))
+    rent_title = re.sub(r"\b(?:tiện|thích hợp|phù hợp)(?:\s+để)?\s+cho thuê\b", " ", title)
+    rent = bool(re.search(r"cho thuê|cần thuê|thuê căn|thuê nhà", rent_title))
     sale = bool(re.search(r"\bbán\b|\bban\b|chuyển nhượng", title))
     income = bool(re.search(r"đang cho thuê|hiện.*cho thuê|hợp đồng thuê|vừa ở vừa cho thuê|1 ở.*cho thuê", title))
     if rent and (re.match(r"cho thuê", title) or "thuê hoặc bán" in title or "bán hoặc cho thuê" in title):
@@ -195,7 +211,7 @@ def classify_title(title: object) -> tuple[str, str, list[str]]:
         transaction = "sale_with_rental_income" if income else "rental_or_ambiguous"
     else:
         transaction = "sale" if sale else "sale_assumed"
-    flags = ["property_type_inferred_from_title"]
+    flags = ["property_type_inferred_from_title"] + context_flags
     if kind == "other_unknown":
         flags.append("unknown_property_type")
     if transaction == "sale_assumed":

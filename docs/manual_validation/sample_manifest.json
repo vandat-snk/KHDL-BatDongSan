@@ -1,0 +1,1560 @@
+{
+  "schema_version": 1,
+  "seed": 42,
+  "baseline_run_id": "20261016T015620Z-f2e661a6",
+  "source_sha256": "ef39f153f48a55af07baa86883cd9036652f6d52232fed0be6e8991c7a5bf811",
+  "baseline_sha256": {
+    "listings_clean.csv": "bb6ef707dfa95f984abaae327c9322664046c12429a0f1fc58021d27dccf2ad0",
+    "listings_rejected.csv": "43627813964309014364d4088443a34bae04d09d96d14114b88bd6135223e98a"
+  },
+  "excluded_known_ids": [
+    78,
+    300,
+    335,
+    588,
+    634,
+    638,
+    683,
+    709,
+    750,
+    1071,
+    1140,
+    1437,
+    1802,
+    1915,
+    2123,
+    2331,
+    2512,
+    2604,
+    2980,
+    3008,
+    3111,
+    3133,
+    3427,
+    3589,
+    3696,
+    3739,
+    3788,
+    3879,
+    4167,
+    4208,
+    4266,
+    4288,
+    4588,
+    4759,
+    5093,
+    5418,
+    5517,
+    5755,
+    5900,
+    5906,
+    6181,
+    6244,
+    6266,
+    6469,
+    6510,
+    6570,
+    6677,
+    7103,
+    7133,
+    7164,
+    7363,
+    7452,
+    7485,
+    7533,
+    7811,
+    7826,
+    8096,
+    8107,
+    8151,
+    8262,
+    8271,
+    8387,
+    8535,
+    8572,
+    8773,
+    8879,
+    8957
+  ],
+  "allocation": [
+    {
+      "group": "kept_assumed",
+      "property_type": "house",
+      "risk": "ordinary",
+      "eligible_n": 1596,
+      "sample_n": 8,
+      "development_n": 5,
+      "evaluation_n": 3
+    },
+    {
+      "group": "kept_assumed",
+      "property_type": "land",
+      "risk": "flagged",
+      "eligible_n": 231,
+      "sample_n": 8,
+      "development_n": 5,
+      "evaluation_n": 3
+    },
+    {
+      "group": "kept_assumed",
+      "property_type": "other_unknown",
+      "risk": "flagged",
+      "eligible_n": 98,
+      "sample_n": 8,
+      "development_n": 5,
+      "evaluation_n": 3
+    },
+    {
+      "group": "kept_assumed",
+      "property_type": "other_unknown",
+      "risk": "ordinary",
+      "eligible_n": 658,
+      "sample_n": 8,
+      "development_n": 5,
+      "evaluation_n": 3
+    },
+    {
+      "group": "kept_assumed",
+      "property_type": "house",
+      "risk": "flagged",
+      "eligible_n": 173,
+      "sample_n": 7,
+      "development_n": 5,
+      "evaluation_n": 2
+    },
+    {
+      "group": "kept_assumed",
+      "property_type": "land",
+      "risk": "ordinary",
+      "eligible_n": 838,
+      "sample_n": 7,
+      "development_n": 5,
+      "evaluation_n": 2
+    },
+    {
+      "group": "kept_assumed",
+      "property_type": "apartment",
+      "risk": "flagged",
+      "eligible_n": 31,
+      "sample_n": 7,
+      "development_n": 5,
+      "evaluation_n": 2
+    },
+    {
+      "group": "kept_assumed",
+      "property_type": "apartment",
+      "risk": "ordinary",
+      "eligible_n": 245,
+      "sample_n": 7,
+      "development_n": 5,
+      "evaluation_n": 2
+    },
+    {
+      "group": "kept_other",
+      "property_type": "house",
+      "risk": "flagged",
+      "eligible_n": 169,
+      "sample_n": 8,
+      "development_n": 5,
+      "evaluation_n": 3
+    },
+    {
+      "group": "kept_other",
+      "property_type": "apartment",
+      "risk": "ordinary",
+      "eligible_n": 80,
+      "sample_n": 8,
+      "development_n": 5,
+      "evaluation_n": 3
+    },
+    {
+      "group": "kept_other",
+      "property_type": "land",
+      "risk": "ordinary",
+      "eligible_n": 625,
+      "sample_n": 8,
+      "development_n": 5,
+      "evaluation_n": 3
+    },
+    {
+      "group": "kept_other",
+      "property_type": "land",
+      "risk": "flagged",
+      "eligible_n": 145,
+      "sample_n": 8,
+      "development_n": 5,
+      "evaluation_n": 3
+    },
+    {
+      "group": "kept_other",
+      "property_type": "other_unknown",
+      "risk": "ordinary",
+      "eligible_n": 296,
+      "sample_n": 7,
+      "development_n": 5,
+      "evaluation_n": 2
+    },
+    {
+      "group": "kept_other",
+      "property_type": "apartment",
+      "risk": "flagged",
+      "eligible_n": 14,
+      "sample_n": 7,
+      "development_n": 5,
+      "evaluation_n": 2
+    },
+    {
+      "group": "kept_other",
+      "property_type": "house",
+      "risk": "ordinary",
+      "eligible_n": 1639,
+      "sample_n": 7,
+      "development_n": 5,
+      "evaluation_n": 2
+    },
+    {
+      "group": "kept_other",
+      "property_type": "other_unknown",
+      "risk": "flagged",
+      "eligible_n": 55,
+      "sample_n": 7,
+      "development_n": 5,
+      "evaluation_n": 2
+    },
+    {
+      "group": "rejected",
+      "property_type": "house",
+      "risk": "ordinary",
+      "eligible_n": 24,
+      "sample_n": 8,
+      "development_n": 5,
+      "evaluation_n": 3
+    },
+    {
+      "group": "rejected",
+      "property_type": "other_unknown",
+      "risk": "flagged",
+      "eligible_n": 16,
+      "sample_n": 8,
+      "development_n": 5,
+      "evaluation_n": 3
+    },
+    {
+      "group": "rejected",
+      "property_type": "apartment",
+      "risk": "ordinary",
+      "eligible_n": 6,
+      "sample_n": 6,
+      "development_n": 4,
+      "evaluation_n": 2
+    },
+    {
+      "group": "rejected",
+      "property_type": "house",
+      "risk": "flagged",
+      "eligible_n": 28,
+      "sample_n": 8,
+      "development_n": 5,
+      "evaluation_n": 3
+    },
+    {
+      "group": "rejected",
+      "property_type": "other_unknown",
+      "risk": "ordinary",
+      "eligible_n": 14,
+      "sample_n": 8,
+      "development_n": 5,
+      "evaluation_n": 3
+    },
+    {
+      "group": "rejected",
+      "property_type": "land",
+      "risk": "flagged",
+      "eligible_n": 47,
+      "sample_n": 8,
+      "development_n": 6,
+      "evaluation_n": 2
+    },
+    {
+      "group": "rejected",
+      "property_type": "land",
+      "risk": "ordinary",
+      "eligible_n": 17,
+      "sample_n": 7,
+      "development_n": 5,
+      "evaluation_n": 2
+    },
+    {
+      "group": "rejected",
+      "property_type": "apartment",
+      "risk": "flagged",
+      "eligible_n": 8,
+      "sample_n": 7,
+      "development_n": 5,
+      "evaluation_n": 2
+    }
+  ],
+  "method": "Randomized round-robin balanced type × risk strata within three groups; largest-remainder evaluation allocation. NOT self-weighting. Exact duplicates absent; near-duplicate leakage not ruled out.",
+  "sample": [
+    {
+      "row_id": 30,
+      "split": "development",
+      "group": "kept_assumed",
+      "property_type": "land",
+      "risk": "flagged"
+    },
+    {
+      "row_id": 39,
+      "split": "evaluation",
+      "group": "kept_assumed",
+      "property_type": "other_unknown",
+      "risk": "ordinary"
+    },
+    {
+      "row_id": 154,
+      "split": "development",
+      "group": "kept_other",
+      "property_type": "apartment",
+      "risk": "ordinary"
+    },
+    {
+      "row_id": 187,
+      "split": "evaluation",
+      "group": "kept_other",
+      "property_type": "other_unknown",
+      "risk": "ordinary"
+    },
+    {
+      "row_id": 234,
+      "split": "development",
+      "group": "rejected",
+      "property_type": "apartment",
+      "risk": "flagged"
+    },
+    {
+      "row_id": 264,
+      "split": "evaluation",
+      "group": "kept_other",
+      "property_type": "land",
+      "risk": "ordinary"
+    },
+    {
+      "row_id": 318,
+      "split": "development",
+      "group": "rejected",
+      "property_type": "house",
+      "risk": "ordinary"
+    },
+    {
+      "row_id": 363,
+      "split": "development",
+      "group": "kept_other",
+      "property_type": "house",
+      "risk": "flagged"
+    },
+    {
+      "row_id": 392,
+      "split": "development",
+      "group": "kept_assumed",
+      "property_type": "apartment",
+      "risk": "ordinary"
+    },
+    {
+      "row_id": 447,
+      "split": "evaluation",
+      "group": "rejected",
+      "property_type": "apartment",
+      "risk": "ordinary"
+    },
+    {
+      "row_id": 482,
+      "split": "development",
+      "group": "rejected",
+      "property_type": "apartment",
+      "risk": "flagged"
+    },
+    {
+      "row_id": 489,
+      "split": "evaluation",
+      "group": "kept_assumed",
+      "property_type": "apartment",
+      "risk": "flagged"
+    },
+    {
+      "row_id": 527,
+      "split": "development",
+      "group": "kept_other",
+      "property_type": "other_unknown",
+      "risk": "flagged"
+    },
+    {
+      "row_id": 559,
+      "split": "development",
+      "group": "rejected",
+      "property_type": "land",
+      "risk": "flagged"
+    },
+    {
+      "row_id": 600,
+      "split": "development",
+      "group": "kept_assumed",
+      "property_type": "apartment",
+      "risk": "ordinary"
+    },
+    {
+      "row_id": 615,
+      "split": "evaluation",
+      "group": "kept_other",
+      "property_type": "apartment",
+      "risk": "ordinary"
+    },
+    {
+      "row_id": 636,
+      "split": "evaluation",
+      "group": "rejected",
+      "property_type": "land",
+      "risk": "ordinary"
+    },
+    {
+      "row_id": 653,
+      "split": "development",
+      "group": "rejected",
+      "property_type": "house",
+      "risk": "flagged"
+    },
+    {
+      "row_id": 757,
+      "split": "evaluation",
+      "group": "kept_assumed",
+      "property_type": "house",
+      "risk": "ordinary"
+    },
+    {
+      "row_id": 843,
+      "split": "development",
+      "group": "kept_assumed",
+      "property_type": "apartment",
+      "risk": "ordinary"
+    },
+    {
+      "row_id": 845,
+      "split": "evaluation",
+      "group": "kept_assumed",
+      "property_type": "land",
+      "risk": "flagged"
+    },
+    {
+      "row_id": 861,
+      "split": "evaluation",
+      "group": "rejected",
+      "property_type": "other_unknown",
+      "risk": "flagged"
+    },
+    {
+      "row_id": 874,
+      "split": "evaluation",
+      "group": "kept_other",
+      "property_type": "land",
+      "risk": "flagged"
+    },
+    {
+      "row_id": 875,
+      "split": "evaluation",
+      "group": "rejected",
+      "property_type": "land",
+      "risk": "ordinary"
+    },
+    {
+      "row_id": 880,
+      "split": "development",
+      "group": "kept_assumed",
+      "property_type": "house",
+      "risk": "ordinary"
+    },
+    {
+      "row_id": 965,
+      "split": "evaluation",
+      "group": "kept_assumed",
+      "property_type": "land",
+      "risk": "flagged"
+    },
+    {
+      "row_id": 990,
+      "split": "development",
+      "group": "rejected",
+      "property_type": "other_unknown",
+      "risk": "flagged"
+    },
+    {
+      "row_id": 1005,
+      "split": "development",
+      "group": "kept_other",
+      "property_type": "land",
+      "risk": "flagged"
+    },
+    {
+      "row_id": 1039,
+      "split": "development",
+      "group": "rejected",
+      "property_type": "other_unknown",
+      "risk": "flagged"
+    },
+    {
+      "row_id": 1061,
+      "split": "development",
+      "group": "rejected",
+      "property_type": "house",
+      "risk": "ordinary"
+    },
+    {
+      "row_id": 1153,
+      "split": "development",
+      "group": "kept_other",
+      "property_type": "house",
+      "risk": "ordinary"
+    },
+    {
+      "row_id": 1398,
+      "split": "evaluation",
+      "group": "kept_assumed",
+      "property_type": "land",
+      "risk": "flagged"
+    },
+    {
+      "row_id": 1461,
+      "split": "development",
+      "group": "kept_other",
+      "property_type": "land",
+      "risk": "ordinary"
+    },
+    {
+      "row_id": 1780,
+      "split": "development",
+      "group": "kept_assumed",
+      "property_type": "land",
+      "risk": "ordinary"
+    },
+    {
+      "row_id": 2051,
+      "split": "development",
+      "group": "rejected",
+      "property_type": "house",
+      "risk": "flagged"
+    },
+    {
+      "row_id": 2056,
+      "split": "development",
+      "group": "rejected",
+      "property_type": "apartment",
+      "risk": "flagged"
+    },
+    {
+      "row_id": 2057,
+      "split": "development",
+      "group": "rejected",
+      "property_type": "other_unknown",
+      "risk": "flagged"
+    },
+    {
+      "row_id": 2141,
+      "split": "development",
+      "group": "kept_assumed",
+      "property_type": "house",
+      "risk": "flagged"
+    },
+    {
+      "row_id": 2305,
+      "split": "development",
+      "group": "kept_assumed",
+      "property_type": "other_unknown",
+      "risk": "flagged"
+    },
+    {
+      "row_id": 2325,
+      "split": "development",
+      "group": "rejected",
+      "property_type": "land",
+      "risk": "flagged"
+    },
+    {
+      "row_id": 2355,
+      "split": "evaluation",
+      "group": "kept_assumed",
+      "property_type": "other_unknown",
+      "risk": "flagged"
+    },
+    {
+      "row_id": 2409,
+      "split": "development",
+      "group": "rejected",
+      "property_type": "house",
+      "risk": "flagged"
+    },
+    {
+      "row_id": 2482,
+      "split": "development",
+      "group": "rejected",
+      "property_type": "apartment",
+      "risk": "ordinary"
+    },
+    {
+      "row_id": 2491,
+      "split": "development",
+      "group": "kept_other",
+      "property_type": "house",
+      "risk": "ordinary"
+    },
+    {
+      "row_id": 2613,
+      "split": "development",
+      "group": "kept_assumed",
+      "property_type": "other_unknown",
+      "risk": "ordinary"
+    },
+    {
+      "row_id": 2657,
+      "split": "development",
+      "group": "kept_assumed",
+      "property_type": "apartment",
+      "risk": "flagged"
+    },
+    {
+      "row_id": 2734,
+      "split": "evaluation",
+      "group": "kept_other",
+      "property_type": "apartment",
+      "risk": "flagged"
+    },
+    {
+      "row_id": 2927,
+      "split": "development",
+      "group": "kept_assumed",
+      "property_type": "other_unknown",
+      "risk": "flagged"
+    },
+    {
+      "row_id": 2941,
+      "split": "evaluation",
+      "group": "kept_other",
+      "property_type": "house",
+      "risk": "flagged"
+    },
+    {
+      "row_id": 2976,
+      "split": "development",
+      "group": "kept_other",
+      "property_type": "land",
+      "risk": "ordinary"
+    },
+    {
+      "row_id": 3043,
+      "split": "evaluation",
+      "group": "kept_assumed",
+      "property_type": "apartment",
+      "risk": "ordinary"
+    },
+    {
+      "row_id": 3065,
+      "split": "evaluation",
+      "group": "rejected",
+      "property_type": "house",
+      "risk": "ordinary"
+    },
+    {
+      "row_id": 3136,
+      "split": "development",
+      "group": "kept_other",
+      "property_type": "apartment",
+      "risk": "ordinary"
+    },
+    {
+      "row_id": 3140,
+      "split": "evaluation",
+      "group": "kept_other",
+      "property_type": "other_unknown",
+      "risk": "flagged"
+    },
+    {
+      "row_id": 3161,
+      "split": "development",
+      "group": "kept_other",
+      "property_type": "land",
+      "risk": "flagged"
+    },
+    {
+      "row_id": 3225,
+      "split": "development",
+      "group": "rejected",
+      "property_type": "apartment",
+      "risk": "flagged"
+    },
+    {
+      "row_id": 3226,
+      "split": "development",
+      "group": "kept_assumed",
+      "property_type": "house",
+      "risk": "flagged"
+    },
+    {
+      "row_id": 3243,
+      "split": "evaluation",
+      "group": "kept_other",
+      "property_type": "house",
+      "risk": "flagged"
+    },
+    {
+      "row_id": 3251,
+      "split": "development",
+      "group": "kept_assumed",
+      "property_type": "land",
+      "risk": "flagged"
+    },
+    {
+      "row_id": 3347,
+      "split": "evaluation",
+      "group": "kept_other",
+      "property_type": "land",
+      "risk": "ordinary"
+    },
+    {
+      "row_id": 3353,
+      "split": "evaluation",
+      "group": "rejected",
+      "property_type": "other_unknown",
+      "risk": "ordinary"
+    },
+    {
+      "row_id": 3370,
+      "split": "development",
+      "group": "rejected",
+      "property_type": "house",
+      "risk": "ordinary"
+    },
+    {
+      "row_id": 3393,
+      "split": "development",
+      "group": "kept_other",
+      "property_type": "land",
+      "risk": "ordinary"
+    },
+    {
+      "row_id": 3419,
+      "split": "evaluation",
+      "group": "kept_other",
+      "property_type": "other_unknown",
+      "risk": "flagged"
+    },
+    {
+      "row_id": 3475,
+      "split": "development",
+      "group": "kept_assumed",
+      "property_type": "land",
+      "risk": "ordinary"
+    },
+    {
+      "row_id": 3499,
+      "split": "evaluation",
+      "group": "kept_assumed",
+      "property_type": "apartment",
+      "risk": "ordinary"
+    },
+    {
+      "row_id": 3528,
+      "split": "evaluation",
+      "group": "kept_assumed",
+      "property_type": "apartment",
+      "risk": "flagged"
+    },
+    {
+      "row_id": 3550,
+      "split": "development",
+      "group": "kept_other",
+      "property_type": "other_unknown",
+      "risk": "flagged"
+    },
+    {
+      "row_id": 3612,
+      "split": "evaluation",
+      "group": "rejected",
+      "property_type": "other_unknown",
+      "risk": "flagged"
+    },
+    {
+      "row_id": 3635,
+      "split": "development",
+      "group": "kept_other",
+      "property_type": "house",
+      "risk": "flagged"
+    },
+    {
+      "row_id": 3687,
+      "split": "development",
+      "group": "kept_other",
+      "property_type": "apartment",
+      "risk": "flagged"
+    },
+    {
+      "row_id": 3749,
+      "split": "evaluation",
+      "group": "rejected",
+      "property_type": "other_unknown",
+      "risk": "ordinary"
+    },
+    {
+      "row_id": 3751,
+      "split": "development",
+      "group": "rejected",
+      "property_type": "other_unknown",
+      "risk": "ordinary"
+    },
+    {
+      "row_id": 3784,
+      "split": "development",
+      "group": "rejected",
+      "property_type": "house",
+      "risk": "flagged"
+    },
+    {
+      "row_id": 3797,
+      "split": "evaluation",
+      "group": "rejected",
+      "property_type": "house",
+      "risk": "flagged"
+    },
+    {
+      "row_id": 3832,
+      "split": "evaluation",
+      "group": "kept_other",
+      "property_type": "house",
+      "risk": "ordinary"
+    },
+    {
+      "row_id": 3862,
+      "split": "development",
+      "group": "rejected",
+      "property_type": "apartment",
+      "risk": "ordinary"
+    },
+    {
+      "row_id": 3886,
+      "split": "development",
+      "group": "kept_other",
+      "property_type": "apartment",
+      "risk": "ordinary"
+    },
+    {
+      "row_id": 3923,
+      "split": "evaluation",
+      "group": "kept_other",
+      "property_type": "apartment",
+      "risk": "ordinary"
+    },
+    {
+      "row_id": 3934,
+      "split": "development",
+      "group": "kept_assumed",
+      "property_type": "other_unknown",
+      "risk": "ordinary"
+    },
+    {
+      "row_id": 4044,
+      "split": "evaluation",
+      "group": "rejected",
+      "property_type": "house",
+      "risk": "flagged"
+    },
+    {
+      "row_id": 4085,
+      "split": "development",
+      "group": "kept_other",
+      "property_type": "house",
+      "risk": "flagged"
+    },
+    {
+      "row_id": 4093,
+      "split": "evaluation",
+      "group": "kept_other",
+      "property_type": "apartment",
+      "risk": "ordinary"
+    },
+    {
+      "row_id": 4105,
+      "split": "development",
+      "group": "kept_assumed",
+      "property_type": "land",
+      "risk": "flagged"
+    },
+    {
+      "row_id": 4171,
+      "split": "development",
+      "group": "kept_assumed",
+      "property_type": "apartment",
+      "risk": "flagged"
+    },
+    {
+      "row_id": 4178,
+      "split": "evaluation",
+      "group": "kept_other",
+      "property_type": "house",
+      "risk": "flagged"
+    },
+    {
+      "row_id": 4284,
+      "split": "evaluation",
+      "group": "rejected",
+      "property_type": "apartment",
+      "risk": "flagged"
+    },
+    {
+      "row_id": 4303,
+      "split": "evaluation",
+      "group": "kept_other",
+      "property_type": "land",
+      "risk": "ordinary"
+    },
+    {
+      "row_id": 4334,
+      "split": "evaluation",
+      "group": "rejected",
+      "property_type": "apartment",
+      "risk": "ordinary"
+    },
+    {
+      "row_id": 4343,
+      "split": "evaluation",
+      "group": "kept_assumed",
+      "property_type": "land",
+      "risk": "ordinary"
+    },
+    {
+      "row_id": 4344,
+      "split": "development",
+      "group": "kept_other",
+      "property_type": "house",
+      "risk": "ordinary"
+    },
+    {
+      "row_id": 4376,
+      "split": "evaluation",
+      "group": "kept_assumed",
+      "property_type": "other_unknown",
+      "risk": "flagged"
+    },
+    {
+      "row_id": 4413,
+      "split": "development",
+      "group": "kept_assumed",
+      "property_type": "land",
+      "risk": "ordinary"
+    },
+    {
+      "row_id": 4423,
+      "split": "development",
+      "group": "kept_assumed",
+      "property_type": "house",
+      "risk": "flagged"
+    },
+    {
+      "row_id": 4649,
+      "split": "development",
+      "group": "kept_assumed",
+      "property_type": "land",
+      "risk": "flagged"
+    },
+    {
+      "row_id": 4722,
+      "split": "development",
+      "group": "kept_assumed",
+      "property_type": "other_unknown",
+      "risk": "ordinary"
+    },
+    {
+      "row_id": 4790,
+      "split": "evaluation",
+      "group": "kept_assumed",
+      "property_type": "other_unknown",
+      "risk": "flagged"
+    },
+    {
+      "row_id": 4861,
+      "split": "evaluation",
+      "group": "kept_other",
+      "property_type": "apartment",
+      "risk": "flagged"
+    },
+    {
+      "row_id": 4916,
+      "split": "development",
+      "group": "rejected",
+      "property_type": "land",
+      "risk": "ordinary"
+    },
+    {
+      "row_id": 5006,
+      "split": "development",
+      "group": "rejected",
+      "property_type": "other_unknown",
+      "risk": "ordinary"
+    },
+    {
+      "row_id": 5058,
+      "split": "development",
+      "group": "kept_assumed",
+      "property_type": "house",
+      "risk": "ordinary"
+    },
+    {
+      "row_id": 5122,
+      "split": "evaluation",
+      "group": "rejected",
+      "property_type": "land",
+      "risk": "flagged"
+    },
+    {
+      "row_id": 5268,
+      "split": "development",
+      "group": "kept_assumed",
+      "property_type": "house",
+      "risk": "flagged"
+    },
+    {
+      "row_id": 5294,
+      "split": "evaluation",
+      "group": "rejected",
+      "property_type": "house",
+      "risk": "flagged"
+    },
+    {
+      "row_id": 5409,
+      "split": "development",
+      "group": "kept_assumed",
+      "property_type": "other_unknown",
+      "risk": "flagged"
+    },
+    {
+      "row_id": 5494,
+      "split": "development",
+      "group": "kept_other",
+      "property_type": "other_unknown",
+      "risk": "ordinary"
+    },
+    {
+      "row_id": 5498,
+      "split": "development",
+      "group": "rejected",
+      "property_type": "land",
+      "risk": "ordinary"
+    },
+    {
+      "row_id": 5532,
+      "split": "evaluation",
+      "group": "kept_assumed",
+      "property_type": "other_unknown",
+      "risk": "ordinary"
+    },
+    {
+      "row_id": 5664,
+      "split": "evaluation",
+      "group": "kept_assumed",
+      "property_type": "land",
+      "risk": "ordinary"
+    },
+    {
+      "row_id": 5676,
+      "split": "development",
+      "group": "rejected",
+      "property_type": "land",
+      "risk": "flagged"
+    },
+    {
+      "row_id": 5710,
+      "split": "development",
+      "group": "kept_other",
+      "property_type": "apartment",
+      "risk": "flagged"
+    },
+    {
+      "row_id": 5793,
+      "split": "development",
+      "group": "rejected",
+      "property_type": "apartment",
+      "risk": "flagged"
+    },
+    {
+      "row_id": 5858,
+      "split": "evaluation",
+      "group": "kept_other",
+      "property_type": "house",
+      "risk": "ordinary"
+    },
+    {
+      "row_id": 5903,
+      "split": "development",
+      "group": "kept_other",
+      "property_type": "apartment",
+      "risk": "ordinary"
+    },
+    {
+      "row_id": 6047,
+      "split": "development",
+      "group": "rejected",
+      "property_type": "other_unknown",
+      "risk": "ordinary"
+    },
+    {
+      "row_id": 6218,
+      "split": "development",
+      "group": "kept_other",
+      "property_type": "house",
+      "risk": "flagged"
+    },
+    {
+      "row_id": 6310,
+      "split": "development",
+      "group": "rejected",
+      "property_type": "land",
+      "risk": "ordinary"
+    },
+    {
+      "row_id": 6342,
+      "split": "evaluation",
+      "group": "kept_assumed",
+      "property_type": "other_unknown",
+      "risk": "ordinary"
+    },
+    {
+      "row_id": 6346,
+      "split": "development",
+      "group": "kept_other",
+      "property_type": "land",
+      "risk": "flagged"
+    },
+    {
+      "row_id": 6367,
+      "split": "evaluation",
+      "group": "kept_assumed",
+      "property_type": "house",
+      "risk": "ordinary"
+    },
+    {
+      "row_id": 6408,
+      "split": "evaluation",
+      "group": "rejected",
+      "property_type": "house",
+      "risk": "ordinary"
+    },
+    {
+      "row_id": 6480,
+      "split": "development",
+      "group": "kept_other",
+      "property_type": "house",
+      "risk": "ordinary"
+    },
+    {
+      "row_id": 6515,
+      "split": "development",
+      "group": "kept_assumed",
+      "property_type": "apartment",
+      "risk": "flagged"
+    },
+    {
+      "row_id": 6747,
+      "split": "evaluation",
+      "group": "rejected",
+      "property_type": "house",
+      "risk": "ordinary"
+    },
+    {
+      "row_id": 6909,
+      "split": "development",
+      "group": "kept_assumed",
+      "property_type": "house",
+      "risk": "ordinary"
+    },
+    {
+      "row_id": 7016,
+      "split": "development",
+      "group": "kept_assumed",
+      "property_type": "land",
+      "risk": "flagged"
+    },
+    {
+      "row_id": 7028,
+      "split": "development",
+      "group": "kept_other",
+      "property_type": "other_unknown",
+      "risk": "ordinary"
+    },
+    {
+      "row_id": 7030,
+      "split": "development",
+      "group": "rejected",
+      "property_type": "other_unknown",
+      "risk": "ordinary"
+    },
+    {
+      "row_id": 7054,
+      "split": "development",
+      "group": "rejected",
+      "property_type": "land",
+      "risk": "flagged"
+    },
+    {
+      "row_id": 7088,
+      "split": "development",
+      "group": "kept_other",
+      "property_type": "other_unknown",
+      "risk": "ordinary"
+    },
+    {
+      "row_id": 7094,
+      "split": "development",
+      "group": "rejected",
+      "property_type": "apartment",
+      "risk": "ordinary"
+    },
+    {
+      "row_id": 7121,
+      "split": "development",
+      "group": "rejected",
+      "property_type": "house",
+      "risk": "ordinary"
+    },
+    {
+      "row_id": 7130,
+      "split": "evaluation",
+      "group": "kept_other",
+      "property_type": "land",
+      "risk": "flagged"
+    },
+    {
+      "row_id": 7165,
+      "split": "evaluation",
+      "group": "kept_other",
+      "property_type": "land",
+      "risk": "flagged"
+    },
+    {
+      "row_id": 7166,
+      "split": "development",
+      "group": "rejected",
+      "property_type": "house",
+      "risk": "ordinary"
+    },
+    {
+      "row_id": 7177,
+      "split": "development",
+      "group": "kept_other",
+      "property_type": "apartment",
+      "risk": "ordinary"
+    },
+    {
+      "row_id": 7254,
+      "split": "development",
+      "group": "kept_other",
+      "property_type": "land",
+      "risk": "ordinary"
+    },
+    {
+      "row_id": 7328,
+      "split": "development",
+      "group": "rejected",
+      "property_type": "land",
+      "risk": "flagged"
+    },
+    {
+      "row_id": 7359,
+      "split": "development",
+      "group": "rejected",
+      "property_type": "other_unknown",
+      "risk": "flagged"
+    },
+    {
+      "row_id": 7409,
+      "split": "development",
+      "group": "kept_other",
+      "property_type": "land",
+      "risk": "flagged"
+    },
+    {
+      "row_id": 7487,
+      "split": "evaluation",
+      "group": "rejected",
+      "property_type": "other_unknown",
+      "risk": "flagged"
+    },
+    {
+      "row_id": 7541,
+      "split": "development",
+      "group": "kept_assumed",
+      "property_type": "apartment",
+      "risk": "flagged"
+    },
+    {
+      "row_id": 7641,
+      "split": "development",
+      "group": "rejected",
+      "property_type": "house",
+      "risk": "flagged"
+    },
+    {
+      "row_id": 7697,
+      "split": "development",
+      "group": "kept_assumed",
+      "property_type": "land",
+      "risk": "ordinary"
+    },
+    {
+      "row_id": 7767,
+      "split": "development",
+      "group": "kept_assumed",
+      "property_type": "house",
+      "risk": "ordinary"
+    },
+    {
+      "row_id": 7782,
+      "split": "development",
+      "group": "rejected",
+      "property_type": "apartment",
+      "risk": "ordinary"
+    },
+    {
+      "row_id": 7867,
+      "split": "development",
+      "group": "kept_assumed",
+      "property_type": "apartment",
+      "risk": "ordinary"
+    },
+    {
+      "row_id": 8110,
+      "split": "development",
+      "group": "rejected",
+      "property_type": "land",
+      "risk": "ordinary"
+    },
+    {
+      "row_id": 8148,
+      "split": "development",
+      "group": "kept_assumed",
+      "property_type": "apartment",
+      "risk": "flagged"
+    },
+    {
+      "row_id": 8158,
+      "split": "development",
+      "group": "kept_other",
+      "property_type": "land",
+      "risk": "flagged"
+    },
+    {
+      "row_id": 8209,
+      "split": "development",
+      "group": "kept_other",
+      "property_type": "other_unknown",
+      "risk": "ordinary"
+    },
+    {
+      "row_id": 8229,
+      "split": "development",
+      "group": "kept_other",
+      "property_type": "other_unknown",
+      "risk": "flagged"
+    },
+    {
+      "row_id": 8254,
+      "split": "development",
+      "group": "rejected",
+      "property_type": "other_unknown",
+      "risk": "ordinary"
+    },
+    {
+      "row_id": 8269,
+      "split": "evaluation",
+      "group": "rejected",
+      "property_type": "other_unknown",
+      "risk": "ordinary"
+    },
+    {
+      "row_id": 8301,
+      "split": "evaluation",
+      "group": "kept_other",
+      "property_type": "other_unknown",
+      "risk": "ordinary"
+    },
+    {
+      "row_id": 8314,
+      "split": "development",
+      "group": "kept_assumed",
+      "property_type": "other_unknown",
+      "risk": "ordinary"
+    },
+    {
+      "row_id": 8315,
+      "split": "development",
+      "group": "kept_other",
+      "property_type": "apartment",
+      "risk": "flagged"
+    },
+    {
+      "row_id": 8454,
+      "split": "development",
+      "group": "kept_other",
+      "property_type": "house",
+      "risk": "flagged"
+    },
+    {
+      "row_id": 8459,
+      "split": "development",
+      "group": "kept_other",
+      "property_type": "other_unknown",
+      "risk": "flagged"
+    },
+    {
+      "row_id": 8486,
+      "split": "development",
+      "group": "kept_assumed",
+      "property_type": "house",
+      "risk": "flagged"
+    },
+    {
+      "row_id": 8487,
+      "split": "development",
+      "group": "kept_assumed",
+      "property_type": "house",
+      "risk": "ordinary"
+    },
+    {
+      "row_id": 8508,
+      "split": "development",
+      "group": "kept_assumed",
+      "property_type": "land",
+      "risk": "ordinary"
+    },
+    {
+      "row_id": 8510,
+      "split": "evaluation",
+      "group": "kept_assumed",
+      "property_type": "house",
+      "risk": "ordinary"
+    },
+    {
+      "row_id": 8525,
+      "split": "development",
+      "group": "rejected",
+      "property_type": "land",
+      "risk": "ordinary"
+    },
+    {
+      "row_id": 8591,
+      "split": "development",
+      "group": "rejected",
+      "property_type": "other_unknown",
+      "risk": "flagged"
+    },
+    {
+      "row_id": 8592,
+      "split": "development",
+      "group": "kept_other",
+      "property_type": "other_unknown",
+      "risk": "flagged"
+    },
+    {
+      "row_id": 8615,
+      "split": "development",
+      "group": "kept_other",
+      "property_type": "apartment",
+      "risk": "flagged"
+    },
+    {
+      "row_id": 8659,
+      "split": "evaluation",
+      "group": "rejected",
+      "property_type": "land",
+      "risk": "flagged"
+    },
+    {
+      "row_id": 8721,
+      "split": "development",
+      "group": "rejected",
+      "property_type": "land",
+      "risk": "flagged"
+    },
+    {
+      "row_id": 8722,
+      "split": "evaluation",
+      "group": "kept_assumed",
+      "property_type": "house",
+      "risk": "flagged"
+    },
+    {
+      "row_id": 8732,
+      "split": "development",
+      "group": "kept_assumed",
+      "property_type": "other_unknown",
+      "risk": "ordinary"
+    },
+    {
+      "row_id": 8747,
+      "split": "development",
+      "group": "kept_other",
+      "property_type": "house",
+      "risk": "ordinary"
+    },
+    {
+      "row_id": 8764,
+      "split": "development",
+      "group": "kept_assumed",
+      "property_type": "other_unknown",
+      "risk": "flagged"
+    },
+    {
+      "row_id": 8821,
+      "split": "evaluation",
+      "group": "kept_assumed",
+      "property_type": "house",
+      "risk": "flagged"
+    },
+    {
+      "row_id": 8842,
+      "split": "development",
+      "group": "kept_assumed",
+      "property_type": "apartment",
+      "risk": "ordinary"
+    },
+    {
+      "row_id": 8870,
+      "split": "development",
+      "group": "kept_assumed",
+      "property_type": "other_unknown",
+      "risk": "flagged"
+    },
+    {
+      "row_id": 8891,
+      "split": "development",
+      "group": "kept_other",
+      "property_type": "land",
+      "risk": "ordinary"
+    },
+    {
+      "row_id": 8929,
+      "split": "development",
+      "group": "kept_other",
+      "property_type": "other_unknown",
+      "risk": "ordinary"
+    },
+    {
+      "row_id": 8982,
+      "split": "evaluation",
+      "group": "rejected",
+      "property_type": "apartment",
+      "risk": "flagged"
+    },
+    {
+      "row_id": 8989,
+      "split": "development",
+      "group": "kept_other",
+      "property_type": "apartment",
+      "risk": "flagged"
+    }
+  ]
+}

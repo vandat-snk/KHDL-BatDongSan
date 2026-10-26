@@ -4,6 +4,16 @@
 
 Nhóm: Võ Văn Đạt (N23DCCN078), Nguyễn Thị Yến Nhi (N23DCCN112), Hứa Như Quỳnh (N23DCCN118).
 
+## Nhánh kiểm dữ liệu ngày 26/10/2026
+
+Đã chuẩn bị mẫu120 phát triển/60 đánh giá và sửa quy tắc ở bước1.1–1.6. Xem [hướng dẫn gán nhãn](docs/manual_validation/HUONG_DAN_GAN_NHAN.md), [thay đổi quy tắc](docs/manual_validation/THAY_DOI_QUY_TAC.md) và [bản chốt](docs/manual_validation/FREEZE_MANIFEST.json). Nhận xét120 tin do AI đọc; chưa có gold labels người thật và chưa đo accuracy trên60 tin cuối.
+
+**Các số liệu, báo cáo, dashboard và workbook hiện lưu bên dưới vẫn thuộc baseline cũ. Code mới chưa được chạy lại để thay bộ đầu ra đó.** Verifier báo mã nguồn khác manifest cũ là trạng thái dự kiến, không được sửa hash cũ để bỏ qua. Hoàn thành đánh giá bước1.7–1.8 rồi tái chạy/đồng bộ ở1.9. Không dùng số6936 như kết quả đã xác minh của code mới.
+
+Mẫu đã khóa: không chạy lại script lấy mẫu lên thư mục hiện tại. Các packet có văn bản nguồn và bảng người đọc nằm trong `docs/manual_validation/private/`, được Git-ignored. Hai người đọc nhận riêng file A/B; không gửi bảng dự đoán hoặc manifest tầng mẫu cho họ trước khi chốt nhãn.
+
+Kiểm mã mới: `python -m unittest discover -s tests -v`. So tác động development: `python scripts/check_development_sample.py`. Kiểm file đã chốt: `python scripts/verify_validation_freeze.py`. Các lệnh này không đánh giá60 tin cuối.
+
 ## Mục tiêu và phạm vi
 
 Mục tiêu duy nhất là giúp người phân tích khám phá và so sánh đặc điểm giá rao trong một mẫu tin bất động sản lịch sử bằng quy trình có thể chạy lại và kiểm chứng.

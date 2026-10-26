@@ -9,3 +9,6 @@ tmp/
 *.xlsx.inspect.ndjson
 data/raw/chotot_data.json
 references/slides_text/
+
+# Local reading packets contain source text and independent reader work.
+docs/manual_validation/private/

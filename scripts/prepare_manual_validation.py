@@ -87,7 +87,7 @@ def main():
             packet.append({'row_id':int(r['row_id']),'title':raw.get('title',''),'description':raw.get('description',''),'raw_price':raw.get('price',''),'raw_area':raw.get('area',''),**{k:'' for k in LABELS}})
         random.Random(42 if split=='development' else 43).shuffle(packet)
         packets[split]=packet
-        copies=['development_blank'] if split=='development' else ['evaluation_reader_A','evaluation_reader_B']
+        copies=['development_blank'] if split=='development' else ['evaluation_reader_A']
         for name in copies:write_csv(private/(name+'.csv'),packet,fields)
         (private/(split+'_packet.json')).write_text(json.dumps(packet,ensure_ascii=False,indent=2))
     print(json.dumps({'n':len(chosen),'split':dict(Counter(r['split'] for r in chosen)),'excluded':len(excluded),'allocation':allocation},ensure_ascii=False,indent=2))

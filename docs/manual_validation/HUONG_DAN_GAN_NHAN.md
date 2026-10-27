@@ -1,6 +1,6 @@
 # Hướng dẫn gán nhãn và phạm vi kiểm dữ liệu
 
-Phiên bản 1 — 26/10/2026. Đơn vị quan sát là tin rao lịch sử, không phải giao dịch đã xác minh. Người đọc chỉ kết luận từ tiêu đề, mô tả và hai trường giá/diện tích gốc. Không gọi điện, xác minh pháp lý hoặc dùng giá hiện nay để sửa tin.
+Phiên bản hướng dẫn 2 — 27/10/2026. Phương án một người gán nhãn; mẫu và code phân tích vẫn giữ bản chốt ngày 26/10/2026. Đơn vị quan sát là tin rao lịch sử, không phải giao dịch đã xác minh. Người đọc chỉ kết luận từ tiêu đề, mô tả và hai trường giá/diện tích gốc. Không gọi điện, xác minh pháp lý hoặc dùng giá hiện nay để sửa tin.
 
 ## 1. Các nhãn
 
@@ -45,13 +45,23 @@ Phiên bản 1 — 26/10/2026. Đơn vị quan sát là tin rao lịch sử, kh�
 
 - `private/development_blank.csv` hoặc workbook phát triển: bảng trống để nhóm đọc 120 tin nếu muốn.
 - `AI_REVIEW_DEVELOPMENT_120.csv`: 120 nhận xét do Codex AI thực hiện, là tài liệu phát triển, không phải gold labels hoặc đánh giá độc lập. Các cột human vẫn trống ở bảng người đọc.
-- `private/evaluation_reader_A.csv` và `_B.csv`, cùng hai workbook tương ứng: gửi riêng cho hai người, mỗi người chỉ xem file của mình. Không chia sẻ nhãn trước khi cả hai hoàn thành.
+- `private/evaluation_reader_A.csv` và `private/DANH_GIA_60_NGUOI_A.xlsx`: chỉ một người đọc 60 tin. Không cần file B. Giữ bản gán nhãn ban đầu và bản sửa riêng; ghi người đọc/ngày áp dụng cho toàn bộ bảng nếu cùng một người thực hiện.
 - Bảng người đọc không có nhãn/cờ của chương trình hoặc nhóm lấy mẫu. `sample_manifest.json`, `private/baseline_predictions.json` và bảng so sánh dành cho người điều phối, không gửi cho người đánh giá trước khi họ chốt nhãn.
 - CSV là dữ liệu máy đọc; khi mở bằng Excel dùng nhập UTF-8 và định dạng các cột nguồn là Text. Workbook đã định dạng văn bản nguồn và có danh sách chọn nhãn.
 - Tab Nguon trong workbook giữ mô tả đầy đủ theo các đoạn có row_id/part; đọc đủ tất cả đoạn của tin. CSV giữ nguyên mô tả trong một ô.
 
 ## 5. Ranh giới của phiên bản này
 
-Bước 1.1–1.3 đã chuẩn bị. Bước 1.4 là đọc bằng AI, không thay hai người gán nhãn. Bước 1.5 có sửa code/test dựa trên development và ca hồi quy cũ. Bước 1.6 chốt bằng hash mã nguồn và danh sách mẫu. Không đánh giá accuracy trên 60 tin ở lượt này. Nếu sửa tiếp sau khi xem nhãn evaluation, phải đổi trạng thái mẫu đó thành dữ liệu phát triển và chuẩn bị mẫu đánh giá khác.
+Bước 1.1–1.3 đã chuẩn bị. Bước 1.4 là đọc bằng AI, không thay nhãn tham chiếu của người thật. Bước 1.5 có sửa code/test dựa trên development và ca hồi quy cũ. Bước 1.6 chốt bằng hash mã nguồn và danh sách mẫu. Ngày 27/10 đã nhận một bảng người đọc và phát hiện các ô cần rà lại. Chưa chốt nhãn hoặc tính accuracy. Không sửa code phân loại theo bảng đánh giá này. Nếu sửa tiếp sau khi xem nhãn evaluation, phải đổi trạng thái mẫu đó thành dữ liệu phát triển và chuẩn bị mẫu đánh giá khác.
 
 Các số cũ 6936 tin, biểu đồ, dashboard và báo cáo đang là baseline cũ. Chưa chạy lại toàn dự án ở bước 1.6. Trước khi nộp bản mới phải hoàn thành đánh giá, chạy lại và đồng bộ các sản phẩm.
+
+## 6. Phương án một người và trạng thái hiện tại
+
+Một thành viên đọc đủ nguồn của 60 tin. Chưa xem dự đoán chương trình trước khi chốt bản nhãn đầu; nếu điều kiện này không được đáp ứng, ghi rõ giới hạn. Không tính hệ số đồng thuận nhiều người và không tính AI là người thứ hai.
+
+Bảng đã gửi ngày 27/10 đang được rà lỗi nhập số và tính nhất quán, chưa phải nhãn cuối. Người đọc xác nhận lại các ô được đánh dấu; trợ lý không tự thay đáp án. Báo cáo sau này nêu một người gán nhãn, có AI hỗ trợ kiểm chất lượng nếu đã dùng phản hồi này, và nguy cơ sai sót chủ quan.
+
+Tên file A được giữ để không làm nhầm bảng đang dùng. Tab HuongDan trong workbook mẫu phát hành ngày 26/10 có câu về hai người; phần đó đã được thay bằng hướng dẫn một người tại tài liệu này. Không yêu cầu đọc file B hoặc thống nhất giữa hai người nữa.
+
+Bản chốt cũ giữ ở history/FREEZE_MANIFEST_20261026.json. Bản chốt hiện tại chỉ cập nhật hồ sơ/quy trình một người và danh sách file trống; hash mã phân tích, test, mẫu và nhận xét phát triển không đổi. Không dùng cập nhật hồ sơ để coi code đã được tái đánh giá.

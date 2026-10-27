@@ -1,13 +1,16 @@
 {
-  "core_run_id": "20261016T015620Z-f2e661a6",
+  "core_run_id": "20261027T065401Z-5c8df2cc",
   "status": "passed",
-  "tests_run": 29,
+  "tests_run": 45,
   "failures": 0,
   "errors": 0,
   "skipped": 0,
   "test_files": {
     "tests/test_artifact_contract.py": "b63de85e9b7482ff7ef0e64d7c840e9c9f547be54a84ef05732f4c027d59372d",
+    "tests/test_extended_analysis.py": "25489c71374e1407451f4d8e61c3ba69d06ae47f754f7ab36d8fcfc0426ae5ef",
+    "tests/test_manual_validation_rules.py": "28598a4dc8dd4183ea17207126a64d303116f535a284ebb3fc22ba53f9a71f7b",
     "tests/test_pipeline.py": "71a6c2f1fb56e574b88f89c7169c6148c9c12835120aeb747b1f5c6ab415c87e",
-    "tests/test_source_checks.py": "0e6981744977e37edbd143c5051a9792b442efee3e1d7aca4f61d060e405f7bf"
+    "tests/test_source_checks.py": "0e6981744977e37edbd143c5051a9792b442efee3e1d7aca4f61d060e405f7bf",
+    "tests/test_validation_sampling.py": "f57c2b32ce43d0687aefba1ae08605ce353e3b1f6e4c9adaff72a2dea9da10b7"
   }
 }

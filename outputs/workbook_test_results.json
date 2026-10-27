@@ -1,18 +1,18 @@
 {
   "status": "passed",
-  "core_run_id": "20261016T015620Z-f2e661a6",
-  "workbook_sha256": "4374cbbc5d93eb51414717a5955b7dfe363393c7d0d39cb65d2e38f05fa10119",
+  "core_run_id": "20261027T065401Z-5c8df2cc",
+  "workbook_sha256": "fcb0451a1dd8c7ad1598cd56e744ede6fc4b3f0eb54f720e8726aefa949c8b6d",
   "builder_sha256": "8d1e8fd8d5697f3483be744b06a6b56b0a025386a72734fbbd2b6ea226f3abfe",
   "scope": "Artifact Tool recalculation and rendered previews; native Microsoft Excel interaction not claimed",
-  "row_count": 6936,
+  "row_count": 6911,
   "chart_count": 4,
   "metrics_actual": [
-    6936,
-    6936,
+    6911,
+    6911,
     2.25,
-    3.6953545788595803,
+    3.7042069684517513,
     70,
-    32.32051282051282
+    32.5
   ],
   "live_price_edit": true,
   "live_area_edit": true,

@@ -78,7 +78,7 @@
 77,b2772fc2ec3bc91f0071,kept,77,
 78,1f29660ede5efb012eee,rejected,78,quarantine_total_price_below_10m_vnd
 79,c2eb24fdd3f54dd077fb,kept,79,
-80,6bc6784eec23b8c6cb8e,kept,80,
+80,6bc6784eec23b8c6cb8e,rejected,80,unresolved_block_unit_price_from_source_text
 81,f4d4da0dcf2bd60053b5,kept,81,
 82,0db08d6a4c05b1cac4df,kept,82,
 83,02f2d4cc4039a768f60c,kept,83,
@@ -506,7 +506,7 @@
 505,d3bfb6794c2d3cf03fe6,kept,505,
 506,16b9be343cf819560a34,kept,506,
 507,b6441ef74513cbaaeba4,kept,507,
-508,ee111aadacb6db5fc292,rejected,508,unresolved_price_basis_from_source_text
+508,ee111aadacb6db5fc292,rejected,508,unresolved_block_unit_price_from_source_text;unresolved_price_basis_from_source_text
 509,16a23ca898082ed225f7,kept,509,
 510,c131f7830a7a6be038f0,kept,510,
 511,e8988965c4fd1c5921cb,kept,511,
@@ -799,7 +799,7 @@
 798,f0c3f757c28713aaf996,kept,798,
 799,de2b18cf7db19c64c2b4,kept,799,
 800,50ca97713cc68b3b69f8,kept,800,
-801,52def0b2dd5a6ba934b6,kept,801,
+801,52def0b2dd5a6ba934b6,rejected,801,core_price_matches_initial_payment
 802,2e2109ed397a75dbf242,kept,802,
 803,e09f0e39f66328a83484,kept,803,
 804,bf6096911cd9c89fcafc,kept,804,
@@ -1571,7 +1571,7 @@
 1570,1c6ab7911e1b6dfbb571,duplicate,343,same_five_normalized_core_fields
 1571,1b0552b9b2c86db92122,duplicate,344,same_five_normalized_core_fields
 1572,0e96025218f8dded0503,duplicate,1060,same_five_normalized_core_fields
-1573,b477bd060bf6d6eda6f8,kept,1573,
+1573,b477bd060bf6d6eda6f8,rejected,1573,core_price_matches_initial_payment
 1574,77adc05fdba4e110e5e3,duplicate,1149,same_five_normalized_core_fields
 1575,1b0552b9b2c86db92122,duplicate,344,same_five_normalized_core_fields
 1576,eb1ac7b1198f20d22fb5,duplicate,345,same_five_normalized_core_fields
@@ -2329,7 +2329,7 @@
 2328,72e0f585820d3db2b697,kept,2328,
 2329,88de33a4f6bf7bde3daa,kept,2329,
 2330,b7923a97458f60339791,kept,2330,
-2331,c264fd2f941b39d452a4,kept,2331,
+2331,c264fd2f941b39d452a4,rejected,2331,exclude_rental_or_mixed_transaction
 2332,e33271139215645ef3aa,kept,2332,
 2333,97abda81d9e5b713e50e,kept,2333,
 2334,9c59158ab36d3fe977ca,kept,2334,
@@ -2399,7 +2399,7 @@
 2398,1425ba5919d532894341,kept,2398,
 2399,cf748f61ff21d4851bd3,kept,2399,
 2400,707cacd81c43de841d08,kept,2400,
-2401,feed5f2084f4d7a3ce4f,rejected,2401,unresolved_price_basis_from_source_text
+2401,feed5f2084f4d7a3ce4f,rejected,2401,unresolved_block_unit_price_from_source_text;unresolved_price_basis_from_source_text
 2402,087632123eea840e414d,kept,2402,
 2403,f31d9ffd34c6895ea9b7,kept,2403,
 2404,7729770855070c1125e2,duplicate,2111,same_five_normalized_core_fields
@@ -2646,7 +2646,7 @@
 2645,a30b4eeb2fad987dff1e,kept,2645,
 2646,10adb2bd1ab9b9636903,kept,2646,
 2647,b0e35b4e22b4cbab965c,kept,2647,
-2648,05c483baf24114ae1c76,kept,2648,
+2648,05c483baf24114ae1c76,rejected,2648,core_price_matches_initial_payment
 2649,5fe3e2e6b312198fc70b,kept,2649,
 2650,39a8f6b7ce4ee9b13465,kept,2650,
 2651,af253ce59cbf3e619ae9,kept,2651,
@@ -3368,7 +3368,7 @@
 3367,d3125f0824f7f0ded1f2,kept,3367,
 3368,8fcb240127e49b060b4e,duplicate,140,same_five_normalized_core_fields
 3369,a4c786fb413dd0e49add,kept,3369,
-3370,bb321dfdb2a8bf3866dd,rejected,3370,exclude_rental_or_mixed_transaction
+3370,bb321dfdb2a8bf3866dd,kept,3370,
 3371,a7471c8ed121e2efe46e,kept,3371,
 3372,a28956e1f3260d2b2f5c,kept,3372,
 3373,36938289055407d881d8,kept,3373,
@@ -3472,7 +3472,7 @@
 3471,f058a90e0a64de5c1d99,kept,3471,
 3472,0fdbac0e8f2d60d692cf,kept,3472,
 3473,6308b873059b580b2be7,kept,3473,
-3474,bc2be34afb722ec35470,kept,3474,
+3474,bc2be34afb722ec35470,rejected,3474,core_price_matches_initial_payment
 3475,c783bc6a51e7a8ce9ef1,kept,3475,
 3476,b85ff8558aefca9ee3ea,kept,3476,
 3477,6431f375abd4196c0b56,kept,3477,
@@ -3514,7 +3514,7 @@
 3513,150ae8011d8bc541fd2a,kept,3513,
 3514,bc11285dc4079b94570a,kept,3514,
 3515,770607838c13c17d41cd,kept,3515,
-3516,5c2536b19137ec3128a2,kept,3516,
+3516,5c2536b19137ec3128a2,rejected,3516,core_price_matches_initial_payment
 3517,f57aca4e4ec2a1549108,kept,3517,
 3518,ad4daa8ce61bfe3bed0e,kept,3518,
 3519,3d4a61736c28bfa811cb,kept,3519,
@@ -3541,7 +3541,7 @@
 3540,2b7e4557a4915d748245,kept,3540,
 3541,6c989b6d5919871e474b,kept,3541,
 3542,589eb2f748b74f7eed7d,kept,3542,
-3543,45dd103134a24643b4ee,rejected,3543,unresolved_price_basis_from_source_text
+3543,45dd103134a24643b4ee,rejected,3543,unresolved_block_unit_price_from_source_text;unresolved_price_basis_from_source_text
 3544,cd3a2aae92ad6896fd5f,kept,3544,
 3545,159311cae91b10abccf1,kept,3545,
 3546,20f41ca58a4f402083c0,kept,3546,
@@ -3747,7 +3747,7 @@
 3746,86d5fb9d0e1a447de637,kept,3746,
 3747,d8a3010e0280e99c4dbe,kept,3747,
 3748,10b058c181833e0da7a2,kept,3748,
-3749,20828ed62aa306d14175,rejected,3749,payment_not_confirmed_total_price
+3749,20828ed62aa306d14175,rejected,3749,core_price_matches_initial_payment;payment_not_confirmed_total_price
 3750,30f2bcc4d7c3b0bf5aef,kept,3750,
 3751,a32bc19c4e2cbaa7c116,rejected,3751,payment_not_confirmed_total_price
 3752,9213082f9ea19bafebf5,kept,3752,
@@ -3791,7 +3791,7 @@
 3790,95683437b084f053934d,kept,3790,
 3791,125edaba1c60b27b0a6b,kept,3791,
 3792,d8a44b0158cdded574f7,kept,3792,
-3793,9895f99a1b63fcdc2286,rejected,3793,payment_not_confirmed_total_price
+3793,9895f99a1b63fcdc2286,rejected,3793,core_price_matches_initial_payment;payment_not_confirmed_total_price
 3794,22ff70d939655f6cbbf1,kept,3794,
 3795,f6d25c632360846be3ae,kept,3795,
 3796,c535f6fd8590da28cf1c,kept,3796,
@@ -4108,7 +4108,7 @@
 4107,843c3f507ba82046bdef,kept,4107,
 4108,f0fa8a91ce6fa6a9aa72,kept,4108,
 4109,ff5f5180267a7712349a,kept,4109,
-4110,705dbc200d39f0a710bd,kept,4110,
+4110,705dbc200d39f0a710bd,rejected,4110,unresolved_block_unit_price_from_source_text
 4111,7b4141eedc87f3bcf2f3,kept,4111,
 4112,7ebe1d7c028b12a64b71,duplicate,1684,same_five_normalized_core_fields
 4113,80f42263730579c6baec,duplicate,30,same_five_normalized_core_fields
@@ -4138,7 +4138,7 @@
 4137,edb1ed78386339cf7f44,kept,4137,
 4138,5292c8cfccbfa51d17d4,kept,4138,
 4139,2d26521ad0ddf8fc1c20,kept,4139,
-4140,c6dca48bdf2422717b5a,kept,4140,
+4140,c6dca48bdf2422717b5a,rejected,4140,core_price_matches_initial_payment
 4141,83f8e2c7c88af72376d1,kept,4141,
 4142,0992c75e48916eab9c99,kept,4142,
 4143,fbff5aac23cf4daa9b13,kept,4143,
@@ -4195,7 +4195,7 @@
 4194,e70ba407badf9e3b1fde,kept,4194,
 4195,878356417da3cf5149c6,kept,4195,
 4196,df400b786c342c48412a,kept,4196,
-4197,f15ae4a93430bec01833,kept,4197,
+4197,f15ae4a93430bec01833,rejected,4197,core_price_matches_initial_payment
 4198,18fc8cebb6e809787c34,kept,4198,
 4199,9ab559d99cc91b1bffd0,kept,4199,
 4200,956ad70952f3e6ac5f7e,duplicate,1952,same_five_normalized_core_fields
@@ -4212,7 +4212,7 @@
 4211,9036eca1061555e9536d,kept,4211,
 4212,8d35b123c15d3d2950d9,kept,4212,
 4213,2a8af820010249ca76cc,kept,4213,
-4214,43946424f3d8d5b811c7,kept,4214,
+4214,43946424f3d8d5b811c7,rejected,4214,unresolved_block_unit_price_from_source_text
 4215,3c15c121f9845fbe588e,kept,4215,
 4216,fa860226262a95c8eb94,kept,4216,
 4217,46c309cbecbad7e7e4d1,kept,4217,
@@ -4332,7 +4332,7 @@
 4331,666caaa7e97020a82df8,kept,4331,
 4332,ddf7bc3774a17614677b,kept,4332,
 4333,350413e218469d8165cc,kept,4333,
-4334,12fc0e42511bf2480162,rejected,4334,payment_not_confirmed_total_price
+4334,12fc0e42511bf2480162,rejected,4334,core_price_matches_initial_payment;payment_not_confirmed_total_price
 4335,dea48d1d079077dc0439,kept,4335,
 4336,3a6515c4b867dd5c08f1,kept,4336,
 4337,fdf948414576debe4f35,kept,4337,
@@ -5245,7 +5245,7 @@
 5244,d5487449f68d088e6d11,kept,5244,
 5245,c5b533cc3c2eb226a12a,kept,5245,
 5246,bcfdd17a788182c7a21f,kept,5246,
-5247,e10c76883ed087697b97,kept,5247,
+5247,e10c76883ed087697b97,rejected,5247,unresolved_block_unit_price_from_source_text
 5248,de423c1961f54bceed51,kept,5248,
 5249,4a1bdb59a1613e181879,kept,5249,
 5250,aa62d146fe762a997c4a,rejected,5250,price_conflict_from_description
@@ -5639,7 +5639,7 @@
 5638,12652a0046b975aafc61,kept,5638,
 5639,0f0e8abf73e4dc280fdc,kept,5639,
 5640,c04606be07eede8149a5,kept,5640,
-5641,e1b8fbbf8804616c4663,kept,5641,
+5641,e1b8fbbf8804616c4663,rejected,5641,core_price_matches_initial_payment
 5642,a17c7f4584313437cd6d,kept,5642,
 5643,28269b9c382f26bd6f47,kept,5643,
 5644,a086d940f8e2841afff6,kept,5644,
@@ -6206,7 +6206,7 @@
 6205,5379a64b2a7d4fa92f5e,kept,6205,
 6206,5939b5d661fb47b3d45f,kept,6206,
 6207,25f156990301cdd25cc7,kept,6207,
-6208,e0c3fdbcacddfb945c87,kept,6208,
+6208,e0c3fdbcacddfb945c87,rejected,6208,core_price_matches_initial_payment
 6209,2943b295fd6bf3d29d80,kept,6209,
 6210,1973dbbe2e3f69eaaac7,kept,6210,
 6211,b7b22f7d01a45d891a82,kept,6211,
@@ -6295,7 +6295,7 @@
 6294,f77e5dcc8b6818634573,kept,6294,
 6295,9675a9fceb96f0bd6083,kept,6295,
 6296,b1c0a6bacbed393fe9f0,kept,6296,
-6297,7a8b961790949d059ed0,kept,6297,
+6297,7a8b961790949d059ed0,rejected,6297,core_price_matches_initial_payment
 6298,86d1d39f74afc3954192,kept,6298,
 6299,07bcd7acb1e9ca8cbdc2,kept,6299,
 6300,0f105951754d06a59132,kept,6300,
@@ -6522,7 +6522,7 @@
 6521,9efcaf582f2e27759b4d,kept,6521,
 6522,0cce4c47fffa6f5c003d,kept,6522,
 6523,3ff6f99785c8610bb1cc,kept,6523,
-6524,674381e5e8d10f78e154,kept,6524,
+6524,674381e5e8d10f78e154,rejected,6524,unresolved_block_unit_price_from_source_text
 6525,96d1f6c03e221814cedb,kept,6525,
 6526,e68eb28bea49d7015857,kept,6526,
 6527,eca5f4c1f0c21f480676,kept,6527,
@@ -6577,7 +6577,7 @@
 6576,15c5235ce84a30b9819e,duplicate,927,same_five_normalized_core_fields
 6577,a1ff5e72fab2ba009cf6,duplicate,1280,same_five_normalized_core_fields
 6578,50eb583b19dedadb0128,kept,6578,
-6579,670ebf8c66f8941c3768,kept,6579,
+6579,670ebf8c66f8941c3768,rejected,6579,core_price_matches_initial_payment
 6580,68194eb1f39c4c7d4500,kept,6580,
 6581,f369bc3d0d015f7a06d0,kept,6581,
 6582,cdbf3f08a6df452e7876,kept,6582,
@@ -7026,9 +7026,9 @@
 7025,b0e4bc309218fa3cf202,kept,7025,
 7026,53d0c412cf8f7d84364f,kept,7026,
 7027,7f156f9e23fe25f3e9e5,kept,7027,
-7028,ae841468c3e8347d95f2,kept,7028,
+7028,ae841468c3e8347d95f2,rejected,7028,core_price_matches_initial_payment
 7029,b55564565a257d2df80d,kept,7029,
-7030,87d750313c01b4239f43,rejected,7030,payment_not_confirmed_total_price
+7030,87d750313c01b4239f43,rejected,7030,core_price_matches_initial_payment;payment_not_confirmed_total_price
 7031,4143db02656adcc8d650,kept,7031,
 7032,006bcfac8db5839121bb,kept,7032,
 7033,ded9e6c21322e3627b59,kept,7033,
@@ -7053,7 +7053,7 @@
 7052,6e1561f4f1b8c76e5ecd,kept,7052,
 7053,c42fd2e7e4519343a4c2,kept,7053,
 7054,bf428b77e69c0e083be3,rejected,7054,currency_conflict_from_source_text
-7055,b64f902917e0d04dcc19,kept,7055,
+7055,b64f902917e0d04dcc19,rejected,7055,unresolved_block_unit_price_from_source_text
 7056,84900d88ad4e870938de,kept,7056,
 7057,39c8b5b6408bc4a61afd,kept,7057,
 7058,6c7681c517ffe32625bc,kept,7058,
@@ -7119,7 +7119,7 @@
 7118,968e54a7e5db3a0ec7fa,kept,7118,
 7119,a80f374a0ddcd728fce0,kept,7119,
 7120,a608780054b02cc64328,kept,7120,
-7121,c2045031525dfce40a98,rejected,7121,payment_not_confirmed_total_price
+7121,c2045031525dfce40a98,rejected,7121,core_price_matches_initial_payment;payment_not_confirmed_total_price
 7122,c4c21dcf87ee1979c67d,kept,7122,
 7123,f093574296b624ddeab2,kept,7123,
 7124,be7ef117faa074f6f79c,kept,7124,
@@ -7265,7 +7265,7 @@
 7264,3da7e2ff5c54637fdd3e,kept,7264,
 7265,9e1b759d9b93be6a206a,kept,7265,
 7266,997f3816daf35ba68b43,kept,7266,
-7267,1a01549aeccfeb37c0b0,rejected,7267,price_conflict_from_description;quarantine_total_price_below_10m_vnd
+7267,1a01549aeccfeb37c0b0,rejected,7267,quarantine_total_price_below_10m_vnd
 7268,c77c9f55334d481e4bb4,kept,7268,
 7269,b000127f83e779005a68,kept,7269,
 7270,0bc219df69f9b598694c,kept,7270,
@@ -7504,7 +7504,7 @@
 7503,5f8fe045103dbe2ebea4,kept,7503,
 7504,ca5d0c4710b3f059cc31,kept,7504,
 7505,2937aeebd473b02a2e24,kept,7505,
-7506,b4f7c5e2c3220bc4500e,kept,7506,
+7506,b4f7c5e2c3220bc4500e,rejected,7506,core_price_matches_initial_payment
 7507,2ae86c2eb3df7ba148de,kept,7507,
 7508,d378adb751e408e6ba4e,kept,7508,
 7509,6e525b017d3637089bf0,kept,7509,
@@ -7517,7 +7517,7 @@
 7516,d454fb5b56b136d12d04,duplicate,2699,same_five_normalized_core_fields
 7517,c0f4e5e567d3e7886c8a,kept,7517,
 7518,476691d19f34a5c63409,kept,7518,
-7519,cd658958841fe36edde0,kept,7519,
+7519,cd658958841fe36edde0,rejected,7519,core_price_matches_initial_payment
 7520,0ce975437bb80684610b,kept,7520,
 7521,8f68d82d3962c269754b,kept,7521,
 7522,7ec813b028b7f2061f58,kept,7522,
@@ -8067,7 +8067,7 @@
 8066,bb3eca07596d2691eef2,kept,8066,
 8067,7712231ce919043a8b41,kept,8067,
 8068,7fbbd564d72c6f1b60f5,kept,8068,
-8069,653a02342702254e6bc5,kept,8069,
+8069,653a02342702254e6bc5,rejected,8069,core_price_matches_initial_payment
 8070,e925042aa269995623bd,kept,8070,
 8071,e00f56b6fe15f5a0776a,kept,8071,
 8072,2b9671aa79760e474a25,kept,8072,
@@ -8209,7 +8209,7 @@
 8208,5ecac317b47dba29b0f3,kept,8208,
 8209,de6f1bcbe01982932bc7,kept,8209,
 8210,59a65642ba7576f2ca32,kept,8210,
-8211,b6fb094e35e7fc6e71ab,kept,8211,
+8211,b6fb094e35e7fc6e71ab,rejected,8211,core_price_matches_initial_payment
 8212,bd2a28096988804a18bb,kept,8212,
 8213,a176c0c108b53901ddfc,kept,8213,
 8214,9d0b6004093e3dc7bfc5,kept,8214,
@@ -8351,7 +8351,7 @@
 8350,a3f3dd9034a7c37cbf15,kept,8350,
 8351,722b880c0ecbec2884df,kept,8351,
 8352,c3bc7063f337418221cf,kept,8352,
-8353,7de00255e4330be35891,kept,8353,
+8353,7de00255e4330be35891,rejected,8353,core_price_matches_initial_payment
 8354,3243bd5b30c68b65ece3,kept,8354,
 8355,9ac9bdc926db0a0bacc9,kept,8355,
 8356,29c794a92d6e02741870,kept,8356,
@@ -8418,7 +8418,7 @@
 8417,e19241826e08ccded93b,duplicate,2041,same_five_normalized_core_fields
 8418,7b8bd49bef9f5876a550,kept,8418,
 8419,66a13587384166e67adf,kept,8419,
-8420,f7e53cbe4bfdf8e10e63,kept,8420,
+8420,f7e53cbe4bfdf8e10e63,rejected,8420,core_price_matches_initial_payment
 8421,94073cdc0add7ea04630,kept,8421,
 8422,530eac4df6bf10d883e8,kept,8422,
 8423,db83e5de40ce3b560be9,kept,8423,
@@ -8889,7 +8889,7 @@
 8888,d6e3a6fee4dc035c08a7,kept,8888,
 8889,9f95ed1bb16af5d993e1,kept,8889,
 8890,742a9c579df242c51f25,kept,8890,
-8891,b78ed163ca43a7654945,kept,8891,
+8891,b78ed163ca43a7654945,rejected,8891,unresolved_block_unit_price_from_source_text
 8892,499d85e3ded311713a5d,kept,8892,
 8893,533cc609f051015af68a,duplicate,928,same_five_normalized_core_fields
 8894,48ea7fa40c418f5cf921,duplicate,1127,same_five_normalized_core_fields

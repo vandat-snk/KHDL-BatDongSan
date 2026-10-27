@@ -126,13 +126,25 @@ def verify(root=ROOT,require_workbook=False,core_only=False):
     python_tests=test_evidence(root,manifest['run_id'])
     dashboard_tests=dashboard_test_evidence(root,manifest['run_id'])
     require(python_tests['status']!='failed' and dashboard_tests['status']!='failed','Current test evidence contains failures.')
+    report_status={'status':'not_verified_for_current_run','generated_this_run':False}
+    report_meta=root/'outputs/report_build.json'
+    if report_meta.exists():
+        report=json.loads(report_meta.read_text(encoding='utf-8'))
+        artifacts=report.get('artifacts',{})
+        valid=bool(artifacts) and report.get('core_run_id')==manifest['run_id']
+        for relative, expected in artifacts.items():
+            candidate=(root/relative).resolve()
+            valid=valid and candidate.is_relative_to(root.resolve()) and candidate.is_file()
+            if valid:valid=file_sha256(candidate)==expected
+        report_status={'status':'saved_report_hashes_verified' if valid else 'stale_or_missing_report',
+                       'generated_this_run':bool(valid),'visual_review':report.get('visual_review','not_recorded')}
     return {'status':'passed','scope':'Saved core data, database and selected derivatives; read each test/visual/report status separately.',
             'core_run_id':manifest['run_id'],'raw_count':len(raw),'clean_count':len(records),
             'duplicates':analysis['counts']['duplicate_count'],'rejected':len(rejected),'source_sha256':raw_hash,
             'core_artifact_hashes_verified':len(manifest['artifacts']),'database_integrity':'ok','sql_results_identical':True,
             'dashboard':{'status':'saved_data_and_provenance_verified'},'workbook':workbook_status,
             'python_tests':python_tests,'dashboard_tests':dashboard_tests,
-            'report':{'status':'previous_draft_requires_rewrite_to_teacher_requirements','generated_this_run':False},
+            'report':report_status,
             'visual_checks':'Not inferred by this command. See dated human/UI evidence separately.',
             'limitations':['Heuristic source-content checks cannot verify every source-entry error or transactions.',
                            'Human label validation is still necessary before strong conclusions.']}

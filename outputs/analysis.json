@@ -1,16 +1,16 @@
 {
   "schema_version": "2.0",
-  "run_id": "20261016T015620Z-f2e661a6",
+  "run_id": "20261027T065401Z-5c8df2cc",
   "seed": 20261015,
   "environment": {
-    "python": "3.13.7",
+    "python": "3.12.3",
     "numpy": "2.3.3",
     "pandas": "2.3.3",
     "matplotlib": "3.10.6",
-    "sqlite": "3.50.4"
+    "sqlite": "3.45.1"
   },
   "source": {
-    "path": "data\\raw\\chotot_data.json",
+    "path": "data/raw/chotot_data.json",
     "sha256": "ef39f153f48a55af07baa86883cd9036652f6d52232fed0be6e8991c7a5bf811",
     "dataset_url": "https://data.mendeley.com/datasets/5477zhnmn2/2",
     "doi": "10.17632/5477zhnmn2.2",
@@ -22,8 +22,8 @@
   },
   "counts": {
     "raw_count": 9004,
-    "clean_count": 6936,
-    "rejected_count": 184,
+    "clean_count": 6911,
+    "rejected_count": 209,
     "duplicate_count": 1884,
     "unique_core_count": 7120,
     "raw_missing_fields": {
@@ -39,62 +39,68 @@
       "area_m2": 2,
       "sale_price_vnd": 0
     },
-    "area_recovered_count": 349,
+    "area_recovered_count": 347,
     "rejection_reasons": {
       "quarantine_total_price_below_10m_vnd": 81,
       "unresolved_price_basis_from_source_text": 28,
+      "core_price_matches_initial_payment": 23,
       "price_conflict_from_title": 22,
-      "price_conflict_from_description": 22,
+      "price_conflict_from_description": 21,
       "exclude_rental_or_mixed_transaction": 19,
       "payment_not_confirmed_total_price": 18,
       "area_conflict_from_source_text": 12,
+      "unresolved_block_unit_price_from_source_text": 10,
       "outside_scope_business_or_lease_transfer": 4,
       "invalid_or_missing_area": 2,
       "area_unit_conflict_from_title": 1,
       "currency_conflict_from_source_text": 1
     },
-    "group_iqr_outlier_count": 260,
+    "group_iqr_outlier_count": 259,
     "global_iqr_outlier_count": 230,
     "province_count": 47,
     "province_category_count": 48,
     "unknown_province_count": 29,
     "quality_flags": {
-      "property_type_inferred_from_title": 6936,
-      "transaction_assumed_sale_from_dataset_context": 3891,
-      "unknown_property_type": 1120,
-      "area_recovered_from_price_text": 349,
-      "dot_thousands_convention": 328,
+      "property_type_inferred_from_title": 6911,
+      "transaction_assumed_sale_from_dataset_context": 3864,
+      "unknown_property_type": 1066,
+      "area_recovered_from_price_text": 347,
+      "dot_thousands_convention": 326,
+      "source_area_discrepancy_requires_review": 239,
+      "source_price_discrepancy_requires_review": 132,
       "source_dimension_expression_requires_review": 36,
       "unknown_district": 32,
       "unknown_province": 29,
       "rental_income_mentioned": 16,
-      "province_alias_normalized": 8
+      "title_spelling_normalized": 11,
+      "province_alias_normalized": 8,
+      "ambiguous_property_comparison_requires_review": 1
     },
     "transaction_status": {
-      "sale_assumed": 3891,
-      "sale": 3030,
+      "sale_assumed": 3864,
+      "sale": 3032,
       "sale_with_rental_income": 15
     }
   },
   "overall": {
     "median_area_m2": 70.0,
     "median_price_vnd": 2250000000.0,
-    "median_price_per_m2_vnd": 32320512.82051282,
-    "mean_price_vnd": 3695354578.8595734,
-    "mean_price_per_m2_vnd": 49534985.24741855
+    "median_price_per_m2_vnd": 32500000.0,
+    "mean_price_vnd": 3704206968.4517436,
+    "mean_price_per_m2_vnd": 49666608.72434013
   },
   "province_summary": [
     {
       "province": "Tp Hồ Chí Minh",
-      "n": 3277,
+      "n": 3266,
       "median_area_m2": 60.0,
-      "median_price_vnd": 2750000000.0,
-      "median_price_per_m2_vnd": 45283018.86792453,
-      "q1_price_per_m2_vnd": 21428571.42857143,
-      "q3_price_per_m2_vnd": 84745762.71186441,
-      "share_group_outlier": 0.0320415013732072,
-      "bootstrap_low_vnd": 42857142.85714286,
-      "bootstrap_high_vnd": 47692307.692307696
+      "median_price_vnd": 2755000000.0,
+      "median_price_per_m2_vnd": 45454545.45454545,
+      "q1_price_per_m2_vnd": 21500000.0,
+      "q3_price_per_m2_vnd": 84995833.33333333,
+      "share_group_outlier": 0.03184323331292101,
+      "bootstrap_low_vnd": 43224229.97036399,
+      "bootstrap_high_vnd": 47904191.61676647
     },
     {
       "province": "Hà Nội",
@@ -105,20 +111,20 @@
       "q1_price_per_m2_vnd": 51666666.666666664,
       "q3_price_per_m2_vnd": 101370614.03508772,
       "share_group_outlier": 0.05719921104536489,
-      "bootstrap_low_vnd": 73956138.96148466,
-      "bootstrap_high_vnd": 80279720.27972028
+      "bootstrap_low_vnd": 74080840.45584045,
+      "bootstrap_high_vnd": 80256410.25641026
     },
     {
       "province": "Bình Dương",
-      "n": 465,
+      "n": 457,
       "median_area_m2": 100.0,
       "median_price_vnd": 1350000000.0,
-      "median_price_per_m2_vnd": 12727272.727272727,
+      "median_price_per_m2_vnd": 13000000.0,
       "q1_price_per_m2_vnd": 5500000.0,
       "q3_price_per_m2_vnd": 25000000.0,
-      "share_group_outlier": 0.04516129032258064,
-      "bootstrap_low_vnd": 11000000.0,
-      "bootstrap_high_vnd": 14500000.0
+      "share_group_outlier": 0.045951859956236324,
+      "bootstrap_low_vnd": 11194029.850746268,
+      "bootstrap_high_vnd": 14814814.814814815
     },
     {
       "province": "Đà Nẵng",
@@ -129,32 +135,32 @@
       "q1_price_per_m2_vnd": 23800000.0,
       "q3_price_per_m2_vnd": 63990521.33201422,
       "share_group_outlier": 0.06373626373626373,
-      "bootstrap_low_vnd": 38392857.14285714,
+      "bootstrap_low_vnd": 38522916.666666664,
       "bootstrap_high_vnd": 47000000.0
     },
     {
       "province": "Đồng Nai",
-      "n": 250,
+      "n": 249,
       "median_area_m2": 108.0,
-      "median_price_vnd": 1070000000.0,
-      "median_price_per_m2_vnd": 7065217.391304348,
+      "median_price_vnd": 1080000000.0,
+      "median_price_per_m2_vnd": 7130434.782608695,
       "q1_price_per_m2_vnd": 2000000.0,
-      "q3_price_per_m2_vnd": 14972500.0,
-      "share_group_outlier": 0.04,
-      "bootstrap_low_vnd": 4569681.52555599,
-      "bootstrap_high_vnd": 8396946.564885497
+      "q3_price_per_m2_vnd": 15000000.0,
+      "share_group_outlier": 0.040160642570281124,
+      "bootstrap_low_vnd": 4506437.768240344,
+      "bootstrap_high_vnd": 8333333.333333333
     },
     {
       "province": "Long An",
-      "n": 240,
+      "n": 238,
       "median_area_m2": 100.0,
       "median_price_vnd": 890000000.0,
-      "median_price_per_m2_vnd": 8581871.34502924,
-      "q1_price_per_m2_vnd": 5148578.811369509,
-      "q3_price_per_m2_vnd": 13989906.832298137,
-      "share_group_outlier": 0.0375,
-      "bootstrap_low_vnd": 7888778.489478828,
-      "bootstrap_high_vnd": 9836065.573770491
+      "median_price_per_m2_vnd": 8680555.555555556,
+      "q1_price_per_m2_vnd": 5188393.839383939,
+      "q3_price_per_m2_vnd": 14112577.639751554,
+      "share_group_outlier": 0.037815126050420166,
+      "bootstrap_low_vnd": 7924193.548387096,
+      "bootstrap_high_vnd": 9875000.0
     },
     {
       "province": "Cần Thơ",
@@ -165,7 +171,7 @@
       "q1_price_per_m2_vnd": 10869565.217391305,
       "q3_price_per_m2_vnd": 49411764.705882356,
       "share_group_outlier": 0.022222222222222223,
-      "bootstrap_low_vnd": 23333333.333333332,
+      "bootstrap_low_vnd": 23316343.042071197,
       "bootstrap_high_vnd": 30000000.0
     },
     {
@@ -177,20 +183,20 @@
       "q1_price_per_m2_vnd": 3319338.8429752067,
       "q3_price_per_m2_vnd": 17802737.226277374,
       "share_group_outlier": 0.03968253968253968,
-      "bootstrap_low_vnd": 8593925.925925925,
-      "bootstrap_high_vnd": 12857142.857142856
+      "bootstrap_low_vnd": 8659149.7965412,
+      "bootstrap_high_vnd": 12828335.579514824
     },
     {
       "province": "Lâm Đồng",
-      "n": 107,
+      "n": 106,
       "median_area_m2": 250.0,
-      "median_price_vnd": 890000000.0,
+      "median_price_vnd": 895000000.0,
       "median_price_per_m2_vnd": 3000000.0,
-      "q1_price_per_m2_vnd": 1127586.206896552,
-      "q3_price_per_m2_vnd": 5030737.7049180325,
-      "share_group_outlier": 0.056074766355140186,
-      "bootstrap_low_vnd": 2546218.487394958,
-      "bootstrap_high_vnd": 3757225.4335260116
+      "q1_price_per_m2_vnd": 1156557.8817733992,
+      "q3_price_per_m2_vnd": 5223702.18579235,
+      "share_group_outlier": 0.05660377358490566,
+      "bootstrap_low_vnd": 2536336.1344537814,
+      "bootstrap_high_vnd": 3654827.276149979
     },
     {
       "province": "Bà Rịa - Vũng Tàu",
@@ -213,7 +219,7 @@
       "q1_price_per_m2_vnd": 6415895.0617283955,
       "q3_price_per_m2_vnd": 38428464.60618146,
       "share_group_outlier": 0.04285714285714286,
-      "bootstrap_low_vnd": 9416666.666666668,
+      "bootstrap_low_vnd": 9385999.2178334,
       "bootstrap_high_vnd": 25423728.813559324
     },
     {
@@ -226,7 +232,7 @@
       "q3_price_per_m2_vnd": 2267500.0,
       "share_group_outlier": 0.017857142857142856,
       "bootstrap_low_vnd": 450000.0,
-      "bootstrap_high_vnd": 1452499.9999999977
+      "bootstrap_high_vnd": 1300000.0
     },
     {
       "province": "Sóc Trăng",
@@ -238,7 +244,7 @@
       "q3_price_per_m2_vnd": 16239643.144958196,
       "share_group_outlier": 0.0,
       "bootstrap_low_vnd": 7800000.0,
-      "bootstrap_high_vnd": 13875000.0
+      "bootstrap_high_vnd": 13815624.999999996
     },
     {
       "province": "Hải Phòng",
@@ -250,19 +256,19 @@
       "q3_price_per_m2_vnd": 38362573.099415205,
       "share_group_outlier": 0.0,
       "bootstrap_low_vnd": 12758620.689655172,
-      "bootstrap_high_vnd": 34805882.35294114
+      "bootstrap_high_vnd": 34117647.058823526
     },
     {
       "province": "Bến Tre",
-      "n": 41,
-      "median_area_m2": 128.0,
-      "median_price_vnd": 1350000000.0,
-      "median_price_per_m2_vnd": 6346774.193548387,
-      "q1_price_per_m2_vnd": 4761904.761904762,
-      "q3_price_per_m2_vnd": 16497584.541062802,
+      "n": 40,
+      "median_area_m2": 126.0,
+      "median_price_vnd": 1365000000.0,
+      "median_price_per_m2_vnd": 6456215.379602477,
+      "q1_price_per_m2_vnd": 4842650.103519669,
+      "q3_price_per_m2_vnd": 16498792.270531401,
       "share_group_outlier": 0.0,
-      "bootstrap_low_vnd": 5243445.692883895,
-      "bootstrap_high_vnd": 11000000.0
+      "bootstrap_low_vnd": 5437256.827024471,
+      "bootstrap_high_vnd": 11262710.08403361
     },
     {
       "province": "Thừa Thiên Huế",
@@ -274,7 +280,7 @@
       "q3_price_per_m2_vnd": 17228260.86956522,
       "share_group_outlier": 0.0,
       "bootstrap_low_vnd": 11486486.486486487,
-      "bootstrap_high_vnd": 15378395.061728366
+      "bootstrap_high_vnd": 14691358.024691358
     },
     {
       "province": "Bình Thuận",
@@ -285,8 +291,8 @@
       "q1_price_per_m2_vnd": 79879.9218162509,
       "q3_price_per_m2_vnd": 1868390.8045977012,
       "share_group_outlier": 0.0,
-      "bootstrap_low_vnd": 86944.44444444444,
-      "bootstrap_high_vnd": 892525.1022685013
+      "bootstrap_low_vnd": 87462.45852977126,
+      "bootstrap_high_vnd": 1071262.5511342506
     },
     {
       "province": "Vĩnh Long",
@@ -297,7 +303,7 @@
       "q1_price_per_m2_vnd": 2520434.609250399,
       "q3_price_per_m2_vnd": 12804878.048780488,
       "share_group_outlier": 0.0,
-      "bootstrap_low_vnd": 2704330.270119744,
+      "bootstrap_low_vnd": 2763157.8947368423,
       "bootstrap_high_vnd": 9626506.024096385
     },
     {
@@ -310,7 +316,7 @@
       "q3_price_per_m2_vnd": 15024166.666666666,
       "share_group_outlier": 0.0,
       "bootstrap_low_vnd": 3070866.1417322834,
-      "bootstrap_high_vnd": 13281250.0
+      "bootstrap_high_vnd": 13529411.764705881
     },
     {
       "province": "Quảng Nam",
@@ -321,7 +327,7 @@
       "q1_price_per_m2_vnd": 10072222.222222222,
       "q3_price_per_m2_vnd": 19375575.0,
       "share_group_outlier": 0.03333333333333333,
-      "bootstrap_low_vnd": 11976498.5282312,
+      "bootstrap_low_vnd": 11975975.975975975,
       "bootstrap_high_vnd": 18785714.285714284
     },
     {
@@ -386,12 +392,12 @@
     },
     {
       "province": "Cà Mau",
-      "n": 23,
+      "n": 22,
       "median_area_m2": 117.0,
-      "median_price_vnd": 1120000000.0,
-      "median_price_per_m2_vnd": 6495726.495726496,
-      "q1_price_per_m2_vnd": 2459150.3267973857,
-      "q3_price_per_m2_vnd": 11850000.0,
+      "median_price_vnd": 1145000000.0,
+      "median_price_per_m2_vnd": 6559829.05982906,
+      "q1_price_per_m2_vnd": 2340686.274509804,
+      "q3_price_per_m2_vnd": 11925000.0,
       "share_group_outlier": 0.0,
       "bootstrap_low_vnd": null,
       "bootstrap_high_vnd": null
@@ -664,133 +670,144 @@
   "type_summary": [
     {
       "property_type": "house",
-      "n": 3590,
+      "n": 3624,
       "median_area_m2": 56.0,
       "median_price_vnd": 2800000000.0,
-      "median_price_per_m2_vnd": 56414473.684210524,
-      "q1_price_per_m2_vnd": 23879491.590214066,
-      "q3_price_per_m2_vnd": 89366883.11688311,
-      "share_group_outlier": 0.033983286908077996
+      "median_price_per_m2_vnd": 56000000.0,
+      "q1_price_per_m2_vnd": 23741071.42857143,
+      "q3_price_per_m2_vnd": 89072516.02564102,
+      "share_group_outlier": 0.0336644591611479
     },
     {
       "property_type": "land",
-      "n": 1856,
+      "n": 1855,
       "median_area_m2": 117.0,
       "median_price_vnd": 1300000000.0,
-      "median_price_per_m2_vnd": 8500000.0,
-      "q1_price_per_m2_vnd": 3073966.5354330707,
-      "q3_price_per_m2_vnd": 21428571.42857143,
-      "share_group_outlier": 0.03556034482758621
+      "median_price_per_m2_vnd": 8510000.0,
+      "q1_price_per_m2_vnd": 3099865.229110512,
+      "q3_price_per_m2_vnd": 21610810.81081081,
+      "share_group_outlier": 0.03557951482479784
     },
     {
       "property_type": "other_unknown",
-      "n": 1120,
-      "median_area_m2": 75.75,
+      "n": 1066,
+      "median_area_m2": 75.0,
       "median_price_vnd": 2700000000.0,
-      "median_price_per_m2_vnd": 39285714.28571428,
-      "q1_price_per_m2_vnd": 12964285.714285715,
-      "q3_price_per_m2_vnd": 83333333.33333333,
-      "share_group_outlier": 0.039285714285714285
+      "median_price_per_m2_vnd": 40000000.0,
+      "q1_price_per_m2_vnd": 13610576.923076924,
+      "q3_price_per_m2_vnd": 84962121.21212122,
+      "share_group_outlier": 0.040337711069418386
     },
     {
       "property_type": "apartment",
-      "n": 370,
-      "median_area_m2": 60.5,
+      "n": 366,
+      "median_area_m2": 60.0,
       "median_price_vnd": 1686000000.0,
-      "median_price_per_m2_vnd": 27692307.692307692,
-      "q1_price_per_m2_vnd": 18225915.87516961,
-      "q3_price_per_m2_vnd": 36945652.17391305,
-      "share_group_outlier": 0.07567567567567568
+      "median_price_per_m2_vnd": 27831196.58119658,
+      "q1_price_per_m2_vnd": 18379312.454122826,
+      "q3_price_per_m2_vnd": 37009740.259740256,
+      "share_group_outlier": 0.07650273224043716
     }
   ],
   "province_type_summary": [
     {
       "province": "Tp Hồ Chí Minh",
       "property_type": "house",
-      "n": 2088,
-      "median_area_m2": 55.0,
-      "median_price_vnd": 2965000000.0,
-      "median_price_per_m2_vnd": 57500000.0,
-      "q1_price_per_m2_vnd": 23611111.111111112,
-      "q3_price_per_m2_vnd": 94182692.30769232,
-      "share_group_outlier": 0.031130268199233715
+      "n": 2105,
+      "median_area_m2": 56.0,
+      "median_price_vnd": 2980000000.0,
+      "median_price_per_m2_vnd": 57058823.52941176,
+      "q1_price_per_m2_vnd": 23333333.333333332,
+      "q3_price_per_m2_vnd": 94000000.0,
+      "share_group_outlier": 0.030878859857482184
     },
     {
       "province": "Hà Nội",
       "property_type": "house",
-      "n": 619,
+      "n": 623,
       "median_area_m2": 39.0,
       "median_price_vnd": 3150000000.0,
-      "median_price_per_m2_vnd": 84848484.84848484,
-      "q1_price_per_m2_vnd": 67218750.0,
+      "median_price_per_m2_vnd": 85000000.0,
+      "q1_price_per_m2_vnd": 67375000.0,
       "q3_price_per_m2_vnd": 107938508.06451613,
-      "share_group_outlier": 0.05331179321486268
+      "share_group_outlier": 0.052969502407704656
     },
     {
       "province": "Tp Hồ Chí Minh",
       "property_type": "other_unknown",
-      "n": 515,
-      "median_area_m2": 67.0,
-      "median_price_vnd": 3500000000.0,
-      "median_price_per_m2_vnd": 49666666.666666664,
-      "q1_price_per_m2_vnd": 28045550.847457625,
-      "q3_price_per_m2_vnd": 96919000.15820281,
-      "share_group_outlier": 0.02524271844660194
+      "n": 490,
+      "median_area_m2": 65.0,
+      "median_price_vnd": 3525000000.0,
+      "median_price_per_m2_vnd": 50884637.514384344,
+      "q1_price_per_m2_vnd": 29344951.923076924,
+      "q3_price_per_m2_vnd": 98945121.95121951,
+      "share_group_outlier": 0.024489795918367346
     },
     {
       "province": "Tp Hồ Chí Minh",
       "property_type": "land",
-      "n": 435,
+      "n": 436,
       "median_area_m2": 98.0,
       "median_price_vnd": 2500000000.0,
-      "median_price_per_m2_vnd": 19830508.474576272,
-      "q1_price_per_m2_vnd": 8339215.68627451,
-      "q3_price_per_m2_vnd": 44058823.52941176,
-      "share_group_outlier": 0.029885057471264367
+      "median_price_per_m2_vnd": 19915254.237288136,
+      "q1_price_per_m2_vnd": 8375490.196078432,
+      "q3_price_per_m2_vnd": 44029411.76470588,
+      "share_group_outlier": 0.02981651376146789
     },
     {
       "province": "Tp Hồ Chí Minh",
       "property_type": "apartment",
-      "n": 239,
+      "n": 235,
       "median_area_m2": 64.0,
-      "median_price_vnd": 1850000000.0,
-      "median_price_per_m2_vnd": 29000000.0,
-      "q1_price_per_m2_vnd": 23235049.83388704,
-      "q3_price_per_m2_vnd": 39644822.9936015,
-      "share_group_outlier": 0.058577405857740586
+      "median_price_vnd": 1900000000.0,
+      "median_price_per_m2_vnd": 29047250.19364834,
+      "q1_price_per_m2_vnd": 23436288.446627036,
+      "q3_price_per_m2_vnd": 39907980.88833834,
+      "share_group_outlier": 0.059574468085106386
     },
     {
       "province": "Đà Nẵng",
       "property_type": "house",
-      "n": 233,
+      "n": 235,
       "median_area_m2": 68.0,
-      "median_price_vnd": 3550000000.0,
-      "median_price_per_m2_vnd": 57250000.0,
-      "q1_price_per_m2_vnd": 39000000.0,
-      "q3_price_per_m2_vnd": 75490196.07843137,
-      "share_group_outlier": 0.030042918454935622
+      "median_price_vnd": 3600000000.0,
+      "median_price_per_m2_vnd": 57058823.52941176,
+      "q1_price_per_m2_vnd": 39500000.0,
+      "q3_price_per_m2_vnd": 75472370.76648842,
+      "share_group_outlier": 0.029787234042553193
     },
     {
       "province": "Hà Nội",
       "property_type": "other_unknown",
-      "n": 214,
+      "n": 208,
       "median_area_m2": 45.0,
-      "median_price_vnd": 3345000000.0,
-      "median_price_per_m2_vnd": 84359726.29521015,
-      "q1_price_per_m2_vnd": 61842105.2631579,
-      "q3_price_per_m2_vnd": 109217171.71717171,
-      "share_group_outlier": 0.07009345794392523
+      "median_price_vnd": 3326666500.0,
+      "median_price_per_m2_vnd": 83602150.5376344,
+      "q1_price_per_m2_vnd": 61798245.614035085,
+      "q3_price_per_m2_vnd": 109132996.63299663,
+      "share_group_outlier": 0.07211538461538461
     },
     {
       "province": "Bình Dương",
       "property_type": "land",
-      "n": 201,
+      "n": 198,
       "median_area_m2": 150.0,
-      "median_price_vnd": 920000000.0,
-      "median_price_per_m2_vnd": 6894736.842105263,
-      "q1_price_per_m2_vnd": 3066666.6666666665,
+      "median_price_vnd": 927500000.0,
+      "median_price_per_m2_vnd": 6939799.331103679,
+      "q1_price_per_m2_vnd": 3050556.6470203013,
       "q3_price_per_m2_vnd": 12500000.0,
-      "share_group_outlier": 0.05970149253731343
+      "share_group_outlier": 0.06060606060606061
+    },
+    {
+      "province": "Bình Dương",
+      "property_type": "house",
+      "n": 156,
+      "median_area_m2": 98.0,
+      "median_price_vnd": 2000000000.0,
+      "median_price_per_m2_vnd": 23801605.50458716,
+      "q1_price_per_m2_vnd": 13952380.952380951,
+      "q3_price_per_m2_vnd": 34570512.82051282,
+      "share_group_outlier": 0.03205128205128205
     },
     {
       "province": "Đồng Nai",
@@ -804,48 +821,37 @@
       "share_group_outlier": 0.039735099337748346
     },
     {
-      "province": "Bình Dương",
-      "property_type": "house",
-      "n": 148,
-      "median_area_m2": 94.5,
-      "median_price_vnd": 2000000000.0,
-      "median_price_per_m2_vnd": 23989795.91836735,
-      "q1_price_per_m2_vnd": 15740593.534711182,
-      "q3_price_per_m2_vnd": 35200000.0,
-      "share_group_outlier": 0.033783783783783786
-    },
-    {
       "province": "Đà Nẵng",
       "property_type": "land",
-      "n": 122,
+      "n": 124,
       "median_area_m2": 100.0,
       "median_price_vnd": 2375000000.0,
       "median_price_per_m2_vnd": 23744586.894586895,
-      "q1_price_per_m2_vnd": 16429901.960784314,
-      "q3_price_per_m2_vnd": 35378959.2760181,
-      "share_group_outlier": 0.06557377049180328
+      "q1_price_per_m2_vnd": 16302521.00840336,
+      "q3_price_per_m2_vnd": 35923076.92307692,
+      "share_group_outlier": 0.06451612903225806
     },
     {
       "province": "Hà Nội",
       "property_type": "land",
-      "n": 119,
+      "n": 120,
       "median_area_m2": 60.0,
-      "median_price_vnd": 2120000000.0,
-      "median_price_per_m2_vnd": 34177215.18987342,
-      "q1_price_per_m2_vnd": 21421474.35897436,
-      "q3_price_per_m2_vnd": 58216112.53196931,
-      "share_group_outlier": 0.03361344537815126
+      "median_price_vnd": 2140000000.0,
+      "median_price_per_m2_vnd": 35660036.16636528,
+      "q1_price_per_m2_vnd": 21736378.205128208,
+      "q3_price_per_m2_vnd": 57912404.09207161,
+      "share_group_outlier": 0.03333333333333333
     },
     {
       "province": "Long An",
       "property_type": "land",
-      "n": 115,
-      "median_area_m2": 106.0,
-      "median_price_vnd": 799000000.0,
-      "median_price_per_m2_vnd": 6090000.0,
-      "q1_price_per_m2_vnd": 3873076.923076923,
-      "q3_price_per_m2_vnd": 9424342.105263159,
-      "share_group_outlier": 0.043478260869565216
+      "n": 114,
+      "median_area_m2": 106.5,
+      "median_price_vnd": 799500000.0,
+      "median_price_per_m2_vnd": 6093780.4878048785,
+      "q1_price_per_m2_vnd": 3859615.3846153845,
+      "q3_price_per_m2_vnd": 9449013.157894736,
+      "share_group_outlier": 0.043859649122807015
     },
     {
       "province": "Cần Thơ",
@@ -861,68 +867,79 @@
     {
       "province": "Cần Thơ",
       "property_type": "house",
-      "n": 101,
+      "n": 102,
       "median_area_m2": 70.0,
-      "median_price_vnd": 2750000000.0,
-      "median_price_per_m2_vnd": 50000000.0,
-      "q1_price_per_m2_vnd": 30921052.63157895,
-      "q3_price_per_m2_vnd": 65555555.55555555,
-      "share_group_outlier": 0.04950495049504951
+      "median_price_vnd": 2725000000.0,
+      "median_price_per_m2_vnd": 49987500.0,
+      "q1_price_per_m2_vnd": 30714134.12563667,
+      "q3_price_per_m2_vnd": 65541666.666666664,
+      "share_group_outlier": 0.049019607843137254
     },
     {
       "province": "Long An",
       "property_type": "house",
-      "n": 89,
-      "median_area_m2": 64.0,
-      "median_price_vnd": 900000000.0,
-      "median_price_per_m2_vnd": 14173913.043478262,
-      "q1_price_per_m2_vnd": 10555555.555555556,
-      "q3_price_per_m2_vnd": 21568627.45098039,
-      "share_group_outlier": 0.02247191011235955
-    },
-    {
-      "province": "Bình Dương",
-      "property_type": "other_unknown",
-      "n": 86,
-      "median_area_m2": 100.0,
-      "median_price_vnd": 1175000000.0,
-      "median_price_per_m2_vnd": 10000000.0,
-      "q1_price_per_m2_vnd": 4583333.333333333,
-      "q3_price_per_m2_vnd": 23026785.714285716,
-      "share_group_outlier": 0.046511627906976744
-    },
-    {
-      "province": "Đà Nẵng",
-      "property_type": "other_unknown",
-      "n": 84,
-      "median_area_m2": 100.0,
-      "median_price_vnd": 2814999500.0,
-      "median_price_per_m2_vnd": 37184210.52631579,
-      "q1_price_per_m2_vnd": 19185876.347135566,
-      "q3_price_per_m2_vnd": 58467105.2631579,
-      "share_group_outlier": 0.08333333333333333
+      "n": 88,
+      "median_area_m2": 64.5,
+      "median_price_vnd": 915000000.0,
+      "median_price_per_m2_vnd": 14378623.188405797,
+      "q1_price_per_m2_vnd": 10701388.888888888,
+      "q3_price_per_m2_vnd": 21773485.513608426,
+      "share_group_outlier": 0.022727272727272728
     },
     {
       "province": "Lâm Đồng",
       "property_type": "land",
-      "n": 81,
-      "median_area_m2": 250.0,
-      "median_price_vnd": 800000000.0,
+      "n": 80,
+      "median_area_m2": 244.0,
+      "median_price_vnd": 825000000.0,
       "median_price_per_m2_vnd": 3000000.0,
-      "q1_price_per_m2_vnd": 1100000.0,
+      "q1_price_per_m2_vnd": 1141379.3103448276,
       "q3_price_per_m2_vnd": 4510451.04510451,
-      "share_group_outlier": 0.06172839506172839
+      "share_group_outlier": 0.0625
+    },
+    {
+      "province": "Đà Nẵng",
+      "property_type": "other_unknown",
+      "n": 80,
+      "median_area_m2": 100.0,
+      "median_price_vnd": 2774999500.0,
+      "median_price_per_m2_vnd": 35999993.75,
+      "q1_price_per_m2_vnd": 19185876.347135566,
+      "q3_price_per_m2_vnd": 58467105.2631579,
+      "share_group_outlier": 0.0875
+    },
+    {
+      "province": "Bình Dương",
+      "property_type": "other_unknown",
+      "n": 73,
+      "median_area_m2": 100.0,
+      "median_price_vnd": 1150000000.0,
+      "median_price_per_m2_vnd": 12727272.727272727,
+      "q1_price_per_m2_vnd": 4500000.0,
+      "q3_price_per_m2_vnd": 24239130.43478261,
+      "share_group_outlier": 0.0547945205479452
     },
     {
       "province": "Hà Nội",
       "property_type": "apartment",
-      "n": 62,
+      "n": 63,
       "median_area_m2": 50.0,
-      "median_price_vnd": 1127500000.0,
+      "median_price_vnd": 1075000000.0,
       "median_price_per_m2_vnd": 18181818.181818184,
-      "q1_price_per_m2_vnd": 15677272.727272727,
-      "q3_price_per_m2_vnd": 29642857.14285714,
-      "share_group_outlier": 0.0967741935483871
+      "q1_price_per_m2_vnd": 15754545.454545453,
+      "q3_price_per_m2_vnd": 29285714.285714284,
+      "share_group_outlier": 0.09523809523809523
+    },
+    {
+      "province": "Đắk Lắk",
+      "property_type": "house",
+      "n": 62,
+      "median_area_m2": 110.0,
+      "median_price_vnd": 1825000000.0,
+      "median_price_per_m2_vnd": 15219047.61904762,
+      "q1_price_per_m2_vnd": 11381372.549019609,
+      "q3_price_per_m2_vnd": 22582589.285714284,
+      "share_group_outlier": 0.03225806451612903
     },
     {
       "province": "Bà Rịa - Vũng Tàu",
@@ -936,26 +953,15 @@
       "share_group_outlier": 0.08196721311475409
     },
     {
-      "province": "Đắk Lắk",
-      "property_type": "house",
-      "n": 61,
-      "median_area_m2": 110.0,
-      "median_price_vnd": 1850000000.0,
-      "median_price_per_m2_vnd": 15238095.238095239,
-      "q1_price_per_m2_vnd": 11352941.176470589,
-      "q3_price_per_m2_vnd": 22714285.714285713,
-      "share_group_outlier": 0.03278688524590164
-    },
-    {
       "province": "Đồng Nai",
       "property_type": "house",
-      "n": 52,
+      "n": 54,
       "median_area_m2": 100.0,
-      "median_price_vnd": 1735000000.0,
+      "median_price_vnd": 1760000000.0,
       "median_price_per_m2_vnd": 17552631.57894737,
-      "q1_price_per_m2_vnd": 11916666.666666666,
-      "q3_price_per_m2_vnd": 30920385.395537525,
-      "share_group_outlier": 0.038461538461538464
+      "q1_price_per_m2_vnd": 12004385.96491228,
+      "q3_price_per_m2_vnd": 30814825.93037215,
+      "share_group_outlier": 0.037037037037037035
     },
     {
       "province": "Đắk Lắk",
@@ -982,13 +988,13 @@
     {
       "province": "Đồng Nai",
       "property_type": "other_unknown",
-      "n": 40,
-      "median_area_m2": 113.5,
-      "median_price_vnd": 930000000.0,
-      "median_price_per_m2_vnd": 3664185.277088503,
-      "q1_price_per_m2_vnd": 1211538.4615384615,
-      "q3_price_per_m2_vnd": 12305840.82156611,
-      "share_group_outlier": 0.05
+      "n": 37,
+      "median_area_m2": 100.0,
+      "median_price_vnd": 900000000.0,
+      "median_price_per_m2_vnd": 2791262.13592233,
+      "q1_price_per_m2_vnd": 1000000.0,
+      "q3_price_per_m2_vnd": 11500000.0,
+      "share_group_outlier": 0.05405405405405406
     },
     {
       "province": "Long An",
@@ -1026,12 +1032,12 @@
     {
       "province": "Bến Tre",
       "property_type": "land",
-      "n": 29,
-      "median_area_m2": 198.0,
-      "median_price_vnd": 1250000000.0,
-      "median_price_per_m2_vnd": 5686274.509803922,
-      "q1_price_per_m2_vnd": 2890625.0,
-      "q3_price_per_m2_vnd": 10000000.0,
+      "n": 28,
+      "median_area_m2": 174.0,
+      "median_price_vnd": 1275000000.0,
+      "median_price_per_m2_vnd": 5760834.8413825175,
+      "q1_price_per_m2_vnd": 3285156.25,
+      "q3_price_per_m2_vnd": 10250000.0,
       "share_group_outlier": 0.0
     },
     {
@@ -1145,17 +1151,6 @@
       "share_group_outlier": 0.0
     },
     {
-      "province": "Cà Mau",
-      "property_type": "land",
-      "n": 18,
-      "median_area_m2": 117.0,
-      "median_price_vnd": 787500000.0,
-      "median_price_per_m2_vnd": 6244121.105232216,
-      "q1_price_per_m2_vnd": 2340686.274509804,
-      "q3_price_per_m2_vnd": 6919642.857142857,
-      "share_group_outlier": 0.0
-    },
-    {
       "province": "Hải Phòng",
       "property_type": "house",
       "n": 18,
@@ -1180,12 +1175,23 @@
     {
       "province": "Tiền Giang",
       "property_type": "land",
-      "n": 17,
-      "median_area_m2": 176.0,
+      "n": 18,
+      "median_area_m2": 176.5,
       "median_price_vnd": 900000000.0,
-      "median_price_per_m2_vnd": 2857142.8571428573,
-      "q1_price_per_m2_vnd": 1845018.450184502,
-      "q3_price_per_m2_vnd": 5965909.090909091,
+      "median_price_per_m2_vnd": 2964004.4994375706,
+      "q1_price_per_m2_vnd": 1916372.5332905503,
+      "q3_price_per_m2_vnd": 5957482.665639445,
+      "share_group_outlier": 0.0
+    },
+    {
+      "province": "Cà Mau",
+      "property_type": "land",
+      "n": 17,
+      "median_area_m2": 117.0,
+      "median_price_vnd": 800000000.0,
+      "median_price_per_m2_vnd": 6337448.559670782,
+      "q1_price_per_m2_vnd": 2222222.222222222,
+      "q3_price_per_m2_vnd": 6919642.857142857,
       "share_group_outlier": 0.0
     },
     {
@@ -1222,28 +1228,6 @@
       "share_group_outlier": 0.4375
     },
     {
-      "province": "Cần Thơ",
-      "property_type": "other_unknown",
-      "n": 15,
-      "median_area_m2": 80.0,
-      "median_price_vnd": 1980000000.0,
-      "median_price_per_m2_vnd": 22000000.0,
-      "q1_price_per_m2_vnd": 16031746.03174603,
-      "q3_price_per_m2_vnd": 41390653.35753176,
-      "share_group_outlier": 0.0
-    },
-    {
-      "province": "Đắk Lắk",
-      "property_type": "other_unknown",
-      "n": 15,
-      "median_area_m2": 126.0,
-      "median_price_vnd": 1500000000.0,
-      "median_price_per_m2_vnd": 6920000.0,
-      "q1_price_per_m2_vnd": 4353076.923076923,
-      "q3_price_per_m2_vnd": 16315789.47368421,
-      "share_group_outlier": 0.0
-    },
-    {
       "province": "Chưa xác định",
       "property_type": "house",
       "n": 14,
@@ -1252,6 +1236,28 @@
       "median_price_per_m2_vnd": 32092604.712041885,
       "q1_price_per_m2_vnd": 15111607.142857144,
       "q3_price_per_m2_vnd": 79904891.30434783,
+      "share_group_outlier": 0.0
+    },
+    {
+      "province": "Cần Thơ",
+      "property_type": "other_unknown",
+      "n": 14,
+      "median_area_m2": 80.0,
+      "median_price_vnd": 2165000000.0,
+      "median_price_per_m2_vnd": 24257575.757575758,
+      "q1_price_per_m2_vnd": 15210688.591983555,
+      "q3_price_per_m2_vnd": 42678085.29945554,
+      "share_group_outlier": 0.0
+    },
+    {
+      "province": "Đắk Lắk",
+      "property_type": "other_unknown",
+      "n": 14,
+      "median_area_m2": 125.5,
+      "median_price_vnd": 1475000000.0,
+      "median_price_per_m2_vnd": 6554059.405940594,
+      "q1_price_per_m2_vnd": 3856538.4615384615,
+      "q3_price_per_m2_vnd": 16842105.263157897,
       "share_group_outlier": 0.0
     },
     {
@@ -1409,6 +1415,17 @@
       "share_group_outlier": 0.0
     },
     {
+      "province": "Thanh Hóa",
+      "property_type": "land",
+      "n": 6,
+      "median_area_m2": 100.0,
+      "median_price_vnd": 1767283500.0,
+      "median_price_per_m2_vnd": 10334593.558282208,
+      "q1_price_per_m2_vnd": 3397977.813727756,
+      "q3_price_per_m2_vnd": 12276549.279141104,
+      "share_group_outlier": 0.0
+    },
+    {
       "province": "Thừa Thiên Huế",
       "property_type": "other_unknown",
       "n": 6,
@@ -1439,17 +1456,6 @@
       "median_price_per_m2_vnd": 8636363.636363637,
       "q1_price_per_m2_vnd": 1750000.0,
       "q3_price_per_m2_vnd": 17514871.11698612,
-      "share_group_outlier": 0.0
-    },
-    {
-      "province": "Thanh Hóa",
-      "property_type": "land",
-      "n": 5,
-      "median_area_m2": 100.0,
-      "median_price_vnd": 1234567000.0,
-      "median_price_per_m2_vnd": 8600000.0,
-      "q1_price_per_m2_vnd": 1663970.4183036746,
-      "q3_price_per_m2_vnd": 12069187.116564417,
       "share_group_outlier": 0.0
     },
     {
@@ -1659,17 +1665,6 @@
       "median_price_per_m2_vnd": 1000000.0,
       "q1_price_per_m2_vnd": 781114.2346026066,
       "q3_price_per_m2_vnd": 17722222.222222224,
-      "share_group_outlier": 0.0
-    },
-    {
-      "province": "Tiền Giang",
-      "property_type": "other_unknown",
-      "n": 3,
-      "median_area_m2": 253.0,
-      "median_price_vnd": 4900000000.0,
-      "median_price_per_m2_vnd": 13529411.764705881,
-      "q1_price_per_m2_vnd": 9730807.577268194,
-      "q3_price_per_m2_vnd": 16448500.348756103,
       "share_group_outlier": 0.0
     },
     {
@@ -1904,6 +1899,17 @@
       "share_group_outlier": 0.0
     },
     {
+      "province": "Tiền Giang",
+      "property_type": "other_unknown",
+      "n": 2,
+      "median_area_m2": 339.0,
+      "median_price_vnd": 5325000000.0,
+      "median_price_per_m2_vnd": 16448500.348756103,
+      "q1_price_per_m2_vnd": 14988956.056730993,
+      "q3_price_per_m2_vnd": 17908044.640781213,
+      "share_group_outlier": 0.0
+    },
+    {
       "province": "Tây Ninh",
       "property_type": "house",
       "n": 2,
@@ -2125,17 +2131,6 @@
     },
     {
       "province": "Thanh Hóa",
-      "property_type": "apartment",
-      "n": 1,
-      "median_area_m2": 100.0,
-      "median_price_vnd": 2300000000.0,
-      "median_price_per_m2_vnd": 23000000.0,
-      "q1_price_per_m2_vnd": 23000000.0,
-      "q3_price_per_m2_vnd": 23000000.0,
-      "share_group_outlier": 0.0
-    },
-    {
-      "province": "Thanh Hóa",
       "property_type": "house",
       "n": 1,
       "median_area_m2": 160.0,
@@ -2237,134 +2232,134 @@
   "area_band_summary": [
     {
       "area_band": "(30,60]",
-      "n": 2439,
+      "n": 2433,
       "median_area_m2": 46.5,
-      "median_price_vnd": 2580000000.0,
-      "median_price_per_m2_vnd": 59677419.35483871,
-      "q1_price_per_m2_vnd": 28062500.0,
+      "median_price_vnd": 2590000000.0,
+      "median_price_per_m2_vnd": 59750000.0,
+      "q1_price_per_m2_vnd": 28248587.570621468,
       "q3_price_per_m2_vnd": 91176470.58823529,
-      "share_group_outlier": 0.028290282902829027
+      "share_group_outlier": 0.02794903411426223
     },
     {
       "area_band": "(60,100]",
-      "n": 2178,
+      "n": 2170,
       "median_area_m2": 80.0,
-      "median_price_vnd": 2260000000.0,
-      "median_price_per_m2_vnd": 28427622.37762238,
-      "q1_price_per_m2_vnd": 14890904.255319148,
+      "median_price_vnd": 2282500000.0,
+      "median_price_per_m2_vnd": 28535714.285714284,
+      "q1_price_per_m2_vnd": 14938140.806561857,
       "q3_price_per_m2_vnd": 60000000.0,
-      "share_group_outlier": 0.04591368227731864
+      "share_group_outlier": 0.0456221198156682
     },
     {
       "area_band": "(100,200]",
-      "n": 1073,
+      "n": 1067,
       "median_area_m2": 127.0,
       "median_price_vnd": 1770000000.0,
       "median_price_per_m2_vnd": 13885964.912280701,
-      "q1_price_per_m2_vnd": 6150793.650793651,
-      "q3_price_per_m2_vnd": 38333333.333333336,
-      "share_group_outlier": 0.04380242311276794
+      "q1_price_per_m2_vnd": 6142063.492063493,
+      "q3_price_per_m2_vnd": 38325545.171339564,
+      "share_group_outlier": 0.04498594189315839
     },
     {
       "area_band": ">500",
-      "n": 455,
-      "median_area_m2": 1135.0,
-      "median_price_vnd": 1790000000.0,
-      "median_price_per_m2_vnd": 1000000.0,
-      "q1_price_per_m2_vnd": 387553.2821824382,
-      "q3_price_per_m2_vnd": 2787096.745141128,
-      "share_group_outlier": 0.008791208791208791
+      "n": 453,
+      "median_area_m2": 1125.0,
+      "median_price_vnd": 1800000000.0,
+      "median_price_per_m2_vnd": 1026666.6666666666,
+      "q1_price_per_m2_vnd": 415869.98087954114,
+      "q3_price_per_m2_vnd": 2791262.13592233,
+      "share_group_outlier": 0.008830022075055188
     },
     {
       "area_band": "(0,30]",
-      "n": 408,
+      "n": 407,
       "median_area_m2": 25.0,
       "median_price_vnd": 2000000000.0,
       "median_price_per_m2_vnd": 84000000.0,
-      "q1_price_per_m2_vnd": 54916666.666666664,
-      "q3_price_per_m2_vnd": 111691176.47058824,
-      "share_group_outlier": 0.061274509803921566
+      "q1_price_per_m2_vnd": 55000000.0,
+      "q3_price_per_m2_vnd": 111715686.27450982,
+      "share_group_outlier": 0.06142506142506143
     },
     {
       "area_band": "(200,500]",
-      "n": 383,
+      "n": 381,
       "median_area_m2": 300.0,
       "median_price_vnd": 2000000000.0,
-      "median_price_per_m2_vnd": 6607142.857142857,
-      "q1_price_per_m2_vnd": 2814322.212203186,
-      "q3_price_per_m2_vnd": 21238805.970149253,
-      "share_group_outlier": 0.0391644908616188
+      "median_price_per_m2_vnd": 6614785.992217898,
+      "q1_price_per_m2_vnd": 2795311.0910730385,
+      "q3_price_per_m2_vnd": 21333333.333333332,
+      "share_group_outlier": 0.03937007874015748
     }
   ],
   "sensitivity": [
     {
       "scenario": "all_clean_sales",
-      "n": 6936,
+      "n": 6911,
       "excluded": 0,
       "median_area_m2": 70.0,
       "median_price_vnd": 2250000000.0,
-      "median_price_per_m2_vnd": 32320512.82051282,
+      "median_price_per_m2_vnd": 32500000.0,
       "unit_price_median_change_pct": 0.0
     },
     {
       "scenario": "without_global_iqr_outliers",
-      "n": 6706,
+      "n": 6681,
       "excluded": 230,
-      "median_area_m2": 71.0,
+      "median_area_m2": 70.68,
       "median_price_vnd": 2150000000.0,
-      "median_price_per_m2_vnd": 30787841.191066995,
-      "unit_price_median_change_pct": -4.74210182851148
+      "median_price_per_m2_vnd": 30909090.90909091,
+      "unit_price_median_change_pct": -4.895104895104896
     },
     {
       "scenario": "without_group_iqr_outliers",
-      "n": 6676,
-      "excluded": 260,
+      "n": 6652,
+      "excluded": 259,
       "median_area_m2": 70.0,
-      "median_price_vnd": 2124500000.0,
-      "median_price_per_m2_vnd": 30860670.19400353,
-      "unit_price_median_change_pct": -4.516768142313554
+      "median_price_vnd": 2150000000.0,
+      "median_price_per_m2_vnd": 31000000.0,
+      "unit_price_median_change_pct": -4.61538461538461
     },
     {
       "scenario": "without_dot_grouping_uncertainty",
-      "n": 6608,
-      "excluded": 328,
+      "n": 6585,
+      "excluded": 326,
       "median_area_m2": 68.0,
-      "median_price_vnd": 2250000000.0,
-      "median_price_per_m2_vnd": 35178125.0,
-      "unit_price_median_change_pct": 8.841481554938513
+      "median_price_vnd": 2280000000.0,
+      "median_price_per_m2_vnd": 35384615.384615384,
+      "unit_price_median_change_pct": 8.875739644970416
     },
     {
       "scenario": "explicit_sale_titles_only",
-      "n": 3030,
-      "excluded": 3906,
+      "n": 3032,
+      "excluded": 3879,
       "median_area_m2": 68.0,
-      "median_price_vnd": 2240000000.0,
-      "median_price_per_m2_vnd": 32899159.663865548,
-      "unit_price_median_change_pct": 1.7903393011310165
+      "median_price_vnd": 2250000000.0,
+      "median_price_per_m2_vnd": 33074729.891956784,
+      "unit_price_median_change_pct": 1.7683996675593283
     }
   ],
   "spearman": {
     "area_m2": {
       "area_m2": 1.0,
-      "sale_price_vnd": -0.037634,
-      "price_per_m2_vnd": -0.588097
+      "sale_price_vnd": -0.03744,
+      "price_per_m2_vnd": -0.58874
     },
     "sale_price_vnd": {
-      "area_m2": -0.037634,
+      "area_m2": -0.03744,
       "sale_price_vnd": 1.0,
-      "price_per_m2_vnd": 0.768824
+      "price_per_m2_vnd": 0.768038
     },
     "price_per_m2_vnd": {
-      "area_m2": -0.588097,
-      "sale_price_vnd": 0.768824,
+      "area_m2": -0.58874,
+      "sale_price_vnd": 0.768038,
       "price_per_m2_vnd": 1.0
     }
   },
   "global_iqr_bounds": {
-    "q1": 12500000.0,
-    "q3": 73076923.07692307,
-    "lower": -78365384.61538461,
-    "upper": 163942307.69230768
+    "q1": 12540894.220283533,
+    "q3": 73333333.33333333,
+    "lower": -78647764.44929115,
+    "upper": 164521992.00290802
   },
   "clustering": {
     "method": "NumPy KMeans++ / Lloyd, 10 starts, 150 iterations maximum",
@@ -2375,83 +2370,83 @@
     "standardization": "population z-score after natural logarithm",
     "seed": 20261015,
     "chosen_k": 2,
-    "fit_count": 6676,
-    "excluded_group_outliers": 260,
+    "fit_count": 6652,
+    "excluded_group_outliers": 259,
     "silhouette_sample_size": 1000,
     "log_means": [
-      4.479549822987997,
-      16.95778661256449
+      4.4782932370053095,
+      16.962739197387236
     ],
     "log_std": [
-      1.0808908075842054,
-      1.4597753825359123
+      1.0795841703080877,
+      1.457323058571141
     ],
     "stability_checks": [
       {
         "seed": 7,
         "adjusted_rand_vs_primary": 1.0,
-        "inertia": 6277.213200241327
+        "inertia": 6247.96427045003
       },
       {
         "seed": 42,
         "adjusted_rand_vs_primary": 1.0,
-        "inertia": 6277.213200241327
+        "inertia": 6247.96427045003
       }
     ],
     "purpose": "exploratory segmentation; no ground truth, prediction, investment recommendation or market validation",
     "trials": [
       {
         "k": 2,
-        "silhouette_sample": 0.6231025757482119,
-        "inertia": 6277.213200241327,
-        "min_cluster_size": 961
+        "silhouette_sample": 0.5934286162809556,
+        "inertia": 6247.96427045003,
+        "min_cluster_size": 989
       },
       {
         "k": 3,
-        "silhouette_sample": 0.4735672438790726,
-        "inertia": 3852.476617826341,
-        "min_cluster_size": 456
+        "silhouette_sample": 0.46288608016470006,
+        "inertia": 3842.181258061296,
+        "min_cluster_size": 455
       },
       {
         "k": 4,
-        "silhouette_sample": 0.39393035208081195,
-        "inertia": 2983.807390074934,
-        "min_cluster_size": 306
+        "silhouette_sample": 0.39766929563166653,
+        "inertia": 2975.5685997702103,
+        "min_cluster_size": 304
       },
       {
         "k": 5,
-        "silhouette_sample": 0.37942034448803824,
-        "inertia": 2465.1049285179347,
-        "min_cluster_size": 122
+        "silhouette_sample": 0.3739581471307995,
+        "inertia": 2461.234027771565,
+        "min_cluster_size": 120
       }
     ],
     "summary": [
       {
         "cluster": 1,
-        "n": 961,
-        "median_area_m2": 500.0,
-        "median_price_vnd": 880000000.0,
-        "median_price_per_m2_vnd": 2300000.0
+        "n": 989,
+        "median_area_m2": 450.0,
+        "median_price_vnd": 850000000.0,
+        "median_price_per_m2_vnd": 2350000.0
       },
       {
         "cluster": 2,
-        "n": 5715,
+        "n": 5663,
         "median_area_m2": 63.0,
-        "median_price_vnd": 2350000000.0,
-        "median_price_per_m2_vnd": 39189189.18918919
+        "median_price_vnd": 2399000000.0,
+        "median_price_per_m2_vnd": 39705882.35294118
       }
     ]
   },
   "sql_benchmark": {
-    "sqlite_version": "3.50.4",
-    "listing_count": 6936,
+    "sqlite_version": "3.45.1",
+    "listing_count": 6911,
     "province_count": 48,
     "query": "SELECT row_id, area_m2, sale_price_vnd, price_per_m2_vnd\nFROM listings\nWHERE province_id = ? AND type_id = ?\n  AND price_per_m2_vnd BETWEEN ? AND ?\nORDER BY price_per_m2_vnd, row_id LIMIT 100",
     "parameters": [
       38,
       2,
-      33911924.93946731,
-      78358108.1081081
+      33750000.0,
+      77950442.47787613
     ],
     "parameter_labels": {
       "province": "Tp Hồ Chí Minh",
@@ -2462,7 +2457,7 @@
         [
           4,
           0,
-          143,
+          0,
           "SCAN listings"
         ],
         [
@@ -2473,27 +2468,27 @@
         ]
       ],
       "result_count": 100,
-      "result_sha256": "adee9406ef35f1fbe5221ae1093158eaef954f3b948b39cd5e953245ffff1e1b",
-      "median_ms": 0.6484,
-      "p10_ms": 0.5834,
-      "p90_ms": 1.0437
+      "result_sha256": "2e7c7702096e3e7b2e15246d6540d28df02ea2167548be70c77f34946479d586",
+      "median_ms": 3.529712,
+      "p10_ms": 2.914914,
+      "p90_ms": 4.31219
     },
     "after": {
       "plan": [
         [
           5,
           0,
-          45,
+          0,
           "SEARCH listings USING INDEX idx_listings_search (province_id=? AND type_id=? AND price_per_m2_vnd>? AND price_per_m2_vnd<?)"
         ]
       ],
       "result_count": 100,
-      "result_sha256": "adee9406ef35f1fbe5221ae1093158eaef954f3b948b39cd5e953245ffff1e1b",
-      "median_ms": 0.7788,
-      "p10_ms": 0.1976,
-      "p90_ms": 1.3754
+      "result_sha256": "2e7c7702096e3e7b2e15246d6540d28df02ea2167548be70c77f34946479d586",
+      "median_ms": 0.60291,
+      "p10_ms": 0.329654,
+      "p90_ms": 0.900055
     },
-    "median_speedup": 0.8325629173086799,
+    "median_speedup": 5.8544592061833445,
     "identical_results": true,
     "integrity_check": "ok",
     "foreign_key_errors": [],

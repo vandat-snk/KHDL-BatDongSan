@@ -1,6 +1,6 @@
 ﻿scenario,n,excluded,median_area_m2,median_price_vnd,median_price_per_m2_vnd,unit_price_median_change_pct
-all_clean_sales,6936,0,70,2250000000,32320512.82,0
-without_global_iqr_outliers,6706,230,71,2150000000,30787841.19,-4.742101829
-without_group_iqr_outliers,6676,260,70,2124500000,30860670.19,-4.516768142
-without_dot_grouping_uncertainty,6608,328,68,2250000000,35178125,8.841481555
-explicit_sale_titles_only,3030,3906,68,2240000000,32899159.66,1.790339301
+all_clean_sales,6911,0,70,2250000000,32500000,0
+without_global_iqr_outliers,6681,230,70.68,2150000000,30909090.91,-4.895104895
+without_group_iqr_outliers,6652,259,70,2150000000,31000000,-4.615384615
+without_dot_grouping_uncertainty,6585,326,68,2280000000,35384615.38,8.875739645
+explicit_sale_titles_only,3032,3879,68,2250000000,33074729.89,1.768399668

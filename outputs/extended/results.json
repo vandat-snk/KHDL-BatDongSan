@@ -1,0 +1,676 @@
+{
+  "core_run_id": "20261027T065401Z-5c8df2cc",
+  "source_sha256": "ef39f153f48a55af07baa86883cd9036652f6d52232fed0be6e8991c7a5bf811",
+  "labels_sha256": "4ccd4123d4c1962195309844296844ed750c09dffa2e4cab05e24558ab9d23df",
+  "script_sha256": "99ff65100072868e0a26ee13ff22ccb2ee1385392bd99925f73fecf9d5f00f27",
+  "evaluation": {
+    "metrics": [
+      {
+        "group": "all_sample",
+        "field": "property",
+        "n_sample": 60,
+        "n_resolved": 58,
+        "n_match": 43,
+        "n_unresolved": 2,
+        "match_rate_resolved": 0.7413793103448276,
+        "resolved_coverage": 0.9666666666666667
+      },
+      {
+        "group": "all_sample",
+        "field": "transaction",
+        "n_sample": 60,
+        "n_resolved": 45,
+        "n_match": 28,
+        "n_unresolved": 15,
+        "match_rate_resolved": 0.6222222222222222,
+        "resolved_coverage": 0.75
+      },
+      {
+        "group": "all_sample",
+        "field": "basis",
+        "n_sample": 60,
+        "n_resolved": 54,
+        "n_match": 46,
+        "n_unresolved": 6,
+        "match_rate_resolved": 0.8518518518518519,
+        "resolved_coverage": 0.9
+      },
+      {
+        "group": "all_sample",
+        "field": "price",
+        "n_sample": 60,
+        "n_resolved": 50,
+        "n_match": 47,
+        "n_unresolved": 10,
+        "match_rate_resolved": 0.94,
+        "resolved_coverage": 0.8333333333333334
+      },
+      {
+        "group": "all_sample",
+        "field": "area",
+        "n_sample": 60,
+        "n_resolved": 54,
+        "n_match": 53,
+        "n_unresolved": 6,
+        "match_rate_resolved": 0.9814814814814815,
+        "resolved_coverage": 0.9
+      },
+      {
+        "group": "all_sample",
+        "field": "status",
+        "n_sample": 60,
+        "n_resolved": 8,
+        "n_match": 8,
+        "n_unresolved": 52,
+        "match_rate_resolved": 1.0,
+        "resolved_coverage": 0.13333333333333333
+      },
+      {
+        "group": "kept_assumed",
+        "field": "property",
+        "n_sample": 20,
+        "n_resolved": 19,
+        "n_match": 14,
+        "n_unresolved": 1,
+        "match_rate_resolved": 0.7368421052631579,
+        "resolved_coverage": 0.95
+      },
+      {
+        "group": "kept_assumed",
+        "field": "transaction",
+        "n_sample": 20,
+        "n_resolved": 11,
+        "n_match": 0,
+        "n_unresolved": 9,
+        "match_rate_resolved": 0.0,
+        "resolved_coverage": 0.55
+      },
+      {
+        "group": "kept_assumed",
+        "field": "basis",
+        "n_sample": 20,
+        "n_resolved": 19,
+        "n_match": 19,
+        "n_unresolved": 1,
+        "match_rate_resolved": 1.0,
+        "resolved_coverage": 0.95
+      },
+      {
+        "group": "kept_assumed",
+        "field": "price",
+        "n_sample": 20,
+        "n_resolved": 18,
+        "n_match": 18,
+        "n_unresolved": 2,
+        "match_rate_resolved": 1.0,
+        "resolved_coverage": 0.9
+      },
+      {
+        "group": "kept_assumed",
+        "field": "area",
+        "n_sample": 20,
+        "n_resolved": 18,
+        "n_match": 17,
+        "n_unresolved": 2,
+        "match_rate_resolved": 0.9444444444444444,
+        "resolved_coverage": 0.9
+      },
+      {
+        "group": "kept_assumed",
+        "field": "status",
+        "n_sample": 20,
+        "n_resolved": 3,
+        "n_match": 3,
+        "n_unresolved": 17,
+        "match_rate_resolved": 1.0,
+        "resolved_coverage": 0.15
+      },
+      {
+        "group": "kept_other",
+        "field": "property",
+        "n_sample": 20,
+        "n_resolved": 20,
+        "n_match": 16,
+        "n_unresolved": 0,
+        "match_rate_resolved": 0.8,
+        "resolved_coverage": 1.0
+      },
+      {
+        "group": "kept_other",
+        "field": "transaction",
+        "n_sample": 20,
+        "n_resolved": 20,
+        "n_match": 20,
+        "n_unresolved": 0,
+        "match_rate_resolved": 1.0,
+        "resolved_coverage": 1.0
+      },
+      {
+        "group": "kept_other",
+        "field": "basis",
+        "n_sample": 20,
+        "n_resolved": 20,
+        "n_match": 18,
+        "n_unresolved": 0,
+        "match_rate_resolved": 0.9,
+        "resolved_coverage": 1.0
+      },
+      {
+        "group": "kept_other",
+        "field": "price",
+        "n_sample": 20,
+        "n_resolved": 19,
+        "n_match": 19,
+        "n_unresolved": 1,
+        "match_rate_resolved": 1.0,
+        "resolved_coverage": 0.95
+      },
+      {
+        "group": "kept_other",
+        "field": "area",
+        "n_sample": 20,
+        "n_resolved": 20,
+        "n_match": 20,
+        "n_unresolved": 0,
+        "match_rate_resolved": 1.0,
+        "resolved_coverage": 1.0
+      },
+      {
+        "group": "kept_other",
+        "field": "status",
+        "n_sample": 20,
+        "n_resolved": 4,
+        "n_match": 4,
+        "n_unresolved": 16,
+        "match_rate_resolved": 1.0,
+        "resolved_coverage": 0.2
+      },
+      {
+        "group": "rejected",
+        "field": "property",
+        "n_sample": 20,
+        "n_resolved": 19,
+        "n_match": 13,
+        "n_unresolved": 1,
+        "match_rate_resolved": 0.6842105263157895,
+        "resolved_coverage": 0.95
+      },
+      {
+        "group": "rejected",
+        "field": "transaction",
+        "n_sample": 20,
+        "n_resolved": 14,
+        "n_match": 8,
+        "n_unresolved": 6,
+        "match_rate_resolved": 0.5714285714285714,
+        "resolved_coverage": 0.7
+      },
+      {
+        "group": "rejected",
+        "field": "basis",
+        "n_sample": 20,
+        "n_resolved": 15,
+        "n_match": 9,
+        "n_unresolved": 5,
+        "match_rate_resolved": 0.6,
+        "resolved_coverage": 0.75
+      },
+      {
+        "group": "rejected",
+        "field": "price",
+        "n_sample": 20,
+        "n_resolved": 13,
+        "n_match": 10,
+        "n_unresolved": 7,
+        "match_rate_resolved": 0.7692307692307693,
+        "resolved_coverage": 0.65
+      },
+      {
+        "group": "rejected",
+        "field": "area",
+        "n_sample": 20,
+        "n_resolved": 16,
+        "n_match": 16,
+        "n_unresolved": 4,
+        "match_rate_resolved": 1.0,
+        "resolved_coverage": 0.8
+      },
+      {
+        "group": "rejected",
+        "field": "status",
+        "n_sample": 20,
+        "n_resolved": 1,
+        "n_match": 1,
+        "n_unresolved": 19,
+        "match_rate_resolved": 1.0,
+        "resolved_coverage": 0.05
+      }
+    ],
+    "usability_counts": {
+      "review": 52,
+      "usable": 7,
+      "exclude": 1
+    },
+    "prediction_abstentions": {
+      "property": 16,
+      "transaction": 30
+    },
+    "scope": "One human initial annotator; 17 rows edited by AI at user request. Human reconfirmation of AI edits not recorded. Not independent human gold.",
+    "policy": "Unknown reference values and review decisions are unscored, not errors or matches. Model abstention against resolved labels is not a match. Numeric checks include parsed values of quarantined rows; they do not validate retention decisions. Tolerance rtol=1e-6; price atol=1 VND; area atol=1e-6 m2.",
+    "limits": "Balanced sample is not self-weighting; report baseline sampling groups separately. No population accuracy or inter-rater agreement. Title-only class predictions have less context than full-text annotation."
+  },
+  "stratification": {
+    "group_count": 405,
+    "eligible_groups": 41,
+    "eligible_rows": 4594,
+    "total_rows": 6911,
+    "top_groups": [
+      {
+        "province": "Tp Hồ Chí Minh",
+        "property_type": "land",
+        "area_band": "(100,200]",
+        "n": 87,
+        "median_area_m2": 127.0,
+        "median_price_vnd": 2850000000.0,
+        "median_price_per_m2_vnd": 24607329.842931937,
+        "q1_price_per_m2_vnd": 9539682.53968254,
+        "q3_price_per_m2_vnd": 41363134.65783664,
+        "share_group_outlier": 0.034482758620689655,
+        "enough_for_comparison": true,
+        "n_without_group_outliers": 84.0,
+        "median_without_group_outliers": 20800000.0,
+        "median_change_pct": -15.472340425531916
+      },
+      {
+        "province": "Tp Hồ Chí Minh",
+        "property_type": "land",
+        "area_band": "(60,100]",
+        "n": 165,
+        "median_area_m2": 84.0,
+        "median_price_vnd": 2350000000.0,
+        "median_price_per_m2_vnd": 26041666.666666668,
+        "q1_price_per_m2_vnd": 12070000.0,
+        "q3_price_per_m2_vnd": 45000000.0,
+        "share_group_outlier": 0.024242424242424242,
+        "enough_for_comparison": true,
+        "n_without_group_outliers": 161.0,
+        "median_without_group_outliers": 25138427.46400886,
+        "median_change_pct": -3.4684385382059757
+      },
+      {
+        "province": "Tp Hồ Chí Minh",
+        "property_type": "apartment",
+        "area_band": "(30,60]",
+        "n": 101,
+        "median_area_m2": 50.0,
+        "median_price_vnd": 1460000000.0,
+        "median_price_per_m2_vnd": 27627118.6440678,
+        "q1_price_per_m2_vnd": 18879056.04719764,
+        "q3_price_per_m2_vnd": 37500000.0,
+        "share_group_outlier": 0.09900990099009901,
+        "enough_for_comparison": true,
+        "n_without_group_outliers": 91.0,
+        "median_without_group_outliers": 26727272.727272727,
+        "median_change_pct": -3.2571109871723514
+      },
+      {
+        "province": "Tp Hồ Chí Minh",
+        "property_type": "apartment",
+        "area_band": "(60,100]",
+        "n": 115,
+        "median_area_m2": 70.0,
+        "median_price_vnd": 2250000000.0,
+        "median_price_per_m2_vnd": 30769230.769230768,
+        "q1_price_per_m2_vnd": 25000000.0,
+        "q3_price_per_m2_vnd": 40058139.53488372,
+        "share_group_outlier": 0.017391304347826087,
+        "enough_for_comparison": true,
+        "n_without_group_outliers": 113.0,
+        "median_without_group_outliers": 30666666.666666668,
+        "median_change_pct": -0.33333333333332993
+      },
+      {
+        "province": "Tp Hồ Chí Minh",
+        "property_type": "land",
+        "area_band": "(30,60]",
+        "n": 85,
+        "median_area_m2": 53.0,
+        "median_price_vnd": 2200000000.0,
+        "median_price_per_m2_vnd": 41666666.66666666,
+        "q1_price_per_m2_vnd": 12500000.0,
+        "q3_price_per_m2_vnd": 59221658.20642978,
+        "share_group_outlier": 0.03529411764705882,
+        "enough_for_comparison": true,
+        "n_without_group_outliers": 82.0,
+        "median_without_group_outliers": 37147435.8974359,
+        "median_change_pct": -10.846153846153806
+      },
+      {
+        "province": "Tp Hồ Chí Minh",
+        "property_type": "house",
+        "area_band": "(100,200]",
+        "n": 160,
+        "median_area_m2": 126.5,
+        "median_price_vnd": 5925000000.0,
+        "median_price_per_m2_vnd": 44030797.10144928,
+        "q1_price_per_m2_vnd": 20000000.0,
+        "q3_price_per_m2_vnd": 86642589.01148902,
+        "share_group_outlier": 0.0375,
+        "enough_for_comparison": true,
+        "n_without_group_outliers": 154.0,
+        "median_without_group_outliers": 41691964.28571428,
+        "median_change_pct": -5.311811208746009
+      },
+      {
+        "province": "Đà Nẵng",
+        "property_type": "house",
+        "area_band": "(60,100]",
+        "n": 107,
+        "median_area_m2": 80.0,
+        "median_price_vnd": 3700000000.0,
+        "median_price_per_m2_vnd": 47014925.37313433,
+        "q1_price_per_m2_vnd": 36880122.95081967,
+        "q3_price_per_m2_vnd": 64490521.327014215,
+        "share_group_outlier": 0.009345794392523364,
+        "enough_for_comparison": true,
+        "n_without_group_outliers": 106.0,
+        "median_without_group_outliers": 47014925.37313433,
+        "median_change_pct": 0.0
+      },
+      {
+        "province": "Tp Hồ Chí Minh",
+        "property_type": "house",
+        "area_band": "(60,100]",
+        "n": 637,
+        "median_area_m2": 74.0,
+        "median_price_vnd": 4190000000.000001,
+        "median_price_per_m2_vnd": 54444444.44444445,
+        "q1_price_per_m2_vnd": 19531250.0,
+        "q3_price_per_m2_vnd": 87500000.0,
+        "share_group_outlier": 0.03610675039246468,
+        "enough_for_comparison": true,
+        "n_without_group_outliers": 614.0,
+        "median_without_group_outliers": 51719576.71957672,
+        "median_change_pct": -5.004859086491753
+      },
+      {
+        "province": "Tp Hồ Chí Minh",
+        "property_type": "house",
+        "area_band": "(30,60]",
+        "n": 1054,
+        "median_area_m2": 48.0,
+        "median_price_vnd": 2550000000.0,
+        "median_price_per_m2_vnd": 57250000.0,
+        "q1_price_per_m2_vnd": 25065789.47368421,
+        "q3_price_per_m2_vnd": 93984848.48484848,
+        "share_group_outlier": 0.020872865275142316,
+        "enough_for_comparison": true,
+        "n_without_group_outliers": 1032.0,
+        "median_without_group_outliers": 55716666.66666667,
+        "median_change_pct": -2.67831149927219
+      },
+      {
+        "province": "Tp Hồ Chí Minh",
+        "property_type": "house",
+        "area_band": "(0,30]",
+        "n": 210,
+        "median_area_m2": 24.0,
+        "median_price_vnd": 1850000000.0,
+        "median_price_per_m2_vnd": 81696428.57142857,
+        "q1_price_per_m2_vnd": 50446428.571428575,
+        "q3_price_per_m2_vnd": 120441176.47058824,
+        "share_group_outlier": 0.05714285714285714,
+        "enough_for_comparison": true,
+        "n_without_group_outliers": 198.0,
+        "median_without_group_outliers": 74106002.5542784,
+        "median_change_pct": -9.291013266894188
+      },
+      {
+        "province": "Hà Nội",
+        "property_type": "house",
+        "area_band": "(30,60]",
+        "n": 450,
+        "median_area_m2": 40.0,
+        "median_price_vnd": 3300000000.0,
+        "median_price_per_m2_vnd": 83095238.09523809,
+        "q1_price_per_m2_vnd": 66666666.66666666,
+        "q3_price_per_m2_vnd": 107023809.52380955,
+        "share_group_outlier": 0.035555555555555556,
+        "enough_for_comparison": true,
+        "n_without_group_outliers": 434.0,
+        "median_without_group_outliers": 82142857.14285715,
+        "median_change_pct": -1.1461318051575797
+      },
+      {
+        "province": "Hà Nội",
+        "property_type": "house",
+        "area_band": "(0,30]",
+        "n": 98,
+        "median_area_m2": 28.0,
+        "median_price_vnd": 2300000000.0,
+        "median_price_per_m2_vnd": 86666666.66666667,
+        "q1_price_per_m2_vnd": 73141025.64102563,
+        "q3_price_per_m2_vnd": 97724358.97435898,
+        "share_group_outlier": 0.02040816326530612,
+        "enough_for_comparison": true,
+        "n_without_group_outliers": 96.0,
+        "median_without_group_outliers": 86666666.66666667,
+        "median_change_pct": 0.0
+      }
+    ],
+    "limits": "Descriptive convenience sample only. n>=30 is a display threshold, not evidence of representativeness. Area semantic types remain mixed; inferred property labels may be wrong. IQR bars describe spread, not confidence intervals."
+  },
+  "clustering": {
+    "primary_k": 2,
+    "n_fits": 65,
+    "silhouette_sample_seed": 123,
+    "mean_silhouettes": [
+      {
+        "scenario": "log_robust_no_outliers",
+        "k": 2,
+        "mean": 0.6929177678147305,
+        "min": 0.6929177678147305,
+        "max": 0.6929177678147305
+      },
+      {
+        "scenario": "log_robust_no_outliers",
+        "k": 3,
+        "mean": 0.47290975341015357,
+        "min": 0.4729097534101535,
+        "max": 0.4729097534101535
+      },
+      {
+        "scenario": "log_robust_no_outliers",
+        "k": 4,
+        "mean": 0.4374292024837045,
+        "min": 0.43711865917518605,
+        "max": 0.43805028910074134
+      },
+      {
+        "scenario": "log_robust_no_outliers",
+        "k": 5,
+        "mean": 0.37725586477326023,
+        "min": 0.37725586477326023,
+        "max": 0.37725586477326023
+      },
+      {
+        "scenario": "log_total_no_outliers",
+        "k": 2,
+        "mean": 0.3591185159729566,
+        "min": 0.3591185159729565,
+        "max": 0.3591185159729565
+      },
+      {
+        "scenario": "log_total_no_outliers",
+        "k": 3,
+        "mean": 0.394220293110773,
+        "min": 0.394220293110773,
+        "max": 0.394220293110773
+      },
+      {
+        "scenario": "log_total_no_outliers",
+        "k": 4,
+        "mean": 0.33476260905311656,
+        "min": 0.33465721529900294,
+        "max": 0.3348155557956932
+      },
+      {
+        "scenario": "log_total_no_outliers",
+        "k": 5,
+        "mean": 0.33608065564218986,
+        "min": 0.33608065564218986,
+        "max": 0.33608065564218986
+      },
+      {
+        "scenario": "log_z_all",
+        "k": 2,
+        "mean": 0.6022049561139529,
+        "min": 0.6022049561139529,
+        "max": 0.6022049561139529
+      },
+      {
+        "scenario": "log_z_all",
+        "k": 3,
+        "mean": 0.4252952709994679,
+        "min": 0.4252952709994679,
+        "max": 0.4252952709994679
+      },
+      {
+        "scenario": "log_z_all",
+        "k": 4,
+        "mean": 0.3851393207838632,
+        "min": 0.3851393207838632,
+        "max": 0.3851393207838632
+      },
+      {
+        "scenario": "log_z_all",
+        "k": 5,
+        "mean": 0.3586539890766645,
+        "min": 0.3586539890766645,
+        "max": 0.3586539890766645
+      },
+      {
+        "scenario": "log_z_no_outliers",
+        "k": 2,
+        "mean": 0.6223389412805769,
+        "min": 0.6223389412805769,
+        "max": 0.6223389412805769
+      },
+      {
+        "scenario": "log_z_no_outliers",
+        "k": 3,
+        "mean": 0.46509349176434495,
+        "min": 0.4650934917643449,
+        "max": 0.4650934917643449
+      },
+      {
+        "scenario": "log_z_no_outliers",
+        "k": 4,
+        "mean": 0.40343965031166756,
+        "min": 0.40343965031166756,
+        "max": 0.40343965031166756
+      },
+      {
+        "scenario": "log_z_no_outliers",
+        "k": 5,
+        "mean": 0.37833449938611635,
+        "min": 0.37833449938611635,
+        "max": 0.37833449938611635
+      },
+      {
+        "scenario": "raw_z_no_outliers",
+        "k": 2,
+        "mean": null,
+        "min": null,
+        "max": null
+      },
+      {
+        "scenario": "raw_z_no_outliers",
+        "k": 3,
+        "mean": 0.6654859721008384,
+        "min": 0.6654859721008384,
+        "max": 0.6654859721008384
+      },
+      {
+        "scenario": "raw_z_no_outliers",
+        "k": 4,
+        "mean": 0.6087984269186569,
+        "min": 0.6087984269186569,
+        "max": 0.6087984269186569
+      },
+      {
+        "scenario": "raw_z_no_outliers",
+        "k": 5,
+        "mean": 0.6094752549520367,
+        "min": 0.6094752549520367,
+        "max": 0.6094752549520367
+      }
+    ],
+    "feature_sensitivity": [
+      {
+        "scenario": "log_z_no_outliers",
+        "fixed_k": 2,
+        "n_common": 6652,
+        "ari_on_common_rows": 1.0
+      },
+      {
+        "scenario": "log_z_all",
+        "fixed_k": 2,
+        "n_common": 6652,
+        "ari_on_common_rows": 0.9764458580244795
+      },
+      {
+        "scenario": "raw_z_no_outliers",
+        "fixed_k": 2,
+        "n_common": 6652,
+        "ari_on_common_rows": 0.007085661337804589
+      },
+      {
+        "scenario": "log_robust_no_outliers",
+        "fixed_k": 2,
+        "n_common": 6652,
+        "ari_on_common_rows": 0.7221302519476142
+      },
+      {
+        "scenario": "log_total_no_outliers",
+        "fixed_k": 2,
+        "n_common": 6652,
+        "ari_on_common_rows": 0.18330354301252774
+      }
+    ],
+    "seed_ari_min": 0.9777941168670297,
+    "subsample": [
+      {
+        "seed": 7,
+        "n": 5322,
+        "k": 2,
+        "ari_vs_full_common_rows": 0.9791853524448267
+      },
+      {
+        "seed": 42,
+        "n": 5322,
+        "k": 2,
+        "ari_vs_full_common_rows": 0.9960183731329921
+      },
+      {
+        "seed": 2026,
+        "n": 5322,
+        "k": 2,
+        "ari_vs_full_common_rows": 0.9823711087115757
+      },
+      {
+        "seed": 2027,
+        "n": 5322,
+        "k": 2,
+        "ari_vs_full_common_rows": 0.9853922558956052
+      },
+      {
+        "seed": 2028,
+        "n": 5322,
+        "k": 2,
+        "ari_vs_full_common_rows": 0.9979958166575502
+      }
+    ],
+    "limits": "ARI compares partitions on identical IDs against log-z without outliers, refit with seed 42 at the core chosen k. Silhouette depends on geometry and sample; unavailable single-cluster sample scores are not zero. Scores across transformations are descriptive, not a universal selection criterion. Repeated seeds/subsamples are not independent external validation."
+  }
+}

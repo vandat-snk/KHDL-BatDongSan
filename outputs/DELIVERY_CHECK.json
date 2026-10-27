@@ -1,11 +1,11 @@
 {
   "status": "passed",
   "scope": "Saved core data, database and selected derivatives; read each test/visual/report status separately.",
-  "core_run_id": "20261016T015620Z-f2e661a6",
+  "core_run_id": "20261027T065401Z-5c8df2cc",
   "raw_count": 9004,
-  "clean_count": 6936,
+  "clean_count": 6911,
   "duplicates": 1884,
-  "rejected": 184,
+  "rejected": 209,
   "source_sha256": "ef39f153f48a55af07baa86883cd9036652f6d52232fed0be6e8991c7a5bf811",
   "core_artifact_hashes_verified": 27,
   "database_integrity": "ok",
@@ -15,7 +15,7 @@
   },
   "workbook": {
     "status": "saved_values_and_provenance_verified",
-    "rows": 6936,
+    "rows": 6911,
     "recalculation_checks": {
       "status": "passed",
       "scope": "Artifact Tool recalculation and rendered previews; native Microsoft Excel interaction not claimed",
@@ -27,7 +27,7 @@
   },
   "python_tests": {
     "status": "passed",
-    "tests_run": 29,
+    "tests_run": 45,
     "failures": 0,
     "errors": 0,
     "skipped": 0
@@ -38,23 +38,23 @@
     "findings": [
       {
         "label": "baseline",
-        "count": 6936
+        "count": 6911
       },
       {
         "label": "exclude precomputed group IQR",
-        "count": 6676
+        "count": 6652
       },
       {
         "label": "explicit sale titles only",
-        "count": 3030
+        "count": 3032
       },
       {
         "label": "HCMC",
-        "count": 3277
+        "count": 3266
       },
       {
         "label": "HCMC apartments",
-        "count": 239
+        "count": 235
       },
       {
         "label": "empty selection",
@@ -62,11 +62,12 @@
       }
     ],
     "exported_search_rows": 1014,
-    "clustered_rows": 6676
+    "clustered_rows": 6652
   },
   "report": {
-    "status": "previous_draft_requires_rewrite_to_teacher_requirements",
-    "generated_this_run": false
+    "status": "saved_report_hashes_verified",
+    "generated_this_run": true,
+    "visual_review": "All 39 rendered pages inspected; final cached-page-reference update rendered pixel-identically to reviewed version."
   },
   "visual_checks": "Not inferred by this command. See dated human/UI evidence separately.",
   "limitations": [

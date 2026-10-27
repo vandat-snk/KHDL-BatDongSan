@@ -4,15 +4,17 @@
 
 Nhóm: Võ Văn Đạt (N23DCCN078), Nguyễn Thị Yến Nhi (N23DCCN112), Hứa Như Quỳnh (N23DCCN118).
 
-## Nhánh kiểm dữ liệu ngày 26/10/2026
+## Kết quả hiện hành ngày 27/10/2026
 
-Đã chuẩn bị mẫu120 phát triển/60 đánh giá và sửa quy tắc ở bước1.1–1.6. Xem [hướng dẫn gán nhãn](docs/manual_validation/HUONG_DAN_GAN_NHAN.md), [thay đổi quy tắc](docs/manual_validation/THAY_DOI_QUY_TAC.md) và [bản chốt](docs/manual_validation/FREEZE_MANIFEST.json). Nhận xét120 tin do AI đọc; chưa có gold labels người thật và chưa đo accuracy trên60 tin cuối.
+Lần chạy `20261027T065401Z-5c8df2cc` giữ **6.911 tin**, cách ly **209 tin**, gộp **1.884 dòng trùng**. Trung vị giá 2,25 tỷ VND, diện tích 70 m², đơn giá 32,50 triệu VND/m². Các số liệu baseline cũ trong hồ sơ lịch sử không dùng thay kết quả này.
 
-**Các số liệu, báo cáo, dashboard và workbook hiện lưu bên dưới vẫn thuộc baseline cũ. Code mới chưa được chạy lại để thay bộ đầu ra đó.** Verifier báo mã nguồn khác manifest cũ là trạng thái dự kiến, không được sửa hash cũ để bỏ qua. Hoàn thành đánh giá bước1.7–1.8 rồi tái chạy/đồng bộ ở1.9. Không dùng số6936 như kết quả đã xác minh của code mới.
+Đã hoàn tất ba phần kỹ thuật: đối chiếu 60 nhãn có hỗ trợ AI; phân tích 405 nhóm tỉnh × loại × khoảng diện tích (41 nhóm đủ n≥30 và biết tỉnh/loại); 65 lần fit để kiểm độ nhạy K-means. Xem [kết quả và giới hạn](docs/KET_QUA_HOAN_THIEN_3_MUC_TIEU.md) và [trang kết quả mở rộng](outputs/extended/summary.html).
 
-Mẫu đã khóa: không chạy lại script lấy mẫu lên thư mục hiện tại. Các packet có văn bản nguồn và bảng người đọc nằm trong `docs/manual_validation/private/`, được Git-ignored. Hai người đọc nhận riêng file A/B; không gửi bảng dự đoán hoặc manifest tầng mẫu cho họ trước khi chốt nhãn.
+Một thành viên gán nhãn ban đầu; AI sửa 17 tin theo yêu cầu. Chưa ghi nhận thành viên xác nhận lại các sửa đổi. 52/60 tin còn review; không tuyên bố accuracy 100% từ 8/8 quyết định đã xác định. Các tỷ lệ chỉ mô tả mẫu phân tầng, không phải ước lượng toàn nguồn. Không tính AI là người thứ hai.
 
-Kiểm mã mới: `python -m unittest discover -s tests -v`. So tác động development: `python scripts/check_development_sample.py`. Kiểm file đã chốt: `python scripts/verify_validation_freeze.py`. Các lệnh này không đánh giá60 tin cuối.
+Mã phân loại và mẫu đã khóa giữ nguyên hash. README ở thời điểm khóa được lưu nguyên byte trong `docs/manual_validation/history/`; kết quả mới có run_id và hash bộ nhãn riêng. Bộ nhãn có văn bản nguồn nằm trong `private/`, Git-ignored.
+
+Sau khi chạy lõi, chạy `python scripts/complete_analysis.py --labels docs/manual_validation/private/DANH_GIA_60_DA_SUA_CO_HO_TRO_AI.xlsx`, rồi `python tools/build_dashboard.py`. Các bảng CSV và hình nằm trong `outputs/extended`. Báo cáo Word phải cập nhật lại nếu tái chạy đổi run_id.
 
 ## Mục tiêu và phạm vi
 
@@ -24,25 +26,9 @@ Phần chính bám Chương 1–3 môn học. K-means và SQLite là công cụ 
 
 ## Trạng thái báo cáo
 
-Kết quả và các sửa đổi ngày 16/10/2026: [biên bản rà soát kỹ thuật](docs/RA_SOAT_KY_THUAT.md). Bản sau rà soát có 6.936 tin, khác 7.001 tin của bản nền. Nhóm dùng số liệu cùng mã lần chạy khi demo và viết báo cáo.
+Bản sáu chương hiện hành: [Word](docs/BAO_CAO_TIEU_LUAN_6_CHUONG.docx) và [PDF](docs/BAO_CAO_TIEU_LUAN_6_CHUONG.pdf). Bản cập nhật giữ mẫu trình bày, thay số liệu/hình và thêm kết quả kiểm nhãn, phân tích nhóm, độ nhạy cụm. Metadata báo cáo ở `outputs/report_build.json`; kiểm hash và run_id trước khi sử dụng.
 
-[Tiểu luận sáu chương bản Word](docs/BAO_CAO_TIEU_LUAN_6_CHUONG.docx) và [bản PDF](docs/BAO_CAO_TIEU_LUAN_6_CHUONG.pdf) được biên soạn theo thông tin Học viện Công nghệ Bưu chính Viễn thông, học phần Nhập môn khoa học dữ liệu, giảng viên Nguyễn Ngọc Duy. Bản mới có văn bản căn đều, công thức Equation bản địa, mục lục/danh mục có số trang, hình/bảng kèm dữ liệu và nguồn. Kết quả kiểm riêng của tài liệu nằm trong [QA báo cáo](docs/report_src/QA_REPORT.json).
-
-`docs/BAO_CAO_DO_AN.docx` và `.md` là bản thảo cũ được giữ nguyên để đối chiếu; đọc bản `BAO_CAO_TIEU_LUAN_6_CHUONG` cho yêu cầu mới. Các giới hạn nội dung tin, UI chưa xác nhận và SQL chưa tăng tốc được trình bày trong báo cáo, không xóa để làm đẹp kết quả.
-
-Chuẩn nội dung nằm trong [đối chiếu yêu cầu báo cáo](docs/DOI_CHIEU_YEU_CAU_BAO_CAO.md): Giới thiệu → Cơ sở lý thuyết → Phân tích và thiết kế → Hiện thực → Demo và vận hành → Kết luận. Sau yêu cầu tập trung tiểu luận, trợ lý đã biên soạn đầy đủ sáu chương; nhóm duyệt nội dung và thông tin trước khi nộp. [Phân công](docs/PHAN_CONG_VA_NOI_DUNG_BAO_CAO.md) và [nhật ký](docs/NHAT_KY_KIEM_TRA_CHEO.md) là hồ sơ kế hoạch/tiếp quản, không phải xác nhận sinh viên đã tự hoàn thành các công việc trợ lý làm. Không cần học code hoặc luyện bảo vệ nếu học phần không yêu cầu.
-
-`tools/build_final_report.py` dựng bản mới từ văn bản đã biên soạn và số liệu đã kiểm; `tools/render_final_report.ps1` cập nhật trường số trang và xuất PDF bằng Word trên Windows; `tools/render_report_pages.py` tạo ảnh từng trang qua renderer đóng gói và Poppler. `tools/verify_final_report.py` kiểm cấu trúc và ghi kết quả sau khi thực sự xem toàn bộ ảnh trang. Các công cụ báo cáo không thay quy tắc/đầu ra phân tích. `tools/build_report.py` cũ vẫn khóa chạy trực tiếp để tránh ghi đè bản cũ.
-
-Hồ sơ có thể dùng ngay khi viết:
-
-- [Nguồn, từ điển, quy tắc, thiết kế và mô-đun](docs/NGUON_QUY_TAC_VA_THIET_KE.md).
-- [Bằng chứng K-means và SQL](docs/THUC_NGHIEM_KMEANS_VA_SQL.md).
-- [Đối soát số liệu, dữ liệu kèm tám hình và kịch bản demo](docs/DOI_CHIEU_SO_LIEU_TRUC_QUAN.md).
-- [Rà soát nội dung 60 tin bằng trợ lý](docs/KET_QUA_KIEM_TRA_NHAN.md), [CSV riêng](docs/DOI_CHIEU_60_TIN_TRO_LY.csv). Đây không phải nhãn người thật hoặc đo accuracy; vẫn có tin mơ hồ lọt qua quy tắc.
-- [Phạm vi nghiệm thu Excel](docs/NGHIEM_THU_EXCEL.md) và bằng chứng máy đọc được `outputs/ASSISTANT_CHECKS.json`.
-
-Tái kiểm/chuẩn bị lại hồ sơ của đúng mốc này: `.\.venv\Scripts\python.exe -X utf8 tools\prepare_handover_evidence.py`. Công cụ đối soát đầu ra hiện có và thực thi bốn SQL ở chế độ đọc; không chạy lại pipeline/benchmark hoặc tạo báo cáo Word. Tài liệu đọc tin được viết riêng cho mốc đã ghi; nếu run_id thay đổi, công cụ yêu cầu rà lại thay vì gắn kết quả cũ cho phiên bản mới.
+Các tài liệu rà soát ngày 16/10 và bản thảo `BAO_CAO_DO_AN` là hồ sơ lịch sử. Thông tin “chưa chạy lại” trong hồ sơ đóng băng mô tả thời điểm khóa, không phải trạng thái hiện tại. Dùng [kết quả ba mục tiêu](docs/KET_QUA_HOAN_THIEN_3_MUC_TIEU.md) và các manifest hiện hành để xem kết quả mới. Đóng góp và hỗ trợ công cụ phải ghi theo công việc thực tế.
 
 ## Mở sản phẩm đã có
 
@@ -157,3 +143,7 @@ Kết quả kiểm tra mới ở `outputs/AUDIT_RESULTS.json`; trạng thái đ�
 - SQL phải dùng cùng truy vấn/tham số và kết quả tương đương trước/sau index. Thời gian tùy máy; không dùng một lần chạy nhỏ để khẳng định hiệu quả mọi truy vấn.
 - Chỉ ghi công việc và cải tiến nhóm thật sự thực hiện. Thí nghiệm trong tài liệu phân công còn là kế hoạch đến khi có kết quả.
 - Bản báo cáo mới cần sáu chương và hình/bảng có dữ liệu minh họa theo [yêu cầu biên soạn](docs/DOI_CHIEU_YEU_CAU_BAO_CAO.md).
+
+### Cập nhật báo cáo sau khi chạy lại
+
+Báo cáo Word hiện hành đã được chỉnh trên mẫu cũ và kiểm 39 trang. `tools/build_final_report.py` là bộ dựng lịch sử, chưa dùng để tái tạo bản cập nhật này. Khi đổi dữ liệu, cần cập nhật Word, dựng lại PDF, kiểm bố cục và làm mới `outputs/report_build.json`; không chạy bộ dựng cũ để ghi đè bản hiện hành.

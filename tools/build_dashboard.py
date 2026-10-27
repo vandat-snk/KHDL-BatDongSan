@@ -32,6 +32,11 @@ def main():
     except ValueError:
         workbook_link = '<span>Excel chưa được đối soát với lần chạy này; xem hướng dẫn tạo lại.</span>'
     html = template.replace('__DATA_JSON__', payload).replace('__META_JSON__', meta_json).replace('__WORKBOOK_LINK__', workbook_link)
+    extended_path = ROOT / 'outputs/extended/results.json'
+    if extended_path.exists():
+        extended = json.loads(extended_path.read_text(encoding='utf-8'))
+        if extended.get('core_run_id') == manifest['run_id'] and (ROOT / 'outputs/extended/summary.html').exists():
+            html = html.replace('</body>', '<p style="padding:16px;text-align:center"><a href="extended/summary.html">Xem kiểm nhãn, so sánh theo nhóm và độ nhạy phân cụm</a></p></body>')
     target = ROOT / 'outputs/DASHBOARD_BAT_DONG_SAN.html'
     target.parent.mkdir(exist_ok=True)
     target.write_text(html, encoding='utf-8')

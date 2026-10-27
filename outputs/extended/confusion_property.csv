@@ -1,0 +1,6 @@
+﻿property,abstain,apartment,house,land
+apartment,0,13,0,0
+house,7,0,15,0
+land,6,0,0,15
+other,1,0,1,0
+unknown,2,0,0,0

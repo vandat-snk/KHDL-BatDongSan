@@ -1,0 +1,6 @@
+﻿scenario,fixed_k,n_common,ari_on_common_rows
+log_z_no_outliers,2,6652,1.0
+log_z_all,2,6652,0.9764458580244795
+raw_z_no_outliers,2,6652,0.007085661337804589
+log_robust_no_outliers,2,6652,0.7221302519476142
+log_total_no_outliers,2,6652,0.18330354301252774

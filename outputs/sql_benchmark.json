@@ -1,13 +1,13 @@
 {
-  "sqlite_version": "3.50.4",
-  "listing_count": 6936,
+  "sqlite_version": "3.45.1",
+  "listing_count": 6911,
   "province_count": 48,
   "query": "SELECT row_id, area_m2, sale_price_vnd, price_per_m2_vnd\nFROM listings\nWHERE province_id = ? AND type_id = ?\n  AND price_per_m2_vnd BETWEEN ? AND ?\nORDER BY price_per_m2_vnd, row_id LIMIT 100",
   "parameters": [
     38,
     2,
-    33911924.93946731,
-    78358108.1081081
+    33750000.0,
+    77950442.47787613
   ],
   "parameter_labels": {
     "province": "Tp Hồ Chí Minh",
@@ -18,7 +18,7 @@
       [
         4,
         0,
-        143,
+        0,
         "SCAN listings"
       ],
       [
@@ -29,27 +29,27 @@
       ]
     ],
     "result_count": 100,
-    "result_sha256": "adee9406ef35f1fbe5221ae1093158eaef954f3b948b39cd5e953245ffff1e1b",
-    "median_ms": 0.6484,
-    "p10_ms": 0.5834,
-    "p90_ms": 1.0437
+    "result_sha256": "2e7c7702096e3e7b2e15246d6540d28df02ea2167548be70c77f34946479d586",
+    "median_ms": 3.529712,
+    "p10_ms": 2.914914,
+    "p90_ms": 4.31219
   },
   "after": {
     "plan": [
       [
         5,
         0,
-        45,
+        0,
         "SEARCH listings USING INDEX idx_listings_search (province_id=? AND type_id=? AND price_per_m2_vnd>? AND price_per_m2_vnd<?)"
       ]
     ],
     "result_count": 100,
-    "result_sha256": "adee9406ef35f1fbe5221ae1093158eaef954f3b948b39cd5e953245ffff1e1b",
-    "median_ms": 0.7788,
-    "p10_ms": 0.1976,
-    "p90_ms": 1.3754
+    "result_sha256": "2e7c7702096e3e7b2e15246d6540d28df02ea2167548be70c77f34946479d586",
+    "median_ms": 0.60291,
+    "p10_ms": 0.329654,
+    "p90_ms": 0.900055
   },
-  "median_speedup": 0.8325629173086799,
+  "median_speedup": 5.8544592061833445,
   "identical_results": true,
   "integrity_check": "ok",
   "foreign_key_errors": [],

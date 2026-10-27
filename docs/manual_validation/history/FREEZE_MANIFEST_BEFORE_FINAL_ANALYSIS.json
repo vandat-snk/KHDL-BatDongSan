@@ -1,0 +1,56 @@
+{
+  "version": "validation-rules-v1-single-reviewer-protocol-v2-20261027",
+  "date": "2026-10-27",
+  "baseline_commit": "e79e60b",
+  "branch": "improve-data-validation",
+  "scope": "One human reviewer. Submitted labels require revision; no accuracy claim. Analysis rules and sample IDs unchanged from 2026-10-26.",
+  "baseline_outputs": "UNCHANGED; old run 20261016T015620Z-f2e661a6; rerun needed after evaluation",
+  "python_tests": {
+    "run": 42,
+    "failures": 0,
+    "errors": 0
+  },
+  "development_changes": {
+    "status": 3,
+    "property": 8,
+    "transaction": 3,
+    "flags": 16,
+    "reasons": 5
+  },
+  "sha256": {
+    "README.md": "daa373508a5e0a26cee793b9e7d7bc6d20483a7c1bd16d572613d5e89b78a258",
+    ".gitignore": "648b8d354b64e297bcbc709bbe89d2d47bf57c788866bf96b299cdcbb3d74e58",
+    "src/pipeline.py": "8f83edb9631378a22242d0a63c565ea2f44bd5fe96c82c41793305739e2fe64c",
+    "src/source_checks.py": "265f3a89f1d6549a8ef5043c2804cc7d1ad8eab2005fa4de2f79398f90758297",
+    "src/artifact_contract.py": "e662785f6188e2775f6848102d4e70b7b2664ee16c8b150b6080b9b27f4f02e4",
+    "requirements.txt": "4aa343b108ef95370640b911c824c4680aa6c342207ba170b79771761ce366d3",
+    "tests/test_artifact_contract.py": "b63de85e9b7482ff7ef0e64d7c840e9c9f547be54a84ef05732f4c027d59372d",
+    "tests/test_dashboard.mjs": "b7be178c0afea4adcd787bd8081a8335756dc289e94fcbbd642a0c8f1c045554",
+    "tests/test_manual_validation_rules.py": "28598a4dc8dd4183ea17207126a64d303116f535a284ebb3fc22ba53f9a71f7b",
+    "tests/test_pipeline.py": "71a6c2f1fb56e574b88f89c7169c6148c9c12835120aeb747b1f5c6ab415c87e",
+    "tests/test_source_checks.py": "0e6981744977e37edbd143c5051a9792b442efee3e1d7aca4f61d060e405f7bf",
+    "tests/test_validation_sampling.py": "f57c2b32ce43d0687aefba1ae08605ce353e3b1f6e4c9adaff72a2dea9da10b7",
+    "scripts/prepare_manual_validation.py": "3d01e9cefedb3bc5abe4871529c7ec286585a63469fb8a915a82fb2ce89ce540",
+    "scripts/check_development_sample.py": "a7690ef6b25e686a3d93c6c3a2318aca395dac8e7b44d45eefac3f36171c61f7",
+    "scripts/verify_validation_freeze.py": "8270b03df3a01f2b5e4d00454adeae7376ba21eda76454990925af823b829faf",
+    "docs/manual_validation/AI_REVIEW_DEVELOPMENT_120.csv": "99faeffd10e2224aa3fe5c98b459c1967115374a05ab86ea7f2d5b15b8acca94",
+    "docs/manual_validation/BAN_GIAO_1_1_DEN_1_6.md": "78817cf078a81d815ed25cb7b89349fb11a9261f023c0bd5692309cb9de1e860",
+    "docs/manual_validation/DEVELOPMENT_RULE_DIFF.csv": "e1af81277b6caf5213cf68069c4102407d7ccde472fa77ab37dce1df7f4e7a10",
+    "docs/manual_validation/HUONG_DAN_GAN_NHAN.md": "397bb50d9ac497f56f261620a1662d2350144a1c41307d663f11e8813be50951",
+    "docs/manual_validation/TEST_RESULTS.txt": "60b8a89ca8a25f6fa0a203a35b57c75d71a43a6d02bcf50ca6500a7494f98377",
+    "docs/manual_validation/THAY_DOI_QUY_TAC.md": "f2dbe446d3eeafe88c8f9965cb2afafec1260b7c3bf3e0ac7d1b1808a62d0f50",
+    "docs/manual_validation/sample_manifest.json": "a4423b2ff09b85d68957322e1512c47fa4c49bcc47c45702cae8316816542a19"
+  },
+  "blank_reader_workbook_sha256": {
+    "DANH_GIA_60_NGUOI_A.xlsx": "a60b2728a0c62e4f1466657031b95074b8879a7b73a8e8cfb2701d2436b68ae5",
+    "PHAT_TRIEN_120.xlsx": "a7420c2eb30cc11dd8dce7345c8cc21f367c04eff3eba9fbd0356d2d691086ba"
+  },
+  "protocol_revision": {
+    "reviewer_count": 1,
+    "previous_manifest": "docs/manual_validation/history/FREEZE_MANIFEST_20261026.json",
+    "previous_manifest_sha256": "0eb2c9447a499045713dadc40991758e1b328fa53e84528cd1330b1b9fa5d7fb",
+    "label_status": "submitted_pending_reviewer_revision",
+    "ai_role": "Development review and label quality checks; not a second human annotator",
+    "analysis_rules_changed": false
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "core_run_id": "20261027T065401Z-5c8df2cc",
+  "pages": 39,
+  "visual_review": "All 39 rendered pages inspected; final cached-page-reference update rendered pixel-identically to reviewed version.",
+  "artifacts": {
+    "docs/BAO_CAO_TIEU_LUAN_6_CHUONG.docx": "060c0df7d90094d1833f1861408f51426dfd0eff6a3da57347bddef404a8085c",
+    "docs/BAO_CAO_TIEU_LUAN_6_CHUONG.pdf": "cb209dd11da8b19d407ae1dc7e1edc831806f03b881a265270a6b7a5c788b022",
+    "docs/BAO_CAO_TIEU_LUAN_6_CHUONG.md": "8e8bd518d9ae454a1237f85b73b2eba6057bafe8ca6b9c221e62917a4469902d"
+  },
+  "extended_results_sha256": "1787f84b52b02408a53e03f360feea046d117364ae96f566c2ddd63a37e6e13c"
+}

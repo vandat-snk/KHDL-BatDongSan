@@ -1,0 +1,21 @@
+{
+  "status": "passed",
+  "checked_revision": "549df1aa0fcb46b011863a02930241807489e91b",
+  "core_run_id": "20261027T065401Z-5c8df2cc",
+  "evaluation_rows_recomputed": 60,
+  "reference_scope": "Recomputed against the public reference values; original private annotation XLSX not supplied. No independent annotation validation.",
+  "stratification": {
+    "group_count": 405,
+    "eligible_groups": 41,
+    "eligible_rows": 4594
+  },
+  "cluster_fits_recomputed": 65,
+  "numeric_tolerance": {
+    "rtol": 1e-08,
+    "atol": 1e-05
+  },
+  "source_files": {
+    "scripts\\complete_analysis.py": "99ff65100072868e0a26ee13ff22ccb2ee1385392bd99925f73fecf9d5f00f27",
+    "outputs\\extended\\results.json": "1787f84b52b02408a53e03f360feea046d117364ae96f566c2ddd63a37e6e13c"
+  }
+}

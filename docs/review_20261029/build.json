@@ -1,0 +1,16 @@
+{
+  "source_sha256": "8fef4131981e12adcf25b77e5b5d4e8b2929e573f8004c50ea7698ced8288e3e",
+  "source_path": "E:\\UsersData\\BAO_CAO_TIEU_LUAN_CAP_NHAT.docx",
+  "analysis_commit": "549df1aa0fcb46b011863a02930241807489e91b",
+  "core_run_id": "20261027T065401Z-5c8df2cc",
+  "figures": 11,
+  "tables": 24,
+  "native_equations": 8,
+  "changes": [
+    "Removed course-page citations; retained primary sources.",
+    "Integrated supplementary results into Chapter 5.",
+    "Added field coverage, sampling-stratum results and matched comparisons.",
+    "Corrected descriptions of implemented flags, module and feature sensitivity.",
+    "Rebuilt all navigation and captions; preserved cover and native math."
+  ]
+}

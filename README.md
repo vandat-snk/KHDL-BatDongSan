@@ -26,7 +26,13 @@ Phần chính bám Chương 1–3 môn học. K-means và SQLite là công cụ 
 
 ## Trạng thái báo cáo
 
-Bản sáu chương hiện hành: [Word](docs/BAO_CAO_TIEU_LUAN_6_CHUONG.docx) và [PDF](docs/BAO_CAO_TIEU_LUAN_6_CHUONG.pdf). Bản cập nhật giữ mẫu trình bày, thay số liệu/hình và thêm kết quả kiểm nhãn, phân tích nhóm, độ nhạy cụm. Metadata báo cáo ở `outputs/report_build.json`; kiểm hash và run_id trước khi sử dụng.
+Bản nộp sau rà soát 29/10: [Word](docs/BAO_CAO_TIEU_LUAN_DA_RA_SOAT.docx) và [PDF](docs/BAO_CAO_TIEU_LUAN_DA_RA_SOAT.pdf). Bản này dựa trên tệp cập nhật người dùng gửi, có 39 trang, 6 chương, 11 hình, 24 bảng và 8 công thức Equation; bỏ dẫn trang slide/giáo trình, đưa kết quả mở rộng vào Chương 5 và sửa các mô tả chưa theo kịp code. Xem [kết quả rà soát và hướng cải thiện](docs/review_20261029/KET_QUA_RA_SOAT.md).
+
+Đã chạy lại 45 test Python, kiểm JavaScript, đối soát 6.911 dòng giữa CSV/JSON/SQLite/Excel, tính lại các bảng mở rộng và 65 phép fit. Metadata của đúng bản nộp nằm trong `outputs/report_build.json`, kiểm tài liệu ở `docs/review_20261029/QA_REPORT.json`. Lệnh `python tools/verify_final_report.py` kiểm hash và cấu trúc từ bản clone mà không cần Word. `python tools/recheck_extensions.py` tái tính phần mở rộng từ nhãn tham chiếu công khai, không xác nhận độc lập người gán nhãn hoặc thay tệp XLSX gốc được giữ riêng.
+
+Hồ sơ đóng băng có hash theo byte. `.gitattributes` giữ nguyên xuống dòng cho mã, giao thức lấy mẫu và tài liệu được băm để việc clone trên Windows không làm sai hash. Không cập nhật hash để chấp nhận một thay đổi quy tắc không được đánh giá lại.
+
+`docs/review_20261029/build_reviewed_report.py` biên tập bản người dùng gửi; cần tệp đầu vào đúng checksum. Các hình bổ sung được dựng bởi `plot_report_extensions.py` trong cùng thư mục. `tools/render_final_report.ps1` xuất PDF bằng Word; `tools/render_report_pages.py` dùng renderer tài liệu đóng gói để tạo PNG kiểm tra. Sau khi dựng lại, phải cập nhật bản Markdown cùng nội dung, xem toàn bộ ảnh trang rồi mới ghi nghiệm thu mới. Các bản `BAO_CAO_TIEU_LUAN_6_CHUONG` và công cụ dựng cũ là hồ sơ trước rà soát, không thay bản nộp mới.
 
 Các tài liệu rà soát ngày 16/10 và bản thảo `BAO_CAO_DO_AN` là hồ sơ lịch sử. Thông tin “chưa chạy lại” trong hồ sơ đóng băng mô tả thời điểm khóa, không phải trạng thái hiện tại. Dùng [kết quả ba mục tiêu](docs/KET_QUA_HOAN_THIEN_3_MUC_TIEU.md) và các manifest hiện hành để xem kết quả mới. Đóng góp và hỗ trợ công cụ phải ghi theo công việc thực tế.
 

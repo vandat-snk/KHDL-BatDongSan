@@ -1,11 +1,12 @@
 {
   "core_run_id": "20261027T065401Z-5c8df2cc",
   "pages": 39,
-  "visual_review": "All 39 rendered pages inspected; final cached-page-reference update rendered pixel-identically to reviewed version.",
   "artifacts": {
-    "docs/BAO_CAO_TIEU_LUAN_6_CHUONG.docx": "060c0df7d90094d1833f1861408f51426dfd0eff6a3da57347bddef404a8085c",
-    "docs/BAO_CAO_TIEU_LUAN_6_CHUONG.pdf": "cb209dd11da8b19d407ae1dc7e1edc831806f03b881a265270a6b7a5c788b022",
-    "docs/BAO_CAO_TIEU_LUAN_6_CHUONG.md": "8e8bd518d9ae454a1237f85b73b2eba6057bafe8ca6b9c221e62917a4469902d"
+    "docs/BAO_CAO_TIEU_LUAN_DA_RA_SOAT.docx": "e31ae34270d2c66894f0f001135d9cd8985f5c5ddb8762f5e17c5a883c9b8f00",
+    "docs/BAO_CAO_TIEU_LUAN_DA_RA_SOAT.pdf": "f8d7222ee61ab79e675da72b0f20fc5a2c62ac4b9f5f5285cb9fac9c8ee4a33f",
+    "docs/BAO_CAO_TIEU_LUAN_DA_RA_SOAT.md": "a3e1e20bfba9236b9acd7b754d926ebf7e01bba1b0747d0b4c543c059e28e29b"
   },
-  "extended_results_sha256": "1787f84b52b02408a53e03f360feea046d117364ae96f566c2ddd63a37e6e13c"
+  "extended_results_sha256": "1787f84b52b02408a53e03f360feea046d117364ae96f566c2ddd63a37e6e13c",
+  "visual_review": "All final Word-rendered pages inspected as PNGs.",
+  "qa_record": "docs/review_20261029/QA_REPORT.json"
 }

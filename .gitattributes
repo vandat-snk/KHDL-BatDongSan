@@ -7,5 +7,7 @@
 *.json -text
 *.csv -text
 *.sql -text
-# The report manifest hashes the authored Markdown source as exact bytes.
-docs/report_src/noi_dung.md -text
+# Frozen protocols and report manifests also hash these exact text bytes.
+*.md -text
+*.txt -text
+.gitignore -text

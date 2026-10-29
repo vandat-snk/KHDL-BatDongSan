@@ -1,100 +1,98 @@
-"""Audit the report structure, data provenance and Word/PDF export.
+"""Verify the current report. Manual review flags record an actual PNG inspection.
 
---visual-reviewed-pages records an actual manual PNG review; it does not perform
-that review. Call only after inspecting the corresponding final rendered pages.
+Default mode verifies the saved review, hashes and structure without rendering.
 """
-from __future__ import annotations
-import argparse
-import hashlib
-import json
-import re
+import argparse, hashlib, json, re, sys
 from datetime import datetime, timezone
 from pathlib import Path
-from zipfile import ZipFile
-
 from docx import Document
 from docx.enum.text import WD_ALIGN_PARAGRAPH
-from lxml import etree
 from pypdf import PdfReader
-
 ROOT=Path(__file__).resolve().parents[1]
-DOCS=ROOT/'docs'
-TARGET=DOCS/'BAO_CAO_TIEU_LUAN_6_CHUONG.docx'
-PDF=TARGET.with_suffix('.pdf')
-NS={'w':'http://schemas.openxmlformats.org/wordprocessingml/2006/main','m':'http://schemas.openxmlformats.org/officeDocument/2006/math','wp':'http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing'}
-
-
-def sha(path):return hashlib.sha256(path.read_bytes()).hexdigest()
-
-
+DOC=ROOT/'docs/BAO_CAO_TIEU_LUAN_DA_RA_SOAT.docx'
+PDF=DOC.with_suffix('.pdf')
+FOLDER=ROOT/'docs/review_20261029'
+QA=FOLDER/'QA_REPORT.json'
+sys.path.insert(0,str(ROOT/'src'))
+from artifact_contract import validate_core_outputs
+def sha(p):return hashlib.sha256(p.read_bytes()).hexdigest()
+def require(ok,message):
+    if not ok:raise ValueError(message)
+def inspect():
+    core=validate_core_outputs(ROOT)
+    build=json.loads((FOLDER/'build.json').read_text(encoding='utf-8'))
+    require(core['run_id']==build['core_run_id'],'Different report/core run IDs.')
+    d=Document(DOC)
+    chapters=[p.text for p in d.paragraphs if p.style.name=='Heading 1' and re.match(r'Chương [1-6] ',p.text)]
+    require(len(chapters)==6,'Expected six chapters.')
+    require(len(d.element.xpath('//m:oMath'))==8,'Expected eight native equations.')
+    captions=[p for p in d.paragraphs if p.style.name=='Caption']
+    figures=[p for p in captions if p.text.startswith('Hình ')]
+    tables=[p for p in captions if p.text.startswith('Bảng ')]
+    require([int(re.match(r'Hình (\d+):',p.text)[1]) for p in figures]==list(range(1,12)),'Invalid figure numbering.')
+    require([int(re.match(r'Bảng (\d+):',p.text)[1]) for p in tables]==list(range(1,25)),'Invalid table numbering.')
+    require(len(d.tables)==24,'Missing or uncaptioned table.')
+    for p in tables:require(p._p.getnext().tag.endswith('}tbl'),'Table separated from caption.')
+    for p in figures:require(bool(p._p.getprevious().xpath('.//w:drawing')),'Image separated from caption.')
+    for t in d.tables:require(bool(t.rows[0]._tr.xpath('./w:trPr/w:tblHeader')),'Table header not repeated.')
+    bookmarks=set(d.element.xpath('//w:bookmarkStart/@w:name'))
+    for field in d.element.xpath('//w:fldSimple/@w:instr'):
+        if 'PAGEREF' in field:require(field.split()[1] in bookmarks,'Broken page reference.')
+    text='\n'.join(p.text for p in d.paragraphs)
+    for bad in ['slide','giáo trình','trang PDF','DOI_CHIEU_SLIDE',r'\frac',r'\begin{']:
+        require(bad.casefold() not in text.casefold(),'Forbidden content: '+bad)
+    refs=[p for p in d.paragraphs if re.match(r'^\[\d+\]',p.text)]
+    require([int(re.match(r'\[(\d+)\]',p.text)[1]) for p in refs]==list(range(1,12)),'Invalid reference numbering.')
+    pdf=PdfReader(PDF);pdftext='\n'.join(p.extract_text() for p in pdf.pages)
+    for bad in ['Error! Reference source not found','Error! Bookmark not defined','Lỗi! Không xác định','[[figure:','[[table:']:
+        require(bad not in pdftext,'Broken PDF field: '+bad)
+    for token in ['6.911','6.652','2,25','32,50','43/58','8/8','0,1833','Nguyễn Ngọc Duy','N23DCCN078','N23DCCN112','N23DCCN118']:
+        require(token in pdftext,'Missing report token: '+token)
+    active=False;count=0
+    for p in d.paragraphs:
+        if p.style.name=='Heading 1' and p.text.startswith('Chương 1 '):active=True
+        if p.style.name=='Heading 1' and p.text=='Tài liệu tham khảo':active=False
+        if not active or not p.text or p.style.name!='Normal':continue
+        if p._p.xpath('.//m:oMath|.//w:drawing'):continue
+        if p.runs and all(r.font.name=='Consolas' for r in p.runs):continue
+        alignment=p.alignment
+        style=p.style
+        while alignment is None and style is not None:
+            alignment=style.paragraph_format.alignment
+            style=style.base_style
+        require(alignment==WD_ALIGN_PARAGRAPH.JUSTIFY,'Body not justified: '+p.text[:60]);count+=1
+    return {'core_run_id':core['run_id'],'pages':len(pdf.pages),'chapters':chapters,
+            'figures':11,'tables':24,'native_equations':8,'justified_body_paragraphs':count,
+            'artifacts':{p.relative_to(ROOT).as_posix():sha(p) for p in [DOC,PDF,DOC.with_suffix('.md')]},
+            'analysis_commit':build['analysis_commit'],'analysis_sha256':sha(ROOT/'outputs/analysis.json'),
+            'extended_results_sha256':sha(ROOT/'outputs/extended/results.json')}
 def main():
-    parser=argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('--visual-reviewed-pages',default='')
-    args=parser.parse_args()
-    layout=json.loads((ROOT/'tmp/report_qa/word_layout.json').read_text(encoding='utf-8-sig'))
-    pdf=PdfReader(PDF);assert len(pdf.pages)==layout['pages']
-    text_pages=[page.extract_text() for page in pdf.pages]
-    text='\n'.join(text_pages)
-    for forbidden in ['Error! Reference source not found','Error! Bookmark not defined','Lỗi! Không xác định','[Nhóm bổ sung]','[[table:','[[figure:','\\frac','\\begin{','\\sum']:
-        assert forbidden not in text,forbidden
-    with ZipFile(TARGET) as archive:
-        xml=etree.fromstring(archive.read('word/document.xml'))
-        styles=etree.fromstring(archive.read('word/styles.xml'))
-    doc=Document(TARGET)
-    chapters=[p.text for p in doc.paragraphs if re.match(r'^Chương [1-6] ',p.text) and p.style.name=='Heading 1']
-    assert len(chapters)==6
-    assert len(xml.xpath('//m:oMath',namespaces=NS))==8==layout['native_equations']
-    assert len(xml.xpath('//wp:inline',namespaces=NS))==9
-    assert not xml.xpath('//w:pBdr',namespaces=NS) and not styles.xpath('//w:style[@w:styleId="Title"]//w:pBdr',namespaces=NS)
-    captions=[p.text for p in doc.paragraphs if p.style.name=='Caption']
-    figure_captions=[p for p in captions if p.startswith('Hình ')]
-    table_captions=[p for p in captions if p.startswith('Bảng ')]
-    assert [int(re.match(r'Hình (\d+):',p)[1]) for p in figure_captions]==list(range(1,10))
-    assert [int(re.match(r'Bảng (\d+):',p)[1]) for p in table_captions]==list(range(1,21))
-    assert len(doc.tables)==20
-    for table in doc.tables:
-        assert table.rows[0]._tr.find('.//'+f'{{{NS["w"]}}}tblHeader') is not None
-    body=[];inside=False
-    for p in doc.paragraphs:
-        if p.style.name=='Heading 1' and p.text.startswith('Chương 1 '):inside=True
-        if p.style.name=='Heading 1' and p.text=='Tài liệu tham khảo':inside=False
-        if not inside or not p.text or p.style.name!='Normal':continue
-        if p._p.xpath('.//m:oMath') or p._p.xpath('.//wp:inline'):continue
-        if p.runs and all(run.font.name=='Consolas' for run in p.runs):continue
-        assert p.alignment in (None,WD_ALIGN_PARAGRAPH.JUSTIFY),p.text[:80]
-        body.append(p.text)
-    for token in ['Nguyễn Ngọc Duy','Võ Văn Đạt','N23DCCN078','Nguyễn Thị Yến Nhi','N23DCCN112','Hứa Như Quỳnh','N23DCCN118','0,6484','0,7788','6.936','2,25']:
-        assert token in text,token
-    assert len(body)>60
-    build=json.loads((DOCS/'report_src/build_manifest.json').read_text(encoding='utf-8'))
-    source=ROOT/'docs/report_src/noi_dung.md'
-    assert sha(source)==build['source_sha256']
-    assert sha(ROOT/'outputs/analysis.json')==build['analysis_sha256']
-    analysis=json.loads((ROOT/'outputs/analysis.json').read_text(encoding='utf-8'))
-    assert build['core_run_id']==analysis['run_id']
-    counts=analysis['counts'];assert counts['raw_count']==counts['clean_count']+counts['duplicate_count']+counts['rejected_count']
-    for relative,digest in build['figure_assets_sha256'].items():assert sha(ROOT/relative)==digest
-    reviewed=set(int(x) for x in args.visual_reviewed_pages.split(',') if x)
-    assert reviewed==set(range(1,len(pdf.pages)+1)), 'Inspect every final page before recording completion'
-    hashes={str(i):sha(ROOT/f'tmp/report_qa/pages/page-{i}.png') for i in sorted(reviewed)}
-    result={'status':'passed','checked_at_utc':datetime.now(timezone.utc).isoformat(),
-        'core_run_id':analysis['run_id'],'pages':len(pdf.pages),'chapters':chapters,'figures':9,'tables':20,'native_equations':8,
-        'body_paragraphs_justified':len(body),'captions_and_bookmarks':'verified',
-        'render_backend':layout['backend'],'page_rasterizer':'packaged render_docx.py with Word PDF adapter and Poppler',
-        'visual_review':{'reviewer':'Codex inspection of final page PNGs','pages_reviewed':sorted(reviewed),'page_sha256':hashes,
-                         'findings':'No clipping, missing math glyphs, overlapping captions, broken references or truncated table rows observed.'},
-        'source_md_sha256':sha(source),'document_sha256':sha(TARGET),'pdf_sha256':sha(PDF),
-        'builder_sha256':sha(ROOT/'tools/build_final_report.py'),
-        'limitations_carried_into_report':['Historical convenience sample and heuristic labels; not verified transaction truth.',
-             'Browser layout of latest dashboard and native Excel recalculation not claimed.',
-             'No fresh installation on another machine; workbook authoring has an additional runtime dependency.',
-             'SQL snapshot did not demonstrate a latency speedup.'],
-        'old_drafts_modified_by_this_build':False}
-    (DOCS/'report_src/QA_REPORT.json').write_text(json.dumps(result,ensure_ascii=False,indent=2),encoding='utf-8')
-    build['pre_word_export_document_sha256']=build.get('pre_word_export_document_sha256',build['document_sha256'])
-    build['document_sha256']=result['document_sha256'];build['pdf_sha256']=result['pdf_sha256'];build['pages']=result['pages'];build['render_status']='rendered_and_visually_reviewed'
-    (DOCS/'report_src/build_manifest.json').write_text(json.dumps(build,ensure_ascii=False,indent=2),encoding='utf-8')
-    print(json.dumps({k:v for k,v in result.items() if k!='visual_review'},ensure_ascii=False,indent=2))
-
-
+    ap=argparse.ArgumentParser(description=__doc__)
+    ap.add_argument('--visual-reviewed-pages',default='')
+    ap.add_argument('--page-dir',type=Path,default=ROOT/'tmp/report_qa/pages')
+    args=ap.parse_args();record=inspect()
+    if args.visual_reviewed_pages:
+        pages=set(map(int,args.visual_reviewed_pages.split(',')))
+        require(pages==set(range(1,record['pages']+1)),'Inspect every final PNG before recording completion.')
+        record.update(status='passed',checked_at_utc=datetime.now(timezone.utc).isoformat(),
+            visual_review={'reviewer':'Codex inspection of final page PNGs','pages_reviewed':sorted(pages),
+            'page_sha256':{str(i):sha(args.page_dir/f'page-{i}.png') for i in sorted(pages)},
+            'findings':'No clipping, missing math glyphs, broken references or overlapping captions observed.'},
+            limitations=['No independent human-label validation claimed.',
+                         'Native browser layout and Microsoft Excel UI acceptance not claimed.',
+                         'Original private annotation XLSX absent from public repository.',
+                         'SQL timing is one sequential warm-cache illustration.'])
+        QA.write_text(json.dumps(record,ensure_ascii=False,indent=2),encoding='utf-8')
+        metadata={key:record[key] for key in ['core_run_id','pages','artifacts','extended_results_sha256']}
+        metadata.update(visual_review='All final Word-rendered pages inspected as PNGs.',qa_record='docs/review_20261029/QA_REPORT.json')
+        (ROOT/'outputs/report_build.json').write_text(json.dumps(metadata,ensure_ascii=False,indent=2),encoding='utf-8')
+    else:
+        saved=json.loads(QA.read_text(encoding='utf-8'))
+        for key in ['core_run_id','pages','artifacts','analysis_sha256','extended_results_sha256']:
+            require(saved[key]==record[key],'Changed after visual review: '+key)
+        require(saved['status']=='passed' and len(saved['visual_review']['pages_reviewed'])==record['pages'],'Incomplete recorded visual review.')
+        record.update(status='saved_hashes_and_structure_verified',visual_review='Recorded inspection matches these DOCX/PDF hashes. No new visual inspection inferred.')
+    display={k:v for k,v in record.items() if k!='visual_review'}
+    display['visual_review']='Complete inspection recorded for the same final artifacts; see QA_REPORT.json.'
+    print(json.dumps(display,ensure_ascii=False,indent=2))
 if __name__=='__main__':main()

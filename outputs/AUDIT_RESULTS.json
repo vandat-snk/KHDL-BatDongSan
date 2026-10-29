@@ -67,7 +67,7 @@
   "report": {
     "status": "saved_report_hashes_verified",
     "generated_this_run": true,
-    "visual_review": "All 39 rendered pages inspected; final cached-page-reference update rendered pixel-identically to reviewed version."
+    "visual_review": "All final Word-rendered pages inspected as PNGs."
   },
   "visual_checks": "Not inferred by this command. See dated human/UI evidence separately.",
   "limitations": [

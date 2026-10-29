@@ -1,4 +1,4 @@
-param([string]$Document = 'docs\BAO_CAO_TIEU_LUAN_6_CHUONG.docx')
+param([string]$Document = 'docs\BAO_CAO_TIEU_LUAN_DA_RA_SOAT.docx')
 $ErrorActionPreference = 'Stop'
 $taskRoot = Split-Path -Parent $PSScriptRoot
 $reportPath = [System.IO.Path]::GetFullPath((Join-Path $taskRoot $Document))

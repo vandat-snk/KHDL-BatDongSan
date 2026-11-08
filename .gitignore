@@ -1,5 +1,7 @@
 .venv/
 node_modules/
+# Ignore the machine-local dependency link/file as well as dependency directories.
+/tools/node_modules
 __pycache__/
 *.pyc
 tmp/
